@@ -2,40 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\CertificateService;
 use Illuminate\Http\Request;
 use App\Models\Certificate;
+use App\Models\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendAllCertificate;
+
 
 class CertificateController extends Controller
 {
+    /**
+     *
+     */
+    public function __construct(public CertificateService $certificateService){
+
+    }
+
+
     public function addCertificate(Request $request){
-        $certificate = Certificate::create($request->all());
-
-        if(!$certificate){
-            return response()->json([
-                "success"=> false,
-                "message"=> "There was an error processing your request."
-            ]);
-        }
-
-        return response()->json([
-            "success"=> true,
-            "message"=> "Successfully Created New Certificate."
-        ]);
+        return $this->certificateService->addCertificate($request);
     }
 
     public function updateCertificate(Request $request){
-        $certificate = Certificate::where("id", $request->id)->update($request->all());
+        return $this->certificateService->updateCertificate($request);
+    }
 
-        if(!$certificate){
-            return response()->json([
-                "success"=> false,
-                "message"=> "There was an error processing your request."
-            ]);
-        }
+    public function sendAllCertificate(Request $request){
+        return $this->certificateService->sendAllCertificate($request);
+    }
 
-        return response()->json([
-            "success"=> true,
-            "message"=> "Successfully Updated Certificate."
-        ]);
+    public function sendOneCertificate(Request $request){
+        return $this->certificateService->sendOneCertificate($request);
     }
 }

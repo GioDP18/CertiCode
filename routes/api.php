@@ -28,4 +28,6 @@ Route::group([
 
     // Generate Certificate
     Route::post('/generate', [GenerateCertService::class,'generate']);
+    Route::post('/send-all-certificate', [CertificateController::class,'sendAllCertificate']);
+    Route::post('/send-one-certificate', [CertificateController::class,'sendOneCertificate']);
 });
