@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Http\Services\AuthService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -12,53 +13,26 @@ class AuthController extends Controller
      *
      * @return void
      */
-    public function __construct() {
+    public function __construct(public AuthService $authService) {
         $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
+
     /**
      * Get a JWT via given credentials.
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request){
-    	$validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required|string|min:6',
-        ]);
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
-        }
-        if (! $token = auth()->attempt($validator->validated())) {
-            return response()->json(['error' => 'Unauthorized'], 401);
-        }
-        return $this->createNewToken($token);
+        return $this->authService->login($request);
     }
+
     /**
      * Register a User.
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'firstname' => 'required|string|between:2,100',
-            'middlename' => 'required|string|between:2,100',
-            'lastname' => 'required|string|between:2,100',
-            'gender' => 'required',
-            'email' => 'required|string|email|max:100|unique:users',
-            'password' => 'required|string|confirmed|min:6',
-        ]);
-        if($validator->fails()){
-            return response()->json($validator->errors()->toJson(), 400);
-        }
-        $user = User::create(array_merge(
-                    $validator->validated(),
-                    ['user_level' => 1],
-                    ['password' => bcrypt($request->password)]
-                ));
-        return response()->json([
-            'message' => 'User successfully registered',
-            'user' => $user
-        ], 201);
+        return $this->authService->register($request);
     }
 
     /**
@@ -67,38 +41,24 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function logout() {
-        auth()->logout();
-        return response()->json(['message' => 'User successfully signed out']);
+        return $this->authService->logout();
     }
+
     /**
      * Refresh a token.
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function refresh() {
-        return $this->createNewToken(auth()->refresh());
+        return $this->authService->refresh();
     }
+
     /**
      * Get the authenticated User.
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function userProfile() {
-        return response()->json(auth()->user());
-    }
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function createNewToken($token){
-        return response()->json([
-            'access_token' => $token,
-            'token_type' => 'bearer',
-            'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()
-        ]);
+        return $this->authService->userProfile();
     }
 }

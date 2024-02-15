@@ -22,4 +22,6 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/add-certificate', [CertificateController::class,'addCertificate']);
     Route::post('/update-certificate', [CertificateController::class,'updateCertificate']);
+    Route::post('/send-all-certificate', [CertificateController::class,'sendAllCertificate']);
+    Route::post('/send-one-certificate', [CertificateController::class,'sendOneCertificate']);
 });
