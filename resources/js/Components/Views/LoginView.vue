@@ -1,3 +1,7 @@
+<script setup>
+
+</script>
+
 <template>
     <div class="container">
         <div class="form-box">
