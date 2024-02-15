@@ -2,6 +2,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CertificateController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,6 +20,8 @@ Route::group([
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::post('/refresh', [AuthController::class, 'refresh']);
-    Route::get('/user-profile', [AuthController::class, 'userProfile']);
+    Route::post('/add-certificate', [CertificateController::class,'addCertificate']);
+    Route::post('/update-certificate', [CertificateController::class,'updateCertificate']);
+    Route::post('/send-all-certificate', [CertificateController::class,'sendAllCertificate']);
+    Route::post('/send-one-certificate', [CertificateController::class,'sendOneCertificate']);
 });
