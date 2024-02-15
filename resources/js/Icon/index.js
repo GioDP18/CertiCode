@@ -7,7 +7,7 @@ import {
     faLock,
     faCircleUser,
     faEye,
-    faE,
+    faEyeSlash,
 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -17,5 +17,6 @@ library.add(
     faEnvelope,
     faLock,
     faCircleUser,
-    faEye
+    faEye,
+    faEyeSlash,
 )

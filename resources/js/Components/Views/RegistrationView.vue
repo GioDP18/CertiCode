@@ -1,59 +1,99 @@
 <script setup>
+import { ref } from 'vue';
+import { Form, Field, ErrorMessage } from 'vee-validate';
+
+const fullname = ref('');
+const username = ref('');
+const email = ref('');
+const showPassword = ref(false);
+
+function validateName(value) {
+    if (!value) {
+        return 'This field is required';
+    }
+    return true;
+}
+
+function validatePassword(value) {
+    if (!value) {
+        return 'This field is required';
+    }
+    const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
+    if (strongRegex.test(value)) {
+        return true;
+    } else {
+        return 'Password is too weak';
+    }
+}
+
+function togglePassword() {
+    showPassword.value = !showPassword.value;
+}
 </script>
 
 <template>
     <div class="container">
         <div class="signup-card">
-            <div class="signup-container">
+            <Form class="signup-container">
                 <!-- Fullname Input Field -->
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i><font-awesome-icon class="icon"
                                 :icon="['fas', 'fa-user']" /></i></span>
                     <div class="form-floating form-floating-group flex-grow-1">
-                        <input type="text" class="form-control" name="code1" placeholder="Code 1">
+                        <Field name="fullname" :rules="validateName" type="text" class="form-control"
+                            placeholder="Fullname" />
                         <label class="input-label" for="code1">Fullname</label>
                     </div>
                 </div>
+                <ErrorMessage class="error-message" name="fullname" />
                 <!-- Username Input Field -->
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i><font-awesome-icon class="icon"
                                 :icon="['fas', 'fa-circle-user']" /></i></span>
                     <div class="form-floating form-floating-group flex-grow-1">
-                        <input type="text" class="form-control" name="code1" placeholder="Code 1">
+                        <Field name="username" :rules="validateName" type="text" class="form-control"
+                            placeholder="Username" />
                         <label class="input-label" for="code1">Username</label>
                     </div>
                 </div>
+                <ErrorMessage class="error-message" name="username" />
                 <!-- Email Input Field -->
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i><font-awesome-icon class="icon"
                                 :icon="['fas', 'fa-envelope']" /></i></span>
                     <div class="form-floating form-floating-group flex-grow-1">
-                        <input type="text" class="form-control" name="code1" placeholder="Code 1">
+                        <Field name="email" :rules="validateName" type="text" class="form-control" placeholder="Email" />
                         <label class="input-label" for="code1">Email</label>
                     </div>
                 </div>
+                <ErrorMessage class="error-message" name="email" />
                 <!-- Paddword Input Field -->
                 <div class="input-group mb-3">
-                    <span class="input-group-text"><i><font-awesome-icon class="icon"
-                                :icon="['fas', 'fa-lock']" /></i></span>
+                    <span class="input-group-text">
+                        <i>
+                            <font-awesome-icon class="icon" :icon="['fas', 'fa-lock']" />
+                        </i>
+                    </span>
                     <div class="form-floating form-floating-group flex-grow-1">
-                        <input type="text" class="form-control" name="code1" placeholder="Code 1">
+                        <Field name="password" :rules="validatePassword" :type="showPassword ? 'text' : 'password'"
+                            class="form-control" placeholder="Password" />
                         <label class="input-label" for="code1">Password</label>
                     </div>
-                    <span class="input-group-text"><i><font-awesome-icon class="icon"
-                                :icon="['fas', 'fa-eye']" /></i></span>
+                    <span style="cursor: pointer;" class="input-group-text" @click="togglePassword">
+                        <i><font-awesome-icon class="icon" :icon="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"/></i>
+                    </span>
                 </div>
-
-                <button class="sign-up-btn" type="button">
+                <ErrorMessage class="error-message" name="password" />
+                <button class="sign-up-btn">
                     <p class="fw-normal">SIGN UP</p>
                 </button>
                 <div class="text">
                     <span style="color: rgb(190, 187, 186)">Already have an account? </span>
-                    <RouterLink to="" style="color: rgba(255, 255, 255, 1)">
+                    <RouterLink to="/" style="color: rgba(255, 255, 255, 1)">
                         Sign in
                     </RouterLink>
                 </div>
-            </div>
+            </Form>
         </div>
     </div>
 </template>
@@ -189,5 +229,11 @@
         font: 400 15px Inter, sans-serif;
         margin-top: 10px;
     }
+}
+
+.error-message {
+    color: rgb(238, 203, 203);
+    font-size: 0.75rem;
+    margin-top: -10px;
 }
 </style>
