@@ -19,6 +19,7 @@ Class GenerateCertServiceImpl implements GenerateCertService
         
         $templateProcessor = new TemplateProcessor(public_path('template/Certificate.docx'));
         $templateProcessor->setValue('name', 'John Vincent'); // example name
+        $templateProcessor->setValue('description', 'Test Description'); // example Description
 
         $logoPath = storage_path('app/logo.jpg'); // example path to your logo image file
         $templateProcessor->setImageValue('logo', array('path' => $logoPath, 'width' => 100, 'height' => 100));
@@ -26,9 +27,6 @@ Class GenerateCertServiceImpl implements GenerateCertService
         $newFilePath = storage_path('app/John Vincent.docx'); // example path name
         $templateProcessor->saveAs($newFilePath);
         
-        return response()->json([
-            'success' => true,
-            'message' => 'Generated certificate'
-        ]);
+        return $newFilePath;
     }
 }
