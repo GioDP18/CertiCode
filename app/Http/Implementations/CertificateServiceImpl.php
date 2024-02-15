@@ -9,9 +9,16 @@ use App\Mail\SendAllCertificate;
 
 
 use App\Http\Services\CertificateService;
+use App\Http\Services\GenerateCertService;
 
 Class CertificateServiceImpl implements CertificateService
 {
+    protected GenerateCertService $generateCertService;
+
+    public function __construct(GenerateCertService $generateCertService){
+        $this->generateCertService = $generateCertService;
+    }
+
     public function addCertificate(Request $request){
         $certificate = Certificate::create($request->all());
 
@@ -47,9 +54,11 @@ Class CertificateServiceImpl implements CertificateService
     public function sendAllCertificate(Request $request){
         $members[] = User::where('user_level', 2)->get('email');
 
-        $filePath = public_path('Certificates\\Resume.docx');
+        // $filePath = public_path('Certificates\\Resume.docx');
 
         foreach ($members as $member){
+            $filePath = $this->generateCertService->generate(); // need to pass member_id and certificate_id for descriptions and name
+
             $data = [
                 'name' => "Gio Dela Peña",
                 'email' => $member,
@@ -66,8 +75,8 @@ Class CertificateServiceImpl implements CertificateService
     public function sendOneCertificate(Request $request){
         $email = User::where('id', $request->user_id)->get('email');
 
-        $filePath = public_path('Certificates\\Resume.docx');
-
+        // $filePath = public_path('Certificates\\Resume.docx');
+        $filePath = $this->generateCertService->generate(); // need to pass member_id and certificate_id for descriptions and name
         $data = [
             'name' => "Gio Dela Peña",
             'email' => $email,
