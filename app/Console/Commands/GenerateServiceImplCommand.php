@@ -14,7 +14,7 @@ class GenerateServiceImplCommand extends Command
     public function handle()
     {
         $name = $this->argument('name');
-        $serviceInterfaceDirectory = app_path("Implementations");
+        $serviceInterfaceDirectory = app_path("Http/Implementations");
         $serviceInterfacePath = "{$serviceInterfaceDirectory}/{$name}ServiceImpl.php";
 
         // Check if the directory exists, if not create it
