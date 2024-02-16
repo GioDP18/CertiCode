@@ -26,7 +26,7 @@ DataTable.use(DataTablesCore);
                                         <td>Tiger Nixon</td>
                                         <td>System Architect</td>
                                         <td>
-                                            <button>
+                                            <button class="btn">
                                                 Send Certificate
                                                 <i>
                                                     <font-awesome-icon class="icon" :icon="['fas', 'fa-paper-plane']" />
