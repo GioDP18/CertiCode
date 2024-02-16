@@ -32,7 +32,8 @@ const sendAllCerts = async () => {
 </script>
 
 <template>
-    <div :class="{ 'nav-is-default': !isNavToggled, 'nav-is-toggled': isNavToggled }">
+    <div :class="{ 'nav-is-default': !isNavToggled, 'nav-is-toggled': isNavToggled }"
+        style="display:flex; justify-content:center; align-items:center; height:100vh;">
         <header class="nav-top">
             <button type="button" class="nav-toggle" id="navSideToggle" @click="toggleNav">
                 <span class="sr-only">Menu</span> <span class="ham-bars"></span>
@@ -49,9 +50,9 @@ const sendAllCerts = async () => {
                     </h1>
                 </div>
                 <li class="nav-side-button">
-                    <button class="button" @click="sendAllCerts"
-                        style="height: 70px; border-radius: 20px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 20px; gap: 10px; border: none; margin-bottom: 50px;">
-                        <span class="link-text" style="color: black; font-weight: 700;">Generate Certificate</span><i
+                    <button class="button" href="#"
+                        style="height: 70px; border-radius: 20px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 15px; gap: 10px; border: none; margin-bottom: 50px;">
+                        <span class="link-text" style="color: black; font-weight: 700;">Send All Certificates</span><i
                             style="width: 40px; height: 40px; background-color: #41644A; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white;"><font-awesome-icon
                                 :icon="['fas', 'paper-plane']" /></i></button>
                 </li>
@@ -73,8 +74,8 @@ const sendAllCerts = async () => {
                             All
                             Certificates</span>
                     </div>
-                    <button
-                        style="width: 90px; height:40px; border-radius: 10px; background-color: #263A29; color: white; border: none;"><i><font-awesome-icon
+                    <button class="btn"
+                        style="width: 50px; height:40px; border-radius: 10px; background-color: #263A29; color: white; border: none;"><i><font-awesome-icon
                                 :icon="['fas', 'plus']" /></i></button>
                 </li>
                 <hr>
@@ -83,6 +84,22 @@ const sendAllCerts = async () => {
         <section class=" main-content">
             <!-- Your main content here -->
         </section>
+        <div id="wifi-loader">
+            <svg class="circle-outer" viewBox="0 0 86 86">
+                <circle class="back" cx="43" cy="43" r="40"></circle>
+                <circle class="front" cx="43" cy="43" r="40"></circle>
+                <circle class="new" cx="43" cy="43" r="40"></circle>
+            </svg>
+            <svg class="circle-middle" viewBox="0 0 60 60">
+                <circle class="back" cx="30" cy="30" r="27"></circle>
+                <circle class="front" cx="30" cy="30" r="27"></circle>
+            </svg>
+            <svg class="circle-inner" viewBox="0 0 34 34">
+                <circle class="back" cx="17" cy="17" r="14"></circle>
+                <circle class="front" cx="17" cy="17" r="14"></circle>
+            </svg>
+            <div class="text" data-text="Generating Certificates, Please Wait.."></div>
+        </div>
     </div>
 </template>
 
@@ -336,6 +353,10 @@ $nav-side-pad-x: 30px;
                 padding: 0 10px;
             }
 
+            .nav-side-button .btn {
+                width: 10px;
+            }
+
             .button,
             .nav-link {
                 &:hover {
@@ -411,6 +432,10 @@ $nav-side-pad-x: 30px;
 
             .nav-side-button {
                 padding: 0 $nav-side-pad-x;
+            }
+
+            .nav-side-button .btn {
+                width: 10px;
             }
 
             .nav-link {
@@ -530,6 +555,204 @@ $nav-side-pad-x: 30px;
         .content-block {
             width: 100%;
         }
+    }
+}
+
+#wifi-loader {
+    --background: #62abff;
+    --front-color: #4f29f0;
+    --back-color: #c3c8de;
+    --text-color: #414856;
+    width: 300px;
+    height: 300px;
+    border-radius: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5abd8ba4;
+}
+
+#wifi-loader svg {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#wifi-loader svg circle {
+    position: absolute;
+    fill: none;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform: rotate(-100deg);
+    transform-origin: center;
+}
+
+#wifi-loader svg circle.back {
+    stroke: var(--back-color);
+}
+
+#wifi-loader svg circle.front {
+    stroke: var(--front-color);
+}
+
+#wifi-loader svg.circle-outer {
+    height: 86px;
+    width: 86px;
+}
+
+#wifi-loader svg.circle-outer circle {
+    stroke-dasharray: 62.75 188.25;
+}
+
+#wifi-loader svg.circle-outer circle.back {
+    animation: circle-outer135 1.8s ease infinite 0.3s;
+}
+
+#wifi-loader svg.circle-outer circle.front {
+    animation: circle-outer135 1.8s ease infinite 0.15s;
+}
+
+#wifi-loader svg.circle-middle {
+    height: 60px;
+    width: 60px;
+}
+
+#wifi-loader svg.circle-middle circle {
+    stroke-dasharray: 42.5 127.5;
+}
+
+#wifi-loader svg.circle-middle circle.back {
+    animation: circle-middle6123 1.8s ease infinite 0.25s;
+}
+
+#wifi-loader svg.circle-middle circle.front {
+    animation: circle-middle6123 1.8s ease infinite 0.1s;
+}
+
+#wifi-loader svg.circle-inner {
+    height: 34px;
+    width: 34px;
+}
+
+#wifi-loader svg.circle-inner circle {
+    stroke-dasharray: 22 66;
+}
+
+#wifi-loader svg.circle-inner circle.back {
+    animation: circle-inner162 1.8s ease infinite 0.2s;
+}
+
+#wifi-loader svg.circle-inner circle.front {
+    animation: circle-inner162 1.8s ease infinite 0.05s;
+}
+
+#wifi-loader .text {
+    position: absolute;
+    bottom: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: 0.2px;
+}
+
+#wifi-loader .text::before,
+#wifi-loader .text::after {
+    content: attr(data-text);
+}
+
+#wifi-loader .text::before {
+    color: white;
+}
+
+#wifi-loader .text::after {
+    color: var(--front-color);
+    animation: text-animation76 3.6s ease infinite;
+    position: absolute;
+    left: 0;
+}
+
+@keyframes circle-outer135 {
+    0% {
+        stroke-dashoffset: 25;
+    }
+
+    25% {
+        stroke-dashoffset: 0;
+    }
+
+    65% {
+        stroke-dashoffset: 301;
+    }
+
+    80% {
+        stroke-dashoffset: 276;
+    }
+
+    100% {
+        stroke-dashoffset: 276;
+    }
+}
+
+@keyframes circle-middle6123 {
+    0% {
+        stroke-dashoffset: 17;
+    }
+
+    25% {
+        stroke-dashoffset: 0;
+    }
+
+    65% {
+        stroke-dashoffset: 204;
+    }
+
+    80% {
+        stroke-dashoffset: 187;
+    }
+
+    100% {
+        stroke-dashoffset: 187;
+    }
+}
+
+@keyframes circle-inner162 {
+    0% {
+        stroke-dashoffset: 9;
+    }
+
+    25% {
+        stroke-dashoffset: 0;
+    }
+
+    65% {
+        stroke-dashoffset: 106;
+    }
+
+    80% {
+        stroke-dashoffset: 97;
+    }
+
+    100% {
+        stroke-dashoffset: 97;
+    }
+}
+
+@keyframes text-animation76 {
+    0% {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    50% {
+        clip-path: inset(0);
+    }
+
+    100% {
+        clip-path: inset(0 0 0 100%);
     }
 }
 </style>
