@@ -59,8 +59,8 @@ Class AuthServiceImpl implements AuthService
                     ['password' => bcrypt($request->password)]
                 ));
         return response()->json([
-            'message' => 'User successfully registered',
-            'user' => $user
+            "success" => true,
+            "message" => "Registered Successfully!"
         ], 201);
     }
 

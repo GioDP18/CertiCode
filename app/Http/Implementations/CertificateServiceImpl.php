@@ -80,7 +80,7 @@ Class CertificateServiceImpl implements CertificateService
         $members = User::where('id', $request->user_id)->get();
 
         foreach ($members as $member) {
-            $filePath = $this->generateCertService->generate($member->id, $request->certificate_id); // need to pass member_id and certificate_id for descriptions and name
+            $filePath = $this->generateCertService->generate($member->id, $request->certificate_id);
             $data = [
                 'name' => "Gio Dela Peña",
                 'email' => $member->email,
