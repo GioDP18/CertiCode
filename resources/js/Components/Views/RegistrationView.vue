@@ -128,7 +128,7 @@ const register = async () => {
                         </i>
                     </span>
                     <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="password" :rules="validatePassword" :type="showPassword ? 'text' : 'password'"
+                        <Field name="password" v-model="password" :rules="validatePassword" :type="showPassword ? 'text' : 'password'"
                             class="form-control" placeholder="Password" />
                         <label class="input-label" for="code1">Password</label>
                     </div>
