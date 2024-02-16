@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\GenerateCertController;
+use App\Http\Controllers\WordToPDFController;
 use App\Http\Services\GenerateCertService;
 
 /*
@@ -30,4 +31,7 @@ Route::group([
     Route::post('/generate', [GenerateCertService::class,'generate']);
     Route::post('/send-all-certificate', [CertificateController::class,'sendAllCertificate']);
     Route::post('/send-one-certificate', [CertificateController::class,'sendOneCertificate']);
+
+
+    Route::post('/convert', [WordToPDFController::class,'store']);
 });
