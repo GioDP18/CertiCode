@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 
 interface CertificateService
 {
+    public function getAllCertificate();
+    
     public function addCertificate(Request $request);
 
     public function updateCertificate(Request $request);
