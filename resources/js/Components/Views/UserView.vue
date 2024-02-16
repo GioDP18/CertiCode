@@ -18,7 +18,7 @@
                 <li class="nav-side-button">
                     <button class="button" href="#"
                         style="height: 70px; border-radius: 20px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 15px; gap: 10px; border: none; margin-bottom: 50px;">
-                        <span class="link-text" style="color: black; font-weight: 700;">Send Certificate All</span><i
+                        <span class="link-text" style="color: black; font-weight: 700;">Send All Certificate</span><i
                             style="width: 40px; height: 40px; background-color: #41644A; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white;"><font-awesome-icon
                                 :icon="['fas', 'paper-plane']" /></i></button>
                 </li>
