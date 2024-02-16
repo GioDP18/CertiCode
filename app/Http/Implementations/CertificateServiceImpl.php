@@ -17,6 +17,7 @@ Class CertificateServiceImpl implements CertificateService
 
     public function __construct(GenerateCertService $generateCertService){
         $this->generateCertService = $generateCertService;
+        set_time_limit(120);
     }
 
     public function addCertificate(Request $request){
@@ -51,37 +52,41 @@ Class CertificateServiceImpl implements CertificateService
         ]);
     }
 
-    public function sendAllCertificate(Request $request){
-        $members[] = User::where('user_level', 2)->get('email');
+    public function sendAllCertificate(Request $request)
+    {
+        $members = User::where('user_level', 2)->get();
 
-        // $filePath = public_path('Certificates\\Resume.docx');
+        foreach ($members as $member) {
+            $filePath = $this->generateCertService->generate($member->id, $request->certificate_id);
+            if($filePath){
+                $data = [
+                    'name' => $member->firstname,
+                    'email' => $member->email,
+                ];
 
-        foreach ($members as $member){
-            $filePath = $this->generateCertService->generate(); // need to pass member_id and certificate_id for descriptions and name
+                Mail::send(new SendAllCertificate($data, $filePath));
+            }
 
-            $data = [
-                'name' => "Gio Dela Peña",
-                'email' => $member,
-            ];
-            Mail::send(new SendAllCertificate($data, $filePath));
         }
 
         return response()->json([
-            "success"=> true,
-            "message"=> "All certificates sent successfully.",
+            "success" => true,
+            "message" => "All certificates sent successfully.",
         ]);
     }
 
-    public function sendOneCertificate(Request $request){
-        $email = User::where('id', $request->user_id)->get('email');
 
-        // $filePath = public_path('Certificates\\Resume.docx');
-        $filePath = $this->generateCertService->generate(); // need to pass member_id and certificate_id for descriptions and name
-        $data = [
-            'name' => "Gio Dela Peña",
-            'email' => $email,
-        ];
-        Mail::send(new SendAllCertificate($data, $filePath));
+    public function sendOneCertificate(Request $request){
+        $members = User::where('id', $request->user_id)->get();
+
+        foreach ($members as $member) {
+            $filePath = $this->generateCertService->generate($member->id, $request->certificate_id); // need to pass member_id and certificate_id for descriptions and name
+            $data = [
+                'name' => "Gio Dela Peña",
+                'email' => $member->email,
+            ];
+            Mail::send(new SendAllCertificate($data, $filePath));
+        }
 
         return response()->json([
             "success"=> true,
