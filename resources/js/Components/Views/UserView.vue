@@ -1,3 +1,4 @@
+
 <script setup>
 import { ref } from 'vue';
 import axios from  'axios';
@@ -32,12 +33,24 @@ const sendAllCerts = async () => {
 </script>
 
 <template>
-    <div :class="{ 'nav-is-default': !isNavToggled, 'nav-is-toggled': isNavToggled }"
-        style="display:flex; justify-content:center; align-items:center; height:100vh;">
+    <div :class="{ 'nav-is-default': !isNavToggled, 'nav-is-toggled': isNavToggled }">
         <header class="nav-top">
-            <button type="button" class="nav-toggle" id="navSideToggle" @click="toggleNav">
+            <button type="button" class="nav-toggle" id="navSideToggle" @click="toggleNav()">
                 <span class="sr-only">Menu</span> <span class="ham-bars"></span>
             </button>
+                <form class="search-input">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <i><font-awesome-icon class="icon" :icon="['fas', 'fa-search']" /></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <button class="power btn btn-default" type="submit">
+                    <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-power-off']" /></i>
+                </button>
         </header>
         <aside class="nav-side">
             <ul class="nav-side-links">
@@ -67,6 +80,11 @@ const sendAllCerts = async () => {
                             Account</span>
                     </RouterLink>
                 </li>
+                <li class="nav-side-item active" active-class="active">
+                    <RouterLink class="nav-link" to="participants"><i class="icon"><font-awesome-icon :icon="['fas', 'user']" /></i>
+                        <span class="link-text" style="font-weight: 700;">Participants</span>
+                    </RouterLink>
+                </li>
                 <li class="nav-side-button" style="padding-top: 50%; text-align: center;">
                     <div
                         style="background-color: #F2E3DB; height: 85px; border-radius: 20px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 20px; gap: 10px; border: none; margin-bottom: -15px;">
@@ -74,15 +92,18 @@ const sendAllCerts = async () => {
                             All
                             Certificates</span>
                     </div>
-                    <button class="btn"
-                        style="width: 50px; height:40px; border-radius: 10px; background-color: #263A29; color: white; border: none;"><i><font-awesome-icon
+                    <button
+                        style="width: 90px; height:40px; border-radius: 10px; background-color: #263A29; color: white; border: none;"><i><font-awesome-icon
                                 :icon="['fas', 'plus']" /></i></button>
                 </li>
                 <hr>
             </ul>
         </aside>
         <section class=" main-content">
-            <!-- Your main content here -->
+            <div class="wrapper">
+                <Router-view :class="{ 'sidebar-minimized': !showSidebar }">
+                </Router-view>
+            </div>
         </section>
         <div id="wifi-loader" v-if="isGenerating">
             <svg class="circle-outer" viewBox="0 0 86 86">
@@ -143,6 +164,29 @@ a {
     }
 }
 
+.power {
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    color: #000;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    margin: auto;
+}
+
+.search-input {
+    width: 50%;
+    margin: auto;
+}
+
 .button {
     display: inline-block;
     padding: 6px 20px;
@@ -193,6 +237,8 @@ $nav-side-pad-x: 30px;
         height: $nav-top-height;
         box-shadow: 0px 5px 0 rgba($secondary-color-dark, 0.5);
         background-color: $white;
+        display: flex;
+        justify-content: space-between;
     }
 
     &-side {
