@@ -14,7 +14,7 @@ class GenerateServiceCommand extends Command
     public function handle()
     {
         $name = $this->argument('name');
-        $serviceInterfaceDirectory = app_path("Services");
+        $serviceInterfaceDirectory = app_path("Http/Services");
         $serviceInterfacePath = "{$serviceInterfaceDirectory}/{$name}Service.php";
 
         // Check if the directory exists, if not create it

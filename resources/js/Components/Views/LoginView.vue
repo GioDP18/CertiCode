@@ -1,3 +1,42 @@
+<script setup>
+import { ref } from 'vue';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+
+const showPassword = ref(false);
+const email = ref('');
+const password = ref('');
+const router = useRouter();
+
+function togglePassword() {
+    showPassword.value = !showPassword.value;
+}
+
+const login = async () => {
+    try{
+        await axios.post(`http://127.0.0.1:8000/api/auth/login`, {
+            email : email.value,
+            password : password.value
+        })
+        .then((response) => {
+            if(response.data.success){
+                router.push('/')
+            }
+            else{
+                alert(response.data.message)
+            }
+
+        })
+
+    }
+    catch(error){
+        console.log(error)
+        alert(error.response.data.error)
+    }
+
+}
+</script>
+
 <template>
     <div class="container">
         <div class="form-box">
@@ -37,19 +76,7 @@
         </div>
     </div>
 </template>
-  
-<script setup>
-import { ref } from 'vue';
 
-const showPassword = ref(false);
-const email = ref('');
-const password = ref('');
-
-function togglePassword() {
-    showPassword.value = !showPassword.value;
-}
-</script>
-  
 <style scoped>
 .container {
     display: flex;
