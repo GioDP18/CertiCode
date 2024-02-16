@@ -10,7 +10,7 @@ import {
     faEyeSlash,
     faSearch,
     faPowerOff,
-    faP,
+    faPaperPlane,
 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -23,5 +23,6 @@ library.add(
     faEye,
     faEyeSlash,
     faSearch,
-    faPowerOff
+    faPowerOff,
+    faPaperPlane
 )

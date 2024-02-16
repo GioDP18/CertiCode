@@ -19,26 +19,6 @@ onMounted(() => {
 
 <template>
     <div class="div">
-        <div class="div-2">
-            <div class="hamburger hamburger--elastic">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
-                </div>
-            </div>
-            <form class="search-input">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit">
-                            <i><font-awesome-icon class="icon" :icon="['fas', 'fa-search']" /></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <button class="power btn btn-default" type="submit">
-                <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-power-off']" /></i>
-            </button>
-        </div>
         <div class="div-5">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item" role="presentation">
@@ -121,26 +101,6 @@ onMounted(() => {
   
   
 <style scoped>
-.power {
-    background-color: #f0f0f0;
-    border-radius: 50%;
-    color: #000;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.icon {
-    width: 20px;
-    height: 20px;
-    margin: auto;
-}
-
-.search-input {
-    width: 50%;
-}
 
 .div {
     background-color: rgba(255, 255, 255, 1);
