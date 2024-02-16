@@ -4,6 +4,7 @@ import LandingPage from "../Components/Views/LandingPage.vue";
 import LoginView from "../Components/Views/LoginView.vue";
 import Profile from "../Components/Views/Profile.vue";
 import UserView from "../Components/Views/UserView.vue";
+import RegisterView from '../Components/Views/RegistrationView.vue';
 
 const routes = [
     {
@@ -15,6 +16,10 @@ const routes = [
         component: LoginView,
     },
     {
+        path : '/register',
+        component : RegisterView,
+    },
+    {
         path: "/user",
         component: UserView,
         children: [
@@ -24,7 +29,6 @@ const routes = [
             },
         ],
     },
-
     {
         path: "/:path(.*)*",
         component: notFound,
