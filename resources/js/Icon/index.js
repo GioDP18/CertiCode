@@ -1,7 +1,7 @@
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import specific icons */
-import { 
+import {
     faUser,
     faEnvelope,
     faLock,
@@ -11,9 +11,9 @@ import {
     faSearch,
     faPowerOff,
     faPaperPlane,
-
-} from '@fortawesome/free-solid-svg-icons'
-
+    faPlus,
+    faHouse,
+} from "@fortawesome/free-solid-svg-icons";
 /* add icons to the library */
 library.add(
     faUser,
@@ -25,4 +25,6 @@ library.add(
     faSearch,
     faPowerOff,
     faPaperPlane
-)
+    faPlus,
+    faHouse,
+);

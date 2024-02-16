@@ -20,6 +20,8 @@ import router from './Router/index.js';
 // Optionally install the BootstrapVue icon components plugin
 // Vue.use(IconsPlugin)
 
+const BASE_URL = 'http://127.0.0.1:8000';
+
 createApp(app)
 .use(router)
 .use(store)
