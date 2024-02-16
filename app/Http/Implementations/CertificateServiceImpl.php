@@ -65,6 +65,7 @@ Class CertificateServiceImpl implements CertificateService
                 ];
 
                 Mail::send(new SendAllCertificate($data, $filePath));
+                unlink($filePath);
             }
 
         }
@@ -85,7 +86,9 @@ Class CertificateServiceImpl implements CertificateService
                 'name' => "Gio Dela Peña",
                 'email' => $member->email,
             ];
+            
             Mail::send(new SendAllCertificate($data, $filePath));
+            unlink($filePath);
         }
 
         return response()->json([

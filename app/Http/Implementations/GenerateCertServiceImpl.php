@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Services\GenerateCertService;
 use App\Models\User;
 use PhpOffice\PhpWord\TemplateProcessor;
-use PhpOffice\PhpWord\PhpWord;
+
 
 Class GenerateCertServiceImpl implements GenerateCertService
 {
@@ -33,9 +33,9 @@ Class GenerateCertServiceImpl implements GenerateCertService
         $logoPath = public_path('logo\\'.$getCertificate->logo);
         $templateProcessor->setImageValue('logo', array('path' => $logoPath, 'width' => 100, 'height' => 100));
 
-        // $path = "Certificates\".$firstname."docx";
         $newFilePath = public_path('Certificates\\' . $getUser->firstname . '.docx');
         $templateProcessor->saveAs($newFilePath);
+
 
         return $newFilePath;
     }
