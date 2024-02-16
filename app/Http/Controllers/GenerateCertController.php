@@ -10,8 +10,8 @@ class GenerateCertController extends Controller
         
     }
 
-    public function generate()
+    public function generate($member_id, $certificate_id)
     {
-        return $this->generateCertService->generate();
+        return $this->generateCertService->generate($member_id, $certificate_id);
     }
 }
