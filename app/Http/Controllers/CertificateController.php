@@ -19,6 +19,10 @@ class CertificateController extends Controller
 
     }
 
+    public function getAllCertificate(){
+        return $this->certificateService->getAllCertificate();
+    }
+
     public function addCertificate(Request $request){
         return $this->certificateService->addCertificate($request);
     }
