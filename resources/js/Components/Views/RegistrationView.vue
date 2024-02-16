@@ -1,10 +1,18 @@
 <script setup>
 import { ref } from 'vue';
 import { Form, Field, ErrorMessage } from 'vee-validate';
+import axios from 'axios';
+import { useRouter } from 'vue-router';
 
-const fullname = ref('');
-const username = ref('');
+const router = useRouter();
+
+const firstname = ref('');
+const middlename = ref('');
+const lastname = ref('');
+const gender = ref('');
 const email = ref('');
+const password = ref('');
+const password_confirmation = ref('');
 const showPassword = ref(false);
 
 function validateName(value) {
@@ -29,40 +37,85 @@ function validatePassword(value) {
 function togglePassword() {
     showPassword.value = !showPassword.value;
 }
+
+const register = async () => {
+    try{
+        await axios.post(`http://127.0.0.1:8000/api/auth/register`, {
+            firstname : firstname.value,
+            middlename : middlename.value,
+            lastname : lastname.value,
+            gender : gender.value,
+            email : email.value,
+            password : password.value,
+            password_confirmation : password_confirmation.value
+        })
+        .then((response) => {
+            if(response.data.success){
+                router.push('/')
+            }
+            else{
+                alert(response.data.message)
+            }
+        })
+    }
+    catch(error){
+        alert(error.response.data.message)
+    }
+}
 </script>
 
 <template>
     <div class="container">
         <div class="signup-card">
-            <Form class="signup-container">
+            <form class="signup-container" @submit.prevent="register">
                 <!-- Fullname Input Field -->
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i><font-awesome-icon class="icon"
                                 :icon="['fas', 'fa-user']" /></i></span>
                     <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="fullname" :rules="validateName" type="text" class="form-control"
-                            placeholder="Fullname" />
-                        <label class="input-label" for="code1">Fullname</label>
+                        <Field name="firstname" v-model="firstname" :rules="validateName" type="text" class="form-control"
+                            placeholder="Firstname" />
+                        <label class="input-label" for="code1">Firstname</label>
                     </div>
                 </div>
                 <ErrorMessage class="error-message" name="fullname" />
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i><font-awesome-icon class="icon"
+                                :icon="['fas', 'fa-user']" /></i></span>
+                    <div class="form-floating form-floating-group flex-grow-1">
+                        <Field name="middlename" v-model="middlename" :rules="validateName" type="text" class="form-control"
+                            placeholder="Middlename" />
+                        <label class="input-label" for="code1">Middlename</label>
+                    </div>
+                </div>
+                <ErrorMessage class="error-message" name="middlename" />
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i><font-awesome-icon class="icon"
+                                :icon="['fas', 'fa-user']" /></i></span>
+                    <div class="form-floating form-floating-group flex-grow-1">
+                        <Field name="lastname" v-model="lastname" :rules="validateName" type="text" class="form-control"
+                            placeholder="Lastname" />
+                        <label class="input-label" for="code1">Firstname</label>
+                    </div>
+                </div>
+                <ErrorMessage class="error-message" name="lastname" />
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i><font-awesome-icon class="icon"
+                                :icon="['fas', 'fa-user']" /></i></span>
+                    <div class="form-floating form-floating-group flex-grow-1">
+                        <Field name="gender" v-model="gender" :rules="validateName" type="text" class="form-control"
+                            placeholder="Gender" />
+                        <label class="input-label" for="code1">Gender</label>
+                    </div>
+                </div>
+                <ErrorMessage class="error-message" name="gender" />
                 <!-- Username Input Field -->
                 <div class="input-group mb-3">
                     <span class="input-group-text"><i><font-awesome-icon class="icon"
                                 :icon="['fas', 'fa-circle-user']" /></i></span>
                     <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="username" :rules="validateName" type="text" class="form-control"
-                            placeholder="Username" />
-                        <label class="input-label" for="code1">Username</label>
-                    </div>
-                </div>
-                <ErrorMessage class="error-message" name="username" />
-                <!-- Email Input Field -->
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i><font-awesome-icon class="icon"
-                                :icon="['fas', 'fa-envelope']" /></i></span>
-                    <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="email" :rules="validateName" type="text" class="form-control" placeholder="Email" />
+                        <Field name="email" v-model="email" :rules="validateName" type="text" class="form-control"
+                            placeholder="Email" />
                         <label class="input-label" for="code1">Email</label>
                     </div>
                 </div>
@@ -84,6 +137,22 @@ function togglePassword() {
                     </span>
                 </div>
                 <ErrorMessage class="error-message" name="password" />
+                <div class="input-group mb-3">
+                    <span class="input-group-text">
+                        <i>
+                            <font-awesome-icon class="icon" :icon="['fas', 'fa-lock']" />
+                        </i>
+                    </span>
+                    <div class="form-floating form-floating-group flex-grow-1">
+                        <Field name="password_confirmation" v-model="password_confirmation" :rules="validatePassword" :type="showPassword ? 'text' : 'password'"
+                            class="form-control" placeholder="Password" />
+                        <label class="input-label" for="code1">Password</label>
+                    </div>
+                    <span style="cursor: pointer;" class="input-group-text" @click="togglePassword">
+                        <i><font-awesome-icon class="icon" :icon="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"/></i>
+                    </span>
+                </div>
+                <ErrorMessage class="error-message" name="password_confirmation" />
                 <button class="sign-up-btn">
                     <p class="fw-normal">SIGN UP</p>
                 </button>
@@ -93,7 +162,7 @@ function togglePassword() {
                         Sign in
                     </RouterLink>
                 </div>
-            </Form>
+            </form>
         </div>
     </div>
 </template>

@@ -8,5 +8,5 @@ interface GenerateCertService
 {
     public function __construct();
 
-    public function generate();
+    public function generate($member_id, $certificate_id);
 }

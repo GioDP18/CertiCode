@@ -2,8 +2,10 @@
 
 namespace App\Http\Implementations;
 
+use App\Models\Certificate;
 use Illuminate\Http\Request;
 use App\Http\Services\GenerateCertService;
+use App\Models\User;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\PhpWord;
 
@@ -14,19 +16,27 @@ Class GenerateCertServiceImpl implements GenerateCertService
 
     }
 
-    public function generate()
+    public function generate($member_id, $certificate_id)
     {
-        
-        $templateProcessor = new TemplateProcessor(public_path('template/Certificate.docx'));
-        $templateProcessor->setValue('name', 'John Vincent'); // example name
-        $templateProcessor->setValue('description', 'Test Description'); // example Description
+        $getUser = User::where('id', $member_id)->first();
+        $fullname = $getUser->firstname . ' '. $getUser->middlename .' '. $getUser->lastname;
+        $getCertificate = Certificate::where('id', $certificate_id)->first();
+        $description = $getCertificate->description;
+        $issuer = $getCertificate->issuer;
 
-        $logoPath = storage_path('app/logo.jpg'); // example path to your logo image file
+
+        $templateProcessor = new TemplateProcessor(public_path('template\Certificate.docx'));
+        $templateProcessor->setValue('name', $fullname);
+        $templateProcessor->setValue('description', $description);
+        $templateProcessor->setValue('issuer', $issuer);
+
+        $logoPath = public_path('logo\\'.$getCertificate->logo);
         $templateProcessor->setImageValue('logo', array('path' => $logoPath, 'width' => 100, 'height' => 100));
-        
-        $newFilePath = storage_path('app/John Vincent.docx'); // example path name
+
+        // $path = "Certificates\".$firstname."docx";
+        $newFilePath = public_path('Certificates\\' . $getUser->firstname . '.docx');
         $templateProcessor->saveAs($newFilePath);
-        
+
         return $newFilePath;
     }
 }
