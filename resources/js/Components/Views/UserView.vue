@@ -50,7 +50,7 @@ const sendAllCerts = async () => {
                     </h1>
                 </div>
                 <li class="nav-side-button">
-                    <button class="button" href="#"
+                    <button class="button" @click="sendAllCerts"
                         style="height: 70px; border-radius: 20px; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 15px; gap: 10px; border: none; margin-bottom: 50px;">
                         <span class="link-text" style="color: black; font-weight: 700;">Send All Certificates</span><i
                             style="width: 40px; height: 40px; background-color: #41644A; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white;"><font-awesome-icon
@@ -84,7 +84,7 @@ const sendAllCerts = async () => {
         <section class=" main-content">
             <!-- Your main content here -->
         </section>
-        <div id="wifi-loader">
+        <div id="wifi-loader" v-if="isGenerating">
             <svg class="circle-outer" viewBox="0 0 86 86">
                 <circle class="back" cx="43" cy="43" r="40"></circle>
                 <circle class="front" cx="43" cy="43" r="40"></circle>
