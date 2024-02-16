@@ -1,8 +1,41 @@
+<script setup>
+import { ref } from 'vue';
+import axios from  'axios';
+
+const isNavToggled = ref(false);
+const certificate_id = ref(2);
+const isGenerating = ref(false);
+
+const toggleNav = () => {
+    isNavToggled.value = !isNavToggled.value;
+}
+
+const sendAllCerts = async () => {
+    isGenerating.value = true;
+    console.log(isGenerating.value)
+    try{
+        await axios.post(`http://127.0.0.1:8000/api/auth/send-all-certificate`, {
+            certificate_id : certificate_id.value
+        })
+        .then((response) => {
+            console.log(response.data.message)
+        })
+        .finally(() => {
+            isGenerating.value = false;
+            console.log(isGenerating.value)
+        })
+    }
+    catch(error){
+        console.log(error.response.data.message)
+    }
+}
+</script>
+
 <template>
     <div :class="{ 'nav-is-default': !isNavToggled, 'nav-is-toggled': isNavToggled }"
         style="display:flex; justify-content:center; align-items:center; height:100vh;">
         <header class="nav-top">
-            <button type="button" class="nav-toggle" id="navSideToggle" @click="toggleNav()">
+            <button type="button" class="nav-toggle" id="navSideToggle" @click="toggleNav">
                 <span class="sr-only">Menu</span> <span class="ham-bars"></span>
             </button>
         </header>
@@ -69,26 +102,7 @@
         </div>
     </div>
 </template>
-  
 
-<script>
-export default {
-    data() {
-        return {
-            isNavToggled: false
-        };
-    },
-    methods: {
-        toggleNav() {
-            this.isNavToggled = !this.isNavToggled;
-        }
-    }
-}
-</script>
-  
-
-<script setup>
-</script>
 
 <style lang="scss">
 @import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300';
@@ -742,4 +756,4 @@ $nav-side-pad-x: 30px;
     }
 }
 </style>
-  
+

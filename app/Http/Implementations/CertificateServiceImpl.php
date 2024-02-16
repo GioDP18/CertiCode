@@ -17,7 +17,7 @@ Class CertificateServiceImpl implements CertificateService
 
     public function __construct(GenerateCertService $generateCertService){
         $this->generateCertService = $generateCertService;
-        set_time_limit(120);
+        set_time_limit(3600);
     }
 
     public function addCertificate(Request $request){
