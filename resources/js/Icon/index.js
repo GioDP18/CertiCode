@@ -8,6 +8,9 @@ import {
     faCircleUser,
     faEye,
     faEyeSlash,
+    faSearch,
+    faPowerOff,
+    faP,
 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -19,4 +22,6 @@ library.add(
     faCircleUser,
     faEye,
     faEyeSlash,
+    faSearch,
+    faPowerOff
 )
