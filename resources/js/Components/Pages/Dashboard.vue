@@ -119,6 +119,7 @@ DataTable.use(DataTablesCore);
 @media (max-width: 991px) {
     .main-content {
         max-width: 100%;
+        padding: 0 5px;
     }
 }
 
@@ -147,7 +148,7 @@ DataTable.use(DataTablesCore);
 
 @media (max-width: 991px) {
     .card1 {
-        margin-top: 40px;
+        margin-top: 30px;
         padding: 2px 20px;
     }
 }
@@ -188,7 +189,7 @@ DataTable.use(DataTablesCore);
 @media (max-width: 991px) {
     .content-1 {
         max-width: 100%;
-        margin-top: 40px;
+        margin-top: 15px;
         flex-direction: column;
         align-items: stretch;
         gap: 5px;
@@ -199,7 +200,7 @@ DataTable.use(DataTablesCore);
     display: flex;
     flex-direction: column;
     line-height: normal;
-    width: 71%;
+    width: 100%;
     margin-left: 0px;
     margin-top: 30px;
 }

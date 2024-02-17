@@ -117,7 +117,7 @@ onBeforeUnmount(() => {
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </div>
             </div>
-            <div style="background-color: #fff; height: 30px;" class="send-button"
+            <div v-show="screenWidth > 991" style="background-color: #fff; height: 30px;" class="send-button"
                 title="add certificate">
                 <i><font-awesome-icon style="color: #000; height: 15px;" class="icon" :icon="['fas', 'fa-plus']" /></i>
             </div>
