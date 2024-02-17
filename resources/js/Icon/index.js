@@ -11,6 +11,11 @@ import {
     faSearch,
     faPowerOff,
     faPaperPlane,
+    faUsers,
+    faHome,
+    faPlus,
+    faTableList,
+    faUserCircle,
 
 } from '@fortawesome/free-solid-svg-icons'
 
@@ -24,5 +29,10 @@ library.add(
     faEyeSlash,
     faSearch,
     faPowerOff,
-    faPaperPlane
+    faPaperPlane,
+    faUsers,
+    faHome,
+    faPlus,
+    faTableList,
+    faUserCircle
 )

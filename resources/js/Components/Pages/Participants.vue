@@ -10,7 +10,7 @@ DataTable.use(DataTablesCore);
     <div class="main-panel">
         <div class="content">
             <div class="page-inner mt--5">
-                <div class=" bg-light">
+                <div class="card bg-light">
                     <div class="card-body">
                         <div class="table-responsive">
                             <DataTable id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
@@ -27,10 +27,11 @@ DataTable.use(DataTablesCore);
                                         <td>System Architect</td>
                                         <td>
                                             <button class="btn">
-                                                Send Certificate
-                                                <i>
-                                                    <font-awesome-icon class="icon" :icon="['fas', 'fa-paper-plane']" />
-                                                </i>
+                                                <span class="link-text" style="color: black; font-weight: 700;">Send
+                                                    Certificate</span>
+                                                <i
+                                                    style="width: 30px; height: 30px; margin-left: 6px; background-color: #41644A; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white;">
+                                                    <font-awesome-icon :icon="['fas', 'paper-plane']" /></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -64,6 +65,16 @@ DataTable.use(DataTablesCore);
 .content {
     margin-top: 10%;
     background-color: transparent;
+    padding: 20px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-responsive {
     padding: 20px;
 }
 </style>
