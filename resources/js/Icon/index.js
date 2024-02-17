@@ -31,9 +31,5 @@ library.add(
     faSearch,
     faPowerOff,
     faPaperPlane,
-    faUsers,
-    faHome,
     faPlus,
-    faTableList,
-    faUserCircle
 );

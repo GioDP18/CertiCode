@@ -20,6 +20,15 @@ Class CertificateServiceImpl implements CertificateService
         set_time_limit(3600);
     }
 
+    public function getAllCertificate(){
+        $users = User::orderBy('id', 'asc')
+                        ->get();
+
+        return response()->json([
+            'users' => $users,
+        ], 200);
+    }
+
     public function addCertificate(Request $request){
         $certificate = Certificate::create($request->all());
 
