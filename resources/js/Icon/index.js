@@ -1,7 +1,7 @@
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from "@fortawesome/fontawesome-svg-core";
 
 /* import specific icons */
-import { 
+import {
     faUser,
     faEnvelope,
     faLock,
@@ -17,7 +17,8 @@ import {
     faTableList,
     faUserCircle,
 
-} from '@fortawesome/free-solid-svg-icons'
+
+} from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
 library.add(
@@ -35,4 +36,4 @@ library.add(
     faPlus,
     faTableList,
     faUserCircle
-)
+);
