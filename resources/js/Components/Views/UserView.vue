@@ -1,7 +1,7 @@
 
 <script setup>
 import { ref } from 'vue';
-import axios from  'axios';
+import axios from 'axios';
 
 const isNavToggled = ref(false);
 const certificate_id = ref(2);
@@ -14,19 +14,19 @@ const toggleNav = () => {
 const sendAllCerts = async () => {
     isGenerating.value = true;
     console.log(isGenerating.value)
-    try{
+    try {
         await axios.post(`http://127.0.0.1:8000/api/auth/send-all-certificate`, {
-            certificate_id : certificate_id.value
+            certificate_id: certificate_id.value
         })
-        .then((response) => {
-            console.log(response.data.message)
-        })
-        .finally(() => {
-            isGenerating.value = false;
-            console.log(isGenerating.value)
-        })
+            .then((response) => {
+                console.log(response.data.message)
+            })
+            .finally(() => {
+                isGenerating.value = false;
+                console.log(isGenerating.value)
+            })
     }
-    catch(error){
+    catch (error) {
         console.log(error.response.data.message)
     }
 }
@@ -38,19 +38,19 @@ const sendAllCerts = async () => {
             <button type="button" class="nav-toggle" id="navSideToggle" @click="toggleNav()">
                 <span class="sr-only">Menu</span> <span class="ham-bars"></span>
             </button>
-                <form class="search-input">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default" type="submit">
-                                <i><font-awesome-icon class="icon" :icon="['fas', 'fa-search']" /></i>
-                            </button>
-                        </div>
+            <form class="search-input">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <i><font-awesome-icon class="icon" :icon="['fas', 'fa-search']" /></i>
+                        </button>
                     </div>
-                </form>
-                <button class="power btn btn-default" type="submit">
-                    <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-power-off']" /></i>
-                </button>
+                </div>
+            </form>
+            <button class="power btn btn-default" type="submit">
+                <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-power-off']" /></i>
+            </button>
         </header>
         <aside class="nav-side">
             <ul class="nav-side-links">
@@ -81,7 +81,8 @@ const sendAllCerts = async () => {
                     </RouterLink>
                 </li>
                 <li class="nav-side-item active" active-class="active">
-                    <RouterLink class="nav-link" to="participants"><i class="icon"><font-awesome-icon :icon="['fas', 'user']" /></i>
+                    <RouterLink class="nav-link" to="participants"><i class="icon"><font-awesome-icon
+                                :icon="['fas', 'user']" /></i>
                         <span class="link-text" style="font-weight: 700;">Participants</span>
                     </RouterLink>
                 </li>
@@ -125,7 +126,7 @@ const sendAllCerts = async () => {
 </template>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import 'https://fonts.googleapis.com/css?family=Roboto+Condensed:300';
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 $primary-color: #94deb4;
