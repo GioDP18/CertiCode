@@ -119,7 +119,6 @@ DataTable.use(DataTablesCore);
 @media (max-width: 991px) {
     .main-content {
         max-width: 100%;
-        padding: 0 5px;
     }
 }
 
