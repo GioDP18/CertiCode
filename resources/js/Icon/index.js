@@ -15,7 +15,8 @@ import {
     faHome,
     faPlus,
     faTableList,
-    faUserCircle,
+    faUserCircle, 
+    faXmark  
 
 
 } from "@fortawesome/free-solid-svg-icons";
@@ -32,4 +33,7 @@ library.add(
     faPowerOff,
     faPaperPlane,
     faPlus,
+    faHome,
+    faTableList,
+    faXmark
 );
