@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-import { Form, Field, ErrorMessage } from 'vee-validate';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 
@@ -14,32 +13,38 @@ const email = ref('');
 const password = ref('');
 const password_confirmation = ref('');
 const showPassword = ref(false);
-
-function validateName(value) {
-    if (!value) {
-        return 'This field is required';
-    }
-    return true;
-}
-
-function validatePassword(value) {
-    if (!value) {
-        return 'This field is required';
-    }
-    const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
-    if (strongRegex.test(value)) {
-        return true;
-    } else {
-        return 'Password is too weak';
-    }
-}
+const passwordLength = ref(false);
+const confirmPasswordMismatch = ref(false);
 
 function togglePassword() {
     showPassword.value = !showPassword.value;
 }
 
+function validatePassword() {
+    if (password.value.length > 0 && password.value.length < 8) {
+        passwordLength.value = true;
+        return false;
+    } else {
+        passwordLength.value = false;
+        return true;
+    }
+}
+
+function validateConfirmPassword() {
+    if (password_confirmation.value !== password.value) {
+        confirmPasswordMismatch.value = true;
+        return false;
+    } else {
+        confirmPasswordMismatch.value = false;
+        return true;
+    }
+}
+
 const register = async () => {
     try {
+        if (!validatePassword() || !validateConfirmPassword()) {
+            return;
+        }
         await axios.post(`http://127.0.0.1:8000/api/auth/register`, {
             firstname: firstname.value,
             middlename: middlename.value,
@@ -90,11 +95,13 @@ const register = async () => {
                             </div>
                             <div class="d-flex align-items-center gender">
                                 <div class="selection mr-3">
-                                    <input id="male-gender" name="gender" type="radio" value="male">
+                                    <input id="male-gender" name="gender" type="radio" value="male" v-model="gender"
+                                        required>
                                     <label for="male-gender">Male</label>
                                 </div>
                                 <div class="selection">
-                                    <input id="female-gender" name="gender" type="radio" value="female">
+                                    <input id="female-gender" name="gender" type="radio" value="female" v-model="gender"
+                                        required>
                                     <label for="female-gender">Female</label>
                                 </div>
                             </div>
@@ -114,6 +121,9 @@ const register = async () => {
                                             :icon="['fa-solid', showPassword ? 'fa-eye-slash' : 'fa-eye']" /></i>
                                 </span>
                                 <label>Password</label>
+                                <div v-if="passwordLength" class="password-warning">
+                                    Password is too short
+                                </div>
                             </div>
                             <div class="inputbox" :class="{ 'active': password_confirmation }">
                                 <i><font-awesome-icon :icon="['fas', 'lock']" /></i>
@@ -124,6 +134,9 @@ const register = async () => {
                                             :icon="['fa-solid', showPassword ? 'fa-eye-slash' : 'fa-eye']" /></i>
                                 </span>
                                 <label>Confirm Password</label>
+                                <div v-if="confirmPasswordMismatch" class="password-warning">
+                                    Passwords do not match
+                                </div>
                             </div>
                         </div>
                         <button class="submit" type="submit"><span class="btn-txt">SIGN UP</span></button>
@@ -305,6 +318,13 @@ const register = async () => {
     background-color: #303841;
     color: #ffffff !important;
     font-weight: 500;
+}
+
+.password-warning {
+    color: red;
+    font-size: 10px;
+    margin-top: 5px;
+    margin-right: 15px;
 }
 
 .submit {
