@@ -128,7 +128,7 @@
                 <div class="content">
                     <div class="container">
                         <div class="row row-cols-4">
-                            <div class="col py-4">
+                            <div class="col py-3">
                                 <div class="cert-card">
                                     <img loading="lazy" src="../../../../public/external/certificate.png"
                                         class="cert-img" />
@@ -141,7 +141,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col  py-4">
+                            <div class="col py-3">
                                 <div class="cert-card">
                                     <img loading="lazy" src="../../../../public/external/certificate.png"
                                         class="cert-img" />
@@ -154,7 +154,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col  py-4">
+                            <div class="col py-3">
                                 <div class="cert-card">
                                     <img loading="lazy" src="../../../../public/external/certificate.png"
                                         class="cert-img" />
@@ -167,7 +167,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col  py-4">
+                            <div class="col py-3">
                                 <div class="cert-card">
                                     <img loading="lazy" src="../../../../public/external/certificate.png"
                                         class="cert-img" />
@@ -180,7 +180,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col py-4">
+                            <div class="col py-3">
                                 <div class="cert-card">
                                     <img loading="lazy" src="../../../../public/external/certificate.png"
                                         class="cert-img" />
@@ -193,7 +193,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col  py-4">
+                            <div class="col py-3">
                                 <div class="cert-card">
                                     <img loading="lazy" src="../../../../public/external/certificate.png"
                                         class="cert-img" />
@@ -238,6 +238,13 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+@media (max-width: 991px) {
+    .header {
+        max-width: 100%;
+        padding: 0px 5px 0px 5px;
+    }
+}
+
 .logo-text {
     font-family: Inter, sans-serif;
     flex-grow: 1;
@@ -245,6 +252,25 @@
     color: var(--Black, #191919);
     font-weight: 600;
     margin-left: 5px;
+}
+
+@media (max-width: 991px) {
+    .logo-text {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 991px) {
+    .img {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+@media (max-width: 991px) {
+    .search-input {
+        width: 150px;
+    }
 }
 
 .logout-button {
