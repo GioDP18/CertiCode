@@ -4,14 +4,15 @@
             <div class="rectangle">
             </div>
             <form class="form-container">
+                <h4>Create New Seminar</h4>
                 <div class="parent-container">
                     <div class="container1">
                         <div class="img-container">
                             <img src="../../../../public/external/Logo527-5lue.png" alt="">
                         </div>
                         <div class="mb-3">
-                            <label for="certificateLogo" class="form-label">Certificate Logo</label>
-                            <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <label for="topic" class="form-label">Topic</label>
+                            <input type="topic" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="mb-3">
                             <label for="date" class="form-label">Date</label>
@@ -20,12 +21,12 @@
                     </div>
                     <div class="container2">
                         <div class="mb-3">
-                            <label for="issuer" class="form-label">Issuer</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1">
+                            <label for="certificateLogo" class="form-label">Certificate Logo</label>
+                            <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
-                            <label for="topic" class="form-label">Topic</label>
-                            <input type="topic" class="form-control" id="exampleInputPassword1">
+                            <label for="issuer" class="form-label">Issuer</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="mb-3">
                             <label for="topic" class="form-label">Description</label>
@@ -34,9 +35,18 @@
                     </div>
                 </div>
                 <div class="submit-button">
-                    <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">SUBMIT</span></button>
+                    <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">ADD</span></button>
                 </div>
             </form>
+        </div>
+        <div class="preview-container">
+            <div class="rectangle2">
+                <h4>Preview Page</h4>
+            </div>
+
+            <div class="img-certificate">
+
+            </div>
         </div>
     </div>
 </template>
@@ -49,14 +59,12 @@
 .main-content {
     height: 85vh;
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: auto;
 }
 
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    width: 95%;
+    width: 100%;
     height: 85vh;
     border-radius: 16px;
 }
@@ -72,18 +80,24 @@
 .form-container {
     padding-top: 35px;
     width: 100%;
-    height: 75vh;
+    height: 70vh;
     margin: auto;
+}
+
+.form-container h4 {
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: 40px;
 }
 
 .parent-container {
     width: 90%;
-    height: 75vh;
+    height: 65vh;
     margin: auto;
     display: flex;
     flex-direction: row;
     gap: 50px;
-    margin-bottom: -90px;
+    margin-bottom: -40px;
     margin-top: 10px;
 }
 
@@ -94,7 +108,7 @@
 }
 
 .container2 textarea {
-    height: 125px;
+    height: 10vh;
 }
 
 .img-container {
@@ -105,7 +119,7 @@
 }
 
 .form-container img {
-    width: 40%;
+    width: 25%;
     border: 3px solid #303841;
     border-radius: 50%;
 }
@@ -133,6 +147,7 @@
     color: #303841;
     transition: all 0.5s ease-in-out;
     margin-bottom: 30px;
+    margin-top: -50px;
 }
 
 .btn-txt {
@@ -165,6 +180,26 @@
     transform: scale(100) translateX(2px);
 }
 
+.preview-container {
+    width: 100%;
+    height: 80vh;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    margin-top: 5%;
+    border-radius: 16px;
+}
+
+.preview-container .rectangle2 {
+    height: 10vh;
+    width: 100%;
+    border-top-right-radius: 13px;
+    border-top-left-radius: 13px;
+    background-color: #303841;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
 @media screen and (max-width: 360px) {
 
     .main-content {
@@ -174,6 +209,10 @@
     .main-container {
         width: 100%;
         height: 100%;
+    }
+
+    .form-container h4 {
+        margin-top: -20px;
     }
 
     .parent-container {
@@ -187,7 +226,7 @@
     }
 
     .container1 {
-        margin-bottom: -60px;
+        margin-bottom: -55px;
     }
 
     .container2 textarea {
@@ -200,7 +239,7 @@
     }
 
     .submit-button {
-        margin-top: 32%;
+        margin-top: 44%;
     }
 }
 </style>

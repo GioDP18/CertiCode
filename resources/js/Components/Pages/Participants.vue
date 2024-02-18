@@ -24,20 +24,20 @@ const getUsers = async () => {
 const sendCert = async (userID, certificateID) => {
     isGenerating.value = true;
     console.log(isGenerating.value)
-    try{
+    try {
         await axios.post(`http://127.0.0.1:8000/api/auth/send-one-certificate`, {
-            user_id : userID,
-            certificate_id : certificateID
+            user_id: userID,
+            certificate_id: certificateID
         })
-        .then((response) => {
-            console.log(response.data.message)
-        })
-        .finally(() => {
-            isGenerating.value = false;
-            console.log(isGenerating.value)
-        })
+            .then((response) => {
+                console.log(response.data.message)
+            })
+            .finally(() => {
+                isGenerating.value = false;
+                console.log(isGenerating.value)
+            })
     }
-    catch(error){
+    catch (error) {
         console.log(error.response.data.message)
     }
 }
@@ -127,7 +127,7 @@ const sendCert = async (userID, certificateID) => {
                                 </td>
                             </tr>
                         </tbody>
-                    </DataTable
+                    </DataTable>
                 </div>
             </div>
         </div>

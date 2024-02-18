@@ -39,7 +39,7 @@ const routes = [
                 component: MyAccount,
             },
             {
-                path: "createCertificate",
+                path: "createSeminar",
                 component: CreateCertificate,
             },
         ],

@@ -81,7 +81,7 @@ onBeforeUnmount(() => {
             </div>
             <div v-if="showSidebar" class="add-button">
                 <div class="sidebar-text">Add Certificate</div>
-                <RouterLink to="createCertificate" class="add">
+                <RouterLink to="createSeminar" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </RouterLink>
             </div>
@@ -117,7 +117,7 @@ onBeforeUnmount(() => {
             </div>
             <div class="add-button">
                 <div class="sidebar-text">Add Certificate</div>
-                <RouterLink to="createCertificate" class="add">
+                <RouterLink to="createSeminar" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </RouterLink>
             </div>
