@@ -2,11 +2,12 @@ import { createRouter, createWebHistory } from "vue-router";
 import notFound from "../Components/404.vue";
 import LandingPage from "../Components/Views/LandingPage.vue";
 import LoginView from "../Components/Views/LoginView.vue";
-import Profile from "../Components/Views/Profile.vue";
 import UserView from "../Components/Views/UserView.vue";
 import RegisterView from "../Components/Views/RegistrationView.vue";
 import Dashboard from "../Components/Pages/Dashboard.vue";
 import Participants from "../Components/Pages/Participants.vue";
+import MyAccount from "../Components/Pages/MyAccount.vue";
+import CreateCertificate from "../Components/Pages/CreateCertificate.vue";
 
 const routes = [
     {
@@ -32,6 +33,14 @@ const routes = [
             {
                 path: "participants",
                 component: Participants,
+            },
+            {
+                path: "myAccount",
+                component: MyAccount,
+            },
+            {
+                path: "createCertificate",
+                component: CreateCertificate,
             },
         ],
     },
