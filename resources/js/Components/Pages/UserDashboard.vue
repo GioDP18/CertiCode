@@ -12,9 +12,9 @@
             </RouterLink>
             <form class="search-input">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input style="padding: 5px;" type="text" class="form-control" placeholder="Search">
                     <div class="input-group-btn">
-                        <button style="box-shadow:0px 0px 0px 2px #e2e0e0 inset; border-radius: 0px 5px 5px 0px;"
+                        <button style="padding: 5px 8px; box-shadow:0px 0px 0px 2px #e2e0e0 inset; border-radius: 0px 5px 5px 0px;"
                             class="btn btn-default" type="submit">
                             <i><font-awesome-icon style="color: #000; height: 18px;" class="icon"
                                     :icon="['fas', 'fa-search']" /></i>
@@ -27,7 +27,7 @@
             </div>
         </nav>
         <div class="main-content">
-            <div class="container">
+            <div style="margin: auto;" class="container">
                 <div class="dashboard-header">
                     <div class="header-text">Track Your Recognitions Here</div>
                     <div class="header-subcontent">
@@ -125,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="content">
+                <div class="content py-4 mt-4">
                     <div class="container">
                         <div class="row row-cols-4">
                             <div class="col py-3">
@@ -267,6 +267,10 @@
     }
 }
 
+.search-input {
+    width: 500px;
+}
+
 @media (max-width: 991px) {
     .search-input {
         width: 150px;
@@ -292,7 +296,7 @@
     width: 100%;
     flex-direction: column;
     padding: 20px 47px;
-    margin-top: 40px;
+    margin-top: 70px;
 }
 
 @media (max-width: 991px) {
@@ -473,7 +477,6 @@
 }
 
 .column-1 {
-    margin-top: 16px;
     display: flex;
     flex-direction: column;
     width: 70%;
