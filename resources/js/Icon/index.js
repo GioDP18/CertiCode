@@ -16,9 +16,7 @@ import {
     faPlus,
     faTableList,
     faUserCircle, 
-    faXmark  
-
-
+    faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -35,5 +33,14 @@ library.add(
     faPlus,
     faHome,
     faTableList,
-    faXmark
+    faXmark,
+);
+
+import {
+    faCopyright,
+} from "@fortawesome/free-regular-svg-icons";
+
+/* add icons to the library */
+library.add(
+    faCopyright
 );
