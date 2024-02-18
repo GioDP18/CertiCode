@@ -164,12 +164,12 @@ const register = async () => {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 95vh;
 }
 
 .form-box {
     width: 450px;
-    height: 100vh;
+    height: 95vh;
     position: absolute;
     border-radius: 10px;
     background-color: #ffffff;
@@ -333,7 +333,6 @@ const register = async () => {
     background-color: #303841;
     font-size: 1em;
     font-weight: 600;
-    margin-bottom: 5px;
     margin-top: 10px;
     font-family: Inter, sans-serif;
     color: #ffffff;
