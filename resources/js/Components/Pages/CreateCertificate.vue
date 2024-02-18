@@ -19,8 +19,8 @@
                     <label for="exampleInputPassword1" class="form-label">Description</label>
                     <textarea type="text" class="form-control" id="exampleInputPassword1"></textarea>
                 </div>
-                <div class="button">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="submit-button">
+                    <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">Submit</span></button>
                 </div>
             </form>
         </div>
@@ -80,26 +80,55 @@
     border: 1px solid #303841;
 }
 
-.button {
+.submit-button {
     padding-top: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.button button {
-    width: 100%;
-    background-color: #303841;
-    letter-spacing: 7px;
-    font-weight: 600;
+.button {
+    height: 40px;
+    width: 150px;
+    position: relative;
+    background-color: transparent;
+    cursor: pointer;
     border: 2px solid #303841;
+    overflow: hidden;
+    border-radius: 8px;
+    color: #303841;
+    transition: all 0.5s ease-in-out;
+    margin-bottom: 30px;
 }
 
+.btn-txt {
+    z-index: 1;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
 
-.button:hover button {
-    background-color: #ffffff;
-    color: #303841;
-    border: 2px solid #303841;
+.type1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: all 0.5s ease-in-out;
+    background-color: #303841;
+    border-radius: 8px;
+    visibility: hidden;
+    height: 10px;
+    width: 10px;
+    z-index: -1;
+}
+
+.button:hover {
+    color: #fff;
+    border: none;
+}
+
+.type1:hover::after {
+    visibility: visible;
+    transform: scale(100) translateX(2px);
 }
 
 @media screen and (max-width: 360px) {

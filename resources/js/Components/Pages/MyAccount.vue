@@ -285,7 +285,7 @@ function togglePasswordInfo() {
     cursor: pointer;
     border: 2px solid #303841;
     overflow: hidden;
-    border-radius: 30px;
+    border-radius: 8px;
     color: #303841;
     transition: all 0.5s ease-in-out;
     margin-bottom: 30px;
@@ -304,7 +304,7 @@ function togglePasswordInfo() {
     top: 0;
     transition: all 0.5s ease-in-out;
     background-color: #303841;
-    border-radius: 30px;
+    border-radius: 8px;
     visibility: hidden;
     height: 10px;
     width: 10px;
