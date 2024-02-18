@@ -18,15 +18,9 @@ const login = async () => {
             email: email.value,
             password: password.value
         })
-            .then((response) => {
-                if (response.data.success) {
-                    router.push('/')
-                }
-                else {
-                    alert(response.data.message)
-                }
-
-            })
+        .then((response) => {
+            router.push('/user/dashboard')
+        })
 
     }
     catch (error) {

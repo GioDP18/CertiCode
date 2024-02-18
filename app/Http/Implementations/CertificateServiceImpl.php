@@ -21,8 +21,7 @@ Class CertificateServiceImpl implements CertificateService
     }
 
     public function getAllCertificate(){
-        $users = User::orderBy('id', 'asc')
-                        ->get();
+        $users = User::all();
 
         return response()->json([
             'users' => $users,
