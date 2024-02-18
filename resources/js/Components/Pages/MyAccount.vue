@@ -46,7 +46,7 @@
                 </div>
                 <div class="edit-button">
                     <button class="button type1" data-bs-toggle="modal" data-bs-target="#editInformation">
-                        <span class="btn-txt">Edit</span>
+                        <span class="btn-txt">EDIT</span>
                     </button>
                 </div>
             </div>
