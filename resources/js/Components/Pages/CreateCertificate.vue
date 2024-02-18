@@ -20,7 +20,7 @@
                     <textarea type="text" class="form-control" id="exampleInputPassword1"></textarea>
                 </div>
                 <div class="submit-button">
-                    <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">Submit</span></button>
+                    <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">SUBMIT</span></button>
                 </div>
             </form>
         </div>
