@@ -49,7 +49,7 @@ DataTable.use(DataTablesCore);
             <div sty class="content-1">
                 <div class="column-1">
                     <div class="table-card">
-                        <div class="content-text">Participants</div>
+                        <div class="content-text">New Participants</div>
                         <DataTable id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
                             <thead>
                                 <tr>
@@ -97,7 +97,11 @@ DataTable.use(DataTablesCore);
                     </div>
                 </div>
                 <div class="column-2">
-                    <div class="card-text0"></div>
+                    <div class="card-text0">
+                        <img loading="lazy"
+                            srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/1059035d4a3458c276531a9ad181bb6b672ca13a11c641e48ded18549a01ce4a?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/1059035d4a3458c276531a9ad181bb6b672ca13a11c641e48ded18549a01ce4a?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/1059035d4a3458c276531a9ad181bb6b672ca13a11c641e48ded18549a01ce4a?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/1059035d4a3458c276531a9ad181bb6b672ca13a11c641e48ded18549a01ce4a?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/1059035d4a3458c276531a9ad181bb6b672ca13a11c641e48ded18549a01ce4a?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/1059035d4a3458c276531a9ad181bb6b672ca13a11c641e48ded18549a01ce4a?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/1059035d4a3458c276531a9ad181bb6b672ca13a11c641e48ded18549a01ce4a?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/1059035d4a3458c276531a9ad181bb6b672ca13a11c641e48ded18549a01ce4a?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
+                            class="dash-pic" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -105,6 +109,15 @@ DataTable.use(DataTablesCore);
 </template>
 
 <style>
+
+.dash-pic {
+  object-fit: auto;
+  object-position: center;
+  width: 100%;
+  fill: #263238;
+  align-self: start;
+  margin-top: 35px;
+}
 .container {
     display: flex;
     flex-direction: column;
@@ -295,8 +308,8 @@ DataTable.use(DataTablesCore);
 
 .card-text0 {
     border-radius: 10px;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    background-color: #47555e;
+    /* box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); */
+    /* background-color: #47555e; */
     width: 315px;
     max-width: 100%;
     height: 340px;

@@ -8,7 +8,7 @@ const screenWidth = ref(window.innerWidth);
 const updateScreenWidth = () => {
     screenWidth.value = window.innerWidth;
 };
-
+``
 const toggleSidebar = () => {
     showSidebar.value = !showSidebar.value;
 };
@@ -77,8 +77,8 @@ onBeforeUnmount(() => {
                 </RouterLink>
             </div>
             <div v-if="showSidebar" class="add-button">
-                <div class="sidebar-text">Add Certificate</div>
-                <div class="add">
+                <div style="margin: auto;" class="sidebar-text text-center">Seminars</div>
+                <div class="add" title="add new seminar">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </div>
             </div>
@@ -112,8 +112,8 @@ onBeforeUnmount(() => {
                 </RouterLink>
             </div>
             <div class="add-button">
-                <div class="sidebar-text">Add Certificate</div>
-                <div class="add">
+                <div style="margin: auto;" class="sidebar-text">Seminars</div>
+                <div class="add" title="add new seminar">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </div>
             </div>
@@ -140,7 +140,7 @@ onBeforeUnmount(() => {
                 </div>
                 <form class="search-input">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Search Participant">
                         <div class="input-group-btn">
                             <button style="border: 1.5px solid #EEEEEE;;" class="btn btn-default" type="submit">
                                 <i><font-awesome-icon style="color: #000; height: 18px;" class="icon"
@@ -160,7 +160,7 @@ onBeforeUnmount(() => {
         </div>
     </div>
 </template>
-  
+
 <style>
 * {
     margin: 0;
