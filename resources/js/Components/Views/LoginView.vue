@@ -19,12 +19,8 @@ const login = async () => {
             password : password.value
         })
         .then((response) => {
-            if(response.data.success){
-                router.push('/')
-            }
-            else{
-                alert(response.data.message)
-            }
+            router.push('/user/dashboard')
+
 
         })
 

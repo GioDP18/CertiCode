@@ -24,7 +24,7 @@ library.add(
     faEyeSlash,
     faSearch,
     faPowerOff,
-    faPaperPlane
+    faPaperPlane,
     faPlus,
     faHouse,
 );

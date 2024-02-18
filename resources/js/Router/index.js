@@ -7,7 +7,6 @@ import UserView from "../Components/Views/UserView.vue";
 import RegisterView from '../Components/Views/RegistrationView.vue';
 import Dashboard from '../Components/Pages/Dashboard.vue';
 import Participants from '../Components/Pages/Participants.vue';
-import UserView from "../Components/Views/UserView.vue";
 
 const routes = [
     {

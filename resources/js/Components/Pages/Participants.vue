@@ -1,8 +1,47 @@
 <script setup>
-import DataTable from 'datatables.net-vue3';
-import DataTablesCore from 'datatables.net-bs5';
+import axios from 'axios';
+import 'datatables.net-vue3';
+import 'datatables.net-bs5';
+import { ref, onMounted } from 'vue';
 
-DataTable.use(DataTablesCore);
+const isGenerating = ref(false);
+const allUsers = ref([]);
+
+onMounted(async () => {
+    await getUsers();
+    initializeDataTables();
+});
+
+const getUsers = async () => {
+    try {
+        const response = await axios.get('http://127.0.0.1:8000/api/get-all-certificate');
+        allUsers.value = response.data.users;
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const sendCert = async (userID, certificateID) => {
+    isGenerating.value = true;
+    console.log(isGenerating.value)
+    try{
+        await axios.post(`http://127.0.0.1:8000/api/auth/send-one-certificate`, {
+            user_id : userID,
+            certificate_id : certificateID
+        })
+        .then((response) => {
+            console.log(response.data.message)
+        })
+        .finally(() => {
+            isGenerating.value = false;
+            console.log(isGenerating.value)
+        })
+    }
+    catch(error){
+        console.log(error.response.data.message)
+    }
+}
+
 
 </script>
 
@@ -13,7 +52,7 @@ DataTable.use(DataTablesCore);
                 <div class=" bg-light">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <DataTable id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
+                            <table id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -22,11 +61,11 @@ DataTable.use(DataTablesCore);
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
+                                    <tr v-for="user in allUsers" :key="user.id">
+                                        <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
+                                        <td>{{ user.gender }}</td>
                                         <td>
-                                            <button class="btn">
+                                            <button class="btn" @click="sendCert">
                                                 Send Certificate
                                                 <i>
                                                     <font-awesome-icon class="icon" :icon="['fas', 'fa-paper-plane']" />
@@ -35,7 +74,7 @@ DataTable.use(DataTablesCore);
                                         </td>
                                     </tr>
                                 </tbody>
-                            </DataTable>
+                            </table>
                         </div>
                     </div>
                 </div>
