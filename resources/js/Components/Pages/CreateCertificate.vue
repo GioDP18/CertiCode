@@ -41,11 +41,10 @@
         </div>
         <div class="preview-container">
             <div class="rectangle2">
-                <h4>Preview Page</h4>
+                <h4>Preview</h4>
             </div>
-
             <div class="img-certificate">
-
+                <img src="../../../../public/external/certificate.png" alt="">
             </div>
         </div>
     </div>
@@ -108,7 +107,7 @@
 }
 
 .container2 textarea {
-    height: 10vh;
+    height: 11vh;
 }
 
 .img-container {
@@ -200,6 +199,19 @@
     color: #ffffff;
 }
 
+.img-certificate {
+    width: 100%;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.img-certificate img {
+    width: 70%;
+    height: 70vh;
+}
+
 @media screen and (max-width: 360px) {
 
     .main-content {
@@ -240,6 +252,20 @@
 
     .submit-button {
         margin-top: 44%;
+    }
+
+    .preview-container {
+        height: 40vh;
+    }
+
+    .img-certificate {
+        width: 100%;
+        height: 75%;
+    }
+
+    .img-certificate img {
+        width: 95%;
+        height: 100%;
     }
 }
 </style>
