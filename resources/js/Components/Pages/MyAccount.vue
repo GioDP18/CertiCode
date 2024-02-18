@@ -44,14 +44,14 @@
                     </div>
                 </div>
                 <div class="edit-button">
-                    <button class="button type1" data-bs-toggle="modal" data-bs-target="#createNewReport">
+                    <button class="button type1" data-bs-toggle="modal" data-bs-target="#editInformation">
                         <span class="btn-txt">Edit</span>
                     </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="createNewReport" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    <div class="modal fade" id="editInformation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <form action="">
@@ -62,24 +62,37 @@
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="reportTitle" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="reportTitle">
+                            <label for="firstName" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="firstName">
                         </div>
                         <div class="mb-3">
-                            <label for="reportTitle" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="reportTitle">
+                            <label for="middleName" class="form-label">Middle Name</label>
+                            <input type="text" class="form-control" id="middleName">
                         </div>
                         <div class="mb-3">
-                            <label for="reportTitle" class="form-label">Middle Name</label>
-                            <input type="text" class="form-control" id="reportTitle">
+                            <label for="lastName" class="form-label">Last Name</label>
+                            <input type="text" class="form-control" id="lastName">
                         </div>
                         <div class="mb-3">
-                            <label for="reportTitle" class="form-label">Gender</label>
-                            <input type="text" class="form-control" id="reportTitle">
+                            <label for="gender" class="form-label">Gender</label>
+                            <div class="genderSection">
+                                <div class="d-flex align-items-center gender">
+                                    <div class="selection mr-3">
+                                        <input id="male-gender" name="gender" type="radio" value="male" v-model="gender"
+                                            required>
+                                        <label for="male-gender">Male</label>
+                                    </div>
+                                    <div class="selection">
+                                        <input id="female-gender" name="gender" type="radio" value="female" v-model="gender"
+                                            required>
+                                        <label for="female-gender">Female</label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="mb-3">
-                            <label for="reportTitle" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="reportTitle">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="text" class="form-control" id="email">
                         </div>
                         <div class="mb-3 position-relative">
                             <label for="oldPassword" class="form-label">Old Password</label>
@@ -104,7 +117,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn save" style="background-color:#303841; color:white;"
-                            @click="saveNewReport">Save</button>
+                            @click="saveInformation">Save</button>
                         <button type="button" class="btn close" id="closeCreateModal" data-bs-dismiss="modal"
                             style="border: 2px solid #303841;">Close</button>
                     </div>
@@ -375,6 +388,39 @@ function togglePasswordInfo() {
 .modal-header {
     background-color: #303841;
     color: #ffffff;
+}
+
+.gender {
+    gap: 20px;
+}
+
+.gender .selection {
+    text-align: center;
+    padding-bottom: -100px;
+}
+
+.gender .selection label {
+    display: inline-block;
+    width: 5em;
+    border-radius: 6px;
+    padding: 0.5em;
+    cursor: pointer;
+    border: 2px solid #303841;
+    color: #000000 !important;
+}
+
+.gender .selection label:hover {
+    background-color: #303841;
+}
+
+.gender .selection input[type=radio] {
+    display: none;
+}
+
+.gender .selection input[type=radio]:checked~label {
+    background-color: #303841;
+    color: #ffffff !important;
+    font-weight: 500;
 }
 
 .eye {
