@@ -4,23 +4,37 @@
             <div class="rectangle">
             </div>
             <form class="form-container">
-                <div class="img-container">
-                    <img src="../../../../public/external/Logo527-5lue.png" alt="">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Add Logo</label>
-                    <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Issuer</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Description</label>
-                    <textarea type="text" class="form-control" id="exampleInputPassword1"></textarea>
+                <div class="parent-container">
+                    <div class="container1">
+                        <div class="img-container">
+                            <img src="../../../../public/external/Logo527-5lue.png" alt="">
+                        </div>
+                        <div class="mb-3">
+                            <label for="certificateLogo" class="form-label">Certificate Logo</label>
+                            <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="date" class="form-label">Date</label>
+                            <input type="date" class="form-control" id="exampleInputPassword1">
+                        </div>
+                    </div>
+                    <div class="container2">
+                        <div class="mb-3">
+                            <label for="issuer" class="form-label">Issuer</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="topic" class="form-label">Topic</label>
+                            <input type="topic" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="topic" class="form-label">Description</label>
+                            <textarea type="text" class="form-control" id="exampleInputPassword1"></textarea>
+                        </div>
+                    </div>
                 </div>
                 <div class="submit-button">
-                    <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">Submit</span></button>
+                    <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">SUBMIT</span></button>
                 </div>
             </form>
         </div>
@@ -42,7 +56,7 @@
 
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    width: 40%;
+    width: 95%;
     height: 85vh;
     border-radius: 16px;
 }
@@ -57,20 +71,41 @@
 
 .form-container {
     padding-top: 35px;
-    width: 80%;
+    width: 100%;
     height: 75vh;
     margin: auto;
 }
 
+.parent-container {
+    width: 90%;
+    height: 75vh;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    margin-bottom: -90px;
+    margin-top: 10px;
+}
+
+.container1,
+.container2 {
+    width: 50%;
+    display: block;
+}
+
+.container2 textarea {
+    height: 125px;
+}
+
 .img-container {
     width: 100%;
+    padding-bottom: 10px;
     display: flex;
     justify-content: center;
-    padding-bottom: 10px;
 }
 
 .form-container img {
-    width: 30%;
+    width: 40%;
     border: 3px solid #303841;
     border-radius: 50%;
 }
@@ -81,7 +116,6 @@
 }
 
 .submit-button {
-    padding-top: 10px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -132,8 +166,41 @@
 }
 
 @media screen and (max-width: 360px) {
+
+    .main-content {
+        height: 100vh;
+    }
+
     .main-container {
         width: 100%;
+        height: 100%;
+    }
+
+    .parent-container {
+        flex-direction: column;
+    }
+
+    .img-container {
+        width: 50%;
+        margin: auto;
+        margin-top: -20px;
+    }
+
+    .container1 {
+        margin-bottom: -60px;
+    }
+
+    .container2 textarea {
+        height: 65px;
+    }
+
+    .container1,
+    .container2 {
+        width: 100%;
+    }
+
+    .submit-button {
+        margin-top: 32%;
     }
 }
 </style>
