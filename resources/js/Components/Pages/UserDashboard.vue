@@ -27,7 +27,7 @@
             </div>
         </nav>
         <div class="main-content">
-            <div class="">
+            <div class="container">
                 <div class="dashboard-header">
                     <div class="header-text">Track Your Recognitions Here</div>
                     <div class="header-subcontent">
@@ -126,7 +126,7 @@
                     </div>
                 </div>
                 <div class="content">
-                    <div class="">
+                    <div class="container">
                         <div class="row row-cols-4">
                             <div class="col py-4">
                                 <div class="cert-card">
