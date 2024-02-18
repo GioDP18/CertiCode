@@ -38,7 +38,8 @@
                             <p>Password:</p>
                             <span>••••••••••</span>
                             <span class="toggle-password" @click="togglePasswordInfo">
-                                <i><font-awesome-icon :icon="['fa-solid', passwordShow ? 'fa-eye-slash' : 'fa-eye']" /></i>
+                                <i style="color: #7AA5D2"><font-awesome-icon
+                                        :icon="['fa-solid', passwordShow ? 'fa-eye-slash' : 'fa-eye']" /></i>
                             </span>
                         </div>
                     </div>
@@ -99,7 +100,7 @@
                             <input v-if="!showPassword" type="password" required v-model="password" class="form-control">
                             <input v-else type="text" required v-model="password" class="form-control">
                             <span class="toggle-password" @click="togglePassword">
-                                <i class="eye position-absolute end-0 top-70 translate-middle-y">
+                                <i class="eye position-absolute end-0 top-70 translate-middle-y" style="color: #7AA5D2">
                                     <font-awesome-icon :icon="['fa-solid', showPassword ? 'fa-eye-slash' : 'fa-eye']" />
                                 </i>
                             </span>
@@ -109,7 +110,7 @@
                             <input v-if="!showPassword" type="password" required v-model="newPassword" class="form-control">
                             <input v-else type="text" required v-model="newPassword" class="form-control">
                             <span class="toggle-password" @click="togglePassword">
-                                <i class="eye position-absolute end-0 top-70 translate-middle-y">
+                                <i class="eye position-absolute end-0 top-70 translate-middle-y" style="color: #7AA5D2">
                                     <font-awesome-icon :icon="['fa-solid', showPassword ? 'fa-eye-slash' : 'fa-eye']" />
                                 </i>
                             </span>
