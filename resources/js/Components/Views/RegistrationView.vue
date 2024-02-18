@@ -1,10 +1,8 @@
+
 <script setup>
 import { ref } from 'vue';
-import { Form, Field, ErrorMessage } from 'vee-validate';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
-
-const router = useRouter();
 
 const firstname = ref('');
 const middlename = ref('');
@@ -14,295 +12,367 @@ const email = ref('');
 const password = ref('');
 const password_confirmation = ref('');
 const showPassword = ref(false);
-
-function validateName(value) {
-    if (!value) {
-        return 'This field is required';
-    }
-    return true;
-}
-
-function validatePassword(value) {
-    if (!value) {
-        return 'This field is required';
-    }
-    const strongRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
-    if (strongRegex.test(value)) {
-        return true;
-    } else {
-        return 'Password is too weak';
-    }
-}
+const passwordLength = ref(false);
+const confirmPasswordMismatch = ref(false);
 
 function togglePassword() {
     showPassword.value = !showPassword.value;
 }
 
-const register = async () => {
-    try{
-        await axios.post(`http://127.0.0.1:8000/api/auth/register`, {
-            firstname : firstname.value,
-            middlename : middlename.value,
-            lastname : lastname.value,
-            gender : gender.value,
-            email : email.value,
-            password : password.value,
-            password_confirmation : password_confirmation.value
-        })
-        .then((response) => {
-            if(response.data.success){
-                router.push('/')
-            }
-            else{
-                alert(response.data.message)
-            }
-        })
+function validatePassword() {
+    if (password.value.length > 0 && password.value.length < 8) {
+        passwordLength.value = true;
+        return false;
+    } else {
+        passwordLength.value = false;
+        return true;
     }
-    catch(error){
+}
+
+function validateConfirmPassword() {
+    if (password_confirmation.value !== password.value) {
+        confirmPasswordMismatch.value = true;
+        return false;
+    } else {
+        confirmPasswordMismatch.value = false;
+        return true;
+    }
+}
+
+const register = async () => {
+    try {
+        if (!validatePassword() || !validateConfirmPassword()) {
+            return;
+        }
+        await axios.post(`http://127.0.0.1:8000/api/auth/register`, {
+            firstname: firstname.value,
+            middlename: middlename.value,
+            lastname: lastname.value,
+            gender: gender.value,
+            email: email.value,
+            password: password.value,
+            password_confirmation: password_confirmation.value
+        })
+            .then((response) => {
+                if (response.data.success) {
+                    router.push('/')
+                }
+                else {
+                    alert(response.data.message)
+                }
+            })
+    }
+    catch (error) {
         alert(error.response.data.message)
     }
 }
 </script>
 
 <template>
-    <div class="container">
-        <div class="signup-card">
-            <form class="signup-container" @submit.prevent="register">
-                <!-- Fullname Input Field -->
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i><font-awesome-icon class="icon"
-                                :icon="['fas', 'fa-user']" /></i></span>
-                    <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="firstname" v-model="firstname" :rules="validateName" type="text" class="form-control"
-                            placeholder="Firstname" />
-                        <label class="input-label" for="code1">Firstname</label>
-                    </div>
+    <div class="body">
+        <div class="container">
+            <div class="form-box">
+                <div class="form-value">
+                    <form @submit.prevent="register" method="POST">
+                        <div class="logo-container">
+                            <img src="../../../../public/external/Logo527-5lue.png" class="logo" alt="">
+                        </div>
+                        <div class="input-container1">
+                            <div class="other-inputbox" :class="{ 'active': firstname }">
+                                <input type="text" v-model="firstname" required>
+                                <label>First Name</label>
+                            </div>
+                            <div class="other-inputbox" :class="{ 'active': middlename }">
+                                <input type="text" v-model="middlename" required>
+                                <label>Middle Name</label>
+                            </div>
+                        </div>
+                        <div class="input-container2">
+                            <div class="other-inputbox" :class="{ 'active': lastname }">
+                                <input type="text" v-model="lastname" required>
+                                <label>Last Name</label>
+                            </div>
+                            <div class="d-flex align-items-center gender">
+                                <div class="selection mr-3">
+                                    <input id="male-gender" name="gender" type="radio" value="male" v-model="gender"
+                                        required>
+                                    <label for="male-gender">Male</label>
+                                </div>
+                                <div class="selection">
+                                    <input id="female-gender" name="gender" type="radio" value="female" v-model="gender"
+                                        required>
+                                    <label for="female-gender">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-container3">
+                            <div class="inputbox" :class="{ 'active': email }">
+                                <i><font-awesome-icon :icon="['fas', 'user']" /></i>
+                                <input type="email" v-model="email" required>
+                                <label>Email</label>
+                            </div>
+                            <div class="inputbox" :class="{ 'active': password }">
+                                <i><font-awesome-icon :icon="['fas', 'lock']" /></i>
+                                <input v-if="!showPassword" type="password" required v-model="password">
+                                <input v-else type="text" required v-model="password">
+                                <span class="toggle-password" @click="togglePassword">
+                                    <i><font-awesome-icon
+                                            :icon="['fa-solid', showPassword ? 'fa-eye-slash' : 'fa-eye']" /></i>
+                                </span>
+                                <label>Password</label>
+                                <div v-if="passwordLength" class="password-warning">
+                                    Password is too short
+                                </div>
+                            </div>
+                            <div class="inputbox" :class="{ 'active': password_confirmation }">
+                                <i><font-awesome-icon :icon="['fas', 'lock']" /></i>
+                                <input v-if="!showPassword" type="password" required v-model="password_confirmation">
+                                <input v-else type="text" required v-model="password_confirmation">
+                                <span class="toggle-password" @click="togglePassword">
+                                    <i><font-awesome-icon
+                                            :icon="['fa-solid', showPassword ? 'fa-eye-slash' : 'fa-eye']" /></i>
+                                </span>
+                                <label>Confirm Password</label>
+                                <div v-if="confirmPasswordMismatch" class="password-warning">
+                                    Passwords do not match
+                                </div>
+                            </div>
+                        </div>
+                        <button class="submit" type="submit"><span class="btn-txt">SIGN UP</span></button>
+                        <div class="login">
+                            <p>Already have an account? <RouterLink to="/login">Sign in</RouterLink>
+                            </p>
+                        </div>
+                    </form>
                 </div>
-                <ErrorMessage class="error-message" name="fullname" />
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i><font-awesome-icon class="icon"
-                                :icon="['fas', 'fa-user']" /></i></span>
-                    <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="middlename" v-model="middlename" :rules="validateName" type="text" class="form-control"
-                            placeholder="Middlename" />
-                        <label class="input-label" for="code1">Middlename</label>
-                    </div>
-                </div>
-                <ErrorMessage class="error-message" name="middlename" />
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i><font-awesome-icon class="icon"
-                                :icon="['fas', 'fa-user']" /></i></span>
-                    <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="lastname" v-model="lastname" :rules="validateName" type="text" class="form-control"
-                            placeholder="Lastname" />
-                        <label class="input-label" for="code1">Firstname</label>
-                    </div>
-                </div>
-                <ErrorMessage class="error-message" name="lastname" />
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i><font-awesome-icon class="icon"
-                                :icon="['fas', 'fa-user']" /></i></span>
-                    <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="gender" v-model="gender" :rules="validateName" type="text" class="form-control"
-                            placeholder="Gender" />
-                        <label class="input-label" for="code1">Gender</label>
-                    </div>
-                </div>
-                <ErrorMessage class="error-message" name="gender" />
-                <!-- Username Input Field -->
-                <div class="input-group mb-3">
-                    <span class="input-group-text"><i><font-awesome-icon class="icon"
-                                :icon="['fas', 'fa-circle-user']" /></i></span>
-                    <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="email" v-model="email" :rules="validateName" type="text" class="form-control"
-                            placeholder="Email" />
-                        <label class="input-label" for="code1">Email</label>
-                    </div>
-                </div>
-                <ErrorMessage class="error-message" name="email" />
-                <!-- Paddword Input Field -->
-                <div class="input-group mb-3">
-                    <span class="input-group-text">
-                        <i>
-                            <font-awesome-icon class="icon" :icon="['fas', 'fa-lock']" />
-                        </i>
-                    </span>
-                    <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="password" v-model="password" :rules="validatePassword" :type="showPassword ? 'text' : 'password'"
-                            class="form-control" placeholder="Password" />
-                        <label class="input-label" for="code1">Password</label>
-                    </div>
-                    <span style="cursor: pointer;" class="input-group-text" @click="togglePassword">
-                        <i><font-awesome-icon class="icon" :icon="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"/></i>
-                    </span>
-                </div>
-                <ErrorMessage class="error-message" name="password" />
-                <div class="input-group mb-3">
-                    <span class="input-group-text">
-                        <i>
-                            <font-awesome-icon class="icon" :icon="['fas', 'fa-lock']" />
-                        </i>
-                    </span>
-                    <div class="form-floating form-floating-group flex-grow-1">
-                        <Field name="password_confirmation" v-model="password_confirmation" :rules="validatePassword" :type="showPassword ? 'text' : 'password'"
-                            class="form-control" placeholder="Password" />
-                        <label class="input-label" for="code1">Password</label>
-                    </div>
-                    <span style="cursor: pointer;" class="input-group-text" @click="togglePassword">
-                        <i><font-awesome-icon class="icon" :icon="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"/></i>
-                    </span>
-                </div>
-                <ErrorMessage class="error-message" name="password_confirmation" />
-                <button class="sign-up-btn">
-                    <p class="fw-normal">SIGN UP</p>
-                </button>
-                <div class="text">
-                    <span style="color: rgb(190, 187, 186)">Already have an account? </span>
-                    <RouterLink to="/" style="color: rgba(255, 255, 255, 1)">
-                        Sign in
-                    </RouterLink>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.input-group {
-    border-bottom: 2px solid #fff;
-}
-
-.input-group-text,
-.input-label,
-.form-control {
-    background: transparent;
-    outline: none;
-    border: none;
-    color: #fff;
+.body {
+    background-image: url('../../../../public/external/BackgroundImage425-mnj.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 1);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px;
-    margin: auto;
+    height: 95vh;
 }
 
-@media (max-width: 991px) {
-    .container {
-        padding: 0px;
-    }
-}
-
-.signup-card {
-    border-radius: 15px;
-    box-shadow: 8px 8px 15px 0px rgba(0, 0, 0, 0.62);
-    background-color: #41644a;
+.form-box {
+    width: 450px;
+    height: 95vh;
+    position: absolute;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     display: flex;
-    width: 40em;
     justify-content: center;
     align-items: center;
-    margin: auto;
 }
 
-@media (max-width: 991px) {
-    .signup-card {
-        margin-top: 40px;
-        padding: 0;
-        width: 85%;
-        height: 28em;
-        margin: 30%;
-    }
-}
-
-.signup-container {
-    display: flex;
-    width: 489px;
-    max-width: 100%;
-    flex-direction: column;
-    margin: 54px 0 42px;
-}
-
-@media (max-width: 991px) {
-    .signup-container {
-        padding: 25px;
-        margin-top: 20px;
-    }
-}
-
-.sign-up-btn {
-    border-radius: 16px;
-    background-color: #f2e3db;
-    margin-top: 43px;
-    justify-content: center;
-    align-items: center;
-    color: #000;
-    white-space: nowrap;
-    padding: 20px;
+.logo-container {
+    margin-top: -40px;
+    margin-bottom: 5px;
     width: 100%;
-    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@media (max-width: 991px) {
-    .sign-up-btn {
-        white-space: initial;
-        max-width: 100%;
-        margin-top: 10px;
-        padding: 0 20px;
-        border-radius: 5px;
-    }
+.input-container1,
+.input-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
-.sign-up-btn p {
-    font: 100 20px Inter, sans-serif;
-    text-align: center;
-    margin: auto;
-}
-
-@media (max-width: 991px) {
-    .sign-up-btn p {
-        font: 100 15px Inter, sans-serif;
-        padding: 10px;
-    }
-}
-
-.sign-up-btn:hover::before {
-    transform: scale(1.1);
-    box-shadow: 0 0 15px #263A29;
-}
-
-.sign-up-btn:hover {
-    box-shadow: 0 0 10px #263A29;
-}
-
-.text {
-    color: var(--ffffff, #fff);
-    text-align: center;
-    align-self: center;
-    margin-top: 26px;
-    white-space: nowrap;
-    font: 400 19px Inter, sans-serif;
-}
-
-@media (max-width: 991px) {
-    .text {
-        white-space: initial;
-        font: 400 15px Inter, sans-serif;
-        margin-top: 10px;
-    }
-}
-
-.error-message {
-    color: rgb(238, 203, 203);
-    font-size: 0.75rem;
+.input-container3 {
     margin-top: -10px;
 }
+
+.inputbox {
+    position: relative;
+    margin: 20px 0;
+    width: 340px;
+    border-bottom: 2px solid #303841;
+    display: flex;
+    align-items: center;
+}
+
+.other-inputbox {
+    position: relative;
+    margin: 10px 0;
+    width: 160px;
+    border-bottom: 2px solid #303841;
+    display: flex;
+    align-items: center;
+}
+
+.inputbox.active label,
+.inputbox input:focus+label,
+.other-inputbox.active label,
+.other-inputbox input:focus+label {
+    top: -5px;
+    font-size: 13px;
+    color: #7c7c7c;
+}
+
+.inputbox label {
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    transform: translateY(-50%);
+    color: #303841;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.other-inputbox label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    color: #303841;
+    font-size: 1em;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 30px;
+    color: #303841;
+}
+
+.other-inputbox input {
+    width: 100%;
+    height: 50px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    padding: 0 35px 0 5px;
+    color: #303841;
+}
+
+.inputbox i {
+    position: absolute;
+    left: 5px;
+    color: #303841;
+    font-size: 1.2em;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 30px;
+    cursor: pointer;
+    color: #303841;
+    bottom: 35px;
+}
+
+.gender {
+    gap: 10px;
+}
+
+.gender .selection {
+    text-align: center;
+    padding-bottom: -100px;
+}
+
+.gender .selection label {
+    display: inline-block;
+    width: 5em;
+    border-radius: 6px;
+    padding: 0.5em;
+    cursor: pointer;
+    border: 2px solid #303841;
+    color: #000000 !important;
+}
+
+.gender .selection label:hover {
+    background-color: #303841;
+}
+
+.gender .selection input[type=radio] {
+    display: none;
+}
+
+.gender .selection input[type=radio]:checked~label {
+    background-color: #303841;
+    color: #ffffff !important;
+    font-weight: 500;
+}
+
+.password-warning {
+    color: red;
+    font-size: 10px;
+    margin-top: 5px;
+    margin-right: 15px;
+}
+
+.submit {
+    width: 100%;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #303841;
+    font-size: 1em;
+    font-weight: 600;
+    margin-top: 10px;
+    font-family: Inter, sans-serif;
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+    border: 3px solid #303841;
+}
+
+.submit:hover {
+    background-color: #ffffff;
+    border: 3px solid #303841;
+    color: #000000;
+}
+
+.login {
+    font-size: 0.9em;
+    color: #303841;
+    text-align: center;
+    margin: 25px 0 10px;
+    font-family: Inter, sans-serif;
+}
+
+.login p a {
+    text-decoration: none;
+    color: #7AA5D2;
+}
+
+.login p a:hover {
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 360px) {
+    .form-box {
+        width: 100%;
+        height: 95vh;
+    }
+
+    .logo {
+        margin-bottom: -15px;
+        margin-top: -10px;
+    }
+}
 </style>
+>>>>>>> 89d5be668a2b2c7b072381ce7f056e363dc57972

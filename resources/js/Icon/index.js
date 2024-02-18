@@ -11,9 +11,15 @@ import {
     faSearch,
     faPowerOff,
     faPaperPlane,
+    faUsers,
+    faHome,
     faPlus,
-    faHouse,
+    faTableList,
+    faUserCircle,
+    faXmark,
+    faCamera,
 } from "@fortawesome/free-solid-svg-icons";
+
 /* add icons to the library */
 library.add(
     faUser,
@@ -26,5 +32,8 @@ library.add(
     faPowerOff,
     faPaperPlane,
     faPlus,
-    faHouse,
+    faHome,
+    faTableList,
+    faXmark,
+    faCamera
 );
