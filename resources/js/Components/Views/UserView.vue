@@ -79,9 +79,9 @@ onBeforeUnmount(() => {
             </div>
             <div v-if="showSidebar" class="add-button">
                 <div class="sidebar-text">Add Certificate</div>
-                <div class="add">
+                <RouterLink to="createCertificate" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
-                </div>
+                </RouterLink>
             </div>
             <div v-if="!showSidebar" style="background-color: #fff; height: 30px;" class="send-button"
                 title="add certificate">
