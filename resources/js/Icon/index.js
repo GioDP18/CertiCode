@@ -36,6 +36,6 @@ library.add(
     faHome,
     faTableList,
     faXmark,
-    faCopyright
+    faCopyright,
     faCamera
 );

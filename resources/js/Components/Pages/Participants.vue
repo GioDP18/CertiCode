@@ -127,7 +127,7 @@ const sendCert = async (userID, certificateID) => {
                                 </td>
                             </tr>
                         </tbody>
-                    </DataTable
+                    </DataTable>
                 </div>
             </div>
         </div>

@@ -26,6 +26,7 @@ createApp(app)
 .use(router)
 .use(store)
 .use(swal)
+.use(BASE_URL)
 .component('font-awesome-icon', FontAwesomeIcon)
 .mount("#app")
 
