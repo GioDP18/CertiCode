@@ -1,5 +1,11 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { inject } from 'vue';
+
+// Inject swal and BASE_URL
+const swal = inject('$swal');
+const store = inject('$store');
+const BASE_URL = inject('$swal');
 
 const showSidebar = ref(true);
 const showMobileSidebar = ref(false);
@@ -8,7 +14,7 @@ const screenWidth = ref(window.innerWidth);
 const updateScreenWidth = () => {
     screenWidth.value = window.innerWidth;
 };
-``
+
 const toggleSidebar = () => {
     showSidebar.value = !showSidebar.value;
 };
@@ -49,6 +55,57 @@ onBeforeUnmount(() => {
     window.removeEventListener('resize', updateScreenWidth);
 });
 
+
+const sendAllCerts = async (certificate_id) => {
+    store.state.commit('setSendingCerts', true);
+    try {
+        const response = await axios.post(BASE_URL + '/api/auth/send-all-certificate', {
+            certificate_id: certificate_id
+        })
+        .then((response) => {
+            if (response.data.success) {
+                swal({
+                    title: 'Success',
+                    text: 'All certificates have been sent',
+                    icon:'success',
+                });
+            }
+            else{
+                swal({
+                    title: 'Error',
+                    text: response.data.message,
+                    icon: 'error',
+                });
+            }
+        })
+        .finally(() => {
+            store.state.commit('setSendingCerts', false);
+        });
+    }
+    catch (error) {
+        swal({
+            title: 'Error',
+            text: error.response.data.message,
+            icon: 'error',
+        });
+    }
+}
+
+
+const handleSendAllCerts = () => {
+    swal({
+        title: "Do you want to send all certificates?",
+        showCancelButton: true,
+        confirmButtonText: "Send",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            swal("Saved!", "", "success");
+        } else if (result.isDenied) {
+            swal("Changes are not saved", "", "info");
+        }
+    });
+}
+
 </script>
 <template>
     <div class="container1">
@@ -58,7 +115,7 @@ onBeforeUnmount(() => {
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
                 <div v-if="showSidebar" class="logo-text">CertiCode</div>
             </RouterLink>
-            <div class="send-button" title="send certificate">
+            <div class="send-button" title="send certificate" @click="handleSendAllCerts">
                 <div v-if="showSidebar" class="sidebar-text">Send Certificates</div>
                 <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
             </div>
@@ -351,5 +408,5 @@ onBeforeUnmount(() => {
     max-width: 100%;
 }
 </style>
-  
+
 
