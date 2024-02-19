@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
 <template>
     <div class="container1">
         <!-- Web Sidebar -->
-        <div class="sidebar"  v-show="screenWidth > 991" :class="{ 'minimized': !showSidebar }">
+        <div class="sidebar" v-show="screenWidth > 991" :class="{ 'minimized': !showSidebar }">
             <RouterLink to="" class="sidebar-logo" style="text-decoration: none;">
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
                 <div v-if="showSidebar" class="logo-text">CertiCode</div>
@@ -63,7 +63,8 @@ onBeforeUnmount(() => {
                 <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
             </div>
             <div class="menu">
-                <RouterLink to="dashboard" class="sidebar-menu" active-class="active" style="text-decoration: none;" title="home">
+                <RouterLink to="dashboard" class="sidebar-menu" active-class="active" style="text-decoration: none;"
+                    title="home">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-home']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">Home</div>
                 </RouterLink>
@@ -71,16 +72,16 @@ onBeforeUnmount(() => {
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">Participants</div>
                 </RouterLink>
-                <RouterLink to="" class="sidebar-menu" style="text-decoration: none;" title="my acount">
+                <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">My Account</div>
                 </RouterLink>
             </div>
             <div v-if="showSidebar" class="add-button">
                 <div style="margin: auto;" class="sidebar-text text-center">Seminars</div>
-                <div class="add" title="add new seminar">
+                <RouterLink to="createCertificate" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
-                </div>
+                </RouterLink>
             </div>
             <div v-if="!showSidebar" style="background-color: #fff; height: 30px;" class="send-button"
                 title="add certificate">
@@ -88,7 +89,7 @@ onBeforeUnmount(() => {
             </div>
         </div>
         <!-- Mobile Sidebar -->
-        <div class="mobile-sidebar"  v-show="screenWidth < 991" :class="{ 'show': showMobileSidebar }">
+        <div class="mobile-sidebar" v-show="screenWidth < 991" :class="{ 'show': showMobileSidebar }">
             <RouterLink to="" class="sidebar-logo" style="text-decoration: none;">
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
                 <div class="logo-text">CertiCode</div>
@@ -98,7 +99,8 @@ onBeforeUnmount(() => {
                 <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
             </div>
             <div class="menu">
-                <RouterLink to="dashboard" class="sidebar-menu" active-class="active" style="text-decoration: none;" title="home">
+                <RouterLink to="dashboard" class="sidebar-menu" active-class="active" style="text-decoration: none;"
+                    title="home">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-home']" /></i>
                     <div class="sidebar-text">Home</div>
                 </RouterLink>
@@ -106,16 +108,16 @@ onBeforeUnmount(() => {
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div class="sidebar-text">Participants</div>
                 </RouterLink>
-                <RouterLink to="" class="sidebar-menu" style="text-decoration: none;" title="my acount">
+                <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div class="sidebar-text">My Account</div>
                 </RouterLink>
             </div>
             <div class="add-button">
                 <div style="margin: auto;" class="sidebar-text">Seminars</div>
-                <div class="add" title="add new seminar">
+                <RouterLink to="createCertificate" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
-                </div>
+                </RouterLink>
             </div>
             <div v-show="screenWidth > 991" style="background-color: #fff; height: 30px;" class="send-button"
                 title="add certificate">
@@ -124,15 +126,16 @@ onBeforeUnmount(() => {
         </div>
         <div class="main-content">
             <nav class="header">
-                <div class="burger-container" v-show="screenWidth > 991" >
+                <div class="burger-container" v-show="screenWidth > 991">
                     <button class="hamburger hamburger--collapse" type="button" @click="toggleSidebar">
                         <span class="hamburger-box">
                             <span class="hamburger-inner"></span>
                         </span>
                     </button>
                 </div>
-                <div class="burger-container" v-show="screenWidth < 991" >
-                    <button id="mobile-hamburger" class="hamburger hamburger--collapse" type="button" @click="toggleMobileSidebar">
+                <div class="burger-container" v-show="screenWidth < 991">
+                    <button id="mobile-hamburger" class="hamburger hamburger--collapse" type="button"
+                        @click="toggleMobileSidebar">
                         <span class="hamburger-box">
                             <span class="hamburger-inner"></span>
                         </span>
@@ -194,9 +197,12 @@ onBeforeUnmount(() => {
     margin: 0px;
     position: fixed;
     top: 0;
-    left: -250px; /* Initial position off-screen */
-    z-index: 1000; /* Ensure it's above other content */
-    transition: left 0.3s ease; /* Add a smooth transition */
+    left: -250px;
+    /* Initial position off-screen */
+    z-index: 1000;
+    /* Ensure it's above other content */
+    transition: left 0.3s ease;
+    /* Add a smooth transition */
 }
 
 .show {
@@ -205,7 +211,7 @@ onBeforeUnmount(() => {
 
 .main-content {
     margin-left: 0;
-    transition: margin-left 0.3s ease; 
+    transition: margin-left 0.3s ease;
 }
 
 .show-mobile-sidebar {
@@ -241,6 +247,7 @@ onBeforeUnmount(() => {
 
 .menu {
     margin-top: 50px;
+    transition: margin-left 0.3s ease;
 }
 
 .logo-text {
