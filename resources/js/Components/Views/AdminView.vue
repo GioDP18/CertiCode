@@ -62,25 +62,25 @@ const sendAllCerts = async (certificate_id) => {
         const response = await axios.post(BASE_URL + '/api/auth/send-all-certificate', {
             certificate_id: certificate_id
         })
-        .then((response) => {
-            if (response.data.success) {
-                swal({
-                    title: 'Success',
-                    text: 'All certificates have been sent',
-                    icon:'success',
-                });
-            }
-            else{
-                swal({
-                    title: 'Error',
-                    text: response.data.message,
-                    icon: 'error',
-                });
-            }
-        })
-        .finally(() => {
-            store.state.commit('setSendingCerts', false);
-        });
+            .then((response) => {
+                if (response.data.success) {
+                    swal({
+                        title: 'Success',
+                        text: 'All certificates have been sent',
+                        icon: 'success',
+                    });
+                }
+                else {
+                    swal({
+                        title: 'Error',
+                        text: response.data.message,
+                        icon: 'error',
+                    });
+                }
+            })
+            .finally(() => {
+                store.state.commit('setSendingCerts', false);
+            });
     }
     catch (error) {
         swal({
@@ -136,7 +136,7 @@ const handleSendAllCerts = () => {
             </div>
             <div v-if="showSidebar" class="add-button">
                 <div style="margin: auto;" class="sidebar-text text-center">Seminars</div>
-                <RouterLink to="createCertificate" class="add">
+                <RouterLink to="createSeminar" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </RouterLink>
             </div>
@@ -172,7 +172,7 @@ const handleSendAllCerts = () => {
             </div>
             <div class="add-button">
                 <div style="margin: auto;" class="sidebar-text">Seminars</div>
-                <RouterLink to="createCertificate" class="add">
+                <RouterLink to="createSeminar" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </RouterLink>
             </div>
@@ -215,7 +215,8 @@ const handleSendAllCerts = () => {
                 </div>
             </nav>
             <div class="wrapper">
-                <router-view :class="{ 'sidebar-minimized': !showSidebar }"></router-view>
+                <router-view :class="{ 'sidebar-minimized': !showSidebar }"
+                    style="overflow: hidden; overflow-y: auto;"></router-view>
             </div>
         </div>
     </div>
