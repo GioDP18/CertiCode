@@ -143,9 +143,13 @@ DataTable.use(DataTablesCore);
 }
 
 .content-text {
-    color: rgba(60, 54, 51, 0.7);
+    color: #fff;
     font: 400 20px Inter, sans-serif;
     margin-bottom: 20px;
+    background-color: #47555E;
+    padding: 12px 20px;
+    border-radius: 10px;
+    width: 100%;
 }
 
 @media (max-width: 991px) {

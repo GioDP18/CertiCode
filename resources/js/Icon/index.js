@@ -17,6 +17,7 @@ import {
     faTableList,
     faUserCircle, 
     faXmark,
+    faCalendarDay
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -34,6 +35,7 @@ library.add(
     faHome,
     faTableList,
     faXmark,
+    faCalendarDay
 );
 
 import {

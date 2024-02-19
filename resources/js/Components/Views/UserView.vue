@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
 <template>
     <div class="container1">
         <!-- Web Sidebar -->
-        <div class="sidebar"  v-show="screenWidth > 991" :class="{ 'minimized': !showSidebar }">
+        <div class="sidebar sticky-top"  v-show="screenWidth > 991" :class="{ 'minimized': !showSidebar }">
             <RouterLink to="" class="sidebar-logo" style="text-decoration: none;">
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
                 <div v-if="showSidebar" class="logo-text">CertiCode</div>
@@ -70,6 +70,10 @@ onBeforeUnmount(() => {
                 <RouterLink to="participants" class="sidebar-menu" style="text-decoration: none;" title="participants">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">Participants</div>
+                </RouterLink>
+                <RouterLink to="seminars" class="sidebar-menu" style="text-decoration: none;" title="participants">
+                    <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-calendar-day']" /></i>
+                    <div v-if="showSidebar" class="sidebar-text">Seminars</div>
                 </RouterLink>
                 <RouterLink to="" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
@@ -106,6 +110,10 @@ onBeforeUnmount(() => {
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div class="sidebar-text">Participants</div>
                 </RouterLink>
+                <RouterLink to="seminars" class="sidebar-menu" style="text-decoration: none;" title="participants">
+                    <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-calendar-day']" /></i>
+                    <div class="sidebar-text">Seminars</div>
+                </RouterLink>
                 <RouterLink to="" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div class="sidebar-text">My Account</div>
@@ -123,7 +131,7 @@ onBeforeUnmount(() => {
             </div>
         </div>
         <div class="main-content">
-            <nav class="header">
+            <nav class="header sticky-top">
                 <div class="burger-container" v-show="screenWidth > 991" >
                     <button class="hamburger hamburger--collapse" type="button" @click="toggleSidebar">
                         <span class="hamburger-box">

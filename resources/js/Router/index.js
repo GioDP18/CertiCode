@@ -8,6 +8,7 @@ import RegisterView from "../Components/Views/RegistrationView.vue";
 import Dashboard from "../Components/Pages/Dashboard.vue";
 import Participants from "../Components/Pages/Participants.vue";
 import UserDashboard from "../Components/Pages/UserDashboard.vue";
+import Seminars from "../Components/Pages/SeminarPage.vue";
 
 const routes = [
     {
@@ -37,6 +38,10 @@ const routes = [
             {
                 path: "participants",
                 component: Participants,
+            },
+            {
+                path: "seminars",
+                component: Seminars,
             },
         ],
     },
