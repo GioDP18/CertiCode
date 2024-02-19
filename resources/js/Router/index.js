@@ -2,12 +2,16 @@ import { createRouter, createWebHistory } from "vue-router";
 import notFound from "../Components/404.vue";
 import LandingPage from "../Components/Views/LandingPage.vue";
 import LoginView from "../Components/Views/LoginView.vue";
-import UserView from "../Components/Views/UserView.vue";
 import RegisterView from "../Components/Views/RegistrationView.vue";
-import Dashboard from "../Components/Pages/Dashboard.vue";
-import Participants from "../Components/Pages/Participants.vue";
-import MyAccount from "../Components/Pages/MyAccount.vue";
-import CreateCertificate from "../Components/Pages/CreateCertificate.vue";
+// Admin View
+import AdminView from "../Components/Views/AdminView.vue";
+import Dashboard from "../Components/Pages/Admin/Dashboard.vue";
+import Participants from "../Components/Pages/Admin/Participants.vue";
+import MyAccount from "../Components/Pages/Admin/MyAccount.vue";
+import CreateCertificate from "../Components/Pages/Admin/CreateCertificate.vue";
+// User View
+import UserView from "../Components/Views/UserView.vue";
+import UserDashboard from "../Components/Pages/User/UserDashboard.vue";
 
 const routes = [
     {
@@ -23,8 +27,8 @@ const routes = [
         component: RegisterView,
     },
     {
-        path: "/user",
-        component: UserView,
+        path: "/admin",
+        component: AdminView,
         children: [
             {
                 path: "dashboard",
@@ -41,6 +45,16 @@ const routes = [
             {
                 path: "createSeminar",
                 component: CreateCertificate,
+            },
+        ],
+    },
+    {
+        path: "/user",
+        component: UserView,
+        children: [
+            {
+                path: "dashboard",
+                component: UserDashboard,
             },
         ],
     },

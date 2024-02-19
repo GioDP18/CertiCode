@@ -8,7 +8,7 @@
                 <div class="parent-container">
                     <div class="container1">
                         <div class="img-container">
-                            <img src="../../../../public/external/Logo527-5lue.png" alt="">
+                            <img src="../../../../../public/external/Logo527-5lue.png" alt="">
                         </div>
                         <div class="mb-3">
                             <label for="topic" class="form-label">Topic</label>

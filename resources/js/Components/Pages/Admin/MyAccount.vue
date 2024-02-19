@@ -3,7 +3,7 @@
         <div class="main-content">
             <div class="header-box">
                 <div class="avatar-container">
-                    <img src="../../../../public/external/avatar.png" alt="">
+                    <img src="../../../../../public/external/avatar.png" alt="">
                     <button><i><font-awesome-icon :icon="['fas', 'camera']" /></i></button>
                 </div>
             </div>
