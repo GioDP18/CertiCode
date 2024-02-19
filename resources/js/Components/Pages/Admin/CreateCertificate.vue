@@ -12,17 +12,25 @@
                         </div>
                         <div class="mb-3">
                             <label for="topic" class="form-label">Topic</label>
-                            <input type="topic" class="form-control" id="exampleInputPassword1">
+                            <input type="text" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="mb-3">
                             <label for="date" class="form-label">Date</label>
                             <input type="date" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="speaker" class="form-label">Speaker</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1">
                         </div>
                     </div>
                     <div class="container2">
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Certificate Logo</label>
                             <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-3">
+                            <label for="seminar" class="form-label">About this Seminar</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="mb-3">
                             <label for="issuer" class="form-label">Issuer</label>
@@ -38,13 +46,13 @@
                     <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">ADD</span></button>
                 </div>
             </form>
-        </div>
-        <div class="preview-container">
-            <div class="rectangle2">
-                <h4>Preview</h4>
-            </div>
-            <div class="img-certificate">
-                <img src="../../../../public/external/certificate.png" alt="">
+            <div class="preview-container">
+                <div class="rectangle2">
+                    <h4>Preview</h4>
+                </div>
+                <div class="img-certificate">
+                    <img src="../../../../../public/external/certificate.png" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -64,7 +72,7 @@
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 100%;
-    height: 85vh;
+    height: 180vh;
     border-radius: 16px;
 }
 
@@ -96,7 +104,7 @@
     display: flex;
     flex-direction: row;
     gap: 50px;
-    margin-bottom: -40px;
+    margin-bottom: 30px;
     margin-top: 10px;
 }
 
@@ -182,16 +190,13 @@
 .preview-container {
     width: 100%;
     height: 80vh;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-    margin-top: 5%;
+    margin-top: 13%;
     border-radius: 16px;
 }
 
 .preview-container .rectangle2 {
     height: 10vh;
     width: 100%;
-    border-top-right-radius: 13px;
-    border-top-left-radius: 13px;
     background-color: #303841;
     display: flex;
     justify-content: center;
@@ -208,14 +213,14 @@
 }
 
 .img-certificate img {
-    width: 70%;
-    height: 70vh;
+    width: 74%;
+    height: 74vh;
 }
 
 @media screen and (max-width: 360px) {
 
     .main-content {
-        height: 100vh;
+        height: 180vh;
     }
 
     .main-container {
@@ -251,11 +256,12 @@
     }
 
     .submit-button {
-        margin-top: 44%;
+        margin-top: 90%;
     }
 
     .preview-container {
         height: 40vh;
+        margin-top: 115%;
     }
 
     .img-certificate {
@@ -265,7 +271,7 @@
 
     .img-certificate img {
         width: 95%;
-        height: 100%;
+        height: 32vh;
     }
 }
 </style>
