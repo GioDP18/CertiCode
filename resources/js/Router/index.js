@@ -6,6 +6,7 @@ import UserView from "../Components/Views/UserView.vue";
 import RegisterView from "../Components/Views/RegistrationView.vue";
 import Dashboard from "../Components/Pages/Dashboard.vue";
 import Participants from "../Components/Pages/Participants.vue";
+import UserDashboard from "../Components/Pages/UserDashboard.vue";
 import MyAccount from "../Components/Pages/MyAccount.vue";
 import CreateCertificate from "../Components/Pages/CreateCertificate.vue";
 
@@ -21,6 +22,10 @@ const routes = [
     {
         path: "/register",
         component: RegisterView,
+    },
+    {
+        path: "/user-dashboard",
+        component: UserDashboard,
     },
     {
         path: "/user",

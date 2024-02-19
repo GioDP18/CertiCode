@@ -18,6 +18,7 @@ import {
     faUserCircle,
     faXmark,
     faCamera,
+    faCopyright,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -35,5 +36,6 @@ library.add(
     faHome,
     faTableList,
     faXmark,
+    faCopyright
     faCamera
 );
