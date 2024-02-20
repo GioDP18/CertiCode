@@ -109,7 +109,7 @@ const handleSendAllCerts = () => {
 </script>
 <template>
     <div class="container1">
-        <!-- <div class="loader-container">
+        <div class="loader-container">
             <div id="wifi-loader">
                 <svg class="circle-outer" viewBox="0 0 86 86">
                     <circle class="back" cx="43" cy="43" r="40"></circle>
@@ -126,7 +126,7 @@ const handleSendAllCerts = () => {
                 </svg>
                 <div class="text" data-text="Sending Certificates.."></div>
             </div>
-        </div> -->
+        </div>
         <!-- Web Sidebar -->
         <div class="sidebar sticky-top" v-show="screenWidth > 991" :class="{ 'minimized': !showSidebar }">
             <RouterLink to="" class="sidebar-logo" style="text-decoration: none;">
