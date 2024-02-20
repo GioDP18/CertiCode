@@ -109,7 +109,7 @@ const handleSendAllCerts = () => {
 </script>
 <template>
     <div class="container1">
-        <div class="loader-container">
+        <!-- <div class="loader-container">
             <div id="wifi-loader">
                 <svg class="circle-outer" viewBox="0 0 86 86">
                     <circle class="back" cx="43" cy="43" r="40"></circle>
@@ -126,9 +126,9 @@ const handleSendAllCerts = () => {
                 </svg>
                 <div class="text" data-text="Sending Certificates.."></div>
             </div>
-        </div>
+        </div> -->
         <!-- Web Sidebar -->
-        <div class="sidebar" v-show="screenWidth > 991" :class="{ 'minimized': !showSidebar }">
+        <div class="sidebar sticky-top" v-show="screenWidth > 991" :class="{ 'minimized': !showSidebar }">
             <RouterLink to="" class="sidebar-logo" style="text-decoration: none;">
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
                 <div v-if="showSidebar" class="logo-text">CertiCode</div>
@@ -147,6 +147,10 @@ const handleSendAllCerts = () => {
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">Participants</div>
                 </RouterLink>
+                <RouterLink to="seminars" class="sidebar-menu" style="text-decoration: none;" title="participants">
+                    <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-calendar-day']" /></i>
+                    <div v-if="showSidebar" class="sidebar-text">Seminars</div>
+                </RouterLink>
                 <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">My Account</div>
@@ -164,7 +168,7 @@ const handleSendAllCerts = () => {
             </div>
         </div>
         <!-- Mobile Sidebar -->
-        <div class="mobile-sidebar" v-show="screenWidth < 991" :class="{ 'show': showMobileSidebar }">
+        <div class="mobile-sidebar sticky-top" v-show="screenWidth < 991" :class="{ 'show': showMobileSidebar }">
             <RouterLink to="" class="sidebar-logo" style="text-decoration: none;">
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
                 <div class="logo-text">CertiCode</div>
@@ -183,6 +187,10 @@ const handleSendAllCerts = () => {
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div class="sidebar-text">Participants</div>
                 </RouterLink>
+                <RouterLink to="seminars" class="sidebar-menu" style="text-decoration: none;" title="participants">
+                    <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-calendar-day']" /></i>
+                    <div class="sidebar-text">Seminars</div>
+                </RouterLink>
                 <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div class="sidebar-text">My Account</div>
@@ -200,7 +208,7 @@ const handleSendAllCerts = () => {
             </div>
         </div>
         <div class="main-content">
-            <nav class="header">
+            <nav class="header sticky-top z-1">
                 <div class="burger-container" v-show="screenWidth > 991">
                     <button class="hamburger hamburger--collapse" type="button" @click="toggleSidebar">
                         <span class="hamburger-box">

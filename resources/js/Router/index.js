@@ -7,6 +7,7 @@ import RegisterView from "../Components/Views/RegistrationView.vue";
 import AdminView from "../Components/Views/AdminView.vue";
 import Dashboard from "../Components/Pages/Admin/Dashboard.vue";
 import Participants from "../Components/Pages/Admin/Participants.vue";
+import Seminars from "../Components/Pages/Admin/SeminarPage.vue";
 import MyAccount from "../Components/Pages/Admin/MyAccount.vue";
 import CreateCertificate from "../Components/Pages/Admin/CreateCertificate.vue";
 // User View
@@ -37,6 +38,10 @@ const routes = [
             {
                 path: "participants",
                 component: Participants,
+            },
+            {
+                path: "seminars",
+                component: Seminars,
             },
             {
                 path: "myAccount",

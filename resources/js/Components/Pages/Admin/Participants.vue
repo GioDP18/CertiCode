@@ -1,8 +1,10 @@
 <script setup>
 import axios from 'axios';
-import 'datatables.net-vue3';
-import 'datatables.net-bs5';
 import { ref, onMounted } from 'vue';
+import DataTable from 'datatables.net-vue3';
+import DataTablesCore from 'datatables.net-bs5';
+
+DataTable.use(DataTablesCore);
 
 const isGenerating = ref(false);
 const allUsers = ref([]);
