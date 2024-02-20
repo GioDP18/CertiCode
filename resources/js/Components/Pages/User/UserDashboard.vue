@@ -1,6 +1,8 @@
 
 <script setup>
 import { ref } from 'vue';
+import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel';
+import 'vue3-carousel/dist/carousel.css';
 
 const dropdownOpen = ref(false);
 
@@ -61,54 +63,67 @@ function toggleDropdown() {
                         <div class="column-1">
                             <div class="content-2">
                                 <div class="seminar-container">
-                                    <div class="seminar-cards">
-                                        <div class="seminar-card">
-                                            <div class="seminar-card-1">
-                                                <div class="seminar-header">
-                                                    <div class="seminar-logo">logo</div>
-                                                    <div class="seminar-text">Seminar 1</div>
+                                    <Carousel :itemsToShow="3" :wrapAround="true" :transition="500">
+                                        <Slide :key="Slide">
+                                            <div class="carousel__item">
+                                                <div class="carousel__item">
+                                                    <div class="seminar-card-1">
+                                                        <div class="seminar-header">
+                                                            <div class="seminar-logo">logo</div>
+                                                            <div class="seminar-text">Seminar 1</div>
+                                                        </div>
+                                                        <div class="seminar-subtext">
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                                            sed do eiusmod tempor
+                                                        </div>
+                                                        <div class="seminar-date">February 18, 2024</div>
+                                                        <div class="seminar-time">8:00 AM</div>
+                                                    </div>
                                                 </div>
-                                                <div class="seminar-subtext">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                    sed do eiusmod tempor
-                                                </div>
-                                                <div class="seminar-date">February 18, 2024</div>
-                                                <div class="seminar-time">8:00 AM</div>
                                             </div>
-                                        </div>
-                                        <div class="seminar-card">
-                                            <div class="seminar-card-1 ">
-                                                <div class="seminar-header">
-                                                    <div class="seminar-logo">logo</div>
-                                                    <div class="seminar-text">Seminar 2</div>
+                                        </Slide>
+                                        <Slide :key="Slide">
+                                            <div class="carousel__item">
+                                                <div class="carousel__item">
+                                                    <div class="seminar-card-1">
+                                                        <div class="seminar-header">
+                                                            <div class="seminar-logo">logo</div>
+                                                            <div class="seminar-text">Seminar 1</div>
+                                                        </div>
+                                                        <div class="seminar-subtext">
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                                            sed do eiusmod tempor
+                                                        </div>
+                                                        <div class="seminar-date">February 18, 2024</div>
+                                                        <div class="seminar-time">8:00 AM</div>
+                                                    </div>
                                                 </div>
-                                                <div class="seminar-subtext">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                    sed do eiusmod tempor
-                                                </div>
-                                                <div class="seminar-date">February 18, 2024</div>
-                                                <div class="seminar-time">8:00 AM</div>
                                             </div>
-                                        </div>
-                                        <div class="seminar-card">
-                                            <div class="seminar-card-1 ">
-                                                <div class="seminar-header">
-                                                    <div class="seminar-logo">logo</div>
-                                                    <div class="seminar-text">Seminar 3</div>
+                                        </Slide>
+                                        <Slide :key="Slide">
+                                            <div class="carousel__item">
+                                                <div class="carousel__item">
+                                                    <div class="seminar-card-1">
+                                                        <div class="seminar-header">
+                                                            <div class="seminar-logo">logo</div>
+                                                            <div class="seminar-text">Seminar 1</div>
+                                                        </div>
+                                                        <div class="seminar-subtext">
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                                            sed do eiusmod tempor
+                                                        </div>
+                                                        <div class="seminar-date">February 18, 2024</div>
+                                                        <div class="seminar-time">8:00 AM</div>
+                                                    </div>
                                                 </div>
-                                                <div class="seminar-subtext">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                    sed do eiusmod tempor
-                                                </div>
-                                                <div class="seminar-date">February 18, 2024</div>
-                                                <div class="seminar-time">8:00 AM</div>
                                             </div>
-                                        </div>
-                                    </div>
+                                        </Slide>
+                                        <template #addons>
+                                            <Navigation />
+                                            <Pagination class="pagination"/>
+                                        </template>
+                                    </Carousel>
                                 </div>
-                                <img loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/a75083db1f0d26c24088d5108b6e70715bb52191aefc3bc3db5fc7dbf0ddaf42?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
-                                    class="img-2" />
                             </div>
                         </div>
                     </div>
@@ -208,6 +223,56 @@ function toggleDropdown() {
 </template>
 
 <style scoped>
+.carousel__item {
+    width: 95%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+}
+
+.carousel__slide {
+    height: 40vh;
+}
+
+.carousel__track {
+    transform-style: preserve-3d;
+}
+
+.carousel__slide--sliding {
+    transition: 0.5s;
+}
+
+.carousel__slide {
+    opacity: 0.9;
+    transform: rotateY(-20deg) scale(0.9);
+}
+
+.carousel__slide--active~.carousel__slide {
+    transform: rotateY(20deg) scale(0.9);
+}
+
+.carousel__slide--prev {
+    opacity: 2;
+    transform: rotateY(-10deg) scale(0.89);
+}
+
+.carousel__slide--next {
+    opacity: 2;
+    transform: rotateY(10deg) scale(0.95);
+}
+
+.carousel__slide--active {
+    opacity: 1;
+    transform: rotateY(0) scale(1);
+}
+
+.carousel__slide--prev,
+.carousel__slide--next {
+    transition: 0.5s;
+}
+
 .dashboard-header {
     border-radius: 16px 16px 0px 0px;
     background-color: rgba(48, 56, 65, 1);
@@ -306,6 +371,7 @@ function toggleDropdown() {
 .container1 {
     margin-top: 87px;
     width: 100%;
+    display: block;
 }
 
 @media (max-width: 991px) {
@@ -316,7 +382,7 @@ function toggleDropdown() {
 }
 
 .container2 {
-    gap: 20px;
+    gap: 60px;
     display: flex;
 }
 
@@ -424,8 +490,8 @@ function toggleDropdown() {
 .column-1 {
     display: flex;
     flex-direction: column;
-    width: 70%;
-    margin-left: 20px;
+    width: 60%;
+    margin-top: 10px;
 }
 
 @media (max-width: 991px) {
@@ -435,9 +501,10 @@ function toggleDropdown() {
 }
 
 .content-2 {
-    display: flex;
     flex-grow: 1;
     flex-direction: column;
+    width: 100%;
+
 }
 
 @media (max-width: 991px) {
@@ -448,8 +515,15 @@ function toggleDropdown() {
 }
 
 .seminar-container {
-    padding: 0;
-    margin-left: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: -25px;
+    cursor: grab;
+}
+
+.seminar-container:active {
+    cursor: grabbing;
 }
 
 @media (max-width: 991px) {
@@ -492,10 +566,11 @@ function toggleDropdown() {
     display: flex;
     width: 100%;
     flex-grow: 1;
+    height: 35vh;
     flex-direction: column;
     font-weight: 400;
     margin: 0 auto;
-    padding: 29px 29px 29px 14px;
+    padding: 10px 29px 29px 14px;
 }
 
 @media (max-width: 991px) {
@@ -659,5 +734,74 @@ function toggleDropdown() {
     width: 100%;
     font-size: 14px;
     padding: 6px;
+}
+
+@media (max-width: 360px) {
+    .dashboard-header {
+        padding: 20px 10px;
+    }
+
+    .header-text {
+        font-size: 20px;
+    }
+
+    .header-sub-text {
+        font-size: 14px;
+    }
+
+    .ellipsis-card {
+        gap: 5px;
+    }
+
+    .dropdown-options {
+        width: 100px;
+    }
+
+    .carousel__item {
+        height: 10%;
+    }
+
+    .carousel__slide {
+        height: 45vh;
+    }
+
+    .seminar-container {
+        height: 100%;
+    }
+
+    .seminar-card-1 {
+        height: 35vh;
+        padding: 20px 5px;
+    }
+
+    .seminar-logo {
+        height: 20px;
+        font-size: 1px; 
+        padding: 0 5px; 
+    }
+
+    .seminar-text {
+        font-size: 12px; 
+    }
+
+    .seminar-date,
+    .seminar-time,
+    .seminar-subtext {
+        font-size: 10px;
+    }
+
+    .cert-card {
+        max-width: 200px;
+    }
+
+    .org-logo {
+        height: 20px;
+        font-size: 6px;
+        padding: 0 4px;
+    }
+
+    .org-name {
+        font-size: 12px;
+    }
 }
 </style>

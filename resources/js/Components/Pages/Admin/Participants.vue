@@ -2,6 +2,7 @@
 import axios from 'axios';
 import 'datatables.net-vue3';
 import 'datatables.net-bs5';
+import DataTable from 'datatables.net-vue3';
 import { ref, onMounted } from 'vue';
 
 const isGenerating = ref(false);
@@ -51,7 +52,7 @@ const sendCert = async (userID, certificateID) => {
             <div class="column-1">
                 <div class="table-card">
                     <div class="content-text">Participants</div>
-                    <DataTable id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
+                    <DataTable id="dailyTimeLog" class="table table-striped table-hover">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -155,11 +156,13 @@ const sendCert = async (userID, certificateID) => {
     width: 100%;
     margin-left: 0px;
     margin-top: 30px;
+    max-width: 100%;
 }
 
 @media (max-width: 991px) {
     .column-1 {
         width: 100%;
+        max-width: 100%;
     }
 }
 
