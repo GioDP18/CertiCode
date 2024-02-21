@@ -197,6 +197,33 @@ function toggleDropdown() {
                         </div>
                     </div>
                 </div>
+                <div class="content py-4 mt-4">
+                    <div class="container">
+                        <div class="row row-cols-4">
+                            <div class="col py-3">
+                                <div class="div">
+                                    <div class="div-2">
+                                        <img loading="lazy"
+                                            srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
+                                            class="img" />
+                                        <div class="div-3">
+                                            <img loading="lazy"
+                                                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
+                                                class="img-2" />
+                                            <div class="div-4">Seminar Title</div>
+                                        </div>
+                                        <div class="div-5">
+                                            <div class="div-6">Show more</div>
+                                            <img loading="lazy"
+                                                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
+                                                class="img-3" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="footer">
@@ -659,5 +686,85 @@ function toggleDropdown() {
     width: 100%;
     font-size: 14px;
     padding: 6px;
+}
+
+.div {
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    display: flex;
+    max-width: 213px;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: 500;
+}
+
+.div-2 {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    aspect-ratio: 0.88;
+    width: 100%;
+    padding-top: 11px;
+}
+
+.img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.div-3 {
+    position: relative;
+    border-radius: 50px;
+    background-color: rgba(60, 54, 51, 0.6);
+    display: flex;
+    justify-content: space-between;
+    gap: 6px;
+    font-size: 8px;
+    padding: 2px 20px;
+}
+
+.img-2 {
+    aspect-ratio: 0.94;
+    object-fit: auto;
+    object-position: center;
+    width: 16px;
+}
+
+.div-4 {
+    font-family: Inter, sans-serif;
+}
+
+.div-5 {
+    position: relative;
+    border-radius: 0px 0px 10px 10px;
+    filter: blur(5px);
+    background-color: rgba(60, 54, 51, 0.7);
+    display: flex;
+    margin-top: 148px;
+    width: 100%;
+    justify-content: space-between;
+    gap: 20px;
+    font-size: 7px;
+    padding: 41px 69px 12px;
+}
+
+.div-6 {
+    font-family: Inter, sans-serif;
+}
+
+.img-3 {
+    aspect-ratio: 2.13;
+    object-fit: auto;
+    object-position: center;
+    width: 100%;
+    flex: 1;
 }
 </style>
