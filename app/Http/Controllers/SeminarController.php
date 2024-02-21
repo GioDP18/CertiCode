@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Services\SeminarService;
+use Illuminate\Http\Request;
 
 class SeminarController extends Controller
 {
-    public function __construct(public SeminarService $seminarService)
-    {
-        
+    public function __construct(public SeminarService $seminarService){
+
     }
-    
-    public function register(Request $request){
-        $this->seminarService->register($request);
+
+    public function getAllSeminars(){
+        return $this->seminarService->getAllSeminars();
     }
 }

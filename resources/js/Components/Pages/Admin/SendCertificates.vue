@@ -16,15 +16,15 @@ DataTable.use(DataTablesCore);
 const allSeminars = ref([]);
 
 onMounted(async () => {
-    await getUsers();
+    await getSeminars();
     initializeDataTables();
 });
 
-const getUsers = async () => {
+const getSeminars = async () => {
     try {
         await axios.get('http://127.0.0.1:8000/api/auth/get-all-seminars')
         .then((response) => {
-            allSeminars.value = response.data.users;
+            allSeminars.value = response.data.seminars;
             console.log(allSeminars.value);
         })
     } catch (error) {
@@ -36,28 +36,28 @@ const getUsers = async () => {
 const sendAllCerts = async (seminar_id) => {
     store.commit('setSendingCerts', true);
     try {
-        const response = await axios.post(BASE_URL + '/api/auth/send-all-certificate', {
+        await axios.post(BASE_URL + '/api/auth/send-all-certificate', {
             seminar_id: seminar_id
         })
-            .then((response) => {
-                if (response.data.success) {
-                    swal({
-                        title: 'Success',
-                        text: 'All certificates have been sent',
-                        icon: 'success',
-                    });
-                }
-                else {
-                    swal({
-                        title: 'Error',
-                        text: response.data.message,
-                        icon: 'error',
-                    });
-                }
-            })
-            .finally(() => {
-                store.state.commit('setSendingCerts', false);
-            });
+        .then((response) => {
+            if (response.data.success) {
+                swal({
+                    title: 'Success',
+                    text: 'All certificates have been sent',
+                    icon: 'success',
+                });
+            }
+            else {
+                swal({
+                    title: 'Error',
+                    text: response.data.message,
+                    icon: 'error',
+                });
+            }
+        })
+        .finally(() => {
+            store.state.commit('setSendingCerts', false);
+        });
     }
     catch (error) {
         swal({
@@ -101,10 +101,10 @@ const handleSendAllCerts = (seminar_id) => {
                         </thead>
                         <tbody>
                             <tr v-for="seminar in allSeminars" :key="seminar.id">
-                                <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
-                                <td>{{ user.gender }}</td>
+                                <td>{{ seminar.topic }}</td>
+                                <td>{{ seminar.speaker }}</td>
                                 <td>
-                                    <button class="card14" @click="handleSendAllCerts()">
+                                    <button class="card14" @click="handleSendAllCerts(seminar.id)">
                                         <span class="send-text">Send Certificates</span>
                                         <i class="img-8"><font-awesome-icon style="color: #7AA5D2; height: 16px;"
                                                 class="icon" :icon="['fas', 'fa-paper-plane']" /></i>

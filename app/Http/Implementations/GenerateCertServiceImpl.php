@@ -30,8 +30,12 @@ Class GenerateCertServiceImpl implements GenerateCertService
         $templateProcessor->setValue('description', $description);
         $templateProcessor->setValue('issuer', $issuer);
 
-        $logoPath = public_path('logo\\'.$getCertificate->logo);
-        $templateProcessor->setImageValue('logo', array('path' => $logoPath, 'width' => 100, 'height' => 100));
+        // ORIG
+        // $logoPath = public_path('logo\\'.$getCertificate->logo);
+        // $templateProcessor->setImageValue('logo', array('path' => $logoPath, 'width' => 100, 'height' => 100));
+
+        // TRY
+        $templateProcessor->setImageValue('logo', array('path' => $getCertificate->logo, 'width' => 100, 'height' => 100));
 
         $newFilePath = public_path('Certificates\\' . $getUser->firstname . '.docx');
         $templateProcessor->saveAs($newFilePath);
