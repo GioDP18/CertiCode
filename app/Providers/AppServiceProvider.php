@@ -10,6 +10,7 @@ use App\Http\Services\AuthService;
 use App\Http\Services\CertificateService;
 use App\Http\Services\GenerateCertService;
 use App\Http\Services\SeminarService;
+use App\Http\Services\ParticipantService;
 
 // Implementations
 use App\Http\Implementations\UserServiceImpl;
@@ -17,6 +18,7 @@ use App\Http\Implementations\AuthServiceImpl;
 use App\Http\Implementations\CertificateServiceImpl;
 use App\Http\Implementations\GenerateCertServiceImpl;
 use App\Http\Implementations\SeminarServiceImpl;
+use App\Http\Implementations\ParticipantServiceImpl;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
         AuthService::class => AuthServiceImpl::class,
         CertificateService::class => CertificateServiceImpl::class,
         GenerateCertService::class => GenerateCertServiceImpl::class,
+        SeminarService::class => SeminarServiceImpl::class,
+        ParticipantService::class => ParticipantServiceImpl::class,
     ];
 
     /**
