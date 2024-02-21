@@ -34,10 +34,10 @@ Class ParticipantServiceImpl implements ParticipantService
                 "message" => "You dont have any participants yet.",
             ]);
         }
-        
+
         return response()->json([
             'participants' => $participants,
-        ], 200); 
+        ], 200);
     }
 
     /**
@@ -60,7 +60,7 @@ Class ParticipantServiceImpl implements ParticipantService
 
         return response()->json([
             'seminars' => $seminars,
-        ], 200); 
+        ], 200);
     }
 
     /**
@@ -75,7 +75,7 @@ Class ParticipantServiceImpl implements ParticipantService
         $seminar = Seminar::find($request->seminarID)->first();
         $seminar_link = 'http://127.0.0.1:8000/user/seminar';
         $participant = Participant::find($user)->first();
-        
+
         if ($participant){
             return response()->json([
                 "success" => false,
@@ -92,7 +92,7 @@ Class ParticipantServiceImpl implements ParticipantService
         ];
 
         Mail::send(new SeminarRegistration($data, $seminar_link));
-    
+
         return response()->json([
             "success" => true,
             "message" => "Seminar successfully registered.",

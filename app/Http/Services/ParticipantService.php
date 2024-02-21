@@ -21,7 +21,7 @@ interface ParticipantService
      * @param [type] $userID
      * @return void
      */
-    public function getParticipSeminars($userID); 
+    public function getParticipSeminars($userID);
 
     /**
      * Interface for registering participant
