@@ -3,7 +3,7 @@
 namespace App\Http\Services;
 use Illuminate\Http\Request;
 
-interface SeminarService
+interface ParticipantsService
 {
     public function __construct();
 

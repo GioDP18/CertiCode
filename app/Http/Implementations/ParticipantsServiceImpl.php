@@ -1,23 +1,24 @@
 <?php
 
 namespace App\Http\Implementations;
-use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\SeminarParticipant;
+use App\Models\Participants;
 use Illuminate\Support\Facades\Mail;
-use App\Http\Services\SeminarService;
 use App\Mail\SeminarRegistration;
+use App\Http\Services\ParticipantsService;
+use Illuminate\Http\Request;
 
-Class SeminarServiceImpl implements SeminarService
+Class ParticipantsServiceImpl implements ParticipantsService
 {
     public function __construct()
     {
 
     }
+
     public function register(Request $request){
         $user = User::find($request->userID)->first();
         $seminar_link = 'http://127.0.0.1:8000/user/seminar';
-        $seminar = SeminarParticipant::find($user)->first();
+        $seminar = Participants::find($user)->first();
         
         if ($seminar){
             return response()->json([
@@ -25,7 +26,7 @@ Class SeminarServiceImpl implements SeminarService
                 "message" => "You Have Already signed up in Seminar.",
             ]);
         }
-        SeminarParticipant::create([
+        Participants::create([
             'users_id' => $user->id,
             'seminar' => 'try seminar',
         ]);
@@ -41,8 +42,4 @@ Class SeminarServiceImpl implements SeminarService
             "message" => "Seminar successfully registered.",
         ]);
     }
-
-    
-
-    
 }

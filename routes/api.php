@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\WordToPDFController;
 use App\Http\Services\GenerateCertService;
-use App\Http\Controllers\SeminarController;
+use App\Http\Controllers\ParticipantsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +33,6 @@ Route::group([
     Route::post('/send-all-certificate', [CertificateController::class,'sendAllCertificate']);
     Route::post('/send-one-certificate', [CertificateController::class,'sendOneCertificate']);
 
-    Route::post('/register-seminar', [SeminarController::class,'register']);
+    Route::post('/register-seminar', [ParticipantsController::class,'register']);
     Route::post('/convert', [WordToPDFController::class,'store']);
 });
