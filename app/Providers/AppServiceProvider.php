@@ -25,7 +25,6 @@ class AppServiceProvider extends ServiceProvider
         AuthService::class => AuthServiceImpl::class,
         CertificateService::class => CertificateServiceImpl::class,
         GenerateCertService::class => GenerateCertServiceImpl::class,
-        SeminarService::class => SeminarServiceImpl::class,
     ];
 
     /**
