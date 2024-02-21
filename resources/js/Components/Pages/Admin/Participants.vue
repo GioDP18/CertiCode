@@ -10,7 +10,7 @@ const isGenerating = ref(false);
 const allUsers = ref([]);
 
 onMounted(async () => {
-    await getUsers();
+    getUsers();
     initializeDataTables();
 });
 
@@ -18,8 +18,9 @@ const getUsers = async () => {
     try {
         await axios.get('http://127.0.0.1:8000/api/auth/get-all-users')
         .then((response) => {
+            console.log(response.data);
             allUsers.value = response.data.users;
-            console.log(allUsers.value);
+            // console.log(allUsers.value);
         })
     } catch (error) {
         console.error(error);
@@ -71,12 +72,29 @@ const sendCert = async (userID, certificateID) => {
                                 <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
                                 <td>{{ user.gender }}</td>
                                 <td>
-                                    <button class="card14">
-                                        <span class="send-text">Send Certificate</span>
-                                        <i class="img-8"><font-awesome-icon style="color: #7AA5D2; height: 16px;"
-                                                class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
+                                    <button class="card14" data-bs-toggle="modal" data-bs-target="#sendUserCertModal">
+                                        <span class="send-text">Send a specific Certificate</span>
                                     </button>
                                 </td>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="sendUserCertModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-primary">Understood</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </tr>
                         </tbody>
                     </table>
