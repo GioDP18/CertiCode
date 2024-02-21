@@ -18,7 +18,7 @@ class CertificateFactory extends Factory
     {
         return [
             "seminar_id" => $this->faker->numberBetween(1, 10),
-            "logo" => $this->faker->imageUrl(420, 420, 'logo', true),
+            "logo" => $this->faker->imageUrl(100, 100, 'logo', true),
             "description" => $this->faker->sentence(50),
             "issuer" => $this->faker->name(),
         ];
