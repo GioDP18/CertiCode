@@ -65,7 +65,7 @@ Class CertificateServiceImpl implements CertificateService
         $members = User::where('user_level', 2)->get();
 
         foreach ($members as $member) {
-            $filePath = $this->generateCertService->generate($member->id, $request->certificate_id);
+            $filePath = $this->generateCertService->generate($member->id, $request->seminar_id);
             if($filePath){
                 $data = [
                     'name' => $member->firstname,

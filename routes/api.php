@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\GenerateCertController;
+use App\Http\Controllers\SeminarController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordToPDFController;
 use App\Http\Services\GenerateCertService;
@@ -30,7 +31,7 @@ Route::group([
 
     // Fetch Data
     Route::get('/get-all-users', [UserController::class,'getAllUsers']);
-    Route::get('/get-all-seminars', [UserController::class,'getAllSeminars']);
+    Route::get('/get-all-seminars', [SeminarController::class,'getAllSeminars']);
 
     // Generate Certificate
     Route::post('/generate', [GenerateCertService::class,'generate']);
