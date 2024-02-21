@@ -14,6 +14,7 @@ import CreateCertificate from "../Components/Pages/Admin/CreateCertificate.vue";
 // User View
 import UserView from "../Components/Views/UserView.vue";
 import UserDashboard from "../Components/Pages/User/UserDashboard.vue";
+import SeminarInfo from "../Components/Pages/User/SeminarInfo.vue";
 
 const routes = [
     {
@@ -65,6 +66,10 @@ const routes = [
             {
                 path: "dashboard",
                 component: UserDashboard,
+            },
+            {
+                path: "seminarInfo",
+                component: SeminarInfo,
             },
         ],
     },

@@ -17,11 +17,11 @@ onMounted(async () => {
 const getUsers = async () => {
     try {
         await axios.get('http://127.0.0.1:8000/api/auth/get-all-users')
-        .then((response) => {
-            console.log(response.data);
-            allUsers.value = response.data.users;
-            // console.log(allUsers.value);
-        })
+            .then((response) => {
+                console.log(response.data);
+                allUsers.value = response.data.users;
+                // console.log(allUsers.value);
+            })
     } catch (error) {
         console.error(error);
     }
@@ -73,31 +73,35 @@ const sendCert = async (userID, certificateID) => {
                                 <td>{{ user.gender }}</td>
                                 <td>
                                     <button class="card14" data-bs-toggle="modal" data-bs-target="#sendUserCertModal">
-                                        <span class="send-text">Send a specific Certificate</span>
+                                        <span class="send-text">Send a specific Certificate <i><font-awesome-icon
+                                                    :icon="['fas', 'paper-plane']" /></i></span>
                                     </button>
                                 </td>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="sendUserCertModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                ...
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Understood</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </tr>
                         </tbody>
                     </table>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="sendUserCertModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body" style="width: 100%; overflow-wrap: break-word;">
+                                    .sadasdasdasdasdasdasdasdasdadasdasdasdadasdasdadadadasdasdasssssssssssssssssssssssssssssssssssssssssssssssssada
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Understood</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -105,14 +109,6 @@ const sendCert = async (userID, certificateID) => {
 </template>
 
 <style scoped>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: transparent;
-}
-
-
 .content {
     background-color: transparent;
     padding: 20px;
@@ -172,6 +168,11 @@ const sendCert = async (userID, certificateID) => {
     gap: 5px;
     align-items: center;
     border: none;
+    width: 75%;
+}
+
+.card14 i {
+    color: #7AA5D2;
 }
 
 @media (max-width: 991px) {

@@ -20,6 +20,9 @@ import {
     faCamera,
     faCopyright,
     faCalendarDay,
+    faUserPlus,
+    faClock,
+    faPersonChalkboard,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -39,5 +42,8 @@ library.add(
     faXmark,
     faCopyright,
     faCamera,
-    faCalendarDay
+    faCalendarDay,
+    faUserPlus,
+    faClock,
+    faPersonChalkboard
 );
