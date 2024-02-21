@@ -58,6 +58,8 @@ onBeforeUnmount(() => {
     <div class="container1">
         <div v-if="$store.state.sendingCerts" class="loader-container">
             <div class="text-center" id="wifi-loader">
+        <div class="loader-container">
+            <div id="wifi-loader">
                 <svg class="circle-outer" viewBox="0 0 86 86">
                     <circle class="back" cx="43" cy="43" r="40"></circle>
                     <circle class="front" cx="43" cy="43" r="40"></circle>
@@ -72,6 +74,7 @@ onBeforeUnmount(() => {
                     <circle class="front" cx="17" cy="17" r="14"></circle>
                 </svg>
                 <div class="text tex-center" data-text="Generating Certificates.."></div>
+                <div class="text" data-text="Sending Certificates.."></div>
             </div>
         </div>
         <!-- Web Sidebar -->

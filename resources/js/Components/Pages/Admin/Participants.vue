@@ -125,11 +125,13 @@ const sendCert = async (userID, certificateID) => {
     width: 100%;
     margin-left: 0px;
     margin-top: 30px;
+    max-width: 100%;
 }
 
 @media (max-width: 991px) {
     .column-1 {
         width: 100%;
+        max-width: 100%;
     }
 }
 
