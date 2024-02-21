@@ -26,19 +26,19 @@
                     <div class="container2">
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Certificate Logo</label>
-                            <input type="file" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        </div>
-                        <div class="mb-3">
-                            <label for="seminar" class="form-label">About this Seminar</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1">
+                            <input type="file" class="form-control" id="" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
                             <label for="issuer" class="form-label">Issuer</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1">
+                            <input type="text" class="form-control" id="">
                         </div>
                         <div class="mb-3">
                             <label for="topic" class="form-label">Description</label>
-                            <textarea type="text" class="form-control" id="exampleInputPassword1"></textarea>
+                            <textarea type="text" class="form-control" id=""></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="seminar" class="form-label">About this Seminar</label>
+                            <textarea class="form-control" id="" rows="1"></textarea>
                         </div>
                     </div>
                 </div>

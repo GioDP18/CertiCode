@@ -3,12 +3,15 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-   
+
+// Services
+use App\Http\Services\UserService;
 use App\Http\Services\AuthService;
 use App\Http\Services\CertificateService;
 use App\Http\Services\GenerateCertService;
 
 // Implementations
+use App\Http\Implementations\UserServiceImpl;
 use App\Http\Implementations\AuthServiceImpl;
 use App\Http\Implementations\CertificateServiceImpl;
 use App\Http\Implementations\GenerateCertServiceImpl;
@@ -16,6 +19,7 @@ use App\Http\Implementations\GenerateCertServiceImpl;
 class AppServiceProvider extends ServiceProvider
 {
     public $bindings = [
+        UserService::class => UserServiceImpl::class,
         AuthService::class => AuthServiceImpl::class,
         CertificateService::class => CertificateServiceImpl::class,
         GenerateCertService::class => GenerateCertServiceImpl::class,

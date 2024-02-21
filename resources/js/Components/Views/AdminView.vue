@@ -1,11 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue';
-import { inject } from 'vue';
 
-// Inject swal and BASE_URL
-const swal = inject('$swal');
-const store = inject('$store');
-const BASE_URL = inject('$swal');
 
 const showSidebar = ref(true);
 const showMobileSidebar = ref(false);
@@ -56,60 +51,12 @@ onBeforeUnmount(() => {
 });
 
 
-const sendAllCerts = async (certificate_id) => {
-    store.state.commit('setSendingCerts', true);
-    try {
-        const response = await axios.post(BASE_URL + '/api/auth/send-all-certificate', {
-            certificate_id: certificate_id
-        })
-            .then((response) => {
-                if (response.data.success) {
-                    swal({
-                        title: 'Success',
-                        text: 'All certificates have been sent',
-                        icon: 'success',
-                    });
-                }
-                else {
-                    swal({
-                        title: 'Error',
-                        text: response.data.message,
-                        icon: 'error',
-                    });
-                }
-            })
-            .finally(() => {
-                store.state.commit('setSendingCerts', false);
-            });
-    }
-    catch (error) {
-        swal({
-            title: 'Error',
-            text: error.response.data.message,
-            icon: 'error',
-        });
-    }
-}
 
-
-const handleSendAllCerts = () => {
-    swal({
-        title: "Do you want to send all certificates?",
-        showCancelButton: true,
-        confirmButtonText: "Send",
-    }).then((result) => {
-        if (result.isConfirmed) {
-            swal("Saved!", "", "success");
-        } else if (result.isDenied) {
-            swal("Changes are not saved", "", "info");
-        }
-    });
-}
 
 </script>
 <template>
     <div class="container1">
-        <div class="loader-container">
+        <div v-if="$store.state.sendingCerts" class="loader-container">
             <div id="wifi-loader">
                 <svg class="circle-outer" viewBox="0 0 86 86">
                     <circle class="back" cx="43" cy="43" r="40"></circle>
@@ -133,11 +80,16 @@ const handleSendAllCerts = () => {
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
                 <div v-if="showSidebar" class="logo-text">CertiCode</div>
             </RouterLink>
-            <div class="send-button" title="send certificate" @click="handleSendAllCerts">
-                <div v-if="showSidebar" class="sidebar-text">Send Certificates</div>
-                <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
-            </div>
             <div class="menu">
+                <div style="width:90%; margin: auto;">
+                    <RouterLink to="sendCertificates" style="text-decoration: none;">
+                        <div class="send-button" title="send certificate">
+                            <div v-if="showSidebar" class="sidebar-text">Send Certificates</div>
+                            <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
+                        </div>
+                    </RouterLink>
+                </div>
+
                 <RouterLink to="dashboard" class="sidebar-menu" active-class="active" style="text-decoration: none;"
                     title="home">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-home']" /></i>
@@ -147,17 +99,15 @@ const handleSendAllCerts = () => {
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">Participants</div>
                 </RouterLink>
-                <RouterLink to="seminars" class="sidebar-menu" style="text-decoration: none;" title="participants">
-                    <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-calendar-day']" /></i>
-                    <div v-if="showSidebar" class="sidebar-text">Seminars</div>
-                </RouterLink>
                 <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">My Account</div>
                 </RouterLink>
             </div>
             <div v-if="showSidebar" class="add-button">
-                <div style="margin: auto;" class="sidebar-text text-center">Seminars</div>
+                <RouterLink to="seminars"  style="text-decoration: none; color: white;">
+                    <div style="margin: auto;" class="sidebar-text text-center">Seminars</div>
+                </RouterLink>
                 <RouterLink to="createSeminar" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </RouterLink>
@@ -187,17 +137,15 @@ const handleSendAllCerts = () => {
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div class="sidebar-text">Participants</div>
                 </RouterLink>
-                <RouterLink to="seminars" class="sidebar-menu" style="text-decoration: none;" title="participants">
-                    <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-calendar-day']" /></i>
-                    <div class="sidebar-text">Seminars</div>
-                </RouterLink>
                 <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div class="sidebar-text">My Account</div>
                 </RouterLink>
             </div>
             <div class="add-button">
-                <div style="margin: auto;" class="sidebar-text">Seminars</div>
+                <RouterLink to="seminars"  style="text-decoration: none; color: white;">
+                    <div style="margin: auto;" class="sidebar-text">Seminars</div>
+                </RouterLink>
                 <RouterLink to="createSeminar" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </RouterLink>
@@ -459,7 +407,7 @@ const handleSendAllCerts = () => {
     align-items: center;
     height: 40vh;
     width: 20%;
-    background-color: #c3c8de3a;
+    background-color: #e1e7ed;
 }
 
 #wifi-loader svg {
