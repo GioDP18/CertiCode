@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Seminar extends Model
 {
     use HasFactory;
+
+    public function certificate()
+    {
+        return $this->hasOne(Certificate::class);
+    }
 }

@@ -37,6 +37,8 @@ Route::group([
     // Fetch Data
     Route::get('/get-all-users', [UserController::class,'getAllUsers']);
     Route::get('/get-all-seminars', [SeminarController::class,'getAllSeminars']);
+    Route::get('/get-certificate/{id}', [ParticipantController::class,'getCertificate']);
+    Route::get('/get-seminars/{id}', [ParticipantController::class,'getParticipSeminars']);
 
     // Generate Certificate
     Route::post('/generate', [GenerateCertService::class,'generate']);

@@ -14,4 +14,9 @@ class Certificate extends Model
         "description",
         "issuer"
     ];
+    
+    public function seminar()
+    {
+        return $this->belongsTo(Seminar::class, 'seminar_id');
+    }
 }
