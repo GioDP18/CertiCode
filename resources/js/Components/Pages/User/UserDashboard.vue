@@ -120,7 +120,7 @@ function toggleDropdown() {
                                         </Slide>
                                         <template #addons>
                                             <Navigation />
-                                            <Pagination class="pagination"/>
+                                            <Pagination class="pagination" />
                                         </template>
                                     </Carousel>
                                 </div>
@@ -130,6 +130,7 @@ function toggleDropdown() {
                 </div>
                 <div class="content py-4 mt-4">
                     <div class="container">
+                        <div class="content-text">Certificates</div>
                         <div class="row row-cols-4">
                             <div class="col py-3">
                                 <div class="cert-card">
@@ -214,26 +215,132 @@ function toggleDropdown() {
                 </div>
                 <div class="content py-4 mt-4">
                     <div class="container">
-                        <div class="row row-cols-4">
+                        <div class="content-text">Seminars</div>
+                        <div class="row row-cols-5">
                             <div class="col py-3">
-                                <div class="div">
-                                    <div class="div-2">
-                                        <img loading="lazy"
-                                            srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/98ce6548dec3f4baec24eb90dc04c892a9f4cc3021be12f6bf44fc4349c79dac?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
-                                            class="img" />
-                                        <div class="div-3">
-                                            <img loading="lazy"
-                                                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/f96988f7c635477b350195403ce1dbd8c84c5bfc72725e69622fe30de6d888c1?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
-                                                class="img-2" />
-                                            <div class="div-4">Seminar Title</div>
+                                <div class="card-seminar">
+                                    <img loading="lazy"
+                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
+                                        class="img-seminar" />
+                                    <div class="header-seminar-card">
+                                        <div class="header-seminar">
+                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
+                                                class="logo-seminar-header" />
                                         </div>
-                                        <div class="div-5">
-                                            <div class="div-6">Show more</div>
-                                            <img loading="lazy"
-                                                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/70482cead2c9cfc2c2a24633cc12e518b98f15cb1112ab539222be3c90cf71ad?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
-                                                class="img-3" />
-                                        </div>
+                                        <div class="text-seminar">Seminar Title</div>
                                     </div>
+                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                        <div class="show-more">
+                                            <div class="text-footer">Show more</div>
+                                            <i><font-awesome-icon style="" class="icon-footer"
+                                                    :icon="['fas', 'fa-angles-right']" /></i>
+                                        </div>
+                                    </router-link>
+                                </div>
+                            </div>
+                            <div class="col py-3">
+                                <div class="card-seminar">
+                                    <img loading="lazy"
+                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
+                                        class="img-seminar" />
+                                    <div class="header-seminar-card">
+                                        <div class="header-seminar">
+                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
+                                                class="logo-seminar-header" />
+                                        </div>
+                                        <div class="text-seminar">Seminar Title</div>
+                                    </div>
+                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                        <div class="show-more">
+                                            <div class="text-footer">Show more</div>
+                                            <i><font-awesome-icon style="" class="icon-footer"
+                                                    :icon="['fas', 'fa-angles-right']" /></i>
+                                        </div>
+                                    </router-link>
+                                </div>
+                            </div>
+                            <div class="col py-3">
+                                <div class="card-seminar">
+                                    <img loading="lazy"
+                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
+                                        class="img-seminar" />
+                                    <div class="header-seminar-card">
+                                        <div class="header-seminar">
+                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
+                                                class="logo-seminar-header" />
+                                        </div>
+                                        <div class="text-seminar">Seminar Title</div>
+                                    </div>
+                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                        <div class="show-more">
+                                            <div class="text-footer">Show more</div>
+                                            <i><font-awesome-icon style="" class="icon-footer"
+                                                    :icon="['fas', 'fa-angles-right']" /></i>
+                                        </div>
+                                    </router-link>
+                                </div>
+                            </div>
+                            <div class="col py-3">
+                                <div class="card-seminar">
+                                    <img loading="lazy"
+                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
+                                        class="img-seminar" />
+                                    <div class="header-seminar-card">
+                                        <div class="header-seminar">
+                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
+                                                class="logo-seminar-header" />
+                                        </div>
+                                        <div class="text-seminar">Seminar Title</div>
+                                    </div>
+                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                        <div class="show-more">
+                                            <div class="text-footer">Show more</div>
+                                            <i><font-awesome-icon style="" class="icon-footer"
+                                                    :icon="['fas', 'fa-angles-right']" /></i>
+                                        </div>
+                                    </router-link>
+                                </div>
+                            </div>
+                            <div class="col py-3">
+                                <div class="card-seminar">
+                                    <img loading="lazy"
+                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
+                                        class="img-seminar" />
+                                    <div class="header-seminar-card">
+                                        <div class="header-seminar">
+                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
+                                                class="logo-seminar-header" />
+                                        </div>
+                                        <div class="text-seminar">Seminar Title</div>
+                                    </div>
+                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                        <div class="show-more">
+                                            <div class="text-footer">Show more</div>
+                                            <i><font-awesome-icon style="" class="icon-footer"
+                                                    :icon="['fas', 'fa-angles-right']" /></i>
+                                        </div>
+                                    </router-link>
+                                </div>
+                            </div>
+                            <div class="col py-3">
+                                <div class="card-seminar">
+                                    <img loading="lazy"
+                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
+                                        class="img-seminar" />
+                                    <div class="header-seminar-card">
+                                        <div class="header-seminar">
+                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
+                                                class="logo-seminar-header" />
+                                        </div>
+                                        <div class="text-seminar">Seminar Title</div>
+                                    </div>
+                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                        <div class="show-more">
+                                            <div class="text-footer">Show more</div>
+                                            <i><font-awesome-icon style="" class="icon-footer"
+                                                    :icon="['fas', 'fa-angles-right']" /></i>
+                                        </div>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -761,5 +868,158 @@ function toggleDropdown() {
     width: 100%;
     font-size: 14px;
     padding: 6px;
+}
+
+.card-seminar {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    aspect-ratio: 0.88;
+    max-width: 213px;
+    padding-top: 11px;
+    border-radius: 10px;
+}
+
+.img-seminar {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.header-seminar-card {
+    position: relative;
+    border-radius: 50px;
+    background-color: rgba(60, 54, 51, 0.6);
+    display: flex;
+    gap: 6px;
+    padding: 3px 3px;
+    width: 80%;
+    margin-left: 10px;
+}
+
+.header-seminar {
+    filter: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.1));
+    background-color: #d9d9d9;
+    border-radius: 50%;
+    display: flex;
+    aspect-ratio: 0.94;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-seminar-header {
+    aspect-ratio: 0.94;
+    object-fit: auto;
+    object-position: center;
+    width: 16px;
+}
+
+.text-seminar {
+    color: #fff;
+    display: flex;
+    align-items: center;
+    margin-left: 2px;
+    font: 500 11px Inter, sans-serif;
+}
+
+.footer-seminar {
+    position: relative;
+    border-radius: 0px 0px 10px 10px;
+    background: linear-gradient(rgba(60, 54, 51, 0), rgba(60, 54, 51, 0.7));
+    display: flex;
+    margin-top: 148px;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 10.5px;
+    color: #fff;
+    font-weight: 500;
+    padding: 32px;
+    backdrop-filter: blur(2px);
+    cursor: pointer;
+}
+
+.show-more {
+    display: flex;
+    gap: 15px;
+    margin: auto;
+    margin-top: -10px;
+}
+
+
+.text-footer {
+    font-family: 500 900px Inter, sans-serif;
+}
+
+.img-footer {
+    aspect-ratio: 5;
+    object-fit: auto;
+    object-position: center;
+    width: 100%;
+    flex: 1;
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.icon-footer {
+    animation: moveLeftRight 2s infinite alternate;
+    height: 12px;
+}
+
+/* Bootstrap classes for animation */
+@keyframes moveLeftRight {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.content-text {
+    color: rgba(60, 54, 51, 0.7);
+    font: 400 20px Inter, sans-serif;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 991px) {
+    .content-text {
+        max-width: 100%;
+    }
 }
 </style>

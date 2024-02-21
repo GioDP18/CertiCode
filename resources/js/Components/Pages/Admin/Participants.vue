@@ -1,10 +1,8 @@
 <script setup>
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
-import DataTable from 'datatables.net-vue3';
-import DataTablesCore from 'datatables.net-bs5';
-
-DataTable.use(DataTablesCore);
+import 'datatables.net-vue3';
+import 'datatables.net-bs5';
 
 const isGenerating = ref(false);
 const allUsers = ref([]);
@@ -50,6 +48,11 @@ const sendCert = async (userID, certificateID) => {
     }
 }
 
+const initializeDataTables = () => {
+    $(document).ready(function () {
+        $('#participants').DataTable();
+    });
+}
 
 </script>
 
@@ -59,7 +62,7 @@ const sendCert = async (userID, certificateID) => {
             <div class="column-1">
                 <div class="table-card">
                     <div class="content-text">Participants</div>
-                    <table id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
+                    <table id="participants" class="table table-striped table-hover" width="100%;">
                         <thead>
                             <tr>
                                 <th>Name</th>
@@ -125,13 +128,11 @@ const sendCert = async (userID, certificateID) => {
     width: 100%;
     margin-left: 0px;
     margin-top: 30px;
-    max-width: 100%;
 }
 
 @media (max-width: 991px) {
     .column-1 {
         width: 100%;
-        max-width: 100%;
     }
 }
 
