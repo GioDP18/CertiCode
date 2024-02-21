@@ -3,6 +3,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GenerateCertController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordToPDFController;
@@ -29,6 +30,9 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/add-certificate', [CertificateController::class,'addCertificate']);
     Route::post('/update-certificate', [CertificateController::class,'updateCertificate']);
+
+    // Dashboard
+    Route::get('/dashboard', [DashboardController::class, 'getDashboardData']);
 
     // Fetch Data
     Route::get('/get-all-users', [UserController::class,'getAllUsers']);

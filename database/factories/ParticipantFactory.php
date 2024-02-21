@@ -24,6 +24,8 @@ class ParticipantFactory extends Factory
             "gender" => $this->faker->randomElement(['male', 'female']),
             "email" => $this->faker->safeEmail(),
             "school" => $this->faker->company(),
+            "has_attended" => $this->faker->randomElement([true, false]),
+            "certificate_sent" => $this->faker->randomElement([true, false]),
         ];
     }
 }
