@@ -17,7 +17,9 @@ class SeminarFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "topic" => $this->faker->sentence(10),
+            "speaker" => $this->faker->name(),
+            "about_this_seminar" => $this->faker->sentence(50),
         ];
     }
 }

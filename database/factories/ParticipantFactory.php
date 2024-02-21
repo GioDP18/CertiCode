@@ -17,7 +17,13 @@ class ParticipantFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            "seminar_id" => $this->faker->numberBetween(1, 10),
+            "firstname" => $this->faker->firstName(),
+            "middlename" => $this->faker->firstname(),
+            "lastname" => $this->faker->lastName(),
+            "gender" => $this->faker->randomElement(['male', 'female']),
+            "email" => $this->faker->safeEmail(),
+            "school" => $this->faker->company(),
         ];
     }
 }

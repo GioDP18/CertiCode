@@ -10,6 +10,7 @@ use App\Mail\SendAllCertificate;
 
 use App\Http\Services\CertificateService;
 use App\Http\Services\GenerateCertService;
+use App\Models\Participant;
 
 Class CertificateServiceImpl implements CertificateService
 {
@@ -62,14 +63,14 @@ Class CertificateServiceImpl implements CertificateService
 
     public function sendAllCertificate(Request $request)
     {
-        $members = User::where('user_level', 2)->get();
+        $participants = Participant::where('seminar_id', $request->seminar_id)->get();
 
-        foreach ($members as $member) {
-            $filePath = $this->generateCertService->generate($member->id, $request->seminar_id);
+        foreach ($participants as $participant) {
+            $filePath = $this->generateCertService->generate($participant->id, $request->seminar_id);
             if($filePath){
                 $data = [
-                    'name' => $member->firstname,
-                    'email' => $member->email,
+                    'name' => $participant->firstname,
+                    'email' => $participant->email,
                 ];
 
                 Mail::send(new SendAllCertificate($data, $filePath));
@@ -80,7 +81,7 @@ Class CertificateServiceImpl implements CertificateService
 
         return response()->json([
             "success" => true,
-            "message" => "All certificates sent successfully.",
+            "message" => "All certificates has been sent.",
         ]);
     }
 

@@ -15,6 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('seminar_id')->constrained();
+            $table->string('firstname');
+            $table->string('middlename');
+            $table->string('lastname');
+            $table->string('gender');
+            $table->string('email');
+            $table->string('school');
             $table->timestamps();
         });
     }

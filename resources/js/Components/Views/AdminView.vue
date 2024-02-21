@@ -57,7 +57,7 @@ onBeforeUnmount(() => {
 <template>
     <div class="container1">
         <div v-if="$store.state.sendingCerts" class="loader-container">
-            <div id="wifi-loader">
+            <div class="text-center" id="wifi-loader">
                 <svg class="circle-outer" viewBox="0 0 86 86">
                     <circle class="back" cx="43" cy="43" r="40"></circle>
                     <circle class="front" cx="43" cy="43" r="40"></circle>
@@ -71,7 +71,7 @@ onBeforeUnmount(() => {
                     <circle class="back" cx="17" cy="17" r="14"></circle>
                     <circle class="front" cx="17" cy="17" r="14"></circle>
                 </svg>
-                <div class="text" data-text="Sending Certificates.."></div>
+                <div class="text tex-center" data-text="Generating Certificates.."></div>
             </div>
         </div>
         <!-- Web Sidebar -->
@@ -494,8 +494,9 @@ onBeforeUnmount(() => {
     font-weight: 500;
     font-size: 15px;
     letter-spacing: 0.2px;
-    width: 160px;
+    width: 175px;
     padding-top: 80px;
+    text-align: center;
 }
 
 #wifi-loader .text::before,

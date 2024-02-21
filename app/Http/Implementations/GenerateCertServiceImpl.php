@@ -5,6 +5,7 @@ namespace App\Http\Implementations;
 use App\Models\Certificate;
 use Illuminate\Http\Request;
 use App\Http\Services\GenerateCertService;
+use App\Models\Participant;
 use App\Models\User;
 use PhpOffice\PhpWord\TemplateProcessor;
 use PhpOffice\PhpWord\PhpWord;
@@ -16,9 +17,9 @@ Class GenerateCertServiceImpl implements GenerateCertService
 
     }
 
-    public function generate($member_id, $certificate_id)
+    public function generate($participant_id, $certificate_id)
     {
-        $getUser = User::where('id', $member_id)->first();
+        $getUser = Participant::where('id', $participant_id)->first();
         $fullname = $getUser->firstname . ' '. $getUser->middlename .' '. $getUser->lastname;
         $getCertificate = Certificate::where('id', $certificate_id)->first();
         $description = $getCertificate->description;
