@@ -3,11 +3,17 @@ import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net-bs5';
+import { inject } from 'vue';
+import store from '../../../State/index.js';
+
+// Inject swal and BASE_URL
+const swal = inject('$swal');
+// const store = inject('$store');
+const BASE_URL = inject('$swal');
 
 DataTable.use(DataTablesCore);
 
-const isGenerating = ref(false);
-const allUsers = ref([]);
+const allSeminars = ref([]);
 
 onMounted(async () => {
     await getUsers();
@@ -16,10 +22,10 @@ onMounted(async () => {
 
 const getUsers = async () => {
     try {
-        await axios.get('http://127.0.0.1:8000/api/auth/get-all-users')
+        await axios.get('http://127.0.0.1:8000/api/auth/get-all-seminars')
         .then((response) => {
-            allUsers.value = response.data.users;
-            console.log(allUsers.value);
+            allSeminars.value = response.data.users;
+            console.log(allSeminars.value);
         })
     } catch (error) {
         console.error(error);
@@ -27,28 +33,55 @@ const getUsers = async () => {
 };
 
 
-
-const sendCert = async (userID, certificateID) => {
-    isGenerating.value = true;
-    console.log(isGenerating.value)
+const sendAllCerts = async (seminar_id) => {
+    store.commit('setSendingCerts', true);
     try {
-        await axios.post(`http://127.0.0.1:8000/api/auth/send-one-certificate`, {
-            user_id: userID,
-            certificate_id: certificateID
+        const response = await axios.post(BASE_URL + '/api/auth/send-all-certificate', {
+            seminar_id: seminar_id
         })
             .then((response) => {
-                console.log(response.data.message)
+                if (response.data.success) {
+                    swal({
+                        title: 'Success',
+                        text: 'All certificates have been sent',
+                        icon: 'success',
+                    });
+                }
+                else {
+                    swal({
+                        title: 'Error',
+                        text: response.data.message,
+                        icon: 'error',
+                    });
+                }
             })
             .finally(() => {
-                isGenerating.value = false;
-                console.log(isGenerating.value)
-            })
+                store.state.commit('setSendingCerts', false);
+            });
     }
     catch (error) {
-        console.log(error.response.data.message)
+        swal({
+            title: 'Error',
+            text: error.response.data.message,
+            icon: 'error',
+        });
     }
 }
 
+
+const handleSendAllCerts = (seminar_id) => {
+    swal({
+        title: "Do you want to send all certificates for this seminar?",
+        showCancelButton: true,
+        confirmButtonText: "Send",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            sendAllCerts(seminar_id)
+        } else if (result.isDenied) {
+            swal("Changes are not saved", "", "info");
+        }
+    });
+}
 
 </script>
 
@@ -61,18 +94,18 @@ const sendCert = async (userID, certificateID) => {
                     <table id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Gender</th>
+                                <th>Seminar Topic</th>
+                                <th>Speaker</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="user in allUsers" :key="user.id">
+                            <tr v-for="seminar in allSeminars" :key="seminar.id">
                                 <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
                                 <td>{{ user.gender }}</td>
                                 <td>
-                                    <button class="card14">
-                                        <span class="send-text">Send Certificate</span>
+                                    <button class="card14" @click="handleSendAllCerts()">
+                                        <span class="send-text">Send Certificates</span>
                                         <i class="img-8"><font-awesome-icon style="color: #7AA5D2; height: 16px;"
                                                 class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
                                     </button>
