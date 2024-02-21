@@ -4,5 +4,5 @@ namespace App\Http\Services;
 
 interface SeminarService
 {
-    //Define your methods here
+    public function getAllSeminars();
 }

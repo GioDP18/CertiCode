@@ -36,14 +36,15 @@ const getSeminars = async () => {
 const sendAllCerts = async (seminar_id) => {
     store.commit('setSendingCerts', true);
     try {
-        await axios.post(BASE_URL + '/api/auth/send-all-certificate', {
+        await axios.post('http://127.0.0.1:8000/api/auth/send-all-certificate', {
             seminar_id: seminar_id
         })
         .then((response) => {
+            store.commit('setSendingCerts', false);
             if (response.data.success) {
                 swal({
                     title: 'Success',
-                    text: 'All certificates have been sent',
+                    text: response.data.message,
                     icon: 'success',
                 });
             }
@@ -56,7 +57,7 @@ const sendAllCerts = async (seminar_id) => {
             }
         })
         .finally(() => {
-            store.state.commit('setSendingCerts', false);
+            store.commit('setSendingCerts', false);
         });
     }
     catch (error) {
@@ -65,6 +66,7 @@ const sendAllCerts = async (seminar_id) => {
             text: error.response.data.message,
             icon: 'error',
         });
+        store.commit('setSendingCerts', false);
     }
 }
 
@@ -74,11 +76,10 @@ const handleSendAllCerts = (seminar_id) => {
         title: "Do you want to send all certificates for this seminar?",
         showCancelButton: true,
         confirmButtonText: "Send",
-    }).then((result) => {
+    })
+    .then((result) => {
         if (result.isConfirmed) {
             sendAllCerts(seminar_id)
-        } else if (result.isDenied) {
-            swal("Changes are not saved", "", "info");
         }
     });
 }
