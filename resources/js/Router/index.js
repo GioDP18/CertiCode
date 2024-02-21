@@ -5,8 +5,10 @@ import LoginView from "../Components/Views/LoginView.vue";
 import RegisterView from "../Components/Views/RegistrationView.vue";
 // Admin View
 import AdminView from "../Components/Views/AdminView.vue";
+import SendCertificates from "../Components/Pages/Admin/SendCertificates.vue";
 import Dashboard from "../Components/Pages/Admin/Dashboard.vue";
 import Participants from "../Components/Pages/Admin/Participants.vue";
+import Seminars from "../Components/Pages/Admin/SeminarPage.vue";
 import MyAccount from "../Components/Pages/Admin/MyAccount.vue";
 import CreateCertificate from "../Components/Pages/Admin/CreateCertificate.vue";
 // User View
@@ -31,12 +33,20 @@ const routes = [
         component: AdminView,
         children: [
             {
+                path: "sendCertificates",
+                component: SendCertificates,
+            },
+            {
                 path: "dashboard",
                 component: Dashboard,
             },
             {
                 path: "participants",
                 component: Participants,
+            },
+            {
+                path: "seminars",
+                component: Seminars,
             },
             {
                 path: "myAccount",

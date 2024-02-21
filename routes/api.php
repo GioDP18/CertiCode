@@ -3,6 +3,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\GenerateCertController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordToPDFController;
 use App\Http\Services\GenerateCertService;
 use App\Http\Controllers\SeminarController;
@@ -26,6 +28,10 @@ Route::group([
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/add-certificate', [CertificateController::class,'addCertificate']);
     Route::post('/update-certificate', [CertificateController::class,'updateCertificate']);
+
+    // Fetch Data
+    Route::get('/get-all-users', [UserController::class,'getAllUsers']);
+    Route::get('/get-all-seminars', [UserController::class,'getAllSeminars']);
 
     // Generate Certificate
     Route::post('/generate', [GenerateCertService::class,'generate']);
