@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('gender');
             $table->string('email');
             $table->string('school');
+            $table->boolean('has_attended')->default(false);
+            $table->boolean('certificate_sent')->default(false);
             $table->timestamps();
         });
     }

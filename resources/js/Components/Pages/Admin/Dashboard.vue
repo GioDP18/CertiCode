@@ -1,8 +1,32 @@
 <script setup>
 import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net-bs5';
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
 
 DataTable.use(DataTablesCore);
+
+const totalCertificatesIssued = ref(0);
+const totalSeminars = ref(0);
+const totalParticipants = ref(0);
+
+onMounted(() => {
+    dashboardData();
+})
+
+const dashboardData= async () => {
+    try{
+        await axios.get('http://localhost:8000/api/auth/dashboard')
+        .then((response) => {
+            totalSeminars.value = response.data.totalSeminars;
+            totalParticipants.value = response.data.totalParticipants;
+            totalCertificatesIssued.value = response.data.totalCertificatesIssued;
+        })
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
 
 </script>
 
@@ -16,7 +40,7 @@ DataTable.use(DataTablesCore);
                             srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/02bdb4e946b4c0c7e69bfd5a4c1b3d3dc4b8593c3bd02e7a5bf30bb2085a71ee?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/02bdb4e946b4c0c7e69bfd5a4c1b3d3dc4b8593c3bd02e7a5bf30bb2085a71ee?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/02bdb4e946b4c0c7e69bfd5a4c1b3d3dc4b8593c3bd02e7a5bf30bb2085a71ee?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/02bdb4e946b4c0c7e69bfd5a4c1b3d3dc4b8593c3bd02e7a5bf30bb2085a71ee?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/02bdb4e946b4c0c7e69bfd5a4c1b3d3dc4b8593c3bd02e7a5bf30bb2085a71ee?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/02bdb4e946b4c0c7e69bfd5a4c1b3d3dc4b8593c3bd02e7a5bf30bb2085a71ee?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/02bdb4e946b4c0c7e69bfd5a4c1b3d3dc4b8593c3bd02e7a5bf30bb2085a71ee?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/02bdb4e946b4c0c7e69bfd5a4c1b3d3dc4b8593c3bd02e7a5bf30bb2085a71ee?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
                             class="img" />
                         <div class="card-content">
-                            <div class="card-text">100</div>
+                            <div class="card-text">{{ totalCertificatesIssued }}</div>
                             <div class="card-subtext">Total Certificates</div>
                         </div>
                     </div>
@@ -27,7 +51,7 @@ DataTable.use(DataTablesCore);
                             srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/a2469712bd306cdeef86c5e610f61bfb5eb8e045be1adcadd256ef5b54f3921f?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/a2469712bd306cdeef86c5e610f61bfb5eb8e045be1adcadd256ef5b54f3921f?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/a2469712bd306cdeef86c5e610f61bfb5eb8e045be1adcadd256ef5b54f3921f?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/a2469712bd306cdeef86c5e610f61bfb5eb8e045be1adcadd256ef5b54f3921f?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/a2469712bd306cdeef86c5e610f61bfb5eb8e045be1adcadd256ef5b54f3921f?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/a2469712bd306cdeef86c5e610f61bfb5eb8e045be1adcadd256ef5b54f3921f?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/a2469712bd306cdeef86c5e610f61bfb5eb8e045be1adcadd256ef5b54f3921f?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/a2469712bd306cdeef86c5e610f61bfb5eb8e045be1adcadd256ef5b54f3921f?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
                             class="img" />
                         <div class="card-content">
-                            <div class="card-text">100</div>
+                            <div class="card-text">{{ totalSeminars }}</div>
                             <div class="card-subtext">Total Seminars</div>
                         </div>
                     </div>
@@ -38,7 +62,7 @@ DataTable.use(DataTablesCore);
                             srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/b4bd21d304c15182b5e61fb2657003a3621df867a59334d3709f1bfa25274c79?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4bd21d304c15182b5e61fb2657003a3621df867a59334d3709f1bfa25274c79?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4bd21d304c15182b5e61fb2657003a3621df867a59334d3709f1bfa25274c79?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4bd21d304c15182b5e61fb2657003a3621df867a59334d3709f1bfa25274c79?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4bd21d304c15182b5e61fb2657003a3621df867a59334d3709f1bfa25274c79?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4bd21d304c15182b5e61fb2657003a3621df867a59334d3709f1bfa25274c79?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4bd21d304c15182b5e61fb2657003a3621df867a59334d3709f1bfa25274c79?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/b4bd21d304c15182b5e61fb2657003a3621df867a59334d3709f1bfa25274c79?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
                             class="img" />
                         <div class="card-content">
-                            <div class="card-text">100</div>
+                            <div class="card-text">{{ totalParticipants }}</div>
                             <div class="card-subtext">Total Participants</div>
                         </div>
                     </div>
