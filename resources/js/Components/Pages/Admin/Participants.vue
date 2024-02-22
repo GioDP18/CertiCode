@@ -81,28 +81,43 @@ const sendCert = async (userID, certificateID) => {
                         </tbody>
                     </table>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="sendUserCertModal" data-bs-backdrop="static" data-bs-keyboard="false"
-                        tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body" style="width: 100%; overflow-wrap: break-word;">
-                                    .sadasdasdasdasdasdasdasdasdadasdasdasdadasdasdadadadasdasdasssssssssssssssssssssssssssssssssssssssssssssssssada
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Understood</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
                 </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="sendUserCertModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <form action="">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="fa-solid fa-pen-to-square"></i>
+                                Edit Information</h1>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                    tempor incididunt
+                                    ut labore et
+                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip
+                                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                                    velit esse cillum dolore eu
+                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+                                    in culpa qui officia
+                                    deserunt mollit anim id est laborum.</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn save" style="background-color:#303841; color:white;"
+                                @click="saveInformation">Save</button>
+                            <button type="button" class="btn close" id="closeCreateModal" data-bs-dismiss="modal"
+                                style="border: 2px solid #303841;">Close</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -23,6 +23,7 @@ import {
     faUserPlus,
     faClock,
     faPersonChalkboard,
+    faAddressCard,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -45,5 +46,6 @@ library.add(
     faCalendarDay,
     faUserPlus,
     faClock,
-    faPersonChalkboard
+    faPersonChalkboard,
+    faAddressCard
 );
