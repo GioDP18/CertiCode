@@ -1,3 +1,103 @@
+<script setup>
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
+import { inject } from 'vue';
+
+const swal = inject('$swal');
+
+const showPassword = ref(false);
+const passwordShow = ref(false);
+
+const userInfo = ref([]);
+const firstname = ref('');
+const middlename = ref('');
+const lastname = ref('');
+const gender = ref('');
+const email = ref('');
+const current_password = ref('');
+const new_password = ref('');
+
+
+onMounted(() => {
+  getUserDetails();
+});
+
+const getUserDetails = async () => {
+    try{
+        await axios.post('http://localhost:8000/api/auth/get-user-details', {
+            user_id: parseInt(localStorage.getItem('user_id'))
+        })
+        .then((response) => {
+            console.log(response.data.user);
+            userInfo.value = response.data.user;
+
+            firstname.value = response.data.user.firstname;
+            middlename.value = response.data.user.middlename;
+            lastname.value = response.data.user.lastname;
+            gender.value = response.data.user.gender;
+            email.value = response.data.user.email;
+        })
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+const updateProfile = async () => {
+    try{
+        await axios.post('http://localhost:8000/api/auth/update-profile', {
+            user_id: parseInt(localStorage.getItem('user_id')),
+            firstname: firstname.value,
+            middlename: middlename.value,
+            lastname: lastname.value,
+            gender: gender.value,
+            email: email.value,
+            current_password: current_password.value,
+            new_password: new_password.value
+        })
+        .then((response) => {
+            if(response.data.success) {
+                swal(response.data.message, "", "success");
+
+                setTimeout(() => {
+                    location.reload();
+                }, 3000);
+            }
+            else{
+                swal(response.data.message, "", "error");
+            }
+        })
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+
+const handleUpdateProfile = () => {
+    swal({
+        title: "Do you want to save the changes?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+    })
+    .then((result) => {
+        if (result.isConfirmed) {
+            updateProfile()
+        }
+    });
+
+}
+
+function togglePassword() {
+    showPassword.value = !showPassword.value;
+}
+
+function togglePasswordInfo() {
+    passwordShow.value = !passwordShow.value;
+}
+
+</script>
+
 <template>
     <div class="container">
         <div class="main-content">
@@ -8,7 +108,7 @@
                 </div>
             </div>
             <div class="name-container">
-                <h4>Gio Dela Pena</h4>
+                <h4>{{ userInfo.firstname }} {{ userInfo.middlename }} {{ userInfo.lastname }}</h4>
                 <p>Participant</p>
             </div>
             <div class="about-info">
@@ -16,31 +116,28 @@
                 <div class="input-container">
                     <div class="first-section">
                         <div class="first">
-                            <p>First Name:</p> <span>Gio</span>
+                            <p>First Name:</p> <span>{{ userInfo.firstname }}</span>
                         </div>
                         <div class="first">
-                            <p>Middle Name:</p> <span>Secret</span>
+                            <p>Middle Name:</p> <span>{{ userInfo.middlename }}</span>
                         </div>
                     </div>
                     <div class="second-section">
                         <div class="second">
-                            <p>Last Name:</p> <span>Dela Pena</span>
+                            <p>Last Name:</p> <span>{{ userInfo.lastname }}</span>
                         </div>
                         <div class="second">
-                            <p>Gender:</p> <span>Shemale</span>
+                            <p>Gender:</p> <span>{{ userInfo.gender }}</span>
                         </div>
                     </div>
                     <div class="third-section">
                         <div class="third">
-                            <p>Email:</p> <span>sample@sample.sample</span>
+                            <p>Email:</p> <span>{{ userInfo.email }}</span>
                         </div>
                         <div class="third password-container">
                             <p>Password:</p>
                             <span>••••••••••</span>
-                            <span class="toggle-password" @click="togglePasswordInfo">
-                                <i style="color: #7AA5D2"><font-awesome-icon
-                                        :icon="['fa-solid', passwordShow ? 'fa-eye-slash' : 'fa-eye']" /></i>
-                            </span>
+
                         </div>
                     </div>
                 </div>
@@ -55,7 +152,7 @@
     <div class="modal fade" id="editInformation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form action="">
+            <form action="" @submit.prevent="handleUpdateProfile">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="fa-solid fa-pen-to-square"></i>
@@ -64,28 +161,26 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstName">
+                            <input type="text" v-model="firstname" class="form-control" id="firstName">
                         </div>
                         <div class="mb-3">
                             <label for="middleName" class="form-label">Middle Name</label>
-                            <input type="text" class="form-control" id="middleName">
+                            <input type="text" v-model="middlename" class="form-control" id="middleName">
                         </div>
                         <div class="mb-3">
                             <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lastName">
+                            <input type="text" v-model="lastname" class="form-control" id="lastName">
                         </div>
                         <div class="mb-3">
                             <label for="gender" class="form-label">Gender</label>
                             <div class="genderSection">
                                 <div class="d-flex align-items-center gender">
                                     <div class="selection mr-3">
-                                        <input id="male-gender" name="gender" type="radio" value="male" v-model="gender"
-                                            required>
+                                        <input id="male-gender" name="gender" type="radio" value="Male" v-model="gender" :is="gender == 'Male' ? 'checked':''" required>
                                         <label for="male-gender">Male</label>
                                     </div>
                                     <div class="selection">
-                                        <input id="female-gender" name="gender" type="radio" value="female" v-model="gender"
-                                            required>
+                                        <input id="female-gender" name="gender" type="radio" value="Female" v-model="gender" :is="gender == 'Female' ? 'checked':''" required>
                                         <label for="female-gender">Female</label>
                                     </div>
                                 </div>
@@ -93,12 +188,12 @@
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="text" class="form-control" id="email">
+                            <input type="text" v-model="email" class="form-control" id="email">
                         </div>
                         <div class="mb-3 position-relative">
-                            <label for="oldPassword" class="form-label">Old Password</label>
-                            <input v-if="!showPassword" type="password" required v-model="password" class="form-control">
-                            <input v-else type="text" required v-model="password" class="form-control">
+                            <label for="oldPassword" class="form-label">Current Password</label>
+                            <input v-if="!showPassword" type="password" v-model="current_password" class="form-control">
+                            <input v-else type="text" v-model="current_password" class="form-control">
                             <span class="toggle-password" @click="togglePassword">
                                 <i class="eye position-absolute end-0 top-70 translate-middle-y" style="color: #7AA5D2">
                                     <font-awesome-icon :icon="['fa-solid', showPassword ? 'fa-eye-slash' : 'fa-eye']" />
@@ -107,8 +202,8 @@
                         </div>
                         <div class="mb-3 position-relative">
                             <label for="newPassword" class="form-label">New Password</label>
-                            <input v-if="!showPassword" type="password" required v-model="newPassword" class="form-control">
-                            <input v-else type="text" required v-model="newPassword" class="form-control">
+                            <input v-if="!showPassword" type="password" v-model="new_password" class="form-control">
+                            <input v-else type="text" v-model="new_password" class="form-control">
                             <span class="toggle-password" @click="togglePassword">
                                 <i class="eye position-absolute end-0 top-70 translate-middle-y" style="color: #7AA5D2">
                                     <font-awesome-icon :icon="['fa-solid', showPassword ? 'fa-eye-slash' : 'fa-eye']" />
@@ -128,23 +223,7 @@
         </div>
     </div>
 </template>
-  
-<script setup>
-import { ref } from 'vue';
 
-const showPassword = ref(false);
-const passwordShow = ref(false);
-
-function togglePassword() {
-    showPassword.value = !showPassword.value;
-}
-
-function togglePasswordInfo() {
-    passwordShow.value = !passwordShow.value;
-}
-
-</script>
-  
 <style scoped>
 .container {
     width: 100%;

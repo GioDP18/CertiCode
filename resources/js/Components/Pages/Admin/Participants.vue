@@ -72,13 +72,13 @@ const sendCert = async (userID, certificateID) => {
                                 <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
                                 <td>{{ user.gender }}</td>
                                 <td>
-                                    <button class="card14" data-bs-toggle="modal" data-bs-target="#sendUserCertModal">
+                                    <button class="card14" data-bs-toggle="modal" :data-bs-target="'#sendUserCertModal_'+user.id">
                                         <span class="send-text">Send a specific Certificate</span>
                                     </button>
                                 </td>
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="sendUserCertModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal fade" :id="'sendUserCertModal_'+user.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -86,7 +86,7 @@ const sendCert = async (userID, certificateID) => {
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                ...
+                                                <h1>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</h1>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -105,14 +105,6 @@ const sendCert = async (userID, certificateID) => {
 </template>
 
 <style scoped>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: transparent;
-}
-
-
 .content {
     background-color: transparent;
     padding: 20px;

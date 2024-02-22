@@ -19,7 +19,16 @@ const login = async () => {
             password: password.value
         })
         .then((response) => {
-            router.push('/user/dashboard')
+            console.log(response.data);
+            localStorage.setItem('user_id', response.data.user.id);
+            localStorage.setItem('token', response.data.access_token);
+            if(response.data.user.user_level == 1){
+                router.push('/admin/dashboard')
+            }
+            else if(response.data.user.user_level == 2){
+                router.push('/user/dashboard')
+            }
+
         })
 
     }
