@@ -49,7 +49,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="modal-container d-flex">
-                                <div class="flex-grow-1">
+                                <div class="left-modal flex-grow-1">
                                     <div class="mb-3">
                                         <label for="firstName" class="form-label">First Name</label>
                                         <input type="text" class="form-control" id="firstName">
@@ -67,7 +67,7 @@
                                         <input type="number" class="form-control" id="age">
                                     </div>
                                 </div>
-                                <div class="flex-grow-1">
+                                <div class="right-modal flex-grow-1">
                                     <div class="mb-3">
                                         <label for="gender" class="form-label">Gender</label>
                                         <div class="genderSection">
@@ -268,5 +268,50 @@
     background-color: transparent;
     border: none;
     font-size: 20px;
+}
+
+@media (max-width: 360px) {
+    .main-container {
+        height: auto;
+        padding: 10px;
+    }
+
+    .sub-container {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .left,
+    .right {
+        width: 100%;
+    }
+
+    .left img {
+        width: 100%;
+        height: auto;
+    }
+
+    .button-container {
+        width: 80%;
+        margin-top: -30px;
+        height: 10vh;
+    }
+
+    .right {
+        margin-top: 0;
+    }
+
+    .modal-container {
+        flex-direction: column;
+    }
+
+    .right-modal {
+        margin-top: -40px;
+    }
+
+    .gender .selection label {
+        width: auto;
+    }
 }
 </style>
