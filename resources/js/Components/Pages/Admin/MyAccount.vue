@@ -219,7 +219,6 @@ function togglePasswordInfo() {
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 </template>

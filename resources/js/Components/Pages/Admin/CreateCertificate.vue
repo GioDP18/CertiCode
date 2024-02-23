@@ -140,6 +140,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .button {
