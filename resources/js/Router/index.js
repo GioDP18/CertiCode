@@ -48,6 +48,7 @@ const routes = [
             {
                 path: "seminars",
                 component: Seminars,
+                name: "seminars",
             },
             {
                 path: "myAccount",
