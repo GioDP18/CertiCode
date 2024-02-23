@@ -10,13 +10,13 @@ class Certificate extends Model
     use HasFactory;
 
     protected $fillable = [
+        "seminar_id",
         "logo",
         "description",
         "issuer"
     ];
-    
-    public function seminar()
-    {
-        return $this->belongsTo(Seminar::class, 'seminar_id');
+
+    public function seminar(){
+        return $this->belongsTo(Seminar::class,'seminar_id');
     }
 }

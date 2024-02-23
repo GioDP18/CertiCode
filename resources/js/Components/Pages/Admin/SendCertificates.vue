@@ -91,7 +91,7 @@ const handleSendAllCerts = (seminar_id) => {
         <div class="content">
             <div class="column-1">
                 <div class="table-card">
-                    <div class="content-text">Participants</div>
+                    <div class="content-text">Send all certiicates for specific seminar</div>
                     <table id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
                         <thead>
                             <tr>

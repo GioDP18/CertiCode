@@ -17,6 +17,7 @@ class ParticipantFactory extends Factory
     public function definition(): array
     {
         return [
+            "user_id" => $this->faker->numberBetween(1, 10),
             "seminar_id" => $this->faker->numberBetween(1, 10),
             "firstname" => $this->faker->firstName(),
             "middlename" => $this->faker->firstname(),

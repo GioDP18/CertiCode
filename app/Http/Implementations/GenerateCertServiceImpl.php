@@ -21,7 +21,7 @@ Class GenerateCertServiceImpl implements GenerateCertService
     {
         $getUser = Participant::where('id', $participant_id)->first();
         $fullname = $getUser->firstname . ' '. $getUser->middlename .' '. $getUser->lastname;
-        $getCertificate = Certificate::where('id', $certificate_id)->first();
+        $getCertificate = Certificate::where('seminar_id', $certificate_id)->first();
         $description = $getCertificate->description;
         $issuer = $getCertificate->issuer;
 
