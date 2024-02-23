@@ -59,8 +59,13 @@ Class ParticipantServiceImpl implements ParticipantService
             ]);
         }
 
+        $seminarsCount = Participant::with(['seminar'])
+        ->where('user_id', $userID)
+        ->where('has_attended', 0)
+        ->count();
         return response()->json([
             'seminars' => $seminars,
+            'seminarsCount' => $seminarsCount
         ], 200);
     }
     
@@ -81,8 +86,15 @@ Class ParticipantServiceImpl implements ParticipantService
                 "message" => "You dont have any certificates yet",
             ]);
         }
+
+        $certificateCount = Participant::with(['seminar', 'seminar.certificate'])
+        ->where('user_id', $userID)
+        ->where('has_attended', 0)
+        ->count();
+
         return response()->json([
             'certificates' => $certificates,
+            'certificateCount' => $certificateCount
         ], 200);
     }
 

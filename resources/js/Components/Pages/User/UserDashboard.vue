@@ -1,12 +1,78 @@
 
 <script setup>
 import { ref } from 'vue';
+import { onMounted } from 'vue';
+import axios from 'axios';
+import moment from 'moment';
 
 const dropdownOpen = ref(false);
+const seminarObjects = ref([]);
+const certificateObjects = ref([]);
+const certificateCountObjects = ref([]);
+const seminarCountObjects = ref([]);
 
 function toggleDropdown() {
     dropdownOpen.value = !dropdownOpen.value;
 }
+
+onMounted(async () => {
+    getSeminar();
+    getCertificate();
+});
+
+const getSeminar = async () => {
+    try {
+        await axios.get('http://127.0.0.1:8000/api/auth/get-seminars/1')
+        .then((response) => {
+            console.log(response.data);
+            const seminars = response.data.seminars;
+            seminarObjects.value = seminars.map(seminarData => seminarData.seminar);
+            console.log(seminarObjects);
+            
+            seminarCountObjects.value = response.data.seminarsCount;
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const getCertificate = async () => {
+    try {
+        await axios.get('http://127.0.0.1:8000/api/auth/get-certificate/1')
+        .then((response) => {
+            console.log(response.data);
+            const participant = response.data.certificates;
+            const seminars = participant.map(seminarData => seminarData.seminar);
+            certificateObjects.value = seminars.map(certificateData => certificateData.certificate);
+            console.log(certificateObjects);
+
+            certificateCountObjects.value = response.data.certificateCount;
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const formatTime = (timeString) => {
+  try {
+    const formattedTime = moment(timeString, 'HH:mm:ss').format('hh:mm A');
+    return formattedTime;
+  } catch (error) {
+    console.error(error);
+    return 'Invalid Time';
+  }
+};
+
+const formatDate = (dateString) => {
+  try {
+    const formattedDate = moment(dateString).format('MMM D, YYYY');
+    return formattedDate;
+  } catch (error) {
+    console.error(error);
+    return 'Invalid Date';
+  }
+};
+
 </script>
 
 <template>
@@ -36,7 +102,7 @@ function toggleDropdown() {
                             <div class="content-1">
                                 <div class="card-1">
                                     <div class="count-card">
-                                        <div class="count-text">100</div>
+                                        <div class="count-text">{{ seminarCountObjects }}</div>
                                         <div class="count-sub-text">Total Seminars Attended</div>
                                     </div>
                                     <div class="count-logo">
@@ -47,7 +113,7 @@ function toggleDropdown() {
                                 </div>
                                 <div class="card-1">
                                     <div class="count-card">
-                                        <div class="count-text">100</div>
+                                        <div class="count-text">{{ certificateCountObjects }}</div>
                                         <div class="count-sub-text">Total Certificates</div>
                                     </div>
                                     <div class="count-logo">
@@ -60,48 +126,17 @@ function toggleDropdown() {
                         </div>
                         <div class="column-1">
                             <div class="content-2">
-                                <div class="seminar-container">
+                                <div v-for="seminar in seminarObjects" :key="seminar.id" class="seminar-container">
                                     <div class="seminar-cards">
                                         <div class="seminar-card">
                                             <div class="seminar-card-1">
                                                 <div class="seminar-header">
                                                     <div class="seminar-logo">logo</div>
-                                                    <div class="seminar-text">Seminar 1</div>
+                                                    <div class="seminar-text">{{ seminar.topic }}</div>
                                                 </div>
-                                                <div class="seminar-subtext">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                    sed do eiusmod tempor
-                                                </div>
-                                                <div class="seminar-date">February 18, 2024</div>
-                                                <div class="seminar-time">8:00 AM</div>
-                                            </div>
-                                        </div>
-                                        <div class="seminar-card">
-                                            <div class="seminar-card-1 ">
-                                                <div class="seminar-header">
-                                                    <div class="seminar-logo">logo</div>
-                                                    <div class="seminar-text">Seminar 2</div>
-                                                </div>
-                                                <div class="seminar-subtext">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                    sed do eiusmod tempor
-                                                </div>
-                                                <div class="seminar-date">February 18, 2024</div>
-                                                <div class="seminar-time">8:00 AM</div>
-                                            </div>
-                                        </div>
-                                        <div class="seminar-card">
-                                            <div class="seminar-card-1 ">
-                                                <div class="seminar-header">
-                                                    <div class="seminar-logo">logo</div>
-                                                    <div class="seminar-text">Seminar 3</div>
-                                                </div>
-                                                <div class="seminar-subtext">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                    sed do eiusmod tempor
-                                                </div>
-                                                <div class="seminar-date">February 18, 2024</div>
-                                                <div class="seminar-time">8:00 AM</div>
+                                                <div class="seminar-subtext">{{ seminar.about_this_seminar }}</div>
+                                                <div class="seminar-date">{{ formatDate(seminar.created_at) }}</div>
+                                                <div class="seminar-time">{{ formatTime(seminar.created_at) }}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +150,7 @@ function toggleDropdown() {
                 </div>
                 <div class="content py-4 mt-4">
                     <div class="container">
-                        <div class="row row-cols-4">
+                        <div v-for="certificate in certificateObjects" :key="certificate.id" class="row row-cols-4">
                             <div class="col py-3">
                                 <div class="cert-card">
                                     <img loading="lazy" src="../../../../../public/external/certificate.png"
@@ -125,72 +160,7 @@ function toggleDropdown() {
                                             <img style="height: 30px;" loading="lazy"
                                                 src="../../../../../public/logo/supsofttech.png" class="img" />
                                         </div>
-                                        <div class="org-name">Organization Name</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="cert-card">
-                                    <img loading="lazy" src="../../../../../public/external/certificate.png"
-                                        class="cert-img" />
-                                    <div class="org-card">
-                                        <div class="org-logo">
-                                            <img style="height: 30px;" loading="lazy"
-                                                src="../../../../../public/logo/supsofttech.png" class="img" />
-                                        </div>
-                                        <div class="org-name">Organization Name</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="cert-card">
-                                    <img loading="lazy" src="../../../../../public/external/certificate.png"
-                                        class="cert-img" />
-                                    <div class="org-card">
-                                        <div class="org-logo">
-                                            <img style="height: 30px;" loading="lazy"
-                                                src="../../../../../public/logo/supsofttech.png" class="img" />
-                                        </div>
-                                        <div class="org-name">Organization Name</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="cert-card">
-                                    <img loading="lazy" src="../../../../../public/external/certificate.png"
-                                        class="cert-img" />
-                                    <div class="org-card">
-                                        <div class="org-logo">
-                                            <img style="height: 30px;" loading="lazy"
-                                                src="../../../../../public/logo/supsofttech.png" class="img" />
-                                        </div>
-                                        <div class="org-name">Organization Name</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="cert-card">
-                                    <img loading="lazy" src="../../../../../public/external/certificate.png"
-                                        class="cert-img" />
-                                    <div class="org-card">
-                                        <div class="org-logo">
-                                            <img style="height: 30px;" loading="lazy"
-                                                src="../../../../../public/logo/supsofttech.png" class="img" />
-                                        </div>
-                                        <div class="org-name">Organization Name</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="cert-card">
-                                    <img loading="lazy" src="../../../../../public/external/certificate.png"
-                                        class="cert-img" />
-                                    <div class="org-card">
-                                        <div class="org-logo">
-                                            <img style="height: 30px;" loading="lazy"
-                                                src="../../../../../public/logo/supsofttech.png" class="img" />
-                                        </div>
-                                        <div class="org-name">Organization Name</div>
+                                        <div class="org-name">{{ certificate.issuer }}</div>
                                     </div>
                                 </div>
                             </div>
