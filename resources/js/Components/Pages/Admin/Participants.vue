@@ -16,9 +16,9 @@ onMounted(async () => {
 const getUsers = async () => {
     try {
         await axios.get('http://127.0.0.1:8000/api/auth/get-all-users')
-        .then((response) => {
-            allUsers.value = response.data.users;
-        })
+            .then((response) => {
+                allUsers.value = response.data.users;
+            })
 
     } catch (error) {
         console.error(error);
@@ -48,22 +48,22 @@ const sendCert = async (participantID, certificateID) => {
             participant_id: participantID,
             certificate_id: certificateID
         })
-        .then((response) => {
-            if (response.data.success) {
-                swal({
-                    title: 'Success',
-                    text: response.data.message,
-                    icon: 'success',
-                });
-            }
-            else {
-                swal({
-                    title: 'Error',
-                    text: response.data.message,
-                    icon: 'error',
-                });
-            }
-        })
+            .then((response) => {
+                if (response.data.success) {
+                    swal({
+                        title: 'Success',
+                        text: response.data.message,
+                        icon: 'success',
+                    });
+                }
+                else {
+                    swal({
+                        title: 'Error',
+                        text: response.data.message,
+                        icon: 'error',
+                    });
+                }
+            })
     }
     catch (error) {
         console.error(error.response.data.message);
@@ -94,47 +94,59 @@ const sendCert = async (participantID, certificateID) => {
                                 <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
                                 <td>{{ user.gender }}</td>
                                 <td>
-                                    <button class="card14" data-bs-toggle="modal" :data-bs-target="'#sendUserCertModal_'+user.id" @click="getSeminarsAttended(user.id)">
-                                        <span class="send-text">Send a specific Certificate</span>
+                                    <button class="card14" data-bs-toggle="modal"
+                                        :data-bs-target="'#sendUserCertModal_' + user.id"
+                                        @click="getSeminarsAttended(user.id)">
+                                        <span class="send-text">Send a specific Certificate <i><font-awesome-icon
+                                                    :icon="['fas', 'paper-plane']" /></i></span>
                                     </button>
                                 </td>
 
                             </tr>
                         </tbody>
                     </table>
-                    <!-- Modal -->
-                    <div v-for="user in allUsers" :key="user.id" class="modal fade" :id="'sendUserCertModal_'+user.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+        <!-- Modal -->
+        <div v-for="user in allUsers" :key="user.id" class="modal fade" :id="'sendUserCertModal_' + user.id"
+            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <form action="">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Send Certificate</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <p>Seminars
+                                    Attended</p>
+                            </div>
+                            <ul v-if="user.participation">
+                                <li class="d-flex" v-for="participant in user.participation" :key="participant.id">
                                     <div>
-                                        <div>
-                                            <p>Seminars Attended</p>
-                                            <ul v-if="user.participation">
-                                                <li class="d-flex" v-for="participant in user.participation" :key="participant.id">
-                                                    <div>
-                                                        <p>{{ participant.seminar.topic }}</p>
-                                                    </div>
-                                                    <div>
-                                                        <button @click="sendCert(participant.id, participant.seminar.id)">Send</button>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div v-else>No seminars attended</div>
-                                        </div>
+                                        <p>{{ participant.seminar.topic }}</p>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                </div>
+                                    <div class="modal-send">
+                                        <button @click="sendCert(participant.id, participant.seminar.id)">Send
+                                            <i><font-awesome-icon :icon="['fas', 'paper-plane']" /></i></button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div v-else>
+                                <p>No seminars
+                                    attended
+                                </p>
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn close" id="closeCreateModal" data-bs-dismiss="modal"
+                                style="border: 2px solid #303841;">Close</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -213,8 +225,13 @@ const sendCert = async (participantID, certificateID) => {
     font-family: Montserrat, sans-serif;
     align-self: start;
     margin-left: 6px;
+    margin-right: 6px;
     margin-top: 6px;
     margin-bottom: 6px;
+}
+
+.send-text i {
+    color: #7AA5D2;
 }
 
 @media (max-width: 991px) {
@@ -229,5 +246,26 @@ const sendCert = async (participantID, certificateID) => {
     object-position: center;
     width: 22px;
     margin-right: 6px;
+}
+
+.modal-send {
+    width: 18%;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.modal-send button {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+}
+
+.modal-send i {
+    color: #7AA5D2;
+}
+
+.close:hover {
+    background-color: #303841;
+    color: #ffffff;
 }
 </style>
