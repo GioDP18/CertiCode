@@ -45,6 +45,8 @@ Route::group([
     Route::post('/send-one-certificate', [CertificateController::class,'sendOneCertificate']);
 
     // User
+    Route::post('/get-seminar-topic', [UserController::class,'getSeminarTopic']);
+    Route::post('/get-seminars-attended', [UserController::class,'getSeminarsAttended']);
     Route::post('/get-user-details', [UserController::class,'getUserDetails']);
     Route::post('/update-profile', [UserController::class,'updateProfile']);
 

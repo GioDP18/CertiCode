@@ -1,57 +1,70 @@
 <script setup>
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
-import DataTable from 'datatables.net-vue3';
-import DataTablesCore from 'datatables.net-bs5';
-
-DataTable.use(DataTablesCore);
 
 const isGenerating = ref(false);
 const allUsers = ref([]);
+const seminarTopic = ref('');
 
 onMounted(async () => {
     getUsers();
-    initializeDataTables();
 });
 
 const getUsers = async () => {
     try {
-        await axios.get('http://127.0.0.1:8000/api/auth/get-all-users')
-        .then((response) => {
-            console.log(response.data);
-            allUsers.value = response.data.users;
-            // console.log(allUsers.value);
-        })
+        const response = await axios.get('http://127.0.0.1:8000/api/auth/get-all-users');
+        allUsers.value = response.data.users;
     } catch (error) {
         console.error(error);
     }
 };
 
-
-
-const sendCert = async (userID, certificateID) => {
-    isGenerating.value = true;
-    console.log(isGenerating.value)
+const getSeminarsAttended = async (id) => {
     try {
-        await axios.post(`http://127.0.0.1:8000/api/auth/send-one-certificate`, {
-            user_id: userID,
-            certificate_id: certificateID
-        })
-            .then((response) => {
-                console.log(response.data.message)
-            })
-            .finally(() => {
-                isGenerating.value = false;
-                console.log(isGenerating.value)
-            })
+        const response = await axios.post('http://127.0.0.1:8000/api/auth/get-seminars-attended', {
+            user_id: id
+        });
+        console.log(response.data);
+        const userIndex = allUsers.value.findIndex(user => user.id === id);
+        if (userIndex !== -1) {
+            allUsers.value[userIndex].participation = response.data.user.participation;
+        }
+    } catch (error) {
+        console.error(error);
     }
-    catch (error) {
-        console.log(error.response.data.message)
+};
+
+const getSeminarTopic = async (seminar_id) => {
+    try{
+        await axios.post('http://127.0.0.1:8000/api/auth/get-seminar-topic', {
+            seminar_id: seminar_id
+        })
+        .then((response) => {
+            console.log(response.data);
+            return response.data.topic
+        })
+    }
+    catch(error){
+        console.log(error);
     }
 }
 
-
+const sendCert = async (participantID, certificateID) => {
+    isGenerating.value = true;
+    try {
+        const response = await axios.post(`http://127.0.0.1:8000/api/auth/send-one-certificate`, {
+            participant_id: participantID,
+            certificate_id: certificateID
+        });
+        console.log(response.data.message);
+    } catch (error) {
+        console.error(error.response.data.message);
+    } finally {
+        isGenerating.value = false;
+    }
+};
 </script>
+
 
 <template>
     <div class="main-content">
@@ -72,11 +85,10 @@ const sendCert = async (userID, certificateID) => {
                                 <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
                                 <td>{{ user.gender }}</td>
                                 <td>
-                                    <button class="card14" data-bs-toggle="modal" :data-bs-target="'#sendUserCertModal_'+user.id">
+                                    <button class="card14" data-bs-toggle="modal" :data-bs-target="'#sendUserCertModal_'+user.id" @click="getSeminarsAttended(user.id)">
                                         <span class="send-text">Send a specific Certificate</span>
                                     </button>
                                 </td>
-
                                 <!-- Modal -->
                                 <div class="modal fade" :id="'sendUserCertModal_'+user.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                     <div class="modal-dialog">
@@ -86,11 +98,28 @@ const sendCert = async (userID, certificateID) => {
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <h1>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</h1>
+                                                <div>
+                                                    <div>
+                                                        <h4>Seminars Attended</h4>
+                                                        <ul v-if="user.participation">
+                                                            <li class="d-flex" v-for="participant in user.participation" :key="participant.id">
+                                                                <div>
+                                                                    <h4>{{ participant.seminar.topic }}</h4>
+                                                                </div>
+                                                                <div>
+                                                                    <button @click="sendCert(participant.id, participant.seminar.id)">Send</button>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                        <div v-else>No seminars attended</div>
+                                                    </div>
+                                                    <div>
+                                                        <button @click="sendCert(user.id, certificateID)">Send</button>
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Understood</button>
                                             </div>
                                         </div>
                                     </div>
@@ -103,6 +132,7 @@ const sendCert = async (userID, certificateID) => {
         </div>
     </div>
 </template>
+
 
 <style scoped>
 .content {

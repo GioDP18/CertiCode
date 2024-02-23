@@ -4,6 +4,7 @@ namespace App\Http\Implementations;
 
 
 use App\Http\Services\UserService;
+use App\Models\Seminar;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -61,6 +62,22 @@ Class UserServiceImpl implements UserService
         return response()->json([
             "success" => true,
             "message" => "Profile updated successfully."
+        ], 200);
+    }
+
+    public function getSeminarsAttended(Request $request){
+        $user = User::with(['participation.seminar'])->find($request->user_id);
+
+        return response()->json([
+            'user' => $user,
+        ], 200);
+    }
+
+    public function getSeminarTopic(Request $request){
+        $topic = Seminar::where('id', $request->seminar_id)->first();
+
+        return response()->json([
+            'topic' => $topic,
         ], 200);
     }
 }

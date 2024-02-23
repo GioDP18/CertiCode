@@ -23,4 +23,12 @@ class UserController extends Controller
     public function updateProfile(Request $request){
         return $this->userService->updateProfile($request);
     }
+
+    public function getSeminarsAttended(Request $request){
+        return $this->userService->getSeminarsAttended($request);
+    }
+
+    public function getSeminarTopic(Request $request){
+        return $this->userService->getSeminarTopic($request);
+    }
 }

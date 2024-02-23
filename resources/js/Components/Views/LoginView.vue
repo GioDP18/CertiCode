@@ -28,7 +28,6 @@ const login = async () => {
             else if(response.data.user.user_level == 2){
                 router.push('/user/dashboard')
             }
-
         })
 
     }
