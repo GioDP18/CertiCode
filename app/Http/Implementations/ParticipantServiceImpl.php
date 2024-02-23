@@ -99,7 +99,7 @@ Class ParticipantServiceImpl implements ParticipantService
         $seminar_link = 'http://127.0.0.1:8000/user/seminar';
         $userExist = Participant::where('user_id', $user->id)
             ->where('seminar_id', $seminar->id)
-            ->exist();
+            ->exists();
 
         if ($userExist) {
             return response()->json([
@@ -111,11 +111,17 @@ Class ParticipantServiceImpl implements ParticipantService
         Participant::create([
             'user_id' => $user->id,
             'seminar_id' => $seminar->id,
+            'firstname' => $request->firstname,
+            'middlename' => $request->middlename,
+            'lastname' => $request->lastname,
+            'gender' => $request->gender,
+            'email' => $request->email,
+            'school' => $request->school,
         ]);
 
         $data = [
-            'name' => $user->firstname,
-            'email' => $user->email,
+            'name' => $request->firstname,
+            'email' => $request->email,
         ];
 
         Mail::send(new SeminarRegistration($data, $seminar_link));
