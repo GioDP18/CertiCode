@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('topic');
             $table->string('speaker');
             $table->text('about_this_seminar');
+            $table->text('about_the_speaker');
+            $table->dateTime('date');
             $table->timestamps();
         });
     }
