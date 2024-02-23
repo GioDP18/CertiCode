@@ -1,10 +1,13 @@
 <script setup>
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
+import store from '../../../State/index.js';
+import { inject } from 'vue';
 
-const isGenerating = ref(false);
+// Inject swal and BASE_URL
+const swal = inject('$swal');
+
 const allUsers = ref([]);
-const seminarTopic = ref('');
 
 onMounted(async () => {
     getUsers();
@@ -34,33 +37,36 @@ const getSeminarsAttended = async (id) => {
     }
 };
 
-const getSeminarTopic = async (seminar_id) => {
-    try{
-        await axios.post('http://127.0.0.1:8000/api/auth/get-seminar-topic', {
-            seminar_id: seminar_id
-        })
-        .then((response) => {
-            console.log(response.data);
-            return response.data.topic
-        })
-    }
-    catch(error){
-        console.log(error);
-    }
-}
 
 const sendCert = async (participantID, certificateID) => {
-    isGenerating.value = true;
+    store.commit('setSendingCerts', true);
     try {
         const response = await axios.post(`http://127.0.0.1:8000/api/auth/send-one-certificate`, {
             participant_id: participantID,
             certificate_id: certificateID
-        });
-        console.log(response.data.message);
-    } catch (error) {
+        })
+        .then((response) => {
+            if (response.data.success) {
+                swal({
+                    title: 'Success',
+                    text: response.data.message,
+                    icon: 'success',
+                });
+            }
+            else {
+                swal({
+                    title: 'Error',
+                    text: response.data.message,
+                    icon: 'error',
+                });
+            }
+        })
+    }
+    catch (error) {
         console.error(error.response.data.message);
-    } finally {
-        isGenerating.value = false;
+    }
+    finally {
+        store.commit('setSendingCerts', false);
     }
 };
 </script>
@@ -89,44 +95,42 @@ const sendCert = async (participantID, certificateID) => {
                                         <span class="send-text">Send a specific Certificate</span>
                                     </button>
                                 </td>
-                                <!-- Modal -->
-                                <div class="modal fade" :id="'sendUserCertModal_'+user.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div>
-                                                    <div>
-                                                        <h4>Seminars Attended</h4>
-                                                        <ul v-if="user.participation">
-                                                            <li class="d-flex" v-for="participant in user.participation" :key="participant.id">
-                                                                <div>
-                                                                    <h4>{{ participant.seminar.topic }}</h4>
-                                                                </div>
-                                                                <div>
-                                                                    <button @click="sendCert(participant.id, participant.seminar.id)">Send</button>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                        <div v-else>No seminars attended</div>
-                                                    </div>
-                                                    <div>
-                                                        <button @click="sendCert(user.id, certificateID)">Send</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </tr>
                         </tbody>
                     </table>
+                    <!-- Modal -->
+                    <div v-for="user in allUsers" :key="user.id" class="modal fade" :id="'sendUserCertModal_'+user.id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div>
+                                        <div>
+                                            <p>Seminars Attended</p>
+                                            <ul v-if="user.participation">
+                                                <li class="d-flex" v-for="participant in user.participation" :key="participant.id">
+                                                    <div>
+                                                        <p>{{ participant.seminar.topic }}</p>
+                                                    </div>
+                                                    <div>
+                                                        <button @click="sendCert(participant.id, participant.seminar.id)">Send</button>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <div v-else>No seminars attended</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
