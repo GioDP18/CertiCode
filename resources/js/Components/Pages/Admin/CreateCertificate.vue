@@ -19,7 +19,7 @@ const about_this_seminar = ref('');
 
 
 const handleAddSeminar = async () => {
-    try{
+    try {
         await axios.post('http://localhost:8000/api/auth/add-new-seminar', {
             topic: topic.value,
             date: date.value,
@@ -30,28 +30,28 @@ const handleAddSeminar = async () => {
             description: description.value,
             about_this_seminar: about_this_seminar.value,
         })
-        .then((response) => {
-            if(response.data.success){
-                swal({
-                    title: 'Success',
-                    text: response.data.message,
-                    icon: 'success',
-                });
+            .then((response) => {
+                if (response.data.success) {
+                    swal({
+                        title: 'Success',
+                        text: response.data.message,
+                        icon: 'success',
+                    });
 
-                setTimeout(() =>{
-                    router.push({name: 'seminars'});
-                }, 3000)
-            }
-            else{
-                swal({
-                    title: 'Error',
-                    text: response.data.message,
-                    icon: 'error',
-                });
-            }
-        })
+                    setTimeout(() => {
+                        router.push({ name: 'seminars' });
+                    }, 3000)
+                }
+                else {
+                    swal({
+                        title: 'Error',
+                        text: response.data.message,
+                        icon: 'error',
+                    });
+                }
+            })
     }
-    catch(error){
+    catch (error) {
         console.log(error);
     }
 }
@@ -89,7 +89,8 @@ const handleAddSeminar = async () => {
                     <div class="container2">
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Certificate Logo</label>
-                            <input type="file" @change="handleLogoChange" class="form-control" id="" aria-describedby="emailHelp">
+                            <input type="file" @change="handleLogoChange" class="form-control" id=""
+                                aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
                             <label for="issuer" class="form-label">Issuer</label>
@@ -105,18 +106,18 @@ const handleAddSeminar = async () => {
                         </div>
                     </div>
                 </div>
+                <div class="preview-container">
+                    <div class="rectangle2">
+                        <h4>Preview</h4>
+                    </div>
+                    <div class="img-certificate">
+                        <img src="../../../../../public/external/certificate.png" alt="">
+                    </div>
+                </div>
                 <div class="submit-button">
                     <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">ADD</span></button>
                 </div>
             </form>
-            <div class="preview-container">
-                <div class="rectangle2">
-                    <h4>Preview</h4>
-                </div>
-                <div class="img-certificate">
-                    <img src="../../../../../public/external/certificate.png" alt="">
-                </div>
-            </div>
         </div>
     </div>
 </template>
@@ -131,7 +132,7 @@ const handleAddSeminar = async () => {
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 100%;
-    height: 180vh;
+    height: 205vh;
     border-radius: 16px;
 }
 
@@ -158,12 +159,11 @@ const handleAddSeminar = async () => {
 
 .parent-container {
     width: 90%;
-    height: 65vh;
+    height: 100vh;
     margin: auto;
     display: flex;
     flex-direction: row;
     gap: 50px;
-    margin-bottom: 30px;
     margin-top: 10px;
 }
 
@@ -184,7 +184,7 @@ const handleAddSeminar = async () => {
     justify-content: center;
 }
 
-.form-container img {
+.form-container .img-container img {
     width: 25%;
     border: 3px solid #303841;
     border-radius: 50%;
@@ -249,19 +249,24 @@ const handleAddSeminar = async () => {
 
 .preview-container {
     width: 100%;
-    height: 80vh;
-    margin-top: 13%;
+    height: 50vh;
     border-radius: 16px;
+    margin-bottom: 30%;
+    margin-top: -120px;
 }
 
 .preview-container .rectangle2 {
     height: 10vh;
     width: 100%;
     background-color: #303841;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+}
+
+.preview-container h4 {
+    margin-top: 37px;
 }
 
 .img-certificate {
@@ -285,7 +290,7 @@ const handleAddSeminar = async () => {
 
     .main-container {
         width: 100%;
-        height: 100%;
+        height: 113%;
     }
 
     .form-container h4 {
@@ -294,6 +299,10 @@ const handleAddSeminar = async () => {
 
     .parent-container {
         flex-direction: column;
+    }
+
+    .preview-container h4 {
+        margin-top: 37px;
     }
 
     .img-container {
@@ -316,12 +325,12 @@ const handleAddSeminar = async () => {
     }
 
     .submit-button {
-        margin-top: 90%;
+        margin-top: 20%;
     }
 
     .preview-container {
         height: 40vh;
-        margin-top: 115%;
+        margin-top: 50%;
     }
 
     .img-certificate {
