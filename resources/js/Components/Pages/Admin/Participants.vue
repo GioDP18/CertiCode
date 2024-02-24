@@ -44,7 +44,7 @@ const getSeminarsAttended = async (id) => {
 const sendCert = async (participantID, certificateID) => {
     store.commit('setSendingCerts', true);
     try {
-        const response = await axios.post(`http://127.0.0.1:8000/api/auth/send-one-certificate`, {
+        await axios.post(`http://127.0.0.1:8000/api/auth/send-one-certificate`, {
             participant_id: participantID,
             certificate_id: certificateID
         })
