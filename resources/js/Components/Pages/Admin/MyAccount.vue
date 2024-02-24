@@ -19,32 +19,32 @@ const new_password = ref('');
 
 
 onMounted(() => {
-  getUserDetails();
+    getUserDetails();
 });
 
 const getUserDetails = async () => {
-    try{
+    try {
         await axios.post('http://localhost:8000/api/auth/get-user-details', {
             user_id: parseInt(localStorage.getItem('user_id'))
         })
-        .then((response) => {
-            console.log(response.data.user);
-            userInfo.value = response.data.user;
+            .then((response) => {
+                console.log(response.data.user);
+                userInfo.value = response.data.user;
 
-            firstname.value = response.data.user.firstname;
-            middlename.value = response.data.user.middlename;
-            lastname.value = response.data.user.lastname;
-            gender.value = response.data.user.gender;
-            email.value = response.data.user.email;
-        })
+                firstname.value = response.data.user.firstname;
+                middlename.value = response.data.user.middlename;
+                lastname.value = response.data.user.lastname;
+                gender.value = response.data.user.gender;
+                email.value = response.data.user.email;
+            })
     }
-    catch(err){
+    catch (err) {
         console.log(err);
     }
 }
 
 const updateProfile = async () => {
-    try{
+    try {
         await axios.post('http://localhost:8000/api/auth/update-profile', {
             user_id: parseInt(localStorage.getItem('user_id')),
             firstname: firstname.value,
@@ -55,20 +55,20 @@ const updateProfile = async () => {
             current_password: current_password.value,
             new_password: new_password.value
         })
-        .then((response) => {
-            if(response.data.success) {
-                swal(response.data.message, "", "success");
+            .then((response) => {
+                if (response.data.success) {
+                    swal(response.data.message, "", "success");
 
-                setTimeout(() => {
-                    location.reload();
-                }, 3000);
-            }
-            else{
-                swal(response.data.message, "", "error");
-            }
-        })
+                    setTimeout(() => {
+                        location.reload();
+                    }, 3000);
+                }
+                else {
+                    swal(response.data.message, "", "error");
+                }
+            })
     }
-    catch(error){
+    catch (error) {
         console.log(error);
     }
 }
@@ -80,11 +80,11 @@ const handleUpdateProfile = () => {
         showCancelButton: true,
         confirmButtonText: "Yes",
     })
-    .then((result) => {
-        if (result.isConfirmed) {
-            updateProfile()
-        }
-    });
+        .then((result) => {
+            if (result.isConfirmed) {
+                updateProfile()
+            }
+        });
 
 }
 
@@ -157,6 +157,8 @@ function togglePasswordInfo() {
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="staticBackdropLabel"><i class="fa-solid fa-pen-to-square"></i>
                             Edit Information</h1>
+                        <button type="button" class="button-close" data-bs-dismiss="modal"
+                            aria-label="Close"><font-awesome-icon :icon="['fas', 'xmark']" /></button>
                     </div>
                     <div class="modal-body">
                         <div class="mb-3">
@@ -176,11 +178,13 @@ function togglePasswordInfo() {
                             <div class="genderSection">
                                 <div class="d-flex align-items-center gender">
                                     <div class="selection mr-3">
-                                        <input id="male-gender" name="gender" type="radio" value="Male" v-model="gender" :is="gender == 'Male' ? 'checked':''" required>
+                                        <input id="male-gender" name="gender" type="radio" value="Male" v-model="gender"
+                                            :is="gender == 'Male' ? 'checked' : ''" required>
                                         <label for="male-gender">Male</label>
                                     </div>
                                     <div class="selection">
-                                        <input id="female-gender" name="gender" type="radio" value="Female" v-model="gender" :is="gender == 'Female' ? 'checked':''" required>
+                                        <input id="female-gender" name="gender" type="radio" value="Female" v-model="gender"
+                                            :is="gender == 'Female' ? 'checked' : ''" required>
                                         <label for="female-gender">Female</label>
                                     </div>
                                 </div>
@@ -466,6 +470,13 @@ function togglePasswordInfo() {
 .modal-header {
     background-color: #303841;
     color: #ffffff;
+}
+
+.modal-header .button-close {
+    color: white !important;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
 }
 
 .gender {
