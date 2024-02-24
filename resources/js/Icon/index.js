@@ -24,6 +24,8 @@ import {
     faClock,
     faPersonChalkboard,
     faAddressCard,
+    faAnglesRight,
+    faArrowRight
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -47,5 +49,7 @@ library.add(
     faUserPlus,
     faClock,
     faPersonChalkboard,
-    faAddressCard
+    faAddressCard,
+    faAnglesRight,
+    faArrowRight
 );
