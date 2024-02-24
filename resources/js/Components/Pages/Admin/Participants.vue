@@ -117,25 +117,55 @@ const sendCert = async (participantID, certificateID) => {
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="staticBackdropLabel">Send Certificate</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close"><font-awesome-icon :icon="['fas', 'xmark']" /></button>
                         </div>
                         <div class="modal-body">
                             <div class="mb-3">
                                 <p>Seminars
                                     Attended</p>
                             </div>
-                            <ul v-if="user.participation">
-                                <li class="d-flex" v-for="participant in user.participation" :key="participant.id">
-                                    <div>
-                                        <p>{{ participant.seminar.topic }}</p>
+                            <!-- <ul v-if="user.participation" class="seminar-list">
+                                <li class="d-flex" v-for="participant in user.participation" :key="participant.id"> -->
+                            <ul>
+                                <li>
+                                    <div class="list-item">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto soluta vitae
+                                            accusantium et distinctio nisi dicta</p>
+                                        <div class="modal-send">
+                                            <button @click="sendCert(participant.id, participant.seminar.id)"
+                                                data-toggle="tooltip" data-placement="top" title="Send">
+                                                <i><font-awesome-icon :icon="['fas', 'paper-plane']" /></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="modal-send">
-                                        <button @click="sendCert(participant.id, participant.seminar.id)">Send
-                                            <i><font-awesome-icon :icon="['fas', 'paper-plane']" /></i></button>
+                                </li>
+                                <li>
+                                    <div class="list-item">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                                        <div class="modal-send">
+                                            <button @click="sendCert(participant.id, participant.seminar.id)"
+                                                data-toggle="tooltip" data-placement="top" title="Send">
+                                                <i><font-awesome-icon :icon="['fas', 'paper-plane']" /></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="list-item">
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto soluta vitae
+                                            accusantiu</p>
+                                        <div class="modal-send">
+                                            <button @click="sendCert(participant.id, participant.seminar.id)"
+                                                data-toggle="tooltip" data-placement="top" title="Send">
+                                                <i><font-awesome-icon :icon="['fas', 'paper-plane']" /></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </li>
                             </ul>
-                            <div v-else>
+                            <div>
+                                <!-- <div v-else> -->
                                 <p>No seminars
                                     attended
                                 </p>
@@ -248,8 +278,31 @@ const sendCert = async (participantID, certificateID) => {
     margin-right: 6px;
 }
 
+.modal-header {
+    background-color: #303841;
+    color: #ffffff;
+}
+
+.modal-header .button-close {
+    color: white !important;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+}
+
+.list-item {
+    position: relative;
+}
+
+.list-item p {
+    margin-right: 20%;
+}
+
 .modal-send {
-    width: 18%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 13%;
     border-radius: 20px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }

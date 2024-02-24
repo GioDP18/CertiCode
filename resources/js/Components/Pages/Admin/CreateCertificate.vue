@@ -42,18 +42,18 @@
                         </div>
                     </div>
                 </div>
+                <div class="preview-container">
+                    <div class="rectangle2">
+                        <h4>Preview</h4>
+                    </div>
+                    <div class="img-certificate">
+                        <img src="../../../../../public/external/certificate.png" alt="">
+                    </div>
+                </div>
                 <div class="submit-button">
                     <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">ADD</span></button>
                 </div>
             </form>
-            <div class="preview-container">
-                <div class="rectangle2">
-                    <h4>Preview</h4>
-                </div>
-                <div class="img-certificate">
-                    <img src="../../../../../public/external/certificate.png" alt="">
-                </div>
-            </div>
         </div>
     </div>
 </template>
@@ -72,7 +72,7 @@
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 100%;
-    height: 180vh;
+    height: 192vh;
     border-radius: 16px;
 }
 
@@ -125,7 +125,7 @@
     justify-content: center;
 }
 
-.form-container img {
+.form-container .img-container img {
     width: 25%;
     border: 3px solid #303841;
     border-radius: 50%;
@@ -190,19 +190,22 @@
 
 .preview-container {
     width: 100%;
-    height: 80vh;
-    margin-top: 13%;
+    height: 50vh;
     border-radius: 16px;
+    margin-bottom: 30%;
 }
 
 .preview-container .rectangle2 {
     height: 10vh;
     width: 100%;
     background-color: #303841;
+    color: #ffffff;
     display: flex;
     justify-content: center;
-    align-items: center;
-    color: #ffffff;
+}
+
+.preview-container h4 {
+    margin-top: 15px;
 }
 
 .img-certificate {
