@@ -1,32 +1,33 @@
 <script setup>
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
-import DataTable from 'datatables.net-vue3';
-import DataTablesCore from 'datatables.net-bs5';
 import { inject } from 'vue';
 import store from '../../../State/index.js';
+import $ from 'jquery';
 
 // Inject swal and BASE_URL
 const swal = inject('$swal');
 // const store = inject('$store');
 const BASE_URL = inject('$swal');
 
-DataTable.use(DataTablesCore);
-
 const allSeminars = ref([]);
 
 onMounted(async () => {
     await getSeminars();
-    initializeDataTables();
+    initializeDataTable();
 });
+
+const initializeDataTable = () => {
+    $('#dailyTimeLog').DataTable();
+};
 
 const getSeminars = async () => {
     try {
         await axios.get('http://127.0.0.1:8000/api/auth/get-all-seminars')
-        .then((response) => {
-            allSeminars.value = response.data.seminars;
-            console.log(allSeminars.value);
-        })
+            .then((response) => {
+                allSeminars.value = response.data.seminars;
+                console.log(allSeminars.value);
+            })
     } catch (error) {
         console.error(error);
     }
@@ -39,26 +40,26 @@ const sendAllCerts = async (seminar_id) => {
         await axios.post('http://127.0.0.1:8000/api/auth/send-all-certificate', {
             seminar_id: seminar_id
         })
-        .then((response) => {
-            store.commit('setSendingCerts', false);
-            if (response.data.success) {
-                swal({
-                    title: 'Success',
-                    text: response.data.message,
-                    icon: 'success',
-                });
-            }
-            else {
-                swal({
-                    title: 'Error',
-                    text: response.data.message,
-                    icon: 'error',
-                });
-            }
-        })
-        .finally(() => {
-            store.commit('setSendingCerts', false);
-        });
+            .then((response) => {
+                store.commit('setSendingCerts', false);
+                if (response.data.success) {
+                    swal({
+                        title: 'Success',
+                        text: response.data.message,
+                        icon: 'success',
+                    });
+                }
+                else {
+                    swal({
+                        title: 'Error',
+                        text: response.data.message,
+                        icon: 'error',
+                    });
+                }
+            })
+            .finally(() => {
+                store.commit('setSendingCerts', false);
+            });
     }
     catch (error) {
         swal({
@@ -77,11 +78,11 @@ const handleSendAllCerts = (seminar_id) => {
         showCancelButton: true,
         confirmButtonText: "Send",
     })
-    .then((result) => {
-        if (result.isConfirmed) {
-            sendAllCerts(seminar_id)
-        }
-    });
+        .then((result) => {
+            if (result.isConfirmed) {
+                sendAllCerts(seminar_id)
+            }
+        });
 }
 
 </script>
@@ -91,7 +92,7 @@ const handleSendAllCerts = (seminar_id) => {
         <div class="content">
             <div class="column-1">
                 <div class="table-card">
-                    <div class="content-text">Send all certiicates for specific seminar</div>
+                    <div class="content-text">Send all certificates for specific seminar</div>
                     <table id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
                         <thead>
                             <tr>
@@ -107,8 +108,10 @@ const handleSendAllCerts = (seminar_id) => {
                                 <td>
                                     <button class="card14" @click="handleSendAllCerts(seminar.id)">
                                         <span class="send-text">Send Certificates</span>
-                                        <i class="img-8"><font-awesome-icon style="color: #7AA5D2; height: 16px;"
-                                                class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
+                                        <i class="img-8">
+                                            <font-awesome-icon style="color: #7AA5D2; height: 16px;" class="icon"
+                                                :icon="['fas', 'fa-paper-plane']" />
+                                        </i>
                                     </button>
                                 </td>
                             </tr>
@@ -121,17 +124,13 @@ const handleSendAllCerts = (seminar_id) => {
 </template>
 
 <style scoped>
-* {
-    margin: 0;
+.main-content {
+    width: 100%;
     padding: 0;
-    box-sizing: border-box;
-    background-color: transparent;
 }
-
 
 .content {
     background-color: transparent;
-    padding: 20px;
 }
 
 .column-1 {

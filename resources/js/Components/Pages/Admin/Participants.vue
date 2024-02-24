@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import store from '../../../State/index.js';
 import { inject } from 'vue';
+import $ from 'jquery';
 
 // Inject swal and BASE_URL
 const swal = inject('$swal');
@@ -10,8 +11,13 @@ const swal = inject('$swal');
 const allUsers = ref([]);
 
 onMounted(async () => {
-    getUsers();
+    await getUsers();
+    initializeDataTable();
 });
+
+const initializeDataTable = () => {
+    $('#dailyTimeLog').DataTable();
+};
 
 const getUsers = async () => {
     try {
@@ -125,36 +131,10 @@ const sendCert = async (participantID, certificateID) => {
                                 <p>Seminars
                                     Attended</p>
                             </div>
-                            <!-- <ul v-if="user.participation" class="seminar-list">
-                                <li class="d-flex" v-for="participant in user.participation" :key="participant.id"> -->
-                            <ul>
-                                <li>
+                            <ul v-if="user.participation" class="seminar-list">
+                                <li class="d-flex" v-for="participant in user.participation" :key="participant.id">
                                     <div class="list-item">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto soluta vitae
-                                            accusantium et distinctio nisi dicta</p>
-                                        <div class="modal-send">
-                                            <button @click="sendCert(participant.id, participant.seminar.id)"
-                                                data-toggle="tooltip" data-placement="top" title="Send">
-                                                <i><font-awesome-icon :icon="['fas', 'paper-plane']" /></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="list-item">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                                        <div class="modal-send">
-                                            <button @click="sendCert(participant.id, participant.seminar.id)"
-                                                data-toggle="tooltip" data-placement="top" title="Send">
-                                                <i><font-awesome-icon :icon="['fas', 'paper-plane']" /></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="list-item">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto soluta vitae
-                                            accusantiu</p>
+                                        <p>{{ participant.seminar.topic }}</p>
                                         <div class="modal-send">
                                             <button @click="sendCert(participant.id, participant.seminar.id)"
                                                 data-toggle="tooltip" data-placement="top" title="Send">
@@ -164,8 +144,7 @@ const sendCert = async (participantID, certificateID) => {
                                     </div>
                                 </li>
                             </ul>
-                            <div>
-                                <!-- <div v-else> -->
+                            <div v-else>
                                 <p>No seminars
                                     attended
                                 </p>
