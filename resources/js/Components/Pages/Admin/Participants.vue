@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ref, onMounted } from 'vue';
 import store from '../../../State/index.js';
 import { inject } from 'vue';
+import $ from 'jquery';
 
 // Inject swal and BASE_URL
 const swal = inject('$swal');
@@ -10,8 +11,13 @@ const swal = inject('$swal');
 const allUsers = ref([]);
 
 onMounted(async () => {
-    getUsers();
+    await getUsers();
+    initializeDataTable();
 });
+
+const initializeDataTable = () => {
+    $('#dailyTimeLog').DataTable();
+};
 
 const getUsers = async () => {
     try {
