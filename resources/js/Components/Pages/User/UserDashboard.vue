@@ -5,6 +5,7 @@ import { onMounted } from 'vue';
 import axios from 'axios';
 import moment from 'moment';
 
+const id = localStorage.getItem('user_id');
 const dropdownOpen = ref(false);
 const seminarObjects = ref([]);
 const certificateObjects = ref([]);
@@ -22,7 +23,8 @@ onMounted(async () => {
 
 const getSeminar = async () => {
     try {
-        await axios.get('http://127.0.0.1:8000/api/auth/get-seminars/1')
+        
+        await axios.get(`http://127.0.0.1:8000/api/auth/get-seminars/${id}`)
         .then((response) => {
             console.log(response.data);
             const seminars = response.data.seminars;
@@ -30,6 +32,7 @@ const getSeminar = async () => {
             console.log(seminarObjects);
             
             seminarCountObjects.value = response.data.seminarsCount;
+            
         })
     } catch (error) {
         console.error(error);
@@ -38,7 +41,7 @@ const getSeminar = async () => {
 
 const getCertificate = async () => {
     try {
-        await axios.get('http://127.0.0.1:8000/api/auth/get-certificate/1')
+        await axios.get(`http://127.0.0.1:8000/api/auth/get-certificate/${id}`)
         .then((response) => {
             console.log(response.data);
             const participant = response.data.certificates;

@@ -1,3 +1,75 @@
+<script setup>
+import { ref } from 'vue';
+import { onMounted } from 'vue';
+import { inject } from 'vue';
+import axios from 'axios';
+
+const swal = inject('$swal');
+const info = ref([]);
+const firstName = ref('');
+const middleName = ref('');
+const lastName = ref('');
+const gender = ref('');
+const school = ref('');
+const email = ref('');
+
+onMounted(async () => {
+    seminarInfo();
+});
+
+const seminarInfo = async () => {
+    try {
+        await axios.get('http://127.0.0.1:8000/api/auth/get-seminar-topic', {
+            seminar_id: 1,
+        })
+        .then((response) => {
+            info.value = response.data;
+            console.log(info.value);
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const saveInformation = async() => {
+    try {
+        await axios.post('http://127.0.0.1:8000/api/auth/register-seminar', {
+            userID: localStorage.getItem('user_id'),
+            seminarID: 1,
+            firstname: firstName.value,
+            middlename: middleName.value,
+            lastname: lastName.value,
+            gender: gender.value,
+            email: email.value,
+            school: school.value
+        })
+        .then((response) => {
+            if(response.data.success){
+                swal({
+                    title: 'Success',
+                    text: response.data.message,
+                    icon: 'success',
+                });
+
+                setTimeout(() =>{
+                    router.push({name: 'seminars'});
+                }, 3000)
+            }
+            else{
+                swal({
+                    title: 'Error',
+                    text: response.data.message,
+                    icon: 'error',
+                });
+            }
+        })
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+</script>
+
 <template>
     <div class="main-container">
         <div class="sub-container">
@@ -39,7 +111,7 @@
         <div class="modal fade" id="registerSeminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
-                <form action="">
+                <form @submit.prevent="saveInformation">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="staticBackdropLabel"><i><font-awesome-icon
@@ -52,15 +124,15 @@
                                 <div class="left-modal flex-grow-1">
                                     <div class="mb-3">
                                         <label for="firstName" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="firstName">
+                                        <input v-model="firstName" type="text" class="form-control" id="firstName">
                                     </div>
                                     <div class="mb-3">
                                         <label for="middleName" class="form-label">Middle Name</label>
-                                        <input type="text" class="form-control" id="middleName">
+                                        <input v-model="middleName" type="text" class="form-control" id="middleName">
                                     </div>
                                     <div class="mb-3">
                                         <label for="lastName" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" id="lastName">
+                                        <input v-model="lastName" type="text" class="form-control" id="lastName">
                                     </div>
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Age</label>
@@ -87,7 +159,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="soc" class="form-label">School/Organization/Company</label>
-                                        <input type="text" class="form-control" id="soc">
+                                        <input v-model="school" type="text" class="form-control" id="soc">
                                     </div>
                                     <div class="mb-3">
                                         <label for="position" class="form-label">Position</label>
@@ -95,14 +167,14 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" class="form-control" id="email">
+                                        <input v-model="email" type="text" class="form-control" id="email">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn save" style="background-color:#303841; color:white;"
-                                @click="saveInformation">Save</button>
+                                >Save</button>
                             <button type="button" class="btn close" id="closeCreateModal" data-bs-dismiss="modal"
                                 style="border: 2px solid #303841;">Close</button>
                         </div>

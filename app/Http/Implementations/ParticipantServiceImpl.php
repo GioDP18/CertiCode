@@ -106,14 +106,14 @@ Class ParticipantServiceImpl implements ParticipantService
      */
     public function register(Request $request)
     {
-        $user = User::find($request->userID)->first();
-        $seminar = Seminar::find($request->seminarID)->first();
+        $user = User::find($request->userID);
+        $seminar = Seminar::find($request->seminarID);
         $seminar_link = 'http://127.0.0.1:8000/user/seminar';
-        $userExist = Participant::where('user_id', $user->id)
+        $participantExists = Participant::where('user_id', $user->id)
             ->where('seminar_id', $seminar->id)
             ->exists();
 
-        if ($userExist) {
+        if ($participantExists) {
             return response()->json([
                 "success" => false,
                 "message" => "You Have Already signed up in this Seminar.",
