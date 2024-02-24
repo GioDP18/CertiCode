@@ -13,6 +13,11 @@ function toggleDropdown() {
 
 <template>
     <div>
+        <div class="floating-button">
+            <a href="#availableSeminars" class="scroll">Available Seminars
+                <i><font-awesome-icon style="margin-left: 12px;" class="icon-footer" :icon="['fas', 'fa-arrow-right']" /></i>
+            </a>
+        </div>
         <div class="main-content">
             <div style="margin: auto;" class="container">
                 <div class="dashboard-header">
@@ -63,6 +68,7 @@ function toggleDropdown() {
                         <div class="column-1">
                             <div class="content-2">
                                 <div class="seminar-container">
+                                    <div class="content-text">Attended Seminars</div>
                                     <Carousel :itemsToShow="3" :wrapAround="true" :transition="500">
                                         <Slide :key="Slide">
                                             <div class="carousel__item">
@@ -130,7 +136,7 @@ function toggleDropdown() {
                 </div>
                 <div class="content py-4 mt-4">
                     <div class="container">
-                        <div class="content-text">Certificates</div>
+                        <div class="content-text">Acquired Certificates</div>
                         <div class="row row-cols-4">
                             <div class="col py-3">
                                 <div class="cert-card">
@@ -215,7 +221,7 @@ function toggleDropdown() {
                 </div>
                 <div class="content py-4 mt-4">
                     <div class="container">
-                        <div class="content-text">Seminars</div>
+                        <div id="availableSeminars" class="scroll content-text">Available Seminars</div>
                         <div class="row row-cols-5">
                             <div class="col py-3">
                                 <div class="card-seminar">
@@ -229,7 +235,7 @@ function toggleDropdown() {
                                         </div>
                                         <div class="text-seminar">Seminar Title</div>
                                     </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                    <router-link style="text-decoration: none;" to="seminarInfo" class="footer-seminar">
                                         <div class="show-more">
                                             <div class="text-footer">Show more</div>
                                             <i><font-awesome-icon style="" class="icon-footer"
@@ -1021,5 +1027,33 @@ function toggleDropdown() {
     .content-text {
         max-width: 100%;
     }
+}
+
+
+.floating-button {
+    position: fixed;
+    left: 3%;
+    transform: translateX(-50%) rotate(180deg);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.floating-button a {
+    padding: 10px;
+    background-color: #7AA5D2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    text-decoration: none;
+}
+
+.scroll {
+    scroll-behavior: smooth;
+    animation-duration: 100px;
 }
 </style>

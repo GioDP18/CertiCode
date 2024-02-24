@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class SeminarFactory extends Factory
 {
+
     /**
      * Define the model's default state.
      *
@@ -19,7 +20,9 @@ class SeminarFactory extends Factory
         return [
             "topic" => $this->faker->sentence(10),
             "speaker" => $this->faker->name(),
+            "about_the_speaker" => $this->faker->sentence(50),
             "about_this_seminar" => $this->faker->sentence(50),
+            "date" => $this->faker->dateTime(),
         ];
     }
 }

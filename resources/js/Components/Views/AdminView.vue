@@ -105,7 +105,7 @@ onBeforeUnmount(() => {
                 </RouterLink>
             </div>
             <div v-if="showSidebar" class="add-button">
-                <RouterLink to="seminars"  style="text-decoration: none; color: white;">
+                <RouterLink to="seminars" style="text-decoration: none; color: white;">
                     <div style="margin: auto;" class="sidebar-text text-center">Seminars</div>
                 </RouterLink>
                 <RouterLink to="createSeminar" class="add">
@@ -143,7 +143,7 @@ onBeforeUnmount(() => {
                 </RouterLink>
             </div>
             <div class="add-button">
-                <RouterLink to="seminars"  style="text-decoration: none; color: white;">
+                <RouterLink to="seminars" style="text-decoration: none; color: white;">
                     <div style="margin: auto;" class="sidebar-text">Seminars</div>
                 </RouterLink>
                 <RouterLink to="createSeminar" class="add">
