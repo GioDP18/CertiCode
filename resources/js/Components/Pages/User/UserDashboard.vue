@@ -15,7 +15,8 @@ function toggleDropdown() {
     <div>
         <div class="floating-button">
             <a href="#availableSeminars" class="scroll">Available Seminars
-                <i><font-awesome-icon style="margin-left: 12px;" class="icon-footer" :icon="['fas', 'fa-arrow-right']" /></i>
+                <i><font-awesome-icon style="margin-left: 12px;" class="icon-footer"
+                        :icon="['fas', 'fa-arrow-right']" /></i>
             </a>
         </div>
         <div class="main-content">
@@ -219,9 +220,9 @@ function toggleDropdown() {
                         </div>
                     </div>
                 </div>
-                <div class="content py-4 mt-4">
+                <div id="availableSeminars" class="content py-4 mt-4">
                     <div class="container">
-                        <div id="availableSeminars" class="scroll content-text">Available Seminars</div>
+                        <div class="scroll content-text">Available Seminars</div>
                         <div class="row row-cols-5">
                             <div class="col py-3">
                                 <div class="card-seminar">
@@ -233,9 +234,12 @@ function toggleDropdown() {
                                             <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
                                                 class="logo-seminar-header" />
                                         </div>
-                                        <div class="text-seminar">Seminar Title</div>
+                                        <div class="text-seminar">
+                                            Seminar Title
+                                        </div>
                                     </div>
-                                    <router-link style="text-decoration: none;" to="seminarInfo" class="footer-seminar">
+                                    <router-link style="text-decoration: none; position: absolute;" to="seminarInfo"
+                                        class="footer-seminar">
                                         <div class="show-more">
                                             <div class="text-footer">Show more</div>
                                             <i><font-awesome-icon style="" class="icon-footer"
@@ -256,7 +260,8 @@ function toggleDropdown() {
                                         </div>
                                         <div class="text-seminar">Seminar Title</div>
                                     </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                    <router-link style="text-decoration: none; position: absolute;" to="seminarInfo"
+                                        class="footer-seminar">
                                         <div class="show-more">
                                             <div class="text-footer">Show more</div>
                                             <i><font-awesome-icon style="" class="icon-footer"
@@ -277,7 +282,8 @@ function toggleDropdown() {
                                         </div>
                                         <div class="text-seminar">Seminar Title</div>
                                     </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                    <router-link style="text-decoration: none; position: absolute;" to="seminarInfo"
+                                        class="footer-seminar">
                                         <div class="show-more">
                                             <div class="text-footer">Show more</div>
                                             <i><font-awesome-icon style="" class="icon-footer"
@@ -298,7 +304,8 @@ function toggleDropdown() {
                                         </div>
                                         <div class="text-seminar">Seminar Title</div>
                                     </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                    <router-link style="text-decoration: none; position: absolute;" to="seminarInfo"
+                                        class="footer-seminar">
                                         <div class="show-more">
                                             <div class="text-footer">Show more</div>
                                             <i><font-awesome-icon style="" class="icon-footer"
@@ -319,7 +326,8 @@ function toggleDropdown() {
                                         </div>
                                         <div class="text-seminar">Seminar Title</div>
                                     </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                    <router-link style="text-decoration: none; position: absolute;" to="seminarInfo"
+                                        class="footer-seminar">
                                         <div class="show-more">
                                             <div class="text-footer">Show more</div>
                                             <i><font-awesome-icon style="" class="icon-footer"
@@ -340,7 +348,8 @@ function toggleDropdown() {
                                         </div>
                                         <div class="text-seminar">Seminar Title</div>
                                     </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                    <router-link style="text-decoration: none; position: absolute;" to="seminarInfo"
+                                        class="footer-seminar">
                                         <div class="show-more">
                                             <div class="text-footer">Show more</div>
                                             <i><font-awesome-icon style="" class="icon-footer"
@@ -355,9 +364,56 @@ function toggleDropdown() {
             </div>
         </div>
         <div class="footer">
-            <i><font-awesome-icon style="color: white; margin-right: 10px;" class="icon"
-                    :icon="['far', 'fa-copyright']" /></i>
-            2024 CertiCode. All rights reserved.
+            <div style="width: 100%; justify-content: center; align-items: center;" class="row row-cols-5 gap-4">
+                <div style="width: 40%;" class="col py-3">
+                    <p>Connect With Us </p>
+                    <div class="row row-cols-2">
+                        <div class="col d-flex gap-2 mb-3">
+                            <i><font-awesome-icon style="color: white; margin-right: 10px;" class="icon"
+                                    :icon="['fas', 'fa-phone']" /></i>
+                            <span>+639-8765-4321</span>
+                        </div>
+                        <div class="col d-flex gap-2">
+                            <i><font-awesome-icon style="color: white; margin-right: 10px;" class="icon"
+                                    :icon="['fas', 'fa-envelope']" /></i>
+                            <span>sample@gmail.com</span>
+                        </div>
+                        <div class="col d-flex gap-2">
+                            <i><font-awesome-icon style="color: white; margin-right: 10px;" class="icon"
+                                    :icon="['fab', 'fa-facebook-f']" /></i>
+                            <span>Facebook</span>
+                        </div>
+                        <div class="col d-flex gap-2">
+                            <i><font-awesome-icon style="color: white; margin-right: 10px;" class="icon"
+                                    :icon="['fab', 'linkedin-in']" /></i>
+                            <span>LinkedIn</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 40%;" class="col">
+                    <p>Send a Message</p>
+                    <div style="position: relative;" class="d-flex">
+                        <textarea style="width: 100%;" class="form-control border-secondary border-right-0 rounded-0"
+                            id="example-search-input4" aria-label="With textarea"></textarea>
+                        <button
+                            style="position: absolute; bottom: 5px; right: 10px; border: none; background-color: transparent;">
+                            <i><font-awesome-icon style="color: #7AA5D2; height: 20px;" class="icon"
+                                    :icon="['fas', 'fa-paper-plane']" /></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-link py-2">
+                <RouterLink to="" class="links" style="text-decoration: none; color: white ">About</RouterLink>
+                <RouterLink to="" class="links" style="text-decoration: none; color: white ">Terms</RouterLink>
+                <RouterLink to="" class="links" style="text-decoration: none; color: white ">Help</RouterLink>
+                <RouterLink to="" class="links" style="text-decoration: none; color: white ">FAQs</RouterLink>
+            </div>
+            <div>
+                <i><font-awesome-icon style="color: white; margin-right: 10px;" class="icon"
+                        :icon="['far', 'fa-copyright']" /></i>
+                <span>2024 CertiCode. All rights reserved.</span>
+            </div>
         </div>
     </div>
 </template>
@@ -867,6 +923,7 @@ function toggleDropdown() {
 .footer {
     background-color: #47555E;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     color: #EEEEEE;
@@ -874,6 +931,16 @@ function toggleDropdown() {
     width: 100%;
     font-size: 14px;
     padding: 6px;
+}
+
+.footer-link {
+    border-top: 0.5px solid #8d8989;
+    border-bottom: 0.5px solid #8d8989;
+    width: 100%;
+    justify-content: center;
+    margin: 20px;
+    display: flex;
+    gap: 30px;
 }
 
 .card-seminar {
@@ -953,7 +1020,7 @@ function toggleDropdown() {
     display: flex;
     gap: 15px;
     margin: auto;
-    margin-top: -10px;
+    margin-top: 10px;
 }
 
 
