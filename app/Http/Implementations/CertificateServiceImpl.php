@@ -87,17 +87,16 @@ Class CertificateServiceImpl implements CertificateService
 
 
     public function sendOneCertificate(Request $request){
-        $members = User::where('id', $request->user_id)->get();
+        $member = Participant::where('id', $request->participant_id)->first();
+        // dd($member);
 
-        foreach ($members as $member) {
-            $filePath = $this->generateCertService->generate($member->id, $request->certificate_id);
-            $data = [
-                'name' => "Gio Dela Peña",
-                'email' => $member->email,
-            ];
-            Mail::send(new SendAllCertificate($data, $filePath));
-            unlink($filePath);
-        }
+        $filePath = $this->generateCertService->generate($member->id, $request->certificate_id);
+        $data = [
+            'name' => "Gio Dela Peña",
+            'email' => $member->email,
+        ];
+        Mail::send(new SendAllCertificate($data, $filePath));
+        unlink($filePath);
 
         return response()->json([
             "success"=> true,

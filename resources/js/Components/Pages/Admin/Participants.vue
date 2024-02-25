@@ -1,57 +1,85 @@
 <script setup>
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
-import DataTable from 'datatables.net-vue3';
-import DataTablesCore from 'datatables.net-bs5';
+import store from '../../../State/index.js';
+import { inject } from 'vue';
+import $ from 'jquery';
 
-DataTable.use(DataTablesCore);
+// Inject swal and BASE_URL
+const swal = inject('$swal');
 
-const isGenerating = ref(false);
 const allUsers = ref([]);
 
 onMounted(async () => {
-    getUsers();
-    initializeDataTables();
+    await getUsers();
+    initializeDataTable();
 });
+
+const initializeDataTable = () => {
+    $('#dailyTimeLog').DataTable();
+};
 
 const getUsers = async () => {
     try {
         await axios.get('http://127.0.0.1:8000/api/auth/get-all-users')
-        .then((response) => {
-            console.log(response.data);
-            allUsers.value = response.data.users;
-            // console.log(allUsers.value);
-        })
+            .then((response) => {
+                allUsers.value = response.data.users;
+            })
+
+    } catch (error) {
+        console.error(error);
+    }
+};
+
+const getSeminarsAttended = async (id) => {
+    try {
+        const response = await axios.post('http://127.0.0.1:8000/api/auth/get-seminars-attended', {
+            user_id: id
+        });
+        console.log(response.data);
+        const userIndex = allUsers.value.findIndex(user => user.id === id);
+        if (userIndex !== -1) {
+            allUsers.value[userIndex].participation = response.data.user.participation;
+        }
     } catch (error) {
         console.error(error);
     }
 };
 
 
-
-const sendCert = async (userID, certificateID) => {
-    isGenerating.value = true;
-    console.log(isGenerating.value)
+const sendCert = async (participantID, certificateID) => {
+    store.commit('setSendingCerts', true);
     try {
         await axios.post(`http://127.0.0.1:8000/api/auth/send-one-certificate`, {
-            user_id: userID,
+            participant_id: participantID,
             certificate_id: certificateID
         })
             .then((response) => {
-                console.log(response.data.message)
-            })
-            .finally(() => {
-                isGenerating.value = false;
-                console.log(isGenerating.value)
+                if (response.data.success) {
+                    swal({
+                        title: 'Success',
+                        text: response.data.message,
+                        icon: 'success',
+                    });
+                }
+                else {
+                    swal({
+                        title: 'Error',
+                        text: response.data.message,
+                        icon: 'error',
+                    });
+                }
             })
     }
     catch (error) {
-        console.log(error.response.data.message)
+        console.error(error.response.data.message);
     }
-}
-
-
+    finally {
+        store.commit('setSendingCerts', false);
+    }
+};
 </script>
+
 
 <template>
     <div class="main-content">
@@ -72,47 +100,69 @@ const sendCert = async (userID, certificateID) => {
                                 <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
                                 <td>{{ user.gender }}</td>
                                 <td>
-                                    <button class="card14" data-bs-toggle="modal" data-bs-target="#sendUserCertModal">
-                                        <span class="send-text">Send a specific Certificate</span>
+                                    <button class="card14" data-bs-toggle="modal"
+                                        :data-bs-target="'#sendUserCertModal_' + user.id"
+                                        @click="getSeminarsAttended(user.id)">
+                                        <span class="send-text">Send a specific Certificate <i><font-awesome-icon
+                                                    :icon="['fas', 'paper-plane']" /></i></span>
                                     </button>
                                 </td>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="sendUserCertModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                ...
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Understood</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        <div v-for="user in allUsers" :key="user.id" class="modal fade" :id="'sendUserCertModal_' + user.id"
+            data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <form action="">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Send Certificate</h1>
+                            <button type="button" class="button-close" data-bs-dismiss="modal"
+                                aria-label="Close"><font-awesome-icon :icon="['fas', 'xmark']" /></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <p>Seminars
+                                    Attended</p>
+                            </div>
+                            <ul v-if="user.participation" class="seminar-list">
+                                <li class="d-flex" v-for="participant in user.participation" :key="participant.id">
+                                    <div class="list-item">
+                                        <p>{{ participant.seminar.topic }}</p>
+                                        <div class="modal-send">
+                                            <button @click="sendCert(participant.id, participant.seminar.id)"
+                                                data-toggle="tooltip" data-placement="top" title="Send">
+                                                <i><font-awesome-icon :icon="['fas', 'paper-plane']" /></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div v-else>
+                                <p>No seminars
+                                    attended
+                                </p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn close" id="closeCreateModal" data-bs-dismiss="modal"
+                                style="border: 2px solid #303841;">Close</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 
+
 <style scoped>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: transparent;
-}
-
-
 .content {
     background-color: transparent;
     padding: 20px;
@@ -184,8 +234,13 @@ const sendCert = async (userID, certificateID) => {
     font-family: Montserrat, sans-serif;
     align-self: start;
     margin-left: 6px;
+    margin-right: 6px;
     margin-top: 6px;
     margin-bottom: 6px;
+}
+
+.send-text i {
+    color: #7AA5D2;
 }
 
 @media (max-width: 991px) {
@@ -200,5 +255,49 @@ const sendCert = async (userID, certificateID) => {
     object-position: center;
     width: 22px;
     margin-right: 6px;
+}
+
+.modal-header {
+    background-color: #303841;
+    color: #ffffff;
+}
+
+.modal-header .button-close {
+    color: white !important;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+}
+
+.list-item {
+    position: relative;
+}
+
+.list-item p {
+    margin-right: 20%;
+}
+
+.modal-send {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 13%;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.modal-send button {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+}
+
+.modal-send i {
+    color: #7AA5D2;
+}
+
+.close:hover {
+    background-color: #303841;
+    color: #ffffff;
 }
 </style>

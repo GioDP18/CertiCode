@@ -1,4 +1,25 @@
 <script setup>
+import axios from 'axios';
+import { ref, onMounted } from 'vue';
+
+const seminars = ref([]);
+
+onMounted(() => {
+    getAllSeminars();
+})
+
+
+const getAllSeminars = async () => {
+    try{
+        await axios.get('http://localhost:8000/api/auth/get-all-seminars')
+        .then((response) => {
+            seminars.value = response.data.seminars;
+        })
+    }
+    catch(error){
+        console.log(error);
+    }
+}
 
 </script>
 
@@ -10,113 +31,9 @@
                     <div class="content-text">Seminars</div>
                     <div class="container">
                         <div class="row row-cols-lg-4">
-                            <div class="col py-3">
+                            <div class="col py-3" v-for="seminar in seminars" :key="seminar.id">
                                 <div class="seminar-card">
-                                    <div class="seminar-topic">Seminar Topic</div>
-                                    <div class="seminar-date">February 18, 2024 - 8:00 AM</div>
-                                    <div class="seminar-speaker">
-                                        <span style="font-weight: 700">Speaker: </span>Tom Oliver Chua
-                                    </div>
-                                    <div class="seminar-about">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="seminar-card">
-                                    <div class="seminar-topic">Seminar Topic</div>
-                                    <div class="seminar-date">February 18, 2024 - 8:00 AM</div>
-                                    <div class="seminar-speaker">
-                                        <span style="font-weight: 700">Speaker: </span>Tom Oliver Chua
-                                    </div>
-                                    <div class="seminar-about">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="seminar-card">
-                                    <div class="seminar-topic">Seminar Topic</div>
-                                    <div class="seminar-date">February 18, 2024 - 8:00 AM</div>
-                                    <div class="seminar-speaker">
-                                        <span style="font-weight: 700">Speaker: </span>Tom Oliver Chua
-                                    </div>
-                                    <div class="seminar-about">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="seminar-card">
-                                    <div class="seminar-topic">Seminar Topic</div>
-                                    <div class="seminar-date">February 18, 2024 - 8:00 AM</div>
-                                    <div class="seminar-speaker">
-                                        <span style="font-weight: 700">Speaker: </span>Tom Oliver Chua
-                                    </div>
-                                    <div class="seminar-about">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="seminar-card">
-                                    <div class="seminar-topic">Seminar Topic</div>
-                                    <div class="seminar-date">February 18, 2024 - 8:00 AM</div>
-                                    <div class="seminar-speaker">
-                                        <span style="font-weight: 700">Speaker: </span>Tom Oliver Chua
-                                    </div>
-                                    <div class="seminar-about">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="seminar-card">
-                                    <div class="seminar-topic">Seminar Topic</div>
-                                    <div class="seminar-date">February 18, 2024 - 8:00 AM</div>
-                                    <div class="seminar-speaker">
-                                        <span style="font-weight: 700">Speaker: </span>Tom Oliver Chua
-                                    </div>
-                                    <div class="seminar-about">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="seminar-card">
-                                    <div class="seminar-topic">Seminar Topic</div>
-                                    <div class="seminar-date">February 18, 2024 - 8:00 AM</div>
-                                    <div class="seminar-speaker">
-                                        <span style="font-weight: 700">Speaker: </span>Tom Oliver Chua
-                                    </div>
-                                    <div class="seminar-about">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="seminar-card">
-                                    <div class="seminar-topic">Seminar Topic</div>
-                                    <div class="seminar-date">February 18, 2024 - 8:00 AM</div>
-                                    <div class="seminar-speaker">
-                                        <span style="font-weight: 700">Speaker: </span>Tom Oliver Chua
-                                    </div>
-                                    <div class="seminar-about">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                        tempor
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="seminar-card">
-                                    <div class="seminar-topic">Seminar Topic</div>
+                                    <div class="seminar-topic">{{ seminar.topic }}</div>
                                     <div class="seminar-date">February 18, 2024 - 8:00 AM</div>
                                     <div class="seminar-speaker">
                                         <span style="font-weight: 700">Speaker: </span>Tom Oliver Chua

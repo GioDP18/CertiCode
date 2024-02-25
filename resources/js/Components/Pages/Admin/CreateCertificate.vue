@@ -1,9 +1,68 @@
+<script setup>
+import axios from 'axios';
+import { ref } from 'vue';
+import { inject } from 'vue';
+import { useRouter } from 'vue-router';
+
+// Inject swal and BASE_URL
+const swal = inject('$swal');
+const router = useRouter();
+
+const topic = ref('');
+const date = ref('');
+const speaker = ref('');
+const about_the_speaker = ref('');
+const logo = ref('');
+const issuer = ref('');
+const description = ref('');
+const about_this_seminar = ref('');
+
+
+const handleAddSeminar = async () => {
+    try {
+        await axios.post('http://localhost:8000/api/auth/add-new-seminar', {
+            topic: topic.value,
+            date: date.value,
+            speaker: speaker.value,
+            about_the_speaker: about_the_speaker.value,
+            logo: "https://via.placeholder.com/100x100.png/007766?text=logo+et",
+            issuer: issuer.value,
+            description: description.value,
+            about_this_seminar: about_this_seminar.value,
+        })
+            .then((response) => {
+                if (response.data.success) {
+                    swal({
+                        title: 'Success',
+                        text: response.data.message,
+                        icon: 'success',
+                    });
+
+                    setTimeout(() => {
+                        router.push({ name: 'seminars' });
+                    }, 3000)
+                }
+                else {
+                    swal({
+                        title: 'Error',
+                        text: response.data.message,
+                        icon: 'error',
+                    });
+                }
+            })
+    }
+    catch (error) {
+        console.log(error);
+    }
+}
+</script>
+
 <template>
     <div class="main-content">
         <div class="main-container">
             <div class="rectangle">
             </div>
-            <form class="form-container">
+            <form class="form-container" @submit.prevent="handleAddSeminar">
                 <h4>Create New Seminar</h4>
                 <div class="parent-container">
                     <div class="container1">
@@ -12,55 +71,56 @@
                         </div>
                         <div class="mb-3">
                             <label for="topic" class="form-label">Topic</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1">
+                            <input type="text" v-model="topic" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="mb-3">
                             <label for="date" class="form-label">Date</label>
-                            <input type="date" class="form-control" id="exampleInputPassword1">
+                            <input type="date" v-model="date" class="form-control" id="exampleInputPassword1">
                         </div>
                         <div class="mb-3">
                             <label for="speaker" class="form-label">Speaker</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1">
+                            <input type="text" v-model="speaker" class="form-control" id="exampleInputPassword1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="seminar" class="form-label">About the Speaker</label>
+                            <textarea class="form-control" v-model="about_the_speaker" id="" row="1"></textarea>
                         </div>
                     </div>
                     <div class="container2">
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Certificate Logo</label>
-                            <input type="file" class="form-control" id="" aria-describedby="emailHelp">
+                            <input type="file" @change="handleLogoChange" class="form-control" id=""
+                                aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
                             <label for="issuer" class="form-label">Issuer</label>
-                            <input type="text" class="form-control" id="">
+                            <input type="text" v-model="issuer" class="form-control" id="">
                         </div>
                         <div class="mb-3">
                             <label for="topic" class="form-label">Description</label>
-                            <textarea type="text" class="form-control" id=""></textarea>
+                            <textarea type="text" v-model="description" class="form-control" id=""></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="seminar" class="form-label">About this Seminar</label>
-                            <textarea class="form-control" id="" rows="1"></textarea>
+                            <textarea class="form-control" v-model="about_this_seminar" id="" rows="1"></textarea>
                         </div>
+                    </div>
+                </div>
+                <div class="preview-container">
+                    <div class="rectangle2">
+                        <h4>Preview</h4>
+                    </div>
+                    <div class="img-certificate">
+                        <img src="../../../../../public/external/certificate.png" alt="">
                     </div>
                 </div>
                 <div class="submit-button">
                     <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">ADD</span></button>
                 </div>
             </form>
-            <div class="preview-container">
-                <div class="rectangle2">
-                    <h4>Preview</h4>
-                </div>
-                <div class="img-certificate">
-                    <img src="../../../../../public/external/certificate.png" alt="">
-                </div>
-            </div>
         </div>
     </div>
 </template>
-
-<script setup>
-
-</script>
 
 <style scoped>
 .main-content {
@@ -72,7 +132,7 @@
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 100%;
-    height: 180vh;
+    height: 205vh;
     border-radius: 16px;
 }
 
@@ -99,12 +159,11 @@
 
 .parent-container {
     width: 90%;
-    height: 65vh;
+    height: 100vh;
     margin: auto;
     display: flex;
     flex-direction: row;
     gap: 50px;
-    margin-bottom: 30px;
     margin-top: 10px;
 }
 
@@ -125,7 +184,7 @@
     justify-content: center;
 }
 
-.form-container img {
+.form-container .img-container img {
     width: 25%;
     border: 3px solid #303841;
     border-radius: 50%;
@@ -140,6 +199,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .button {
@@ -189,19 +249,24 @@
 
 .preview-container {
     width: 100%;
-    height: 80vh;
-    margin-top: 13%;
+    height: 50vh;
     border-radius: 16px;
+    margin-bottom: 30%;
+    margin-top: -120px;
 }
 
 .preview-container .rectangle2 {
     height: 10vh;
     width: 100%;
     background-color: #303841;
+    color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+}
+
+.preview-container h4 {
+    margin-top: 37px;
 }
 
 .img-certificate {
@@ -225,7 +290,7 @@
 
     .main-container {
         width: 100%;
-        height: 100%;
+        height: 113%;
     }
 
     .form-container h4 {
@@ -234,6 +299,10 @@
 
     .parent-container {
         flex-direction: column;
+    }
+
+    .preview-container h4 {
+        margin-top: 37px;
     }
 
     .img-container {
@@ -256,12 +325,12 @@
     }
 
     .submit-button {
-        margin-top: 90%;
+        margin-top: 20%;
     }
 
     .preview-container {
         height: 40vh;
-        margin-top: 115%;
+        margin-top: 50%;
     }
 
     .img-certificate {
