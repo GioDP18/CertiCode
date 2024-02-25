@@ -7,7 +7,7 @@
         <div class="sub-container">
             <div class="top page">
                 <div class="image-container">
-                    <img src="../../../../../public/external/sample.jpg" alt="">
+                    <img src="../../../../../public/external/sample.jpg" class="animated-image" alt="">
                     <div class="filter-container">
                         <div class="dark-filter">
                             <div class="overlay-text">
@@ -104,19 +104,19 @@
                                 <div class="left-modal flex-grow-1">
                                     <div class="mb-3">
                                         <label for="firstName" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="firstName">
+                                        <input type="text" class="form-control" id="firstName" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="middleName" class="form-label">Middle Name</label>
-                                        <input type="text" class="form-control" id="middleName">
+                                        <input type="text" class="form-control" id="middleName" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="lastName" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" id="lastName">
+                                        <input type="text" class="form-control" id="lastName" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Age</label>
-                                        <input type="number" class="form-control" id="age">
+                                        <input type="number" class="form-control" id="age" required>
                                     </div>
                                 </div>
                                 <div class="right-modal flex-grow-1">
@@ -139,15 +139,15 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="soc" class="form-label">School/Organization/Company</label>
-                                        <input type="text" class="form-control" id="soc">
+                                        <input type="text" class="form-control" id="soc" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="position" class="form-label">Position</label>
-                                        <input type="text" class="form-control" id="position">
+                                        <input type="text" class="form-control" id="position" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="text" class="form-control" id="email">
+                                        <input type="text" class="form-control" id="email" required>
                                     </div>
                                 </div>
                             </div>
@@ -199,6 +199,25 @@
     height: auto;
 }
 
+.animated-image {
+    animation: circle-in-top-right 1s ease-out forwards;
+    clip-path: inset(0 0 100% 100%);
+}
+
+@keyframes circle-in-top-right {
+    from {
+        clip-path: circle(0%);
+    }
+
+    to {
+        clip-path: circle(150% at top right);
+    }
+}
+
+[transition-style="in:circle:top-right"] {
+    animation: 2.5s cubic-bezier(.25, 1, .30, 1) circle-in-top-right both;
+}
+
 .dark-filter {
     position: absolute;
     top: 0;
@@ -227,14 +246,39 @@
     margin-top: -20px;
     font-size: 60px;
     font-family: "Montserrat", sans-serif;
+    animation: fade-right 2s;
+}
+
+@keyframes fade-right {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
 }
 
 .overlay-text .about {
     font-size: 13px;
     font-style: italic;
     margin-left: 10px;
+    animation: fade-left 2s;
 }
 
+@keyframes fade-left {
+    0% {
+        opacity: 0;
+        transform: translateX(100%) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
 
 .strong-hr {
     height: 0;
@@ -372,6 +416,19 @@
     height: 10%;
     background-color: white;
     border-radius: 12px;
+    animation: fade-up 2s;
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(100%) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .container-button {
