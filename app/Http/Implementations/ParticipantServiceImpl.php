@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SeminarRegistration;
 use App\Http\Services\ParticipantService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 Class ParticipantServiceImpl implements ParticipantService
 {
@@ -28,7 +29,7 @@ Class ParticipantServiceImpl implements ParticipantService
             ->where('seminar_id', $seminarID)
             ->get();
 
-        if(!$participants){
+        if($participants->isEmpty()){
             return response()->json([
                 "success" => false,
                 "message" => "You dont have any participants yet.",
@@ -51,7 +52,7 @@ Class ParticipantServiceImpl implements ParticipantService
         $seminars = Participant::with('seminar')
             ->where('user_id', $userID)
             ->get();
-        if(!$seminars){
+        if($seminars->isEmpty()){
             return response()->json([
                 "success" => false,
                 "message" => "You dont have any participated seminars.",
@@ -60,6 +61,28 @@ Class ParticipantServiceImpl implements ParticipantService
 
         return response()->json([
             'seminars' => $seminars,
+        ], 200);
+    }
+    
+    /**
+     * fetch all certificate in the specific participant
+     *
+     * @param [type] $userID
+     * @return JsonResponse
+     */
+    public function getCertificate($userID)
+    {
+        $certificates = Participant::with(['seminar', 'seminar.certificate'])
+            ->where('user_id', $userID)
+            ->get();
+        if($certificates->isEmpty()){
+            return response()->json([
+                "success" => false,
+                "message" => "You dont have any certificates yet",
+            ]);
+        }
+        return response()->json([
+            'certificates' => $certificates,
         ], 200);
     }
 
@@ -74,18 +97,22 @@ Class ParticipantServiceImpl implements ParticipantService
         $user = User::find($request->userID)->first();
         $seminar = Seminar::find($request->seminarID)->first();
         $seminar_link = 'http://127.0.0.1:8000/user/seminar';
-        $participant = Participant::find($user)->first();
+        $userExist = Participant::where('user_id', $user->id)
+            ->where('seminar_id', $seminar->id)
+            ->exist();
 
-        if ($participant){
+        if ($userExist) {
             return response()->json([
                 "success" => false,
-                "message" => "You Have Already signed up in Seminar.",
+                "message" => "You Have Already signed up in this Seminar.",
             ]);
         }
+        
         Participant::create([
             'user_id' => $user->id,
             'seminar_id' => $seminar->id,
         ]);
+
         $data = [
             'name' => $user->firstname,
             'email' => $user->email,
@@ -96,6 +123,6 @@ Class ParticipantServiceImpl implements ParticipantService
         return response()->json([
             "success" => true,
             "message" => "Seminar successfully registered.",
-        ]);
+        ], 200);
     }
 }

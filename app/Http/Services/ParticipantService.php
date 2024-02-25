@@ -24,6 +24,14 @@ interface ParticipantService
     public function getParticipSeminars($userID);
 
     /**
+     * Interface for get certificate
+     *
+     * @param [type] $userID
+     * @return void
+     */
+    public function getCertificate($userID);
+
+    /**
      * Interface for registering participant
      *
      * @param Request $request
