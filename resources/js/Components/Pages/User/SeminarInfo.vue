@@ -169,6 +169,8 @@
 .main-container {
     width: 100%;
     position: relative;
+    padding: 0;
+    margin: 0;
 }
 
 .sub-container {
@@ -393,6 +395,7 @@
     width: 50%;
     display: flex;
     justify-content: center;
+    padding: 0;
 }
 
 .right img {
@@ -534,7 +537,6 @@
 
     .image-container img {
         width: 100%;
-        /* Ensure image fills its container */
     }
 
     .overlay-text {
@@ -563,9 +565,10 @@
     }
 
     .read-button {
-        width: 80%;
-        height: 100px;
+        width: 70%;
+        height: 80px;
         margin-bottom: -30px;
+        margin-left: -5px;
     }
 
     .seminar-header h1 {
@@ -587,11 +590,24 @@
     }
 
     .right {
-        width: 100%;
+        width: 95%;
     }
 
     .bottom {
         width: 90%;
+        animation: fade-up-360 2s;
+    }
+
+    @keyframes fade-up-360 {
+        0% {
+            opacity: 0;
+            transform: translateY(100%) scale(0.9);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     }
 
     .container-button button {
