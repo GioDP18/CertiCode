@@ -260,6 +260,12 @@ onBeforeUnmount(() => {
     padding: 18px 48px;
 }
 
+.sidebar-logo img {
+    width: 45px;
+    margin-left: -10px;
+    margin-right: 5px;
+}
+
 .header {
     background-color: #fff;
     display: flex;
@@ -274,7 +280,6 @@ onBeforeUnmount(() => {
     aspect-ratio: 1;
     object-fit: auto;
     object-position: center;
-    width: 49px;
 }
 
 .menu {

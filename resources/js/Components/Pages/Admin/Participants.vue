@@ -95,19 +95,19 @@ const sendCert = async (participantID, certificateID) => {
             <div class="column-1">
                 <div class="table-card">
                     <div class="content-text">Participants</div>
-                    <table id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
+                    <table id="dailyTimeLog" class="table table-striped table-hover" width="100%">
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Gender</th>
-                                <th>Action</th>
+                                <th style="text-align: center;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="user in allUsers" :key="user.id">
                                 <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
                                 <td>{{ user.gender }}</td>
-                                <td>
+                                <td style="display: flex; justify-content: end; padding-right: 9%;">
                                     <button class="card14" data-bs-toggle="modal"
                                         :data-bs-target="'#sendUserCertModal_' + user.id"
                                         @click="getSeminarsAttended(user.id)">
@@ -115,7 +115,6 @@ const sendCert = async (participantID, certificateID) => {
                                                     :icon="['fas', 'paper-plane']" /></i></span>
                                     </button>
                                 </td>
-
                             </tr>
                         </tbody>
                     </table>
@@ -140,7 +139,7 @@ const sendCert = async (participantID, certificateID) => {
                                     Attended</p>
                             </div>
                             <ul v-if="user.participation" class="seminar-list">
-                                <li class="d-flex" v-for="participant in user.participation" :key="participant.id">
+                                <li v-for="participant in user.participation" :key="participant.id">
                                     <div class="list-item">
                                         <p>{{ participant.seminar.topic }}</p>
                                         <div class="modal-send">

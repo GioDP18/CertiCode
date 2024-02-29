@@ -3,8 +3,7 @@ import DataTable from 'datatables.net-vue3';
 import DataTablesCore from 'datatables.net-bs5';
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
-
-DataTable.use(DataTablesCore);
+import $ from 'jquery';
 
 const totalCertificatesIssued = ref(0);
 const totalSeminars = ref(0);
@@ -12,16 +11,21 @@ const totalParticipants = ref(0);
 
 onMounted(() => {
     dashboardData();
-})
+    initializeDataTable();
+});
 
-const dashboardData= async () => {
-    try{
+const initializeDataTable = () => {
+    $('#dailyTimeLog').DataTable();
+};
+
+const dashboardData = async () => {
+    try {
         await axios.get('http://localhost:8000/api/auth/dashboard')
-        .then((response) => {
-            totalSeminars.value = response.data.totalSeminars;
-            totalParticipants.value = response.data.totalParticipants;
-            totalCertificatesIssued.value = response.data.totalCertificatesIssued;
-        })
+            .then((response) => {
+                totalSeminars.value = response.data.totalSeminars;
+                totalParticipants.value = response.data.totalParticipants;
+                totalCertificatesIssued.value = response.data.totalCertificatesIssued;
+            })
     }
     catch (error) {
         console.log(error);
@@ -74,7 +78,7 @@ const dashboardData= async () => {
                 <div class="column-1">
                     <div class="table-card">
                         <div class="content-text">New Participants</div>
-                        <DataTable id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
+                        <table id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -117,7 +121,7 @@ const dashboardData= async () => {
                                     </td>
                                 </tr>
                             </tbody>
-                        </DataTable>
+                        </table>
                     </div>
                 </div>
                 <div class="column-2">

@@ -64,6 +64,14 @@ const handleAddSeminar = async () => {
             </div>
             <form class="form-container" @submit.prevent="handleAddSeminar">
                 <h4>Create New Seminar</h4>
+                <div class="preview-container">
+                    <div class="img-certificate">
+                        <img src="../../../../../public/external/certificate.png" alt="">
+                    </div>
+                </div>
+                <div class="img-container">
+                    <img src="../../../../../public/external/Logo527-5lue.png" alt="">
+                </div>
                 <div class="parent-container">
                     <div class="container1">
                         <div class="img-container mt-2">
@@ -81,7 +89,7 @@ const handleAddSeminar = async () => {
                             <label for="speaker" class="form-label">Speaker</label>
                             <input type="text" v-model="speaker" class="form-control" id="exampleInputPassword1">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 about-speak">
                             <label for="seminar" class="form-label">About the Speaker</label>
                             <textarea class="form-control" v-model="about_the_speaker" id="" row="1"></textarea>
                         </div>
@@ -111,14 +119,6 @@ const handleAddSeminar = async () => {
                         </div>
                     </div>
                 </div>
-                <div class="preview-container">
-                    <div class="rectangle2">
-                        <h4>Preview</h4>
-                    </div>
-                    <div class="img-certificate">
-                        <img src="../../../../../public/external/certificate.png" alt="">
-                    </div>
-                </div>
                 <div class="submit-button">
                     <button type="submit" class="btn btn-primary button type1"><span class="btn-txt">ADD</span></button>
                 </div>
@@ -131,14 +131,15 @@ const handleAddSeminar = async () => {
 .main-content {
     height: 85vh;
     width: 100%;
-    margin: auto;
+    bottom: 0;
 }
 
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 100%;
-    height: 205vh;
+    height: 215vh;
     border-radius: 16px;
+    padding-bottom: 0;
 }
 
 .main-container .rectangle {
@@ -152,7 +153,6 @@ const handleAddSeminar = async () => {
 .form-container {
     padding-top: 35px;
     width: 100%;
-    height: 70vh;
     margin: auto;
 }
 
@@ -164,12 +164,11 @@ const handleAddSeminar = async () => {
 
 .parent-container {
     width: 90%;
-    height: 100vh;
+    height: 90vh;
     margin: auto;
     display: flex;
     flex-direction: row;
     gap: 50px;
-    margin-top: 10px;
 }
 
 .container1,
@@ -178,19 +177,24 @@ const handleAddSeminar = async () => {
     display: block;
 }
 
+.about-speak textarea {
+    height: 100px;
+}
+
 .container2 textarea {
     height: 11vh;
 }
 
 .img-container {
     width: 100%;
-    padding-bottom: 10px;
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
+    margin-top: -50px;
 }
 
-.form-container .img-container img {
-    width: 25%;
+.img-container img {
+    width: 10%;
     border: 3px solid #303841;
     border-radius: 50%;
 }
@@ -204,7 +208,6 @@ const handleAddSeminar = async () => {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 50px;
 }
 
 .button {
@@ -218,8 +221,7 @@ const handleAddSeminar = async () => {
     border-radius: 8px;
     color: #303841;
     transition: all 0.5s ease-in-out;
-    margin-bottom: 30px;
-    margin-top: -50px;
+    margin-top: -130px;
 }
 
 .btn-txt {
@@ -256,18 +258,7 @@ const handleAddSeminar = async () => {
     width: 100%;
     height: 50vh;
     border-radius: 16px;
-    margin-bottom: 30%;
-    margin-top: -120px;
-}
-
-.preview-container .rectangle2 {
-    height: 10vh;
-    width: 100%;
-    background-color: #303841;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-bottom: 25%;
 }
 
 .preview-container h4 {
@@ -307,13 +298,17 @@ const handleAddSeminar = async () => {
     }
 
     .preview-container h4 {
-        margin-top: 37px;
+        margin-top: 10px;
     }
 
     .img-container {
-        width: 50%;
+        width: 100%;
         margin: auto;
-        margin-top: -20px;
+        margin-top: -30px;
+    }
+
+    .img-container img {
+        width: 20%;
     }
 
     .container1 {
@@ -330,12 +325,13 @@ const handleAddSeminar = async () => {
     }
 
     .submit-button {
-        margin-top: 20%;
+        margin-top: 110%;
     }
 
     .preview-container {
-        height: 40vh;
-        margin-top: 50%;
+        height: 10vh;
+        margin-top: -5%;
+        margin-bottom: 60%;
     }
 
     .img-certificate {
