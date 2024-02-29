@@ -55,7 +55,7 @@ Class UserServiceImpl implements UserService
         if(!$update){
             return response()->json([
                 "success" => false,
-                "message" => "There was a problem updating your profile."
+                "message" => "There is a problem updating your profile."
             ], 400);
         }
 

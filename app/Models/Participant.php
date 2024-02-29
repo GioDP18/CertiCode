@@ -18,6 +18,7 @@ class Participant extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
     public function seminar()
     {
         return $this->belongsTo(Seminar::class, 'seminar_id');

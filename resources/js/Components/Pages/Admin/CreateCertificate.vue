@@ -74,6 +74,9 @@ const handleAddSeminar = async () => {
                 </div>
                 <div class="parent-container">
                     <div class="container1">
+                        <div class="img-container mt-2">
+                            <img src="../../../../../public/external/Logo527-5lue.png" alt="">
+                        </div>
                         <div class="mb-3">
                             <label for="topic" class="form-label">Topic</label>
                             <input type="text" v-model="topic" class="form-control" id="exampleInputPassword1">
@@ -92,6 +95,11 @@ const handleAddSeminar = async () => {
                         </div>
                     </div>
                     <div class="container2">
+                        <div class="mb-3">
+                            <label for="certificateLogo" class="form-label">Speaker Image</label>
+                            <input type="file" @change="handleLogoChange" class="form-control" id=""
+                                aria-describedby="emailHelp">
+                        </div>
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Certificate Logo</label>
                             <input type="file" @change="handleLogoChange" class="form-control" id=""

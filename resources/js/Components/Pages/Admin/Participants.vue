@@ -54,22 +54,30 @@ const sendCert = async (participantID, certificateID) => {
             participant_id: participantID,
             certificate_id: certificateID
         })
-            .then((response) => {
-                if (response.data.success) {
-                    swal({
-                        title: 'Success',
-                        text: response.data.message,
-                        icon: 'success',
-                    });
-                }
-                else {
-                    swal({
-                        title: 'Error',
-                        text: response.data.message,
-                        icon: 'error',
-                    });
-                }
-            })
+        .then((response) => {
+            if (response.data.success) {
+                swal({
+                    title: 'Success',
+                    text: response.data.message,
+                    icon: 'success',
+                });
+
+                setTimeout(() => {
+
+                }, 3000);
+            }
+            else {
+                swal({
+                    title: 'Error',
+                    text: response.data.message,
+                    icon: 'error',
+                });
+
+                setTimeout(() => {
+
+                }, 3000);
+            }
+        })
     }
     catch (error) {
         console.error(error.response.data.message);
@@ -121,7 +129,7 @@ const sendCert = async (participantID, certificateID) => {
                 <form action="">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Send Certificate</h1>
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Send a specific certificate</h1>
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close"><font-awesome-icon :icon="['fas', 'xmark']" /></button>
                         </div>
@@ -148,10 +156,6 @@ const sendCert = async (participantID, certificateID) => {
                                     attended
                                 </p>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn close" id="closeCreateModal" data-bs-dismiss="modal"
-                                style="border: 2px solid #303841;">Close</button>
                         </div>
                     </div>
                 </form>

@@ -20,6 +20,7 @@ class SeminarFactory extends Factory
         return [
             "topic" => $this->faker->sentence(10),
             "speaker" => $this->faker->name(),
+            "speaker_image" => $this->faker->imageUrl(640, 480),
             "about_the_speaker" => $this->faker->sentence(50),
             "about_this_seminar" => $this->faker->sentence(50),
             "date" => $this->faker->dateTime(),
