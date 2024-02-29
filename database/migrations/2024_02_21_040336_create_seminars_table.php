@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('topic');
             $table->string('speaker');
+            $table->string('speaker_image');
             $table->text('about_this_seminar');
             $table->text('about_the_speaker');
             $table->dateTime('date');

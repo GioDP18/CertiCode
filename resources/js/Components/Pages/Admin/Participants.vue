@@ -54,22 +54,30 @@ const sendCert = async (participantID, certificateID) => {
             participant_id: participantID,
             certificate_id: certificateID
         })
-            .then((response) => {
-                if (response.data.success) {
-                    swal({
-                        title: 'Success',
-                        text: response.data.message,
-                        icon: 'success',
-                    });
-                }
-                else {
-                    swal({
-                        title: 'Error',
-                        text: response.data.message,
-                        icon: 'error',
-                    });
-                }
-            })
+        .then((response) => {
+            if (response.data.success) {
+                swal({
+                    title: 'Success',
+                    text: response.data.message,
+                    icon: 'success',
+                });
+
+                setTimeout(() => {
+
+                }, 3000);
+            }
+            else {
+                swal({
+                    title: 'Error',
+                    text: response.data.message,
+                    icon: 'error',
+                });
+
+                setTimeout(() => {
+
+                }, 3000);
+            }
+        })
     }
     catch (error) {
         console.error(error.response.data.message);
@@ -87,19 +95,19 @@ const sendCert = async (participantID, certificateID) => {
             <div class="column-1">
                 <div class="table-card">
                     <div class="content-text">Participants</div>
-                    <table id="dailyTimeLog" class="table table-striped table-hover" width="100%;">
+                    <table id="dailyTimeLog" class="table table-striped table-hover" width="100%">
                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Gender</th>
-                                <th>Action</th>
+                                <th style="text-align: center;">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="user in allUsers" :key="user.id">
                                 <td>{{ user.firstname }} {{ user.middlename }} {{ user.lastname }}</td>
                                 <td>{{ user.gender }}</td>
-                                <td>
+                                <td style="display: flex; justify-content: end; padding-right: 9%;">
                                     <button class="card14" data-bs-toggle="modal"
                                         :data-bs-target="'#sendUserCertModal_' + user.id"
                                         @click="getSeminarsAttended(user.id)">
@@ -107,7 +115,6 @@ const sendCert = async (participantID, certificateID) => {
                                                     :icon="['fas', 'paper-plane']" /></i></span>
                                     </button>
                                 </td>
-
                             </tr>
                         </tbody>
                     </table>
@@ -122,7 +129,7 @@ const sendCert = async (participantID, certificateID) => {
                 <form action="">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Send Certificate</h1>
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Send a specific certificate</h1>
                             <button type="button" class="button-close" data-bs-dismiss="modal"
                                 aria-label="Close"><font-awesome-icon :icon="['fas', 'xmark']" /></button>
                         </div>
@@ -132,7 +139,7 @@ const sendCert = async (participantID, certificateID) => {
                                     Attended</p>
                             </div>
                             <ul v-if="user.participation" class="seminar-list">
-                                <li class="d-flex" v-for="participant in user.participation" :key="participant.id">
+                                <li v-for="participant in user.participation" :key="participant.id">
                                     <div class="list-item">
                                         <p>{{ participant.seminar.topic }}</p>
                                         <div class="modal-send">
@@ -149,10 +156,6 @@ const sendCert = async (participantID, certificateID) => {
                                     attended
                                 </p>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn close" id="closeCreateModal" data-bs-dismiss="modal"
-                                style="border: 2px solid #303841;">Close</button>
                         </div>
                     </div>
                 </form>

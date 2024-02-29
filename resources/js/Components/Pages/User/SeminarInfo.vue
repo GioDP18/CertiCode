@@ -127,7 +127,7 @@ const formatDate = (dateString) => {
         <div v-for="seminar in seminarInfoObjects" :key="seminar.id" class="sub-container">
             <div class="top page">
                 <div class="image-container">
-                    <img src="../../../../../public/external/sample.jpg" alt="">
+                    <img src="../../../../../public/external/sample.jpg" class="animated-image" alt="">
                     <div class="filter-container">
                         <div class="dark-filter">
                             <div class="overlay-text">
@@ -285,6 +285,8 @@ const formatDate = (dateString) => {
 .main-container {
     width: 100%;
     position: relative;
+    padding: 0;
+    margin: 0;
 }
 
 .sub-container {
@@ -315,6 +317,25 @@ const formatDate = (dateString) => {
     height: auto;
 }
 
+.animated-image {
+    animation: circle-in-top-right 1s ease-out forwards;
+    clip-path: inset(0 0 100% 100%);
+}
+
+@keyframes circle-in-top-right {
+    from {
+        clip-path: circle(0%);
+    }
+
+    to {
+        clip-path: circle(150% at top right);
+    }
+}
+
+[transition-style="in:circle:top-right"] {
+    animation: 2.5s cubic-bezier(.25, 1, .30, 1) circle-in-top-right both;
+}
+
 .dark-filter {
     position: absolute;
     top: 0;
@@ -343,14 +364,39 @@ const formatDate = (dateString) => {
     margin-top: -20px;
     font-size: 60px;
     font-family: "Montserrat", sans-serif;
+    animation: fade-right 2s;
+}
+
+@keyframes fade-right {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
 }
 
 .overlay-text .about {
     font-size: 13px;
     font-style: italic;
     margin-left: 10px;
+    animation: fade-left 2s;
 }
 
+@keyframes fade-left {
+    0% {
+        opacity: 0;
+        transform: translateX(100%) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
 
 .strong-hr {
     height: 0;
@@ -465,6 +511,7 @@ const formatDate = (dateString) => {
     width: 50%;
     display: flex;
     justify-content: center;
+    padding: 0;
 }
 
 .right img {
@@ -488,6 +535,19 @@ const formatDate = (dateString) => {
     height: 10%;
     background-color: white;
     border-radius: 12px;
+    animation: fade-up 2s;
+}
+
+@keyframes fade-up {
+    0% {
+        opacity: 0;
+        transform: translateY(100%) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .container-button {
@@ -593,7 +653,6 @@ const formatDate = (dateString) => {
 
     .image-container img {
         width: 100%;
-        /* Ensure image fills its container */
     }
 
     .overlay-text {
@@ -622,9 +681,10 @@ const formatDate = (dateString) => {
     }
 
     .read-button {
-        width: 80%;
-        height: 100px;
+        width: 70%;
+        height: 80px;
         margin-bottom: -30px;
+        margin-left: -5px;
     }
 
     .seminar-header h1 {
@@ -646,11 +706,24 @@ const formatDate = (dateString) => {
     }
 
     .right {
-        width: 100%;
+        width: 95%;
     }
 
     .bottom {
         width: 90%;
+        animation: fade-up-360 2s;
+    }
+
+    @keyframes fade-up-360 {
+        0% {
+            opacity: 0;
+            transform: translateY(100%) scale(0.9);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
     }
 
     .container-button button {

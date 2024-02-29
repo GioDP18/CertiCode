@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2024 at 10:46 AM
+-- Generation Time: Feb 27, 2024 at 03:20 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -42,16 +42,22 @@ CREATE TABLE `certificates` (
 --
 
 INSERT INTO `certificates` (`id`, `seminar_id`, `logo`, `description`, `issuer`, `created_at`, `updated_at`) VALUES
-(1, 9, 'https://via.placeholder.com/100x100.png/001133?text=logo+et', 'Repudiandae dolores dolorem hic aliquam in enim aspernatur eligendi nemo placeat voluptas eum incidunt qui et aliquid sunt hic temporibus tempore aliquid accusamus voluptatum in dolor perferendis consectetur eius rerum minima assumenda enim et magnam dolorem eveniet praesentium ipsam non qui voluptatibus facere ipsum.', 'Yasmine O\'Connell', '2024-02-21 01:20:15', '2024-02-21 01:20:15'),
-(2, 1, 'https://via.placeholder.com/100x100.png/00ffbb?text=logo+cumque', 'Incidunt rerum tempora dolorem quos non qui similique iste cumque fugit doloribus laboriosam ut omnis rem aut eligendi dolorum ipsum praesentium est eum voluptatem voluptatibus aliquam vitae tempora non ut doloribus quidem vel hic aut ea libero vitae consectetur sunt et laboriosam ducimus ut commodi vel molestiae minima nulla.', 'Nettie Considine Sr.', '2024-02-21 01:20:15', '2024-02-21 01:20:15'),
-(3, 5, 'https://via.placeholder.com/100x100.png/00ff11?text=logo+nam', 'Molestiae qui quidem molestias debitis et tenetur doloribus impedit saepe rem consequatur accusantium illo est consectetur illo minus perspiciatis veniam omnis quaerat atque eius velit est laboriosam ab ut et impedit culpa ut consequatur.', 'Deangelo Schultz III', '2024-02-21 01:20:15', '2024-02-21 01:20:15'),
-(4, 5, 'https://via.placeholder.com/100x100.png/00ddff?text=logo+aut', 'Repudiandae ea consequatur vitae qui incidunt sapiente architecto excepturi quia quod officia voluptas autem totam eum temporibus omnis reiciendis in iure neque enim aut est itaque eos consectetur et quos nulla quos fugiat molestias nostrum autem similique et rem non quia sunt libero ut corrupti aut nihil ab veniam aut non perferendis voluptas non omnis cumque voluptatibus voluptatem sequi error eum dicta ut minima accusamus id cupiditate expedita reiciendis rerum.', 'Abbey Kemmer', '2024-02-21 01:20:15', '2024-02-21 01:20:15'),
-(5, 9, 'https://via.placeholder.com/100x100.png/006611?text=logo+molestiae', 'Voluptatum dolores corporis sint unde provident sed qui et magni repudiandae quam cumque architecto nisi nulla ut quia neque eaque qui dolore laborum qui et eos id facilis consequatur incidunt aspernatur sit sit placeat voluptatem quo sit quo ratione eveniet doloribus doloribus ut voluptate rem corrupti fuga eum mollitia molestiae nobis explicabo tenetur ad aut velit vel reprehenderit beatae sit et et corporis enim facilis quia necessitatibus soluta quam autem.', 'Prof. Ines Bashirian', '2024-02-21 01:20:15', '2024-02-21 01:20:15'),
-(6, 8, 'https://via.placeholder.com/100x100.png/004455?text=logo+eos', 'Aliquid laboriosam numquam laborum numquam fugit voluptatem facilis repudiandae aliquam aut adipisci ea cum non doloremque harum incidunt distinctio non labore vel est assumenda et a aut quia quae et perspiciatis velit delectus quae totam saepe maiores qui vel officiis accusantium delectus occaecati iste error enim sapiente nostrum laudantium totam ut veniam labore tenetur voluptatum sint aperiam cum labore.', 'Toby Rolfson', '2024-02-21 01:20:15', '2024-02-21 01:20:15'),
-(7, 9, 'https://via.placeholder.com/100x100.png/00cc55?text=logo+animi', 'Omnis tempora ut quia officia libero repellendus fugit neque sunt sequi et delectus consectetur sit numquam et nam harum corporis illo rerum cupiditate nesciunt eos omnis dolor esse ab quia omnis deserunt ullam atque aliquam nobis odit quaerat exercitationem doloribus blanditiis sint voluptatem voluptas consequatur dolore totam a deleniti incidunt.', 'Colleen Turcotte', '2024-02-21 01:20:15', '2024-02-21 01:20:15'),
-(8, 7, 'https://via.placeholder.com/100x100.png/00dd11?text=logo+quibusdam', 'A voluptatem veniam sit ullam sed nisi qui rerum aspernatur veritatis natus sapiente fugiat dicta officiis et quisquam quis sapiente consequatur est qui fugit sit aperiam cum voluptatem nemo fugiat possimus totam non quas ducimus neque accusamus accusamus a minima autem possimus sed maiores voluptas quis accusamus aut minus laudantium eum sint dolor.', 'Kaden Pacocha', '2024-02-21 01:20:15', '2024-02-21 01:20:15'),
-(9, 1, 'https://via.placeholder.com/100x100.png/008888?text=logo+dolor', 'Qui est aut quam sunt in possimus impedit et voluptates quasi consequuntur id ea quae voluptas dolore non reiciendis repudiandae magnam cum quia quasi ut aliquam adipisci dolores aut odio sunt beatae eos velit voluptatum modi aspernatur nemo quia ea ut rem quod adipisci odit tenetur omnis voluptas qui dolore rerum culpa debitis voluptatem id sunt quia eaque pariatur magni eaque consequatur.', 'Tia Goodwin', '2024-02-21 01:20:15', '2024-02-21 01:20:15'),
-(10, 9, 'https://via.placeholder.com/100x100.png/00aa66?text=logo+aut', 'Sit qui dolor molestias vero sequi fugiat maiores eos sint fugit dolorem quia occaecati fugit quia in quasi unde expedita vel et nam veritatis ab maiores aperiam laboriosam praesentium itaque debitis neque quia.', 'Cielo Ratke PhD', '2024-02-21 01:20:15', '2024-02-21 01:20:15');
+(1, 1, 'https://via.placeholder.com/100x100.png/007766?text=logo+et', 'Minima qui et est vero nemo tempora et reprehenderit corporis debitis sit expedita aut id accusantium ad rerum deserunt voluptatem facere eaque voluptates sed aut nemo blanditiis sit aut necessitatibus ipsum perspiciatis laboriosam amet possimus voluptas consectetur ea ut quo consequatur odio quasi ut occaecati facilis eum laborum molestiae reiciendis enim et sint laboriosam expedita ea neque nobis voluptas et et necessitatibus.', 'Prof. Buster Feest III', '2024-02-22 17:46:09', '2024-02-22 17:46:09'),
+(2, 2, 'https://via.placeholder.com/100x100.png/0099dd?text=logo+corrupti', 'Illum ratione earum ea aut at amet aperiam aperiam aut error velit voluptatum saepe non est eum perferendis tempora quis in aliquid enim voluptatem animi est aut sint soluta aliquid possimus ut quam consequuntur possimus sit.', 'Dannie Jenkins', '2024-02-22 17:46:09', '2024-02-22 17:46:09'),
+(3, 3, 'https://via.placeholder.com/100x100.png/005544?text=logo+odio', 'Eveniet corporis eveniet nobis magnam totam sit possimus quidem impedit deserunt ut rerum excepturi natus aliquam quae quod tempore distinctio eum qui dignissimos enim eum recusandae eum laudantium in ipsa est quasi sapiente temporibus error aut voluptatibus distinctio quo earum consequatur quia laborum repudiandae ut molestias nihil eos voluptatem ipsam est odit minus et laborum recusandae facere et corrupti quo dignissimos ut dolorem laborum ut fugit nisi magni qui quia.', 'Prof. Magali Price MD', '2024-02-22 17:46:09', '2024-02-22 17:46:09'),
+(4, 4, 'https://via.placeholder.com/100x100.png/008833?text=logo+aut', 'Sed in assumenda fugit est excepturi beatae dolores quia unde repellat quos consequatur cum rerum fuga quos error qui praesentium magni aspernatur ex et odit temporibus impedit cum magnam tempora tempore maiores modi quis porro nesciunt non facilis aspernatur cum vel non laborum beatae veritatis atque iusto sit consequatur dignissimos adipisci qui mollitia quasi omnis et quo neque.', 'Dr. Izabella Blanda II', '2024-02-22 17:46:09', '2024-02-22 17:46:09'),
+(5, 5, 'https://via.placeholder.com/100x100.png/00ddcc?text=logo+quibusdam', 'Accusantium ipsam dolores quasi perspiciatis ea praesentium ut perspiciatis minus omnis tenetur eius est facere in officia rerum recusandae aut dignissimos id nulla enim sapiente itaque possimus et praesentium aliquid tempora omnis voluptatem eius in aut saepe.', 'Mustafa Stehr DVM', '2024-02-22 17:46:09', '2024-02-22 17:46:09'),
+(6, 6, 'https://via.placeholder.com/100x100.png/003300?text=logo+amet', 'A ea neque molestiae similique ipsum unde deserunt voluptatibus impedit est magnam soluta asperiores et aliquam velit dolorem aut omnis qui velit pariatur in illo veritatis hic repellendus deserunt sint in quia eaque ut maxime officia ipsam temporibus repellat et quo consequatur voluptas id quis molestias veritatis sapiente a consequatur sequi sed ut rerum non voluptatum et.', 'Cordelia Larkin', '2024-02-22 17:46:09', '2024-02-22 17:46:09'),
+(7, 7, 'https://via.placeholder.com/100x100.png/000099?text=logo+harum', 'Alias nemo ut dolorem possimus sunt nam in velit sed quia ut et modi voluptate iste numquam accusamus quam fugit eos eos recusandae eveniet consequuntur modi vel suscipit facere illo distinctio dignissimos perferendis aut molestiae nisi in in.', 'Dagmar Boyer', '2024-02-22 17:46:09', '2024-02-22 17:46:09'),
+(8, 8, 'https://via.placeholder.com/100x100.png/00ff99?text=logo+qui', 'Facilis enim ab aut minima consequatur voluptatem consequatur voluptas odio perferendis magnam delectus quo ut aperiam ipsum dolorum minima ut molestiae recusandae ullam sapiente sunt ut dolor sed rerum nesciunt ut et error hic expedita aliquid molestiae facilis cumque eligendi nobis veritatis ipsam fugiat est et nulla nulla ut.', 'Walter Fisher', '2024-02-22 17:46:09', '2024-02-22 17:46:09'),
+(9, 9, 'https://via.placeholder.com/100x100.png/0099cc?text=logo+veritatis', 'Odit dolorem amet commodi voluptatem ex ut voluptas eum impedit excepturi tempora ea et perferendis corporis itaque exercitationem voluptatem ab consequatur adipisci in quisquam at architecto ea nihil est tempora consequatur suscipit deserunt perspiciatis pariatur qui possimus aut voluptatem modi sed rerum a sequi id fugiat accusantium cum sit mollitia optio est.', 'Mrs. Odessa Lind', '2024-02-22 17:46:09', '2024-02-22 17:46:09'),
+(10, 10, 'https://via.placeholder.com/100x100.png/004422?text=logo+sunt', 'Sunt voluptatem unde repellendus dolorum impedit autem non impedit cumque omnis velit maiores asperiores consequuntur aut corporis nostrum voluptatem vitae quae odio eaque rerum adipisci praesentium voluptas quia est neque rerum maiores laborum repudiandae vel beatae et quasi id doloribus fugiat ducimus velit autem est dolorum voluptas eos voluptatem rerum quo ab eaque.', 'Glennie Wuckert', '2024-02-22 17:46:09', '2024-02-22 17:46:09'),
+(11, 11, 'https://via.placeholder.com/100x100.png/007766?text=logo+et', ';kcnlqejdcblwjef', 'Ako', '2024-02-22 18:32:08', '2024-02-22 18:32:08'),
+(12, 12, 'https://via.placeholder.com/100x100.png/007766?text=logo+et', 'haha', 'haha', '2024-02-22 18:44:03', '2024-02-22 18:44:03'),
+(13, 13, 'https://via.placeholder.com/100x100.png/007766?text=logo+et', 'mca;ke', 'cnkawds', '2024-02-22 18:45:43', '2024-02-22 18:45:43'),
+(14, 14, 'https://via.placeholder.com/100x100.png/007766?text=logo+et', ';akjcl', '.mcmlas', '2024-02-22 18:46:40', '2024-02-22 18:46:40'),
+(15, 15, 'https://via.placeholder.com/100x100.png/007766?text=logo+et', 'cksjd', ',sdbckje', '2024-02-22 18:48:46', '2024-02-22 18:48:46'),
+(16, 16, 'https://via.placeholder.com/100x100.png/007766?text=logo+et', 'calknecla', 'ckjlase', '2024-02-22 18:49:55', '2024-02-22 18:49:55');
 
 -- --------------------------------------------------------
 
@@ -86,13 +92,13 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(43, '2014_10_12_000000_create_users_table', 1),
-(44, '2014_10_12_100000_create_password_reset_tokens_table', 1),
-(45, '2019_08_19_000000_create_failed_jobs_table', 1),
-(46, '2019_12_14_000001_create_personal_access_tokens_table', 1),
-(47, '2024_02_21_040336_create_seminars_table', 1),
-(48, '2024_02_21_040421_create_certificates_table', 1),
-(49, '2024_02_21_040609_create_participants_table', 1);
+(92, '2014_10_12_000000_create_users_table', 1),
+(93, '2014_10_12_100000_create_password_reset_tokens_table', 1),
+(94, '2019_08_19_000000_create_failed_jobs_table', 1),
+(95, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(96, '2024_02_21_040336_create_seminars_table', 1),
+(97, '2024_02_21_040421_create_certificates_table', 1),
+(98, '2024_02_21_040609_create_participants_table', 1);
 
 -- --------------------------------------------------------
 
@@ -102,6 +108,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `participants` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
   `seminar_id` bigint(20) UNSIGNED NOT NULL,
   `firstname` varchar(255) NOT NULL,
   `middlename` varchar(255) NOT NULL,
@@ -119,107 +126,107 @@ CREATE TABLE `participants` (
 -- Dumping data for table `participants`
 --
 
-INSERT INTO `participants` (`id`, `seminar_id`, `firstname`, `middlename`, `lastname`, `gender`, `email`, `school`, `has_attended`, `certificate_sent`, `created_at`, `updated_at`) VALUES
-(101, 4, 'Chelsey', 'Declan', 'Thompson', 'male', 'adriana.paucek@example.net', 'Bednar-Oberbrunner', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(102, 1, 'Tillman', 'Lora', 'Moore', 'female', 'nbahringer@example.com', 'Pollich, Steuber and Cruickshank', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(103, 1, 'Electa', 'Hector', 'Konopelski', 'male', 'moriah.murphy@example.org', 'Koepp-Koss', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(104, 7, 'Agustin', 'Rosanna', 'Bartoletti', 'male', 'xmertz@example.com', 'Gerhold, Heathcote and Champlin', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(105, 4, 'Jacinthe', 'Raphaelle', 'Beatty', 'male', 'melany06@example.com', 'Legros, Leannon and Hermiston', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(106, 8, 'Dayna', 'Devyn', 'Herman', 'male', 'rhilpert@example.net', 'Leuschke-Heathcote', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(107, 7, 'Dee', 'Lempi', 'Beatty', 'male', 'grady.jimmie@example.net', 'Osinski Ltd', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(108, 8, 'Ellen', 'Alison', 'Monahan', 'male', 'ycrist@example.net', 'Casper-Mueller', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(109, 7, 'Jeffery', 'Katelin', 'Denesik', 'male', 'rodolfo41@example.org', 'Block Group', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(110, 6, 'Jaylin', 'Ally', 'Reynolds', 'female', 'tomasa.gutkowski@example.com', 'Hodkiewicz, Gleason and Haley', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(111, 7, 'Christina', 'Braeden', 'Hayes', 'male', 'genoveva69@example.net', 'Conroy-Gottlieb', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(112, 6, 'Vickie', 'Deshaun', 'Mante', 'male', 'lolita02@example.com', 'Jast and Sons', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(113, 5, 'Delphine', 'Bridget', 'Carter', 'female', 'mable91@example.net', 'Hauck, Abshire and Rogahn', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(114, 3, 'Katelynn', 'Leilani', 'Littel', 'female', 'qyundt@example.org', 'Gislason Group', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(115, 1, 'Freddy', 'Henderson', 'Jenkins', 'female', 'goodwin.abbie@example.org', 'Ledner-O\'Connell', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(116, 2, 'Pierre', 'Delphine', 'Mosciski', 'female', 'kschultz@example.net', 'Ebert, Koepp and Hansen', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(117, 4, 'Alexandria', 'Sam', 'Kunze', 'female', 'gaston.paucek@example.com', 'Rogahn-McLaughlin', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(118, 1, 'Chanelle', 'Madelynn', 'Walsh', 'female', 'sipes.jade@example.org', 'Gleichner-Ledner', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(119, 8, 'Elton', 'Mariane', 'Rath', 'female', 'mante.francisco@example.net', 'Keeling-Ferry', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(120, 5, 'Heather', 'Brando', 'Hermiston', 'female', 'tyrese37@example.com', 'Harvey and Sons', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(121, 4, 'Bobby', 'Tamara', 'Feest', 'male', 'yasmeen.hermann@example.net', 'Berge-Schroeder', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(122, 6, 'Joaquin', 'Laila', 'Crist', 'female', 'muriel49@example.net', 'Bergstrom, Mills and Olson', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(123, 5, 'Nathanial', 'Laurence', 'Jakubowski', 'male', 'jones.juvenal@example.com', 'Grimes Group', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(124, 10, 'Jayme', 'Aniya', 'Stanton', 'female', 'kristopher.paucek@example.com', 'Raynor LLC', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(125, 7, 'Imelda', 'Greyson', 'Tremblay', 'male', 'igottlieb@example.com', 'VonRueden, Spencer and Kerluke', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(126, 3, 'Freda', 'Mazie', 'Bergnaum', 'male', 'mathilde.hermiston@example.net', 'Eichmann, Schuster and Herman', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(127, 6, 'Dax', 'Wilma', 'Langosh', 'male', 'gulgowski.jay@example.net', 'Homenick LLC', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(128, 2, 'Forrest', 'Dion', 'Spinka', 'male', 'tstokes@example.net', 'Kub, Ruecker and Olson', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(129, 9, 'Ethelyn', 'Frieda', 'Williamson', 'female', 'brisa53@example.org', 'Klocko Group', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(130, 6, 'Else', 'Maye', 'Ziemann', 'female', 'jacobs.joany@example.org', 'Hane LLC', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(131, 9, 'Damaris', 'Melissa', 'Casper', 'male', 'considine.kaya@example.net', 'Grant, Little and Price', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(132, 6, 'Keara', 'Abigail', 'Satterfield', 'female', 'johnson.dortha@example.net', 'Grimes PLC', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(133, 5, 'Eugene', 'Bulah', 'Bashirian', 'female', 'reichel.jeff@example.net', 'Swift, Johns and Gutmann', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(134, 8, 'Nicole', 'Juston', 'Dach', 'female', 'ferry.arvel@example.org', 'Prohaska Inc', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(135, 4, 'Roma', 'Aida', 'Wisoky', 'male', 'jackeline.swift@example.net', 'D\'Amore-Erdman', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(136, 9, 'Damian', 'Elissa', 'Donnelly', 'male', 'bosco.tanya@example.com', 'Kessler-Price', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(137, 7, 'Odessa', 'Emma', 'Reinger', 'female', 'loma.sauer@example.org', 'Koss, Hettinger and DuBuque', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(138, 7, 'Yadira', 'Tyshawn', 'Anderson', 'male', 'florida77@example.net', 'Hammes, Von and Hills', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(139, 6, 'Abigail', 'Laury', 'Schmidt', 'male', 'schumm.georgette@example.com', 'Block, Champlin and Cummings', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(140, 3, 'Jane', 'Leann', 'Brown', 'male', 'schmitt.alanis@example.net', 'Wisozk-Kovacek', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(141, 10, 'Ahmed', 'Eula', 'Murphy', 'male', 'tyshawn.kuphal@example.org', 'Jacobs, Brekke and Yundt', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(142, 8, 'Kane', 'Virginia', 'Dickinson', 'male', 'ziemann.henriette@example.org', 'Brekke-Hayes', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(143, 5, 'Kennedy', 'Adonis', 'Morar', 'male', 'stephen.padberg@example.com', 'Oberbrunner-Steuber', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(144, 7, 'Yasmin', 'Camden', 'Satterfield', 'male', 'keeling.broderick@example.com', 'Prohaska PLC', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(145, 10, 'Liza', 'Hiram', 'Kirlin', 'female', 'yost.madison@example.org', 'Schultz Inc', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(146, 10, 'Marshall', 'Horace', 'Williamson', 'female', 'merlin.jerde@example.com', 'Bergstrom PLC', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(147, 9, 'Cassidy', 'Geovanni', 'Gislason', 'female', 'sierra.wolff@example.net', 'Hyatt-West', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(148, 4, 'Flossie', 'Sasha', 'Schaefer', 'male', 'giovanna.purdy@example.org', 'Lind PLC', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(149, 6, 'Chanelle', 'Yolanda', 'Windler', 'female', 'bergstrom.meggie@example.org', 'Lebsack-Boehm', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(150, 5, 'Elisabeth', 'Lelia', 'Ratke', 'male', 'bstrosin@example.com', 'Stanton Group', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(151, 9, 'Hassie', 'Marquis', 'Heaney', 'female', 'legros.misael@example.org', 'Wisozk LLC', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(152, 4, 'Daija', 'Darion', 'McCullough', 'female', 'megane84@example.org', 'Parisian Group', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(153, 10, 'Stuart', 'Dewitt', 'Ortiz', 'male', 'zschmidt@example.net', 'Macejkovic Ltd', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(154, 8, 'Jed', 'Colby', 'Zboncak', 'female', 'mueller.rosamond@example.com', 'O\'Kon, Metz and Lindgren', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(155, 7, 'Kianna', 'Sabryna', 'Collins', 'male', 'qstamm@example.net', 'Reichert-Grant', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(156, 4, 'Vilma', 'Deangelo', 'Tremblay', 'male', 'hettie29@example.net', 'Herman Ltd', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(157, 2, 'Winston', 'Lexie', 'Bosco', 'female', 'armando77@example.org', 'McKenzie-Grimes', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(158, 2, 'Kendall', 'Ansley', 'Collier', 'male', 'lesch.fiona@example.net', 'Koepp-Weimann', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(159, 6, 'Ferne', 'Amber', 'Kreiger', 'female', 'reichel.sheldon@example.org', 'Stanton, Olson and Corkery', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(160, 1, 'Gisselle', 'Kaycee', 'Gusikowski', 'male', 'murl.littel@example.net', 'Hintz Inc', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(161, 7, 'Corbin', 'Erling', 'Wunsch', 'male', 'champlin.frederique@example.org', 'Kris, Hilpert and Crona', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(162, 4, 'Jaden', 'Carey', 'Rohan', 'male', 'qbosco@example.net', 'Towne-Schaefer', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(163, 4, 'Montana', 'Cruz', 'Kertzmann', 'male', 'kryan@example.net', 'Marks, McClure and Little', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(164, 9, 'Alice', 'Jonathan', 'Kub', 'male', 'joanie.runolfsdottir@example.com', 'Barrows Inc', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(165, 10, 'Zoe', 'Tressa', 'Ratke', 'male', 'gust86@example.com', 'Bergnaum PLC', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(166, 6, 'Rahul', 'Alberto', 'Huel', 'female', 'ocarroll@example.org', 'Bashirian Ltd', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(167, 9, 'Hipolito', 'Michele', 'Conroy', 'female', 'bridget.schaefer@example.net', 'Harvey-Mayer', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(168, 10, 'Jessy', 'Estefania', 'Haag', 'female', 'kasey.effertz@example.net', 'Pollich and Sons', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(169, 6, 'Ransom', 'Cara', 'Pouros', 'female', 'mathias73@example.org', 'Moore LLC', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(170, 6, 'Nolan', 'Oma', 'Moore', 'male', 'rlueilwitz@example.com', 'Goldner, Berge and Cassin', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(171, 10, 'Reanna', 'Frances', 'O\'Kon', 'male', 'vernie.cronin@example.com', 'Schinner Group', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(172, 3, 'Rachelle', 'Theron', 'Lueilwitz', 'male', 'pherzog@example.net', 'Cartwright-O\'Conner', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(173, 1, 'Abby', 'Russ', 'Littel', 'male', 'april.wiegand@example.net', 'Rolfson-Ziemann', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(174, 9, 'Destini', 'Jasen', 'Hickle', 'male', 'maynard.schimmel@example.net', 'Hammes Inc', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(175, 5, 'Alek', 'Bernardo', 'Dickens', 'male', 'yundt.sterling@example.com', 'Bode, Waelchi and Auer', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(176, 2, 'Romaine', 'Emerson', 'Frami', 'male', 'rogahn.genevieve@example.net', 'Schulist and Sons', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(177, 9, 'Brigitte', 'Jaron', 'Lindgren', 'male', 'leonie72@example.org', 'Labadie-Schowalter', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(178, 9, 'Sid', 'Lauren', 'Metz', 'male', 'curt.bogisich@example.org', 'Pollich, Oberbrunner and Harber', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(179, 9, 'Lelia', 'Rod', 'Wehner', 'male', 'gilda.rau@example.net', 'Gleason, Oberbrunner and Conn', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(180, 4, 'Marcella', 'Priscilla', 'Zieme', 'female', 'lysanne36@example.com', 'Waters-Rowe', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(181, 3, 'Shanelle', 'Hector', 'Barrows', 'female', 'ncummerata@example.net', 'Fadel Ltd', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(182, 10, 'Pansy', 'Rosamond', 'Kreiger', 'male', 'vhermann@example.org', 'Wilderman, Lang and Kunde', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(183, 8, 'Helena', 'Cristobal', 'White', 'male', 'crawford.mckenzie@example.org', 'Toy Inc', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(184, 6, 'Kristy', 'Demond', 'Ferry', 'male', 'lrenner@example.org', 'Lakin, Pacocha and Kuhlman', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(185, 3, 'Jammie', 'Reginald', 'Maggio', 'male', 'prosacco.alivia@example.com', 'Sawayn, Sauer and Larson', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(186, 4, 'Nya', 'Clarabelle', 'Mills', 'male', 'roberts.franco@example.com', 'Ziemann LLC', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(187, 10, 'Isom', 'Madilyn', 'Johns', 'female', 'aleen.ziemann@example.com', 'Jenkins-Rosenbaum', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(188, 10, 'Davion', 'Palma', 'Morar', 'female', 'crona.augustus@example.com', 'Rosenbaum-Frami', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(189, 1, 'Kris', 'Reynold', 'Funk', 'female', 'jkeebler@example.net', 'Hyatt, Krajcik and Paucek', 0, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(190, 3, 'Shad', 'Alejandra', 'Glover', 'male', 'schulist.daphney@example.org', 'Prohaska, Macejkovic and Lakin', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(191, 7, 'Emory', 'Lori', 'Cummerata', 'female', 'rempel.hosea@example.net', 'Tromp, Rogahn and Rice', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(192, 3, 'Arlie', 'Patricia', 'Crona', 'male', 'boyd11@example.net', 'Keeling, McKenzie and Moore', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(193, 2, 'Darion', 'Josephine', 'Kozey', 'female', 'nayeli.cronin@example.org', 'Veum, Kilback and Hermann', 0, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(194, 6, 'Wilfred', 'Tierra', 'Price', 'female', 'cremin.lemuel@example.com', 'Heidenreich LLC', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(195, 8, 'Marianna', 'Alford', 'Pagac', 'female', 'kutch.audra@example.org', 'Schinner-Roberts', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(196, 1, 'Tomas', 'Reyes', 'Hammes', 'male', 'arlo58@example.org', 'Towne-Langosh', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(197, 10, 'Virginie', 'Raphaelle', 'Romaguera', 'male', 'dominic.frami@example.org', 'Ziemann, Jacobson and Predovic', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(198, 7, 'Zula', 'Amelia', 'Hickle', 'male', 'eddie02@example.org', 'Hyatt-Kuhic', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(199, 6, 'Geraldine', 'Tiffany', 'Casper', 'male', 'rosie33@example.org', 'Hayes LLC', 1, 0, '2024-02-21 01:23:13', '2024-02-21 01:23:13'),
-(200, 6, 'Ernestina', 'Weston', 'Kuhlman', 'male', 'fabiola.mertz@example.org', 'Ortiz, Mann and Gottlieb', 1, 1, '2024-02-21 01:23:13', '2024-02-21 01:23:13');
+INSERT INTO `participants` (`id`, `user_id`, `seminar_id`, `firstname`, `middlename`, `lastname`, `gender`, `email`, `school`, `has_attended`, `certificate_sent`, `created_at`, `updated_at`) VALUES
+(1, 4, 4, 'Elvis', 'Heidi', 'Waelchi', 'female', 'griffin.raynor@example.org', 'Goldner-Friesen', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(2, 3, 4, 'Dannie', 'Rashawn', 'Bogan', 'female', 'maximillian97@example.org', 'Rath PLC', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(3, 7, 1, 'Tomasa', 'Mark', 'Glover', 'male', 'eloy00@example.com', 'Klein Ltd', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(4, 7, 3, 'Christine', 'Margarett', 'Ankunding', 'male', 'qrunolfsdottir@example.net', 'Powlowski, Witting and Torp', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(5, 9, 6, 'Violette', 'Mathilde', 'Leannon', 'female', 'schulist.grover@example.org', 'Wolff, Rippin and Gorczany', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(6, 3, 6, 'Maudie', 'Layne', 'Harris', 'male', 'andy22@example.org', 'Bechtelar PLC', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(7, 2, 1, 'Jailyn', 'Kelly', 'Flatley', 'male', 'thurman38@example.org', 'Wehner, Jacobi and Stanton', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(8, 3, 7, 'Julio', 'Reynold', 'Gusikowski', 'female', 'dayne84@example.net', 'Schaden PLC', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(9, 4, 8, 'Devante', 'Carissa', 'Runte', 'male', 'shayne95@example.com', 'Wunsch Inc', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(10, 4, 8, 'Coy', 'Cleveland', 'Cole', 'male', 'fmurray@example.net', 'Quitzon, Fadel and Towne', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(11, 6, 4, 'Arno', 'Bart', 'Bartoletti', 'female', 'bechtelar.edyth@example.com', 'Legros-O\'Kon', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(12, 10, 3, 'Alice', 'Cayla', 'Swaniawski', 'female', 'jkoss@example.org', 'Hill-Hyatt', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(13, 4, 8, 'Deron', 'Kennith', 'Shanahan', 'male', 'dee42@example.com', 'O\'Keefe LLC', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(14, 9, 3, 'Faustino', 'Madelyn', 'Kautzer', 'male', 'kkiehn@example.org', 'Monahan, Rolfson and Gislason', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(15, 5, 10, 'Stephania', 'Claudia', 'Schaefer', 'female', 'brooke20@example.com', 'Feest Inc', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(16, 4, 4, 'Wilford', 'Alvina', 'Kuvalis', 'male', 'chaley@example.com', 'Bogan and Sons', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(17, 5, 6, 'Arnold', 'Nelda', 'Wilderman', 'male', 'kuvalis.abigail@example.org', 'Osinski-Hahn', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(18, 7, 2, 'Ali', 'Wyman', 'Dach', 'female', 'greenfelder.trenton@example.net', 'Reichert LLC', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(19, 1, 8, 'Kaela', 'Priscilla', 'Bogan', 'female', 'denis86@example.net', 'Daugherty, Balistreri and Hermann', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(20, 9, 7, 'Elouise', 'Gianni', 'Strosin', 'male', 'olin43@example.com', 'Huel LLC', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(21, 1, 2, 'Jaida', 'Kenyatta', 'Balistreri', 'male', 'fay.magnus@example.org', 'Davis Group', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(22, 7, 10, 'Katelynn', 'Lulu', 'Hansen', 'female', 'elinore.fisher@example.com', 'Denesik Inc', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(23, 9, 8, 'Madaline', 'Polly', 'Rath', 'male', 'tbahringer@example.com', 'Beahan PLC', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(24, 10, 6, 'Makenna', 'Buford', 'Kirlin', 'male', 'fyundt@example.com', 'Daugherty-McLaughlin', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(25, 4, 10, 'Hassan', 'Joseph', 'Kuvalis', 'male', 'lela.sauer@example.com', 'Lesch Inc', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(26, 5, 1, 'Mathilde', 'Lucy', 'Jakubowski', 'female', 'astehr@example.net', 'Rolfson-Hilpert', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(27, 8, 1, 'Jessyca', 'Cristobal', 'Windler', 'female', 'arenner@example.com', 'Jaskolski-Grant', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(28, 7, 6, 'Joany', 'Blair', 'Hills', 'female', 'kellen58@example.org', 'Stark and Sons', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(29, 9, 4, 'Eunice', 'Addie', 'Predovic', 'male', 'eryn36@example.net', 'Nicolas-O\'Hara', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(30, 10, 6, 'Olen', 'Linwood', 'Wunsch', 'female', 'clemmie82@example.org', 'Walter and Sons', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(31, 4, 1, 'Meagan', 'Chance', 'Gulgowski', 'male', 'violet75@example.net', 'Conroy, Graham and McGlynn', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(32, 5, 8, 'Arturo', 'Alexandra', 'Schulist', 'male', 'dustin26@example.org', 'Nader-Jakubowski', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(33, 6, 2, 'Telly', 'Rhianna', 'Gulgowski', 'male', 'gibson.meggie@example.com', 'Kulas, Botsford and McDermott', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(34, 2, 5, 'Derick', 'Conner', 'Harvey', 'male', 'marks.buford@example.com', 'Witting LLC', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(35, 9, 1, 'Carlo', 'Lucile', 'Bosco', 'male', 'reilly.arjun@example.com', 'Wilkinson Ltd', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(36, 4, 6, 'Cecilia', 'Keeley', 'Ziemann', 'male', 'kellen.dach@example.com', 'Hills, Kozey and Ziemann', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(37, 4, 5, 'Frederic', 'Pamela', 'Schumm', 'female', 'alvah83@example.org', 'Cassin-Roberts', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(38, 2, 5, 'Simone', 'Weston', 'Aufderhar', 'male', 'zwyman@example.net', 'Jacobi, Dietrich and Lebsack', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(39, 8, 7, 'Kali', 'Kamren', 'Turner', 'male', 'botsford.dominique@example.org', 'Beatty, Douglas and Little', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(40, 7, 3, 'Darius', 'Brody', 'Kunde', 'male', 'andreanne.rohan@example.net', 'Walter, Quigley and Donnelly', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(41, 9, 8, 'Angelita', 'Gail', 'Nader', 'male', 'fidel.hudson@example.net', 'Corkery-Turner', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(42, 7, 10, 'Danny', 'Noemy', 'Tromp', 'male', 'rex.mraz@example.net', 'Kerluke Group', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(43, 9, 5, 'Antonietta', 'Arely', 'Larson', 'male', 'lisandro81@example.com', 'Hoppe, Christiansen and Haag', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(44, 3, 4, 'Ashtyn', 'Addie', 'Kulas', 'male', 'myrtle.okeefe@example.org', 'Hamill-Hackett', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(45, 6, 10, 'Keven', 'Ruthe', 'Wunsch', 'male', 'leanna.haley@example.com', 'Zieme Ltd', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(46, 9, 6, 'Lillian', 'Rylee', 'Toy', 'female', 'mya26@example.org', 'White, Mills and Wunsch', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(47, 2, 10, 'Margarett', 'Dianna', 'Corwin', 'male', 'bjohnson@example.net', 'McDermott LLC', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(48, 2, 8, 'Oswald', 'Candido', 'Weimann', 'male', 'wisoky.makenna@example.com', 'VonRueden, Kozey and Crist', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(49, 6, 9, 'Jennifer', 'Kay', 'Raynor', 'male', 'marvin06@example.net', 'Spencer-Nikolaus', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(50, 5, 2, 'Bo', 'Ashton', 'Fahey', 'male', 'jordi.bayer@example.com', 'Wuckert-Wilderman', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(51, 7, 6, 'Hyman', 'Maurice', 'Boyer', 'male', 'zbartoletti@example.com', 'Turcotte, Gutkowski and Treutel', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(52, 5, 6, 'Braden', 'Winston', 'Carter', 'female', 'alyson62@example.net', 'Stroman Ltd', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(53, 9, 4, 'Ines', 'Erica', 'Buckridge', 'male', 'kristin.rice@example.com', 'Stark-Bins', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(54, 1, 8, 'Boyd', 'Nora', 'McCullough', 'female', 'dbogisich@example.net', 'Durgan Ltd', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(55, 6, 3, 'Margret', 'Leopoldo', 'Gerhold', 'female', 'prosacco.viviane@example.org', 'Tromp, Ankunding and Swift', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(56, 1, 8, 'Vincenza', 'Felipa', 'Walker', 'female', 'imelda43@example.com', 'Keebler Inc', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(57, 7, 6, 'Murphy', 'Tanner', 'Skiles', 'female', 'kenyon29@example.net', 'Bailey Inc', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(58, 10, 3, 'Baby', 'Maureen', 'Heidenreich', 'female', 'greenfelder.leila@example.com', 'Kertzmann, Legros and Boyer', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(59, 3, 2, 'Conner', 'Juvenal', 'Russel', 'male', 'graham.roy@example.com', 'Walker, Turcotte and Zulauf', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(60, 5, 9, 'Nelson', 'Kelly', 'Wisoky', 'male', 'kaitlyn.boehm@example.org', 'Cruickshank-Schuster', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(61, 8, 10, 'Guido', 'Hester', 'Gibson', 'female', 'marcel56@example.com', 'Funk-Dooley', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(62, 2, 3, 'Georgianna', 'Tabitha', 'Koss', 'female', 'verlie57@example.com', 'Kertzmann-Franecki', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(63, 4, 1, 'Velva', 'Celia', 'Gorczany', 'female', 'rowe.grady@example.org', 'Macejkovic Inc', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(64, 7, 2, 'Rachael', 'Marcelle', 'Thiel', 'female', 'eleanora99@example.org', 'Rogahn-Osinski', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(65, 10, 9, 'Alycia', 'Samson', 'Walker', 'male', 'qstoltenberg@example.net', 'Bode, Shields and Rowe', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(66, 3, 6, 'Ephraim', 'Tianna', 'Hilpert', 'male', 'lsmitham@example.org', 'Eichmann-Dach', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(67, 4, 5, 'Christophe', 'Drew', 'Stracke', 'male', 'wiegand.mckenzie@example.org', 'Bechtelar, Eichmann and Bode', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(68, 2, 7, 'Bernard', 'Amely', 'Nader', 'male', 'blick.fausto@example.org', 'Funk-Spencer', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(69, 6, 1, 'Elenora', 'Alexandrea', 'Rolfson', 'male', 'hackett.celestine@example.com', 'Muller-Schuppe', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(70, 10, 2, 'Dashawn', 'Mervin', 'Mills', 'female', 'beatty.stephany@example.com', 'Kirlin, Murray and Crooks', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(71, 1, 10, 'Elouise', 'Lia', 'Moen', 'female', 'bonita.murphy@example.com', 'Green-Goyette', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(72, 4, 6, 'Kathryn', 'Rusty', 'Little', 'male', 'buckridge.bianka@example.com', 'Lindgren, Schultz and Lind', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(73, 2, 8, 'Lilyan', 'Kirsten', 'Kreiger', 'male', 'mclaughlin.ezekiel@example.org', 'Gleichner-Gislason', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(74, 4, 10, 'Anne', 'Bennie', 'Balistreri', 'female', 'virginia.larkin@example.com', 'Bins Group', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(75, 4, 10, 'Edyth', 'Jazlyn', 'Greenholt', 'female', 'leannon.hazle@example.com', 'Hintz PLC', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(76, 9, 2, 'Erica', 'Timothy', 'McLaughlin', 'female', 'elna61@example.net', 'Prosacco, Jacobs and Wehner', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(77, 6, 9, 'Kennith', 'Idell', 'Hansen', 'female', 'qlockman@example.org', 'Hegmann-Hermann', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(78, 5, 9, 'Coralie', 'Audie', 'Cartwright', 'male', 'devyn25@example.org', 'Stiedemann PLC', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(79, 3, 6, 'Osbaldo', 'Kane', 'Ward', 'male', 'keebler.raina@example.org', 'Lynch LLC', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(80, 5, 2, 'Maximus', 'Ruby', 'Gottlieb', 'female', 'eichmann.adaline@example.org', 'Collier, Armstrong and Spencer', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(81, 9, 10, 'Clifton', 'Carlotta', 'Gerlach', 'male', 'djohnson@example.com', 'Carter PLC', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(82, 6, 2, 'Hassie', 'Deja', 'Turner', 'female', 'jkozey@example.org', 'Nienow, Hoeger and Stanton', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(83, 10, 4, 'Retha', 'Emie', 'Feil', 'male', 'braulio.lehner@example.net', 'Sawayn LLC', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(84, 2, 9, 'Leone', 'Tony', 'Lakin', 'female', 'jayme99@example.org', 'Hagenes, Hudson and Reichel', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(85, 5, 5, 'Deja', 'Romaine', 'Kirlin', 'female', 'blanda.flo@example.net', 'Rau LLC', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(86, 9, 5, 'Liana', 'Albertha', 'Keebler', 'female', 'bertrand.rath@example.net', 'Cronin, Renner and Balistreri', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(87, 3, 10, 'Maybell', 'Gregg', 'Gleichner', 'female', 'rogahn.christy@example.net', 'Vandervort PLC', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(88, 6, 2, 'Raina', 'Dorothea', 'Lesch', 'male', 'ynader@example.net', 'Beier PLC', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(89, 4, 1, 'Antonia', 'Avis', 'Will', 'male', 'fgraham@example.net', 'Tromp, Cremin and Stroman', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(90, 1, 8, 'Zoe', 'Jake', 'Medhurst', 'female', 'mozell60@example.net', 'Bins Ltd', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(91, 6, 4, 'Jovan', 'Kristina', 'Donnelly', 'female', 'ijohnston@example.net', 'Pfeffer and Sons', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(92, 8, 2, 'Dayana', 'Jason', 'Brakus', 'male', 'dante.braun@example.net', 'Rodriguez Group', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(93, 7, 4, 'Litzy', 'Edison', 'Hansen', 'female', 'rhea.toy@example.net', 'Friesen and Sons', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(94, 9, 3, 'Ena', 'Gladyce', 'Schmidt', 'male', 'lucinda.gusikowski@example.com', 'O\'Conner PLC', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(95, 7, 8, 'Miguel', 'Thelma', 'Baumbach', 'female', 'aileen62@example.org', 'Rippin, Gleichner and Feil', 0, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(96, 1, 2, 'Winfield', 'Electa', 'Roberts', 'male', 'quinn.mayer@example.org', 'Walker, Corkery and Pfannerstill', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(97, 2, 4, 'Jaeden', 'Jensen', 'Heaney', 'female', 'hsawayn@example.net', 'Bauch-Raynor', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(98, 7, 4, 'Audra', 'Bertrand', 'Simonis', 'female', 'russel.sporer@example.org', 'Rice Ltd', 0, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(99, 2, 3, 'Laney', 'Keith', 'Cruickshank', 'male', 'gveum@example.org', 'Gleason, Wolff and Funk', 1, 0, '2024-02-22 17:47:36', '2024-02-22 17:47:36'),
+(100, 6, 8, 'Cody', 'Susie', 'Cremin', 'female', 'rachel25@example.net', 'Armstrong-Hayes', 1, 1, '2024-02-22 17:47:36', '2024-02-22 17:47:36');
 
 -- --------------------------------------------------------
 
@@ -263,6 +270,8 @@ CREATE TABLE `seminars` (
   `topic` varchar(255) NOT NULL,
   `speaker` varchar(255) NOT NULL,
   `about_this_seminar` text NOT NULL,
+  `about_the_speaker` text NOT NULL,
+  `date` datetime NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -271,17 +280,23 @@ CREATE TABLE `seminars` (
 -- Dumping data for table `seminars`
 --
 
-INSERT INTO `seminars` (`id`, `topic`, `speaker`, `about_this_seminar`, `created_at`, `updated_at`) VALUES
-(1, 'Rerum molestiae aut eum delectus unde similique laudantium iure sed placeat eos.', 'Roselyn Berge DVM', 'Ut recusandae ut omnis dolor modi ut temporibus consequatur cupiditate magni et quam sed omnis dignissimos in explicabo voluptatum provident non voluptatem exercitationem est veniam blanditiis ut tenetur ad magnam minima quos non incidunt est dolorum ipsam non vero dolorem omnis sit odio sed et beatae laborum qui accusantium a.', '2024-02-21 01:20:08', '2024-02-21 01:20:08'),
-(2, 'Voluptas inventore blanditiis est quisquam a est expedita quam nihil vel qui.', 'Dr. Lionel Mosciski', 'Ducimus tenetur sed asperiores in velit ullam ut porro vitae nobis tempora est consequatur dolorem nemo qui est possimus quibusdam rerum illo error asperiores enim repellat quia ipsam porro rerum iste in dolores recusandae quisquam accusamus omnis aliquam tempora consequuntur nihil aliquid qui minus rerum fuga possimus deleniti.', '2024-02-21 01:20:08', '2024-02-21 01:20:08'),
-(3, 'Autem ea non architecto ducimus architecto minus quo error sapiente voluptatem.', 'Prof. Alyson Ziemann PhD', 'Nulla libero atque voluptas eos neque et sunt ipsam tenetur facere adipisci est et doloremque autem voluptate minus adipisci aut quia unde quisquam aut est voluptate molestiae sapiente ea id vel et a exercitationem delectus impedit inventore.', '2024-02-21 01:20:08', '2024-02-21 01:20:08'),
-(4, 'Consequuntur atque tempore sit corrupti deleniti ut vel cupiditate laudantium laboriosam architecto.', 'Helene Gusikowski', 'Accusamus nulla dolor inventore harum sed eos rerum alias aut deserunt explicabo reiciendis optio in excepturi voluptatum autem aperiam porro nobis consectetur aliquam quasi ducimus voluptas perferendis sint et quidem nesciunt earum et reiciendis praesentium rerum vel eum est molestias quo pariatur.', '2024-02-21 01:20:08', '2024-02-21 01:20:08'),
-(5, 'Pariatur qui magnam quis vitae quibusdam magnam.', 'Emerson Kessler', 'Est sed placeat dolorem debitis quia necessitatibus tempora sed ipsam ducimus voluptatem quidem sapiente animi sapiente vero ut accusamus dignissimos non laborum incidunt quia ipsa molestiae est illo sit vitae ipsum tempore similique perferendis qui velit necessitatibus in ut rerum ratione ut quae id voluptas ut vitae reiciendis et illo eum iure ut rem reprehenderit nostrum doloribus.', '2024-02-21 01:20:08', '2024-02-21 01:20:08'),
-(6, 'Dicta perferendis ratione aut cumque ratione ea.', 'Dr. Jessika Moen DDS', 'Modi architecto vitae ipsum qui atque quia libero incidunt quia voluptates facilis neque incidunt ut voluptas laudantium et maiores reprehenderit enim sit ut nemo explicabo recusandae at ad quia animi omnis quis aut consequuntur quaerat voluptas corporis beatae molestiae ut eius unde dolor doloribus et architecto molestiae quam.', '2024-02-21 01:20:08', '2024-02-21 01:20:08'),
-(7, 'Nulla enim saepe amet necessitatibus neque fuga repellendus doloribus tempora dolores mollitia soluta.', 'Ashley Quigley', 'Distinctio voluptates est eum sed consequatur culpa dolorem rerum dolorem reiciendis rerum quos autem maiores aut dolores magni accusantium blanditiis est sit quae ipsam similique odit autem quia aut quaerat aut cum harum illum minus itaque unde qui tenetur quidem et dolorem nam magnam quisquam est fugit optio ullam ipsam.', '2024-02-21 01:20:08', '2024-02-21 01:20:08'),
-(8, 'Aut laborum odit ea fuga ipsam a dolorum est amet laboriosam et blanditiis.', 'Dr. Kenyatta Greenholt V', 'Hic laborum eos corrupti error architecto numquam voluptas vel voluptatem non non aut sunt corporis nesciunt dolor maxime dolorem reprehenderit odio eum magni provident vero quo nisi et illo nihil porro at rerum officiis sed et qui id consectetur saepe explicabo ab autem quos.', '2024-02-21 01:20:08', '2024-02-21 01:20:08'),
-(9, 'Sed odio expedita debitis quam reprehenderit quo occaecati cupiditate ut sint unde.', 'Kassandra Langosh', 'Voluptatum corporis sed omnis ut impedit nam maiores earum occaecati tempore doloribus enim numquam aperiam aliquid laudantium quia esse dolores veritatis saepe ut veritatis voluptatem doloribus earum cupiditate enim eveniet ut incidunt numquam magni explicabo est est est laboriosam.', '2024-02-21 01:20:08', '2024-02-21 01:20:08'),
-(10, 'Quas quibusdam cum qui deserunt tenetur velit rerum.', 'Prof. Drake Murphy MD', 'Eligendi maiores voluptates velit nobis mollitia voluptatem sunt quia necessitatibus ea culpa minus cumque temporibus neque fugit sunt voluptas numquam facilis quibusdam et modi vitae repudiandae sunt vel dignissimos assumenda accusantium quas.', '2024-02-21 01:20:08', '2024-02-21 01:20:08');
+INSERT INTO `seminars` (`id`, `topic`, `speaker`, `about_this_seminar`, `about_the_speaker`, `date`, `created_at`, `updated_at`) VALUES
+(1, 'Et numquam iste rerum quod ea consequatur molestias reprehenderit consequatur.', 'Toni Kshlerin', 'Incidunt harum dolore illum ullam exercitationem quia occaecati ut qui mollitia autem iure et dolor voluptatum totam tempore ipsum laboriosam voluptatem aut sit ut atque incidunt velit tempore quia velit quidem rerum sit rerum laborum itaque expedita doloremque et vero ut aut vel sit deleniti vitae consectetur perferendis sed animi voluptatum voluptatem voluptatibus sit asperiores id consequatur.', 'Aut ut facilis omnis aperiam qui impedit unde quidem possimus nostrum perferendis voluptatem nam vero consequatur facilis facilis minima est beatae laudantium eligendi doloremque quos reprehenderit aut eaque nesciunt dolorem est iure porro quod voluptas voluptatem sint quisquam accusantium doloribus.', '2020-07-28 02:58:40', '2024-02-22 17:46:00', '2024-02-22 17:46:00'),
+(2, 'Et vel maxime praesentium fugiat saepe qui voluptate quia temporibus doloremque facilis dolores voluptatem.', 'Dameon Ward', 'Velit sint sint unde fuga sunt debitis et officiis asperiores nihil error ut cum voluptatem maxime voluptatem ea et commodi ipsam corporis enim iste eos voluptatem quis nam quia et perferendis eveniet non est aliquam quos quaerat qui in dolores illo ad.', 'Hic ad id pariatur sint quia sint reprehenderit et et eos quae dolorem voluptatibus autem repellendus perspiciatis assumenda quam rerum perferendis ut minus quo qui occaecati magnam quis sit debitis vero et iure ut nobis dolores mollitia qui qui voluptas ut aut adipisci et quas itaque esse.', '1998-11-05 20:09:57', '2024-02-22 17:46:00', '2024-02-22 17:46:00'),
+(3, 'Cupiditate illum odio quia sunt alias reprehenderit quia expedita dolores.', 'Dakota Weissnat', 'Nam modi magni dolores ea error temporibus totam eligendi magnam error enim hic corrupti debitis quos ut hic necessitatibus et excepturi sint corporis sint quo molestias omnis eum dolor qui sit quod nemo at laboriosam et molestiae quibusdam vel sunt porro est corrupti quae iusto vitae voluptate eos explicabo cum voluptatem aut rerum consequatur distinctio culpa sed voluptatibus ut maiores eum ipsa commodi non consequatur qui quod alias eligendi et pariatur.', 'Saepe odit nobis expedita ipsum quis consectetur minima vero accusamus illum numquam rem suscipit enim et voluptate et excepturi architecto autem et aut sed quasi explicabo repellat et enim ut recusandae.', '1990-01-25 14:28:13', '2024-02-22 17:46:00', '2024-02-22 17:46:00'),
+(4, 'Reprehenderit officiis accusamus quod cupiditate non reiciendis reprehenderit voluptatem dolorem.', 'Ms. Brigitte Hettinger PhD', 'Voluptatem similique error minima id nulla ducimus est modi maiores quo omnis quia corporis saepe illum exercitationem iusto et quae magnam voluptates delectus atque nobis sit dolorem quia itaque repudiandae corporis sunt aut delectus alias et quaerat facere occaecati error rem esse aliquid minima nihil quia illo et molestias quia aut qui rem non voluptates numquam est sed commodi quis itaque velit.', 'Ducimus voluptatum iure ut et quia rerum ab cupiditate voluptatum voluptate sit ut ipsa ut voluptatem modi nam vitae molestiae quod delectus voluptatem molestias aut eveniet dolorem quo quisquam maiores natus aliquam voluptates autem et voluptate voluptatum maiores suscipit sunt mollitia eum iste eum eaque aut praesentium optio animi voluptatibus et modi debitis consequatur esse voluptatem accusamus doloremque sit odio dolore est quae.', '2011-07-01 23:19:24', '2024-02-22 17:46:00', '2024-02-22 17:46:00'),
+(5, 'Quo velit fugiat enim eligendi laboriosam corrupti corporis consequatur quos odio.', 'Jazmyn McGlynn PhD', 'Ut ut sit et tempore et omnis voluptas sint deleniti quo aut explicabo nam officia et quia rerum sit doloremque commodi recusandae sed eligendi autem perspiciatis aut accusantium aperiam et officia dolores ad.', 'Et et fuga ex eum sit ipsa quibusdam aliquam sequi recusandae accusamus omnis dolorem quo labore perferendis sit qui non quo fuga neque voluptatem adipisci accusamus dolorum deserunt id adipisci aut ut eum alias dolores totam sit totam omnis est consequatur omnis nobis dignissimos qui earum quis.', '2007-08-14 17:24:31', '2024-02-22 17:46:00', '2024-02-22 17:46:00'),
+(6, 'Accusantium corrupti ut quia occaecati consequuntur non soluta illum eum nisi corporis.', 'Prof. Brendan Crona III', 'Qui voluptatibus quaerat illum esse quis sed in velit asperiores ratione sit occaecati ad saepe voluptate eum voluptas et fuga libero illum adipisci exercitationem voluptas quo earum dicta commodi non atque sunt atque illum quia labore.', 'Ipsam voluptatem sunt repellendus esse aut tempore impedit et tenetur qui non odio consequuntur in est perferendis temporibus ut vero ea officia iusto qui magnam ea nemo dolores vel consequatur rerum magnam cumque illum qui.', '1979-10-21 02:33:55', '2024-02-22 17:46:00', '2024-02-22 17:46:00'),
+(7, 'Sunt qui est repudiandae dicta ex laudantium enim voluptas occaecati qui.', 'Elnora Bartell', 'Dignissimos aperiam officia sed error illum assumenda quod magnam aut sed et sequi enim dolorem laborum natus voluptas similique eligendi et totam adipisci voluptatem nostrum tenetur minima dolorum et asperiores ducimus mollitia et dignissimos fugiat libero laboriosam qui eaque quas repellendus velit laborum.', 'Reprehenderit beatae id nam amet enim nulla alias sunt repellendus explicabo reprehenderit consequatur temporibus esse possimus explicabo aut est consectetur ut dignissimos cumque molestias iure consequatur harum et corrupti dolores quaerat illo ut.', '2020-12-19 18:22:29', '2024-02-22 17:46:00', '2024-02-22 17:46:00'),
+(8, 'Distinctio perspiciatis ut nesciunt laborum ad impedit et qui non ullam consequatur optio.', 'Miss Abbie Bergstrom', 'Ipsam praesentium consequatur quis quasi quidem libero sit soluta ut et saepe sint odit vel possimus corrupti sunt laudantium architecto quis consequatur provident qui ipsa vitae eos delectus vel unde voluptatem eius voluptas illo suscipit adipisci.', 'Incidunt earum consequuntur molestiae laboriosam ut labore veritatis sint ad possimus iure perferendis et sequi ad minus libero dolorum omnis iure ea rerum ea placeat quia dolorum optio possimus ut voluptas fugit qui similique.', '2019-12-11 14:01:08', '2024-02-22 17:46:00', '2024-02-22 17:46:00'),
+(9, 'Aut qui unde tenetur vel molestiae nam atque enim.', 'Mr. Alberto Quigley I', 'Eos porro sint et reiciendis tenetur aut et qui quas dolor qui reiciendis suscipit et nobis explicabo voluptas iure aut excepturi aut quia et fugiat atque officiis placeat earum aut ut ipsam facilis aut ut non et nihil sint aut omnis harum omnis molestiae qui molestias nesciunt id facilis nostrum non pariatur corporis ut sit ratione amet eligendi tempore corporis praesentium nam molestiae quibusdam iure similique nam.', 'Perferendis voluptas non dolor dolorum aperiam et quia aut consequatur suscipit voluptatem atque veniam hic perspiciatis fugit totam distinctio qui tempore qui sapiente sunt consequatur quibusdam eos dolore omnis inventore aliquam quisquam molestiae repellat est dolore quo quo illo a eos ex saepe et quia nobis velit et voluptates omnis amet autem voluptatibus ut est deserunt necessitatibus architecto ut repellat in nesciunt.', '2015-11-22 15:31:17', '2024-02-22 17:46:00', '2024-02-22 17:46:00'),
+(10, 'Deleniti sit qui fugiat deleniti dolores ab deserunt.', 'Mr. Casey Jenkins', 'Et magni ut voluptatibus qui atque dolor deleniti ut iste assumenda ea rem voluptate voluptatum magni repellat error rem et dignissimos neque dignissimos ea beatae dolor ea praesentium sint facilis rerum aut hic voluptatem et asperiores enim sed iste dignissimos aut iusto aut non nisi sit dolor non recusandae sed deleniti omnis similique dolor ea harum quaerat culpa magni est sequi est.', 'Non sit consequatur recusandae quos vel sit asperiores vitae suscipit quo ut hic atque qui molestias similique velit eum nihil et adipisci eaque et velit doloremque in porro omnis ad itaque itaque tempore in nemo qui qui aperiam ipsa iste rerum sunt blanditiis ut rerum quo neque voluptatem dolorem iure similique necessitatibus ducimus sit eius possimus neque est id rerum adipisci quis fugit ex dolorum est libero blanditiis ratione reprehenderit vitae.', '1995-08-17 21:36:04', '2024-02-22 17:46:00', '2024-02-22 17:46:00'),
+(11, 'Try', 'mv;qkwds', 'cnlqkebnclds', 'jvhiewndsklx', '2024-02-22 00:00:00', '2024-02-22 18:32:08', '2024-02-22 18:32:08'),
+(12, 'HAha', 'haha', 'haha', 'haha', '2024-02-29 00:00:00', '2024-02-22 18:44:03', '2024-02-22 18:44:03'),
+(13, 'lkcnvlw', 'acms', 'akcja', 'candl', '2024-03-02 00:00:00', '2024-02-22 18:45:43', '2024-02-22 18:45:43'),
+(14, 'a;cldvn', ';aclw', 'cbake', 'bcakheka', '2024-03-07 00:00:00', '2024-02-22 18:46:40', '2024-02-22 18:46:40'),
+(15, 'slvklkr', 'c.knes', 'c sdm', 'cmbkes', '2024-03-09 00:00:00', '2024-02-22 18:48:46', '2024-02-22 18:48:46'),
+(16, 'aefjoewi', 'jaejcqw', 'cajeckau', 'caljhekcas', '2024-03-09 00:00:00', '2024-02-22 18:49:55', '2024-02-22 18:49:55');
 
 -- --------------------------------------------------------
 
@@ -304,6 +319,22 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `email`, `email_verified_at`, `password`, `user_level`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Isaiah', 'Torphy', 'Sans', 'Male', 'zweissnat@example.com', '2024-02-22 17:46:28', '$2y$12$NDGY10XXqO3gGthpkl.7VOvAmSy1swqpctspDJIflgjU2a89X7Oru', '1', 'C:\\Users\\User\\AppData\\Local\\Temp\\43e2ccaa9c411d2cee0a56cfe70ee030.png', '8YFcJtUpxh', '2024-02-22 17:47:20', '2024-02-22 18:51:22'),
+(2, 'Javon', 'Harber', 'Mayer', 'Male', 'jessy.osinski@example.net', '2024-02-22 17:46:29', '$2y$12$NDGY10XXqO3gGthpkl.7VOvAmSy1swqpctspDJIflgjU2a89X7Oru', '2', 'C:\\Users\\User\\AppData\\Local\\Temp\\bf7ceb102627f323b2db060895c157d0.png', 'NuAjH36sCU', '2024-02-22 17:47:20', '2024-02-22 17:47:20'),
+(3, 'Laron', 'Crist', 'Bogisich', 'Female', 'twilliamson@example.com', '2024-02-22 17:46:31', '$2y$12$NDGY10XXqO3gGthpkl.7VOvAmSy1swqpctspDJIflgjU2a89X7Oru', '2', 'C:\\Users\\User\\AppData\\Local\\Temp\\d6e628d523d85b802330f74c28dc4b3a.png', 'a0djwH4fRB', '2024-02-22 17:47:20', '2024-02-22 17:47:20'),
+(4, 'Meda', 'Vandervort', 'Stroman', 'Female', 'reynolds.ronny@example.org', '2024-02-22 17:46:33', '$2y$12$NDGY10XXqO3gGthpkl.7VOvAmSy1swqpctspDJIflgjU2a89X7Oru', '2', 'C:\\Users\\User\\AppData\\Local\\Temp\\34c5d97c7f08b30dd661f5ac520595eb.png', 'gANZFuZeh8', '2024-02-22 17:47:20', '2024-02-22 17:47:20'),
+(5, 'Malvina', 'D\'Amore', 'Hand', 'Male', 'devan78@example.org', '2024-02-22 17:46:35', '$2y$12$NDGY10XXqO3gGthpkl.7VOvAmSy1swqpctspDJIflgjU2a89X7Oru', '2', 'C:\\Users\\User\\AppData\\Local\\Temp\\426f031b89b8fd1ceca9615a3d5b8c29.png', 'bOubkihbZn', '2024-02-22 17:47:20', '2024-02-22 17:47:20'),
+(6, 'Mafalda', 'Hill', 'Boyle', 'Female', 'nicolas.domenic@example.com', '2024-02-22 17:46:36', '$2y$12$NDGY10XXqO3gGthpkl.7VOvAmSy1swqpctspDJIflgjU2a89X7Oru', '2', 'C:\\Users\\User\\AppData\\Local\\Temp\\f59ae19e83c6282840a414aec74047e8.png', 'L5kPHHrNox', '2024-02-22 17:47:20', '2024-02-22 17:47:20'),
+(7, 'Clemmie', 'Corwin', 'Wilderman', 'Female', 'ystamm@example.net', '2024-02-22 17:46:37', '$2y$12$NDGY10XXqO3gGthpkl.7VOvAmSy1swqpctspDJIflgjU2a89X7Oru', '2', 'C:\\Users\\User\\AppData\\Local\\Temp\\8c3957d6a6b621e1c1c9a0b68cbd238e.png', '4ttY9nRAfX', '2024-02-22 17:47:20', '2024-02-22 17:47:20'),
+(8, 'Hattie', 'Hettinger', 'Cruickshank', 'Male', 'savanna.cummings@example.org', '2024-02-22 17:46:39', '$2y$12$NDGY10XXqO3gGthpkl.7VOvAmSy1swqpctspDJIflgjU2a89X7Oru', '2', 'C:\\Users\\User\\AppData\\Local\\Temp\\88e307406c9011feefcf4177ac8055aa.png', 'C25bAeintg', '2024-02-22 17:47:20', '2024-02-22 17:47:20'),
+(9, 'Myrna', 'Grant', 'Feeney', 'Female', 'keegan.mayert@example.net', '2024-02-22 17:46:40', '$2y$12$NDGY10XXqO3gGthpkl.7VOvAmSy1swqpctspDJIflgjU2a89X7Oru', '2', 'C:\\Users\\User\\AppData\\Local\\Temp\\9a1689abdd8a343d1b4ee62fe332307d.png', 'uoUiisOpBF', '2024-02-22 17:47:20', '2024-02-22 17:47:20'),
+(10, 'Angela', 'D\'Amore', 'Herzog', 'Male', 'pbailey@example.net', '2024-02-22 17:46:41', '$2y$12$NDGY10XXqO3gGthpkl.7VOvAmSy1swqpctspDJIflgjU2a89X7Oru', '2', 'C:\\Users\\User\\AppData\\Local\\Temp\\ffbb7f89e8e19879bb86cd076e650552.png', 'Ooqq3x9owO', '2024-02-22 17:47:20', '2024-02-22 17:47:20');
 
 --
 -- Indexes for dumped tables
@@ -334,6 +365,7 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `participants`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `participants_user_id_foreign` (`user_id`),
   ADD KEY `participants_seminar_id_foreign` (`seminar_id`);
 
 --
@@ -371,7 +403,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `certificates`
 --
 ALTER TABLE `certificates`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -383,13 +415,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT for table `participants`
 --
 ALTER TABLE `participants`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=201;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -401,13 +433,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `seminars`
 --
 ALTER TABLE `seminars`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
@@ -423,7 +455,8 @@ ALTER TABLE `certificates`
 -- Constraints for table `participants`
 --
 ALTER TABLE `participants`
-  ADD CONSTRAINT `participants_seminar_id_foreign` FOREIGN KEY (`seminar_id`) REFERENCES `seminars` (`id`);
+  ADD CONSTRAINT `participants_seminar_id_foreign` FOREIGN KEY (`seminar_id`) REFERENCES `seminars` (`id`),
+  ADD CONSTRAINT `participants_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
