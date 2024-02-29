@@ -32,6 +32,14 @@ interface ParticipantService
     public function getCertificate($userID);
 
     /**
+     * Interface for checkRegistration
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function checkRegistration(Request $request);
+    
+    /**
      * Interface for registering participant
      *
      * @param Request $request

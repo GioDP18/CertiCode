@@ -9,19 +9,33 @@ import 'vue3-carousel/dist/carousel.css';
 
 const id = localStorage.getItem('user_id');
 const dropdownOpen = ref(false);
+const seminarAvailableObjects = ref([]);
 const seminarObjects = ref([]);
 const certificateObjects = ref([]);
-const certificateCountObjects = ref([]);
-const seminarCountObjects = ref([]);
+const certificateCountObjects = ref();
+const seminarCountObjects = ref();
 
 function toggleDropdown() {
     dropdownOpen.value = !dropdownOpen.value;
 }
 
 onMounted(async () => {
+    getAvailableSeminar();
     getSeminar();
     getCertificate();
 });
+
+const getAvailableSeminar = async () => {
+    try {
+        await axios.get('http://127.0.0.1:8000/api/auth/get-all-seminars')
+        .then((response) => {
+            console.log(response.data);
+            seminarAvailableObjects.value = response.data.seminars;        
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 const getSeminar = async () => {
     try {
@@ -78,6 +92,14 @@ const formatDate = (dateString) => {
   }
 };
 
+const truncateText = (text, limit) => {
+    if (text.length <= limit) {
+        return text;
+    } else {
+        return text.slice(0, limit) + '..'; 
+    }
+};
+
 </script>
 
 <template>
@@ -112,7 +134,7 @@ const formatDate = (dateString) => {
                             <div class="content-1">
                                 <div class="card-1">
                                     <div class="count-card">
-                                        <div class="count-text">{{ seminarCountObjects }}</div>
+                                        <div class="count-text">{{ seminarCountObjects || '0' }}</div>
                                         <div class="count-sub-text">Total Seminars Attended</div>
                                     </div>
                                     <div class="count-logo">
@@ -123,7 +145,7 @@ const formatDate = (dateString) => {
                                 </div>
                                 <div class="card-1">
                                     <div class="count-card">
-                                        <div class="count-text">{{ certificateCountObjects }}</div>
+                                        <div class="count-text">{{ certificateCountObjects || '0' }}</div>
                                         <div class="count-sub-text">Total Certificates</div>
                                     </div>
                                     <div class="count-logo">
@@ -139,61 +161,23 @@ const formatDate = (dateString) => {
                                 <div class="seminar-container">
                                     <div class="content-text">Attended Seminars</div>
                                     <Carousel :itemsToShow="3" :wrapAround="true" :transition="500">
-                                        <Slide :key="Slide">
+                                        <Slide v-for="seminar in seminarObjects" :key="seminar.id">
                                             <div class="carousel__item">
                                                 <div class="carousel__item">
                                                     <div class="seminar-card-1">
                                                         <div class="seminar-header">
                                                             <div class="seminar-logo">logo</div>
-                                                            <div class="seminar-text">Seminar 1</div>
+                                                            <div class="seminar-text" >{{ truncateText(seminar.topic, 10) }}</div>
                                                         </div>
-                                                        <div class="seminar-subtext">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                            sed do eiusmod tempor
-                                                        </div>
-                                                        <div class="seminar-date">February 18, 2024</div>
-                                                        <div class="seminar-time">8:00 AM</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Slide>
-                                        <Slide :key="Slide">
-                                            <div class="carousel__item">
-                                                <div class="carousel__item">
-                                                    <div class="seminar-card-1">
-                                                        <div class="seminar-header">
-                                                            <div class="seminar-logo">logo</div>
-                                                            <div class="seminar-text">Seminar 1</div>
-                                                        </div>
-                                                        <div class="seminar-subtext">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                            sed do eiusmod tempor
-                                                        </div>
-                                                        <div class="seminar-date">February 18, 2024</div>
-                                                        <div class="seminar-time">8:00 AM</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Slide>
-                                        <Slide :key="Slide">
-                                            <div class="carousel__item">
-                                                <div class="carousel__item">
-                                                    <div class="seminar-card-1">
-                                                        <div class="seminar-header">
-                                                            <div class="seminar-logo">logo</div>
-                                                            <div class="seminar-text">Seminar 1</div>
-                                                        </div>
-                                                        <div class="seminar-subtext">
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                                            sed do eiusmod tempor
-                                                        </div>
-                                                        <div class="seminar-date">February 18, 2024</div>
-                                                        <div class="seminar-time">8:00 AM</div>
+                                                        <div class="seminar-subtext">{{ truncateText(seminar.about_this_seminar, 70) }}</div>
+                                                        <div class="seminar-date">{{ formatDate(seminar.date) }}</div>
+                                                        <div class="seminar-time">{{ formatTime(seminar.date) }}</div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </Slide>
                                         <template #addons>
+                                            <p v-if="seminarObjects.length == 0"> no registere seminar yet</p>
                                             <Navigation />
                                             <Pagination class="pagination" />
                                         </template>
@@ -203,7 +187,7 @@ const formatDate = (dateString) => {
                         </div>
                     </div>
                 </div>
-                <div class="content py-4 mt-4">
+                <div v-for="certificate in certificateObjects" :key="certificate.id" class="content py-4 mt-4">
                     <div class="container">
                         <div class="content-text">Acquired Certificates</div>
                         <div class="row row-cols-4">
@@ -227,7 +211,7 @@ const formatDate = (dateString) => {
                     <div class="container">
                         <div id="availableSeminars" class="scroll content-text">Available Seminars</div>
                         <div class="row row-cols-5">
-                            <div class="col py-3">
+                            <div v-for="seminars in seminarAvailableObjects" :key="seminars.id"  class="col py-3">
                                 <div class="card-seminar">
                                     <img loading="lazy"
                                         srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
@@ -237,114 +221,9 @@ const formatDate = (dateString) => {
                                             <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
                                                 class="logo-seminar-header" />
                                         </div>
-                                        <div class="text-seminar">Seminar Title</div>
+                                        <div class="text-seminar">{{ seminars.topic }}</div>
                                     </div>
-                                    <router-link style="text-decoration: none;" to="seminarInfo" class="footer-seminar">
-                                        <div class="show-more">
-                                            <div class="text-footer">Show more</div>
-                                            <i><font-awesome-icon style="" class="icon-footer"
-                                                    :icon="['fas', 'fa-angles-right']" /></i>
-                                        </div>
-                                    </router-link>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="card-seminar">
-                                    <img loading="lazy"
-                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/b828a4cb40f28685339f158df8580e32dfa741bd44904ff46e4c5ef0327cdc26?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
-                                        class="img-seminar" />
-                                    <div class="header-seminar-card">
-                                        <div class="header-seminar">
-                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
-                                                class="logo-seminar-header" />
-                                        </div>
-                                        <div class="text-seminar">Seminar Title</div>
-                                    </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
-                                        <div class="show-more">
-                                            <div class="text-footer">Show more</div>
-                                            <i><font-awesome-icon style="" class="icon-footer"
-                                                    :icon="['fas', 'fa-angles-right']" /></i>
-                                        </div>
-                                    </router-link>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="card-seminar">
-                                    <img loading="lazy"
-                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/ca1b59ff5c8a57cce2d4a8c48d709563306d3c4bc4fb6854c339990fe30a9b15?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
-                                        class="img-seminar" />
-                                    <div class="header-seminar-card">
-                                        <div class="header-seminar">
-                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
-                                                class="logo-seminar-header" />
-                                        </div>
-                                        <div class="text-seminar">Seminar Title</div>
-                                    </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
-                                        <div class="show-more">
-                                            <div class="text-footer">Show more</div>
-                                            <i><font-awesome-icon style="" class="icon-footer"
-                                                    :icon="['fas', 'fa-angles-right']" /></i>
-                                        </div>
-                                    </router-link>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="card-seminar">
-                                    <img loading="lazy"
-                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/b527092bec7770f1a5bd571e82b7bc6d568531ef0f0dc6b5ac47c4406f867f85?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
-                                        class="img-seminar" />
-                                    <div class="header-seminar-card">
-                                        <div class="header-seminar">
-                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
-                                                class="logo-seminar-header" />
-                                        </div>
-                                        <div class="text-seminar">Seminar Title</div>
-                                    </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
-                                        <div class="show-more">
-                                            <div class="text-footer">Show more</div>
-                                            <i><font-awesome-icon style="" class="icon-footer"
-                                                    :icon="['fas', 'fa-angles-right']" /></i>
-                                        </div>
-                                    </router-link>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="card-seminar">
-                                    <img loading="lazy"
-                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
-                                        class="img-seminar" />
-                                    <div class="header-seminar-card">
-                                        <div class="header-seminar">
-                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
-                                                class="logo-seminar-header" />
-                                        </div>
-                                        <div class="text-seminar">Seminar Title</div>
-                                    </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
-                                        <div class="show-more">
-                                            <div class="text-footer">Show more</div>
-                                            <i><font-awesome-icon style="" class="icon-footer"
-                                                    :icon="['fas', 'fa-angles-right']" /></i>
-                                        </div>
-                                    </router-link>
-                                </div>
-                            </div>
-                            <div class="col py-3">
-                                <div class="card-seminar">
-                                    <img loading="lazy"
-                                        srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/c14c66ada2eae3479620de949f36b245ebb4c3208f58872d0f3a8a4f7b9ff7d3?apiKey=ff3368bd5fd6477688619c390d91ee7a&"
-                                        class="img-seminar" />
-                                    <div class="header-seminar-card">
-                                        <div class="header-seminar">
-                                            <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
-                                                class="logo-seminar-header" />
-                                        </div>
-                                        <div class="text-seminar">Seminar Title</div>
-                                    </div>
-                                    <router-link style="text-decoration: none;" to="" class="footer-seminar">
+                                    <router-link style="text-decoration: none;" :to="{ name: 'SeminarInfo', params: { id: seminars.id }}" class="footer-seminar">
                                         <div class="show-more">
                                             <div class="text-footer">Show more</div>
                                             <i><font-awesome-icon style="" class="icon-footer"

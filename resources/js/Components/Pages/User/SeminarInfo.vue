@@ -1,11 +1,14 @@
 <script setup>
-import { ref } from 'vue';
+import { BaseTransitionPropsValidators, ref } from 'vue';
 import { onMounted } from 'vue';
 import { inject } from 'vue';
 import axios from 'axios';
+import moment from 'moment';
+import store from '../../../State/index.js';
 
 const swal = inject('$swal');
-const info = ref([]);
+const checkRegistrationObjects = ref([]);
+const seminarInfoObjects = ref([]);
 const firstName = ref('');
 const middleName = ref('');
 const lastName = ref('');
@@ -13,18 +16,43 @@ const gender = ref('');
 const school = ref('');
 const email = ref('');
 
+const currentUrl = window.location.href;
+
+const props = defineProps({
+  id: {
+    type: String,
+    required: true 
+  }
+});
+
 onMounted(async () => {
+    checkRegistration();
     seminarInfo();
 });
 
-const seminarInfo = async () => {
+const checkRegistration = async () => {
     try {
-        await axios.get('http://127.0.0.1:8000/api/auth/get-seminar-topic', {
-            seminar_id: 1,
+        await axios.post('http://127.0.0.1:8000/api/auth/check-registration', {
+            user_id: localStorage.getItem('user_id'),
+            seminar_id: props.id,
         })
         .then((response) => {
-            info.value = response.data;
-            console.log(info.value);
+            checkRegistrationObjects.value = response.data.registered;
+            console.log(response.data.registered);
+        })
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+const seminarInfo = async () => {
+    try {
+        await axios.post('http://127.0.0.1:8000/api/auth/get-seminar-topic', {
+            seminar_id: props.id,
+        })
+        .then((response) => {
+            seminarInfoObjects.value = response.data;
+            console.log(response.data.topic);
         })
     } catch (error) {
         console.error(error);
@@ -32,10 +60,12 @@ const seminarInfo = async () => {
 }
 
 const saveInformation = async() => {
+    store.commit('setLoading', true);
     try {
         await axios.post('http://127.0.0.1:8000/api/auth/register-seminar', {
             userID: localStorage.getItem('user_id'),
-            seminarID: 1,
+            seminarID: props.id,
+            url: currentUrl,
             firstname: firstName.value,
             middlename: middleName.value,
             lastname: lastName.value,
@@ -44,6 +74,7 @@ const saveInformation = async() => {
             school: school.value
         })
         .then((response) => {
+            store.commit('setLoading', false);
             if(response.data.success){
                 swal({
                     title: 'Success',
@@ -68,28 +99,40 @@ const saveInformation = async() => {
     }
 }
 
+const formatTime = (timeString) => {
+  try {
+    const formattedTime = moment(timeString, 'HH:mm:ss').format('hh:mm A');
+    return formattedTime;
+  } catch (error) {
+    console.error(error);
+    return 'Invalid Time';
+  }
+};
+
+const formatDate = (dateString) => {
+  try {
+    const formattedDate = moment(dateString).format('MMM D, YYYY');
+    return formattedDate;
+  } catch (error) {
+    console.error(error);
+    return 'Invalid Date';
+  }
+};
+
+
 </script>
 
 <template>
     <div class="main-container">
-        <div class="sub-container">
+        <div v-for="seminar in seminarInfoObjects" :key="seminar.id" class="sub-container">
             <div class="top page">
                 <div class="image-container">
                     <img src="../../../../../public/external/sample.jpg" alt="">
                     <div class="filter-container">
                         <div class="dark-filter">
                             <div class="overlay-text">
-                                <h1>Laravel and Vue Tutorial</h1>
-                                <p class="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt
-                                    ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                    nisi ut aliquip
-                                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum dolore eu
-                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                    officia
-                                    deserunt mollit anim id est laborum.</p>
+                                <h1>{{ seminar.topic }}</h1>
+                                <p class="about">{{ seminar.about_this_seminar }}</p>
                                 <div class="strong-hr">
                                 </div>
                                 <button class="read-button">
@@ -106,16 +149,16 @@ const saveInformation = async() => {
             <section class="more-info page" id="read-more">
                 <div class="other-info">
                     <div class="seminar-header">
-                        <h1>Laravel and Vue Tutorial</h1>
+                        <h1>{{ seminar.topic }}</h1>
                     </div>
                     <div class="date-time">
                         <div class="date-container">
                             <i><font-awesome-icon :icon="['fas', 'calendar-day']" /></i>
-                            <p class="time-date">July 10, 2100</p>
+                            <p class="time-date">{{ formatDate(seminar.date) }}</p>
                         </div>
                         <div class="time-container">
                             <i><font-awesome-icon :icon="['fas', 'clock']" /></i>
-                            <p class="time-date">8: 30 PM</p>
+                            <p class="time-date">{{ formatTime(seminar.date) }}</p>
                         </div>
                     </div>
                     <div class="left-right">
@@ -124,21 +167,10 @@ const saveInformation = async() => {
                                 <h3>Speaker:</h3>
                                 <ul>
                                     <li>
-                                        <h5>Tom Oliver Chua</h5>
+                                        <h5>{{ seminar.speaker }}</h5>
                                     </li>
                                 </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                    ut labore et
-                                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                                    nisi
-                                    ut
-                                    aliquip
-                                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                    cillum
-                                    dolore eu
-                                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-                                    officia
-                                    deserunt mollit anim id est laborum.</p>
+                                <p>{{ seminar.about_the_speaker }}</p>
                             </div>
                         </div>
                         <div class="right">
@@ -148,13 +180,33 @@ const saveInformation = async() => {
                 </div>
             </section>
         </div>
-        <div class="bottom">
+        <div v-if="checkRegistrationObjects == false" class="bottom">
             <div class="container-button">
                 <button class="register-button" data-bs-toggle="modal"
                     data-bs-target="#registerSeminar"><i><font-awesome-icon
                             :icon="['fas', 'user-plus']" /></i>REGISTER</button>
             </div>
         </div>
+
+        <div v-if="$store.state.loading == true" class="loader-container">
+            <div class="text-center" id="wifi-loader">
+                <svg class="circle-outer" viewBox="0 0 86 86">
+                    <circle class="back" cx="43" cy="43" r="40"></circle>
+                    <circle class="front" cx="43" cy="43" r="40"></circle>
+                    <circle class="new" cx="43" cy="43" r="40"></circle>
+                </svg>
+                <svg class="circle-middle" viewBox="0 0 60 60">
+                    <circle class="back" cx="30" cy="30" r="27"></circle>
+                    <circle class="front" cx="30" cy="30" r="27"></circle>
+                </svg>
+                <svg class="circle-inner" viewBox="0 0 34 34">
+                    <circle class="back" cx="17" cy="17" r="14"></circle>
+                    <circle class="front" cx="17" cy="17" r="14"></circle>
+                </svg>
+                <div class="text tex-center" data-text="Saving Informations.."></div>
+            </div>
+        </div>
+
         <!-- Modal -->
         <div class="modal fade" id="registerSeminar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -172,19 +224,15 @@ const saveInformation = async() => {
                                 <div class="left-modal flex-grow-1">
                                     <div class="mb-3">
                                         <label for="firstName" class="form-label">First Name</label>
-                                        <input v-model="firstName" type="text" class="form-control" id="firstName">
+                                        <input v-model="firstName" type="text" class="form-control" id="firstName" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="middleName" class="form-label">Middle Name</label>
-                                        <input v-model="middleName" type="text" class="form-control" id="middleName">
+                                        <input v-model="middleName" type="text" class="form-control" id="middleName" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="lastName" class="form-label">Last Name</label>
-                                        <input v-model="lastName" type="text" class="form-control" id="lastName">
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="age" class="form-label">Age</label>
-                                        <input type="number" class="form-control" id="age">
+                                        <input v-model="lastName" type="text" class="form-control" id="lastName" required>
                                     </div>
                                 </div>
                                 <div class="right-modal flex-grow-1">
@@ -209,13 +257,13 @@ const saveInformation = async() => {
                                         <label for="soc" class="form-label">School/Organization/Company</label>
                                         <input v-model="school" type="text" class="form-control" id="soc">
                                     </div>
-                                    <div class="mb-3">
+                                    <!-- <div class="mb-3">
                                         <label for="position" class="form-label">Position</label>
-                                        <input type="text" class="form-control" id="position">
-                                    </div>
+                                        <input type="text" class="form-control" id="position" required>
+                                    </div> -->
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email</label>
-                                        <input v-model="email" type="text" class="form-control" id="email">
+                                        <input v-model="email" type="text" class="form-control" id="email" required>
                                     </div>
                                 </div>
                             </div>
@@ -621,5 +669,137 @@ const saveInformation = async() => {
     .gender .selection label {
         width: auto;
     }
+}
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+}
+
+
+#wifi-loader {
+    --background: #303841;
+    --front-color: #7AA5D2;
+    --back-color: #c3c8de;
+    border-radius: 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 20%;
+    background-color: #e1e7ed;
+}
+
+#wifi-loader svg {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -50px;
+}
+
+#wifi-loader svg circle {
+    position: absolute;
+    fill: none;
+    stroke-width: 6px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform: rotate(-100deg);
+    transform-origin: center;
+}
+
+#wifi-loader svg circle.back {
+    stroke: var(--back-color);
+}
+
+#wifi-loader svg circle.front {
+    stroke: var(--front-color);
+}
+
+#wifi-loader svg.circle-outer {
+    height: 86px;
+    width: 86px;
+}
+
+#wifi-loader svg.circle-outer circle {
+    stroke-dasharray: 62.75 188.25;
+}
+
+#wifi-loader svg.circle-outer circle.back {
+    animation: circle-outer135 1.8s ease infinite 0.3s;
+}
+
+#wifi-loader svg.circle-outer circle.front {
+    animation: circle-outer135 1.8s ease infinite 0.15s;
+}
+
+#wifi-loader svg.circle-middle {
+    height: 60px;
+    width: 60px;
+}
+
+#wifi-loader svg.circle-middle circle {
+    stroke-dasharray: 42.5 127.5;
+}
+
+#wifi-loader svg.circle-middle circle.back {
+    animation: circle-middle6123 1.8s ease infinite 0.25s;
+}
+
+#wifi-loader svg.circle-middle circle.front {
+    animation: circle-middle6123 1.8s ease infinite 0.1s;
+}
+
+#wifi-loader svg.circle-inner {
+    height: 34px;
+    width: 34px;
+}
+
+#wifi-loader svg.circle-inner circle {
+    stroke-dasharray: 22 66;
+}
+
+#wifi-loader svg.circle-inner circle.back {
+    animation: circle-inner162 1.8s ease infinite 0.2s;
+}
+
+#wifi-loader svg.circle-inner circle.front {
+    animation: circle-inner162 1.8s ease infinite 0.05s;
+}
+
+#wifi-loader .text {
+    position: absolute;
+    top: 100px;
+    display: flex;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+    width: 175px;
+    padding-top: 80px;
+    text-align: center;
+}
+
+#wifi-loader .text::before,
+#wifi-loader .text::after {
+    content: attr(data-text);
+}
+
+#wifi-loader .text::before {
+    color: var(--text-color);
+}
+
+#wifi-loader .text::after {
+    color: var(--front-color);
+    animation: text-animation76 3.6s ease infinite;
+    position: absolute;
+    left: 0;
 }
 </style>

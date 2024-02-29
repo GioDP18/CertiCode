@@ -52,6 +52,7 @@ Route::group([
     Route::post('/get-user-details', [UserController::class,'getUserDetails']);
     Route::post('/update-profile', [UserController::class,'updateProfile']);
     Route::get('/get-all-users', [UserController::class,'getAllUsers']);
+    Route::post('/search', [UserController::class,'search']);
 
     Route::post('/convert', [WordToPDFController::class,'store']);
 
@@ -60,6 +61,7 @@ Route::group([
     Route::post('/add-new-seminar', [SeminarController::class,'addNewSeminar']);
 
     // Participants
+    Route::post('/check-registration', [ParticipantController::class,'checkRegistration']);
     Route::post('/register-seminar', [ParticipantController::class,'register']);
 
 });
