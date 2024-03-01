@@ -43,7 +43,7 @@ const handleAddSeminar = async () => {
             issuer: issuer.value,
             description: description.value,
             about_this_seminar: about_this_seminar.value,
-        },{
+        }, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -283,7 +283,7 @@ const handleAddSeminar = async () => {
 @media screen and (max-width: 360px) {
 
     .main-content {
-        height: 180vh;
+        height: 195vh;
     }
 
     .main-container {
@@ -293,6 +293,7 @@ const handleAddSeminar = async () => {
 
     .form-container h4 {
         margin-top: -20px;
+        font-size: 25px;
     }
 
     .parent-container {
@@ -317,13 +318,13 @@ const handleAddSeminar = async () => {
     }
 
     .submit-button {
-        margin-top: 110%;
+        margin-top: 140%;
     }
 
     .preview-container {
         height: 10vh;
         margin-top: -5%;
-        margin-bottom: 60%;
+        margin-bottom: 50%;
     }
 
     .img-certificate {

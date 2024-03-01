@@ -11,7 +11,7 @@
                     <div class="filter-container">
                         <div class="dark-filter">
                             <div class="overlay-text">
-                                <h1>Laravel and Vue Tutorial</h1>
+                                <h1>Laravel and Vue Tutorial Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
                                 <p class="about">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                                     tempor incididunt
                                     ut labore et
@@ -38,7 +38,7 @@
             <section class="more-info page" id="read-more">
                 <div class="other-info">
                     <div class="seminar-header">
-                        <h1>Laravel and Vue Tutorial</h1>
+                        <h1>Laravel and Vue Tutorial Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
                     </div>
                     <div class="date-time">
                         <div class="date-container">
@@ -238,7 +238,7 @@
     width: 90%;
     border: 1px solid white;
     padding: 20px;
-    height: 70%;
+    height: 85%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -246,7 +246,7 @@
 
 .overlay-text h1 {
     margin-top: -20px;
-    font-size: 60px;
+    font-size: 50px;
     font-family: "Montserrat", sans-serif;
     animation: fade-right 2s;
 }
@@ -287,6 +287,7 @@
     width: 60%;
     border: 2px solid #ffffff;
     margin-bottom: 20px;
+    margin-left: 10px;
 }
 
 .read-button {
@@ -356,7 +357,7 @@
 }
 
 .seminar-header h1 {
-    width: 50%;
+    width: 70%;
     font-family: "Montserrat", sans-serif;
     font-size: 50px;
 }
@@ -530,9 +531,8 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 70%;
+        height: 100%;
         padding: 0;
-        margin-bottom: -500px;
     }
 
     .image-container img {
@@ -557,7 +557,8 @@
     }
 
     .strong-hr {
-        width: 80%;
+        width: 100%;
+        margin-right: 10px;
     }
 
     .overlay-text {
@@ -566,9 +567,16 @@
 
     .read-button {
         width: 70%;
-        height: 80px;
-        margin-bottom: -30px;
+        height: 50px;
         margin-left: -5px;
+    }
+
+    .line {
+        margin-top: 260px;
+    }
+
+    .other-info {
+        margin-top: 60px;
     }
 
     .seminar-header h1 {
