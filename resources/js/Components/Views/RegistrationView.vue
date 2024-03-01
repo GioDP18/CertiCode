@@ -75,7 +75,7 @@ const register = async () => {
                 <div class="form-value">
                     <form @submit.prevent="register" method="POST">
                         <div class="logo-container">
-                            <img src="../../../../public/external/Logo527-5lue.png" class="logo" alt="">
+                            <img src="../../../../public/external/C-Logo.png" class="logo" alt="">
                         </div>
                         <div class="input-container1">
                             <div class="other-inputbox" :class="{ 'active': firstname }">
@@ -169,7 +169,7 @@ const register = async () => {
 
 .form-box {
     width: 450px;
-    height: 95vh;
+    height: 98vh;
     position: absolute;
     border-radius: 10px;
     background-color: #ffffff;

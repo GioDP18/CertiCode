@@ -20,20 +20,20 @@ const login = async () => {
             email: email.value,
             password: password.value
         })
-        .then((response) => {
-            console.log(response.data);
-            localStorage.setItem('user_id', response.data.user.id);
-            localStorage.setItem('token', response.data.access_token);
-            if(response.data.user.user_level == 1){
-                router.push('/admin/dashboard')
-            }
-            else if(response.data.user.user_level == 2){
-                router.push('/user/dashboard')
-            }
-        })
-        .finally(() => {
-            store.commit('setLoading', false);
-        })
+            .then((response) => {
+                console.log(response.data);
+                localStorage.setItem('user_id', response.data.user.id);
+                localStorage.setItem('token', response.data.access_token);
+                if (response.data.user.user_level == 1) {
+                    router.push('/admin/dashboard')
+                }
+                else if (response.data.user.user_level == 2) {
+                    router.push('/user/dashboard')
+                }
+            })
+            .finally(() => {
+                store.commit('setLoading', false);
+            })
 
     }
     catch (error) {
@@ -51,7 +51,7 @@ const login = async () => {
                 <div class="form-value">
                     <form @submit.prevent="login" method="POST">
                         <div class="logo-container">
-                            <img src="../../../../public/external/Logo527-5lue.png" class="logo" alt="">
+                            <img src="../../../../public/external/C-Logo.png" class="logo" alt="">
                         </div>
                         <div class="inputbox" :class="{ 'active': email }">
                             <i><font-awesome-icon :icon="['fas', 'user']" /></i>
@@ -68,6 +68,9 @@ const login = async () => {
                             <label>Password</label>
                         </div>
                         <button class="submit" type="submit"><span class="btn-txt">SIGN IN</span></button>
+                        <div class="forgot">
+                            <RouterLink to="/forgotPassword">Forgot Password?</RouterLink>
+                        </div>
                         <div class="separator">
                             <div class="line"></div>
                             <p>Sign in with</p>
@@ -107,7 +110,7 @@ const login = async () => {
 
 .form-box {
     width: 450px;
-    height: 550px;
+    height: 560px;
     position: absolute;
     border-radius: 10px;
     background-color: #ffffff;
@@ -118,7 +121,7 @@ const login = async () => {
 }
 
 .logo-container {
-    margin-top: -30px;
+    margin-top: -45px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -247,6 +250,19 @@ const login = async () => {
     color: #7AA5D2;
 }
 
+.forgot {
+    text-align: center;
+}
+
+.forgot a {
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.forgot a:hover {
+    text-decoration: underline;
+}
+
 .register {
     font-size: 0.9em;
     color: #303841;
@@ -267,7 +283,7 @@ const login = async () => {
 @media screen and (max-width: 360px) {
     .form-box {
         width: 100%;
-        height: 80vh;
+        height: 85vh;
     }
 
     .logo {

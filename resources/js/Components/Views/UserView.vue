@@ -62,6 +62,7 @@
     color: var(--Black, #191919);
     font-weight: 600;
     margin-left: 5px;
+    margin-top: 4px;
 }
 
 @media (max-width: 991px) {

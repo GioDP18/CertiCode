@@ -43,7 +43,7 @@ const handleAddSeminar = async () => {
             issuer: issuer.value,
             description: description.value,
             about_this_seminar: about_this_seminar.value,
-        },{
+        }, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -86,9 +86,6 @@ const handleAddSeminar = async () => {
                     <div class="img-certificate">
                         <img src="../../../../../public/external/certificate.png" alt="">
                     </div>
-                </div>
-                <div class="img-container">
-                    <img src="../../../../../public/external/Logo527-5lue.png" alt="">
                 </div>
                 <div class="parent-container">
                     <div class="container1">
@@ -144,7 +141,7 @@ const handleAddSeminar = async () => {
 
 <style scoped>
 .main-content {
-    height: 85vh;
+    height: 100%;
     width: 100%;
     bottom: 0;
 }
@@ -152,7 +149,7 @@ const handleAddSeminar = async () => {
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 100%;
-    height: 225vh;
+    height: 210vh;
     border-radius: 16px;
     padding-bottom: 0;
 }
@@ -175,6 +172,8 @@ const handleAddSeminar = async () => {
     text-align: center;
     margin-top: -5px;
     margin-bottom: 40px;
+    font-size: 30px;
+    font-family: "Montserrat", sans-serif;
 }
 
 .parent-container {
@@ -198,20 +197,6 @@ const handleAddSeminar = async () => {
 
 .container2 textarea {
     height: 11vh;
-}
-
-.img-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-    margin-top: -50px;
-}
-
-.img-container img {
-    width: 10%;
-    border: 3px solid #303841;
-    border-radius: 50%;
 }
 
 .form-container input,
@@ -290,13 +275,15 @@ const handleAddSeminar = async () => {
 
 .img-certificate img {
     width: 74%;
-    height: 74vh;
+    height: 78vh;
+    border: 3px solid #303841;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 @media screen and (max-width: 360px) {
 
     .main-content {
-        height: 180vh;
+        height: 195vh;
     }
 
     .main-container {
@@ -306,6 +293,7 @@ const handleAddSeminar = async () => {
 
     .form-container h4 {
         margin-top: -20px;
+        font-size: 25px;
     }
 
     .parent-container {
@@ -314,16 +302,6 @@ const handleAddSeminar = async () => {
 
     .preview-container h4 {
         margin-top: 10px;
-    }
-
-    .img-container {
-        width: 100%;
-        margin: auto;
-        margin-top: -30px;
-    }
-
-    .img-container img {
-        width: 20%;
     }
 
     .container1 {
@@ -340,13 +318,13 @@ const handleAddSeminar = async () => {
     }
 
     .submit-button {
-        margin-top: 110%;
+        margin-top: 140%;
     }
 
     .preview-container {
         height: 10vh;
         margin-top: -5%;
-        margin-bottom: 60%;
+        margin-bottom: 50%;
     }
 
     .img-certificate {

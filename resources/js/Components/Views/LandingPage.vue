@@ -3,7 +3,7 @@
         <div class="landing-page-container">
             <div class="landing-page-rectangle29">
                 <div class="logo-container">
-                    <img src="../../../../public/external/Logo527-5lue.png" class="logo" alt="">
+                    <img src="../../../../public/external/C-Logo.png" class="logo" alt="">
                 </div>
                 <div class="landing-page-text">
                     <h1 class="landing-page-title">CertiCode</h1>
@@ -71,10 +71,14 @@ export default {
     padding-top: 50px;
 }
 
+.logo-container img {
+    width: 125px;
+}
+
 .landing-page-text {
     width: 100%;
     padding-left: 15%;
-    padding-top: 45px;
+    padding-top: 25px;
 }
 
 .landing-page-title {

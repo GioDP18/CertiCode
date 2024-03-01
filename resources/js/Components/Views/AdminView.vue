@@ -103,7 +103,9 @@ const handleLogout = async () => {
         <div class="sidebar sticky-top" v-show="screenWidth > 991" :class="{ 'minimized': !showSidebar }">
             <RouterLink to="" class="sidebar-logo" style="text-decoration: none;">
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
-                <div v-if="showSidebar" class="logo-text">CertiCode</div>
+                <div v-if="showSidebar" class="logo-text">
+                    <div class="certicode"><span class="certi">Certi</span><span class="code">Code</span></div>
+                </div>
             </RouterLink>
             <div class="menu">
                 <div style="width:90%; margin: auto;">
@@ -146,7 +148,9 @@ const handleLogout = async () => {
         <div class="mobile-sidebar sticky-top" v-show="screenWidth < 991" :class="{ 'show': showMobileSidebar }">
             <RouterLink to="" class="sidebar-logo" style="text-decoration: none;">
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
-                <div class="logo-text">CertiCode</div>
+                <div class="logo-text">
+                    <div class="certicode"><span class="certi">Certi</span><span class="code">Code</span></div>
+                </div>
             </RouterLink>
             <div class="send-button" title="send certificate">
                 <div class="sidebar-text">Send Certificates</div>
@@ -279,16 +283,14 @@ const handleLogout = async () => {
     background-color: #fff;
     display: flex;
     justify-content: center;
-    font-size: 25px;
     color: var(--Black, #191919);
-    font-weight: 600;
-    padding: 18px 48px;
+    padding: 18px 60px;
 }
 
 .sidebar-logo img {
     width: 45px;
-    margin-left: -10px;
-    margin-right: 5px;
+    margin-left: -20px;
+    margin-right: 3px;
 }
 
 .header {
@@ -316,6 +318,22 @@ const handleLogout = async () => {
     font-family: Inter, sans-serif;
     flex-grow: 1;
     margin: auto 0;
+}
+
+.logo-text .certicode {
+    margin-top: 3px;
+}
+
+.logo-text .certi {
+    color: #303841;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.logo-text .code {
+    font-size: 25px;
+    color: #7AA5D2;
+    font-weight: 400;
 }
 
 .send-button {
