@@ -74,9 +74,6 @@ const handleAddSeminar = async () => {
                 </div>
                 <div class="parent-container">
                     <div class="container1">
-                        <div class="img-container mt-2">
-                            <img src="../../../../../public/external/Logo527-5lue.png" alt="">
-                        </div>
                         <div class="mb-3">
                             <label for="topic" class="form-label">Topic</label>
                             <input type="text" v-model="topic" class="form-control" id="exampleInputPassword1">
@@ -137,7 +134,7 @@ const handleAddSeminar = async () => {
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 100%;
-    height: 215vh;
+    height: 225vh;
     border-radius: 16px;
     padding-bottom: 0;
 }
@@ -178,7 +175,7 @@ const handleAddSeminar = async () => {
 }
 
 .about-speak textarea {
-    height: 100px;
+    height: 190px;
 }
 
 .container2 textarea {
@@ -221,7 +218,7 @@ const handleAddSeminar = async () => {
     border-radius: 8px;
     color: #303841;
     transition: all 0.5s ease-in-out;
-    margin-top: -130px;
+    margin-top: -50px;
 }
 
 .btn-txt {
