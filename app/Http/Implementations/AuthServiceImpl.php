@@ -71,7 +71,10 @@ Class AuthServiceImpl implements AuthService
      */
     public function logout() {
         auth()->logout();
-        return response()->json(['message' => 'User successfully signed out']);
+        return response()->json([
+            'success' => true,
+            'message' => 'User successfully signed out'
+        ]);
     }
 
     /**
