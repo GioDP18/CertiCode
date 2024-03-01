@@ -11,11 +11,24 @@ const router = useRouter();
 const topic = ref('');
 const date = ref('');
 const speaker = ref('');
+const speaker_image = ref(null);
 const about_the_speaker = ref('');
-const logo = ref('');
+const certificate_logo = ref(null);
 const issuer = ref('');
 const description = ref('');
 const about_this_seminar = ref('');
+
+const handleChangeSpeakerImage = (event) => {
+    const file = event.target.files[0];
+    speaker_image.value = file;
+    console.log(file.name)
+}
+
+const handleChangeCertificateLogo = (event) => {
+    const file = event.target.files[0];
+    certificate_logo.value = file;
+    console.log(file.name)
+}
 
 
 const handleAddSeminar = async () => {
@@ -24,11 +37,16 @@ const handleAddSeminar = async () => {
             topic: topic.value,
             date: date.value,
             speaker: speaker.value,
+            speaker_image: speaker_image.value,
             about_the_speaker: about_the_speaker.value,
-            logo: "https://via.placeholder.com/100x100.png/007766?text=logo+et",
+            certificate_logo: certificate_logo.value,
             issuer: issuer.value,
             description: description.value,
             about_this_seminar: about_this_seminar.value,
+        },{
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
         })
             .then((response) => {
                 if (response.data.success) {
@@ -97,12 +115,12 @@ const handleAddSeminar = async () => {
                     <div class="container2">
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Speaker Image</label>
-                            <input type="file" @change="handleLogoChange" class="form-control" id=""
+                            <input type="file" @change="handleChangeSpeakerImage" class="form-control" id=""
                                 aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Certificate Logo</label>
-                            <input type="file" @change="handleLogoChange" class="form-control" id=""
+                            <input type="file" @change="handleChangeCertificateLogo" class="form-control" id=""
                                 aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
