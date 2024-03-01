@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
+import store from '../../State/index.js';
 
 const showPassword = ref(false);
 const email = ref('');
@@ -13,6 +14,7 @@ function togglePassword() {
 }
 
 const login = async () => {
+    store.commit('setLoading', true);
     try {
         await axios.post(`http://127.0.0.1:8000/api/auth/login`, {
             email: email.value,
@@ -28,6 +30,9 @@ const login = async () => {
                 else if (response.data.user.user_level == 2) {
                     router.push('/user/dashboard')
                 }
+            })
+            .finally(() => {
+                store.commit('setLoading', false);
             })
 
     }

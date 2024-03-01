@@ -1,6 +1,10 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount} from 'vue';
+import { useRouter} from 'vue-router'
+import axios from 'axios';
+import store from '../../State/index.js';
 
+const router = useRouter();
 
 const showSidebar = ref(true);
 const showMobileSidebar = ref(false);
@@ -51,7 +55,28 @@ onBeforeUnmount(() => {
 });
 
 
+const handleLogout = async () => {
+    store.commit('setLoading', true);
+    try{
+        const token = localStorage.getItem('token');
+        const headers = { Authorization: `Bearer ${token}` };
 
+        await axios.post('http://127.0.0.1:8000/api/auth/logout', {}, {headers})
+        .then((response) => {
+            if(response.data.success){
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+                router.push('/login');
+            }
+        })
+        .finally(() => {
+            store.commit('setLoading', false);
+        })
+    }
+    catch(error){
+        console.log(error);
+    }
+}
 
 </script>
 <template>
@@ -188,7 +213,7 @@ onBeforeUnmount(() => {
                     </div>
                 </form>
                 <div class="logout-button">
-                    <i><font-awesome-icon style="color: #000; height: 18px;" class="icon"
+                    <i @click="handleLogout"><font-awesome-icon style="color: #000; height: 18px;" class="icon"
                             :icon="['fas', 'fa-power-off']" /></i>
                 </div>
             </nav>
