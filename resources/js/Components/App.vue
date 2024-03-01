@@ -1,9 +1,9 @@
 <template>
-    <div class="loading-container">
+    <!-- <div class="loading-container">
         <div class="spinner-border text-dark" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div>
+    </div> -->
     <router-view></router-view>
 </template>
   

@@ -283,7 +283,7 @@ const login = async () => {
 @media screen and (max-width: 360px) {
     .form-box {
         width: 100%;
-        height: 80vh;
+        height: 85vh;
     }
 
     .logo {
