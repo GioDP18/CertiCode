@@ -1,12 +1,16 @@
+<script setup>
+
+</script>
+
 <template>
-    <div class="loading-container">
+    <div class="loading-container" v-if="$store.state.loading">
         <div class="spinner-border text-dark" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
     <router-view></router-view>
 </template>
-  
+
 <style scoped>
 .loading-container {
     position: fixed;
@@ -21,4 +25,4 @@
     z-index: 9999;
 }
 </style>
-  
+
