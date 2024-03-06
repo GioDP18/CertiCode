@@ -107,7 +107,7 @@ const handleLogout = async () => {
             </RouterLink>
             <div class="menu">
                 <div style="width:90%; margin: auto;">
-                    <RouterLink to="sendCertificates" style="text-decoration: none;">
+                    <RouterLink :to="{ name:'admin-sendCertificates' }" style="text-decoration: none;">
                         <div class="send-button" title="send certificate">
                             <div v-if="showSidebar" class="sidebar-text">Send Certificates</div>
                             <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
@@ -115,25 +115,25 @@ const handleLogout = async () => {
                     </RouterLink>
                 </div>
 
-                <RouterLink to="dashboard" class="sidebar-menu" active-class="active" style="text-decoration: none;"
+                <RouterLink :to="{ name:'admin-dashboard' }" class="sidebar-menu" active-class="active" style="text-decoration: none;"
                     title="home">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-home']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">Home</div>
                 </RouterLink>
-                <RouterLink to="participants" class="sidebar-menu" style="text-decoration: none;" title="participants">
+                <RouterLink :to="{ name:'admin-participants' }" class="sidebar-menu" style="text-decoration: none;" title="participants">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">Participants</div>
                 </RouterLink>
-                <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
+                <RouterLink :to="{ name:'admin-myAccount' }" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">My Account</div>
                 </RouterLink>
             </div>
             <div v-if="showSidebar" class="add-button">
-                <RouterLink to="seminars" style="text-decoration: none; color: white;">
+                <RouterLink :to="{ name:'admin-seminars' }" style="text-decoration: none; color: white;">
                     <div style="margin: auto;" class="sidebar-text text-center">Seminars</div>
                 </RouterLink>
-                <RouterLink to="createSeminar" class="add">
+                <RouterLink :to="{ name:'admin-createSeminar' }" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </RouterLink>
             </div>
@@ -153,25 +153,25 @@ const handleLogout = async () => {
                 <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
             </div>
             <div class="menu">
-                <RouterLink to="dashboard" class="sidebar-menu" active-class="active" style="text-decoration: none;"
+                <RouterLink :to="{ name:'admin-dashboard' }" class="sidebar-menu" active-class="active" style="text-decoration: none;"
                     title="home">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-home']" /></i>
                     <div class="sidebar-text">Home</div>
                 </RouterLink>
-                <RouterLink to="participants" class="sidebar-menu" style="text-decoration: none;" title="participants">
+                <RouterLink :to="{ name:'admin-participants' }" class="sidebar-menu" style="text-decoration: none;" title="participants">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div class="sidebar-text">Participants</div>
                 </RouterLink>
-                <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
+                <RouterLink :to="{ name:'admin-myAccount' }" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div class="sidebar-text">My Account</div>
                 </RouterLink>
             </div>
             <div class="add-button">
-                <RouterLink to="seminars" style="text-decoration: none; color: white;">
+                <RouterLink :to="{ name:'admin-seminars' }" style="text-decoration: none; color: white;">
                     <div style="margin: auto;" class="sidebar-text">Seminars</div>
                 </RouterLink>
-                <RouterLink to="createSeminar" class="add">
+                <RouterLink :to="{ name:'admin-createSeminar' }" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </RouterLink>
             </div>

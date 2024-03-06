@@ -22,14 +22,17 @@ const routes = [
     {
         path: "/",
         component: LandingPage,
+        name: "",
     },
     {
         path: "/login",
         component: LoginView,
+        name: "login",
     },
     {
         path: "/register",
         component: RegisterView,
+        name: "register",
     },
     {
         path: "/admin",
@@ -38,32 +41,37 @@ const routes = [
             {
                 path: "sendCertificates",
                 component: SendCertificates,
+                name: "admin-sendCertificates",
             },
             {
                 path: "dashboard",
                 component: Dashboard,
+                name: "admin-dashboard",
             },
             {
                 path: "participants",
                 component: Participants,
+                name: "admin-participants",
             },
             {
                 path: "seminars",
                 component: Seminars,
-                name: "seminars",
+                name: "admin-seminars",
             },
             {
                 path: "seminarInfo/:id",
                 component: AdminSeminarInfo,
-                name: "seminarInfo",
+                name: "admin-seminarInfo/:id",
             },
             {
                 path: "myAccount",
                 component: MyAccount,
+                name: "admin-myAccount",
             },
             {
                 path: "createSeminar",
                 component: CreateCertificate,
+                name: "admin-createSeminar",
             },
         ],
     },
