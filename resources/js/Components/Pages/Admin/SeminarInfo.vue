@@ -28,7 +28,6 @@ const sendCertificates = async () => {
     store.commit('setSendingCerts', true);
     try {
         await Promise.all(selectedParticipantDetails.value.map(async participant => {
-            console.log(`id: ${participant.id} and seminar id: ${participant.seminar_id}`);
             await axios.post(`${localStorage.getItem('BASE_URL')}/api/auth/send-one-certificate`, {
                 seminar_id: seminarID,
                 participant_id: participant.id
