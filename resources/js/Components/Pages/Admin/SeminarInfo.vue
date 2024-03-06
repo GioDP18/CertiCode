@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useRoute } from 'vue-router';
 import { ref, onMounted, watch } from 'vue';
 import moment from 'moment';
+import store from '../../../State/index.js';
 
 const route = useRoute();
 const seminarID = route.params.id;
@@ -20,13 +21,24 @@ const selectedParticipants = ref([]);
 const selectedParticipantDetails = ref([]);
 
 watch(selectedParticipants, (newValue) => {
-  selectedParticipantDetails.value = participants.value.filter(participant => newValue.includes(participant.id));
+    selectedParticipantDetails.value = participants.value.filter(participant => newValue.includes(participant.id));
 });
 
-const sendCertificates = () => {
-  selectedParticipantDetails.value.forEach(participant => {
-    console.log('Sending certificate for:', participant.id);
-  });
+const sendCertificates = async () => {
+    store.commit('setSendingCerts', true);
+    try {
+        await Promise.all(selectedParticipantDetails.value.map(async participant => {
+            console.log(`id: ${participant.id} and seminar id: ${participant.seminar_id}`);
+            await axios.post(`${localStorage.getItem('BASE_URL')}/api/auth/send-one-certificate`, {
+                seminar_id: seminarID,
+                participant_id: participant.id
+            });
+        }));
+    } catch (error) {
+        console.error("Error Sending Certificates:", error);
+    } finally {
+        store.commit('setSendingCerts', false);
+    }
 };
 
 onMounted(() => {
