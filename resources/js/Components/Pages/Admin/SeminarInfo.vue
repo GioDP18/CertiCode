@@ -26,16 +26,18 @@ watch(selectedParticipants, (newValue) => {
 
 const sendCertificates = async () => {
     store.commit('setSendingCerts', true);
-    try {
+    try{
         await Promise.all(selectedParticipantDetails.value.map(async participant => {
             await axios.post(`${localStorage.getItem('BASE_URL')}/api/auth/send-one-certificate`, {
                 seminar_id: seminarID,
                 participant_id: participant.id
             });
         }));
-    } catch (error) {
+    }
+    catch(error){
         console.error("Error Sending Certificates:", error);
-    } finally {
+    }
+    finally{
         store.commit('setSendingCerts', false);
     }
 };
