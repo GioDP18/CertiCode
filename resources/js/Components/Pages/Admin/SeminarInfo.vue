@@ -1,7 +1,7 @@
 <script setup>
 import axios from 'axios';
 import { useRoute } from 'vue-router';
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import moment from 'moment';
 
 const route = useRoute();
@@ -14,6 +14,20 @@ const speaker_image = ref('');
 const about_the_speaker = ref('');
 const date = ref('');
 const participants = ref([]);
+
+const selectedParticipants = ref([]);
+
+const selectedParticipantDetails = ref([]);
+
+watch(selectedParticipants, (newValue) => {
+  selectedParticipantDetails.value = participants.value.filter(participant => newValue.includes(participant.id));
+});
+
+const sendCertificates = () => {
+  selectedParticipantDetails.value.forEach(participant => {
+    console.log('Sending certificate for:', participant.id);
+  });
+};
 
 onMounted(() => {
     getSeminarInfo();
@@ -49,6 +63,7 @@ const formatDate = (dateString) => {
     return 'Invalid Date';
   }
 };
+
 </script>
 
 <template>
@@ -62,12 +77,14 @@ const formatDate = (dateString) => {
         <hr>
         <h5>Participants:</h5>
         <ul>
-            <li v-for="participant in participants">
-                <input type="checkbox" name="selected-participants[]">
-                <b> {{ participant.firstname }} {{ participant.middlename }} {{ participant.lastname }}</b>
+            <li v-for="participant in participants" :key="participant.id">
+                <input type="checkbox" v-model="selectedParticipants" :value="participant.id">
+                <b>{{ participant.firstname }} {{ participant.middlename }} {{ participant.lastname }}</b>
             </li>
         </ul>
-        <button>Send Certicifates</button>
+        <button @click="sendCertificates" :disabled="selectedParticipants.length === 0">
+            Send Certificates
+        </button>
     </div>
 </template>
 
