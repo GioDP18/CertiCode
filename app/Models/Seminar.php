@@ -9,11 +9,6 @@ class Seminar extends Model
 {
     use HasFactory;
 
-    public function certificate()
-    {
-        return $this->hasOne(Certificate::class);
-    }
-
     protected $fillable = [
         "topic",
         "speaker",
@@ -22,5 +17,15 @@ class Seminar extends Model
         "about_this_seminar",
         "date",
     ];
+
+    public function certificate()
+    {
+        return $this->hasOne(Certificate::class);
+    }
+
+    public function participants()
+    {
+        return $this->hasMany(Participant::class);
+    }
 
 }

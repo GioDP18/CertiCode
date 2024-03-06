@@ -22,6 +22,8 @@ import router from './Router/index.js';
 
 const BASE_URL = 'http://127.0.0.1:8000';
 
+localStorage.setItem('BASE_URL', BASE_URL);
+
 createApp(app)
 .use(router)
 .use(store)

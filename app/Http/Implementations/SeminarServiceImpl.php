@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 Class SeminarServiceImpl implements SeminarService
 {
     public function getAllSeminars(){
-        $seminars = Seminar::all();
+        $seminars = Seminar::with('participants.user')->get();
 
         return response()->json([
             'seminars' => $seminars,
@@ -62,5 +62,15 @@ Class SeminarServiceImpl implements SeminarService
             "success"=> true,
             "message"=> "Successfully Created New Seminar."
         ]);
+    }
+
+    public function seminarInfo($id){
+        $info = Seminar::with('participants')->find($id);
+
+        return response()->json([
+            "success"=> true,
+            "message"=> "Successfully Fetched Seminar Information",
+            'info' => $info,
+        ], 200);
     }
 }

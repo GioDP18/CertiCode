@@ -52,8 +52,10 @@ Route::group([
     // Seminar
     Route::get('/get-all-seminars', [SeminarController::class,'getAllSeminars']);
     Route::post('/add-new-seminar', [SeminarController::class,'addNewSeminar']);
+    Route::get('/seminar-info/{id}', [SeminarController::class,'seminarInfo']);
+    // Route::get('/seminar-participans/{id}', [SeminarController::class,'seminarParticipants']);
 
     // Participants
-    Route::post('/register-seminar', [ParticipantController::class,'register']);
+    Route::get('/register-seminar', [ParticipantController::class,'register']);
 
 });

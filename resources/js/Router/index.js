@@ -11,6 +11,7 @@ import Participants from "../Components/Pages/Admin/Participants.vue";
 import Seminars from "../Components/Pages/Admin/SeminarPage.vue";
 import MyAccount from "../Components/Pages/Admin/MyAccount.vue";
 import CreateCertificate from "../Components/Pages/Admin/CreateCertificate.vue";
+import AdminSeminarInfo from "../Components/Pages/Admin/SeminarInfo.vue";
 // User View
 import UserView from "../Components/Views/UserView.vue";
 import UserDashboard from "../Components/Pages/User/UserDashboard.vue";
@@ -50,6 +51,11 @@ const routes = [
                 path: "seminars",
                 component: Seminars,
                 name: "seminars",
+            },
+            {
+                path: "seminarInfo/:id",
+                component: AdminSeminarInfo,
+                name: "seminarInfo",
             },
             {
                 path: "myAccount",
