@@ -18,6 +18,7 @@ const date = ref('');
 const participants = ref([]);
 
 const selectedParticipants = ref([]);
+const selectAll = ref(false);
 
 const selectedParticipantDetails = ref([]);
 
@@ -83,6 +84,14 @@ const formatDate = (dateString) => {
     }
 };
 
+const selectAllCheckbox = () => {
+    if (selectAll.value) {
+        selectedParticipants.value = participants.value.map(participant => participant.id);
+    } else {
+        selectedParticipants.value = [];
+    }
+};
+
 </script>
 
 <template>
@@ -94,10 +103,10 @@ const formatDate = (dateString) => {
                     <h1>{{ topic }}</h1>
                     <div class="about-seminar">
                         <p>{{ about_this_seminar }}</p>
-                    </div>
-                    <div class="date-container">
-                        <i><font-awesome-icon :icon="['fas', 'calendar-day']" /></i>
-                        <h5>{{ formatDate(date) }}</h5>
+                        <div class="date-container">
+                            <i><font-awesome-icon :icon="['fas', 'calendar-day']" /></i>
+                            <h5>{{ formatDate(date) }}</h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -114,6 +123,11 @@ const formatDate = (dateString) => {
                             <p>{{ about_the_speaker }}</p>
                         </div>
                     </div>
+                    <div class="meeting-container">
+                        <button class="button-meeting">
+                            <i><font-awesome-icon :icon="['fas', 'video']" /></i>Start Meeting
+                        </button>
+                    </div>
                 </div>
                 <div class="right">
                     <img src="../../../../../public/external/person.jpg" alt="">
@@ -125,14 +139,16 @@ const formatDate = (dateString) => {
                 <table id="dailyTimeLog" class="table table-striped table-hover" width="100%">
                     <thead>
                         <tr>
-                            <th style="width: 10%; text-align: center;">Select</th>
+                            <th style="width: 10%;">
+                                <input type="checkbox" v-model="selectAll" @change="selectAllCheckbox" @click.stop>
+                            </th>
                             <th>Name</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr v-for="participant in participants" :key="participant.id">
-                            <td style="width: 10%; text-align: center;"><input type="checkbox"
-                                    v-model="selectedParticipants" :value="participant.id"></td>
+                            <td style="width: 10%;"><input type="checkbox" v-model="selectedParticipants"
+                                    :value="participant.id"></td>
                             <td><b>{{ participant.firstname }} {{ participant.middlename }} {{
                         participant.lastname }}</b></td>
                         </tr>
@@ -191,17 +207,17 @@ const formatDate = (dateString) => {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 1%);
+}
+
+.about-seminar p {
     font-style: italic;
 }
 
-.date-container {
+.about-seminar .date-container {
+    width: 100%;
     display: flex;
-    position: absolute;
-    top: 105%;
-    left: 50%;
-    transform: translate(-50%, 200%);
-    gap: 5px;
-    font-size: 18px;
+    gap: 10px;
+    justify-content: center;
 }
 
 .date-container h5 {
@@ -215,18 +231,24 @@ const formatDate = (dateString) => {
     display: flex;
     justify-content: center;
     border-radius: 12px;
-    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .left {
     width: 50%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Change from row to column */
+    justify-content: flex-start;
+    /* Change from center to flex-start */
 }
 
-.left .speaker-container {
+.speaker-container {
     width: 91%;
     padding-top: 40px;
     margin-left: 20px;
+    flex-grow: 1;
 }
 
 .speaker-container h4 {
@@ -241,6 +263,33 @@ const formatDate = (dateString) => {
     font-size: 15px;
     margin-left: 15px;
     font-style: italic;
+}
+
+.meeting-container {
+    width: 33.3%;
+    display: flex;
+    justify-content: center;
+    margin-top: 32%;
+    position: absolute;
+}
+
+.button-meeting {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 7vh;
+    background-color: #303841;
+    color: white;
+    border: none;
+    border-radius: 6px;
+}
+
+.button-meeting:hover {
+    border: 2px solid #303841;
+    color: #303841;
+    background-color: transparent;
 }
 
 .right {
@@ -343,10 +392,11 @@ const formatDate = (dateString) => {
     .seminar-topic {
         color: black;
         width: 100%;
-        padding-top: 250px;
+        padding-top: 100px;
         position: static;
         margin-left: 50%;
         text-align: start;
+        margin-bottom: 100%;
     }
 
     .seminar-topic h1 {
@@ -361,10 +411,7 @@ const formatDate = (dateString) => {
 
     .date-container {
         font-size: 15px;
-        margin-left: 50%;
-        position: static;
         width: 100%;
-        margin-top: 90px;
     }
 
     .white-container {
@@ -395,6 +442,13 @@ const formatDate = (dateString) => {
 
     .speaker-container {
         margin: 0;
+    }
+
+    .meeting-container {
+        width: 100%;
+        margin-top: 1%;
+        margin-bottom: 5%;
+        position: static;
     }
 
     .table-card {
