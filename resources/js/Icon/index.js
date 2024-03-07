@@ -25,7 +25,8 @@ import {
     faAddressCard,
     faAnglesRight,
     faArrowRight,
-    faPhone
+    faPhone,
+    faVideo,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -51,7 +52,8 @@ library.add(
     faAddressCard,
     faAnglesRight,
     faArrowRight,
-    faPhone
+    faPhone,
+    faVideo,
 );
 
 import {
