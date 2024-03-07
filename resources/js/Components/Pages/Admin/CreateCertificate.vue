@@ -11,11 +11,24 @@ const router = useRouter();
 const topic = ref('');
 const date = ref('');
 const speaker = ref('');
+const speaker_image = ref(null);
 const about_the_speaker = ref('');
-const logo = ref('');
+const certificate_logo = ref(null);
 const issuer = ref('');
 const description = ref('');
 const about_this_seminar = ref('');
+
+const handleChangeSpeakerImage = (event) => {
+    const file = event.target.files[0];
+    speaker_image.value = file;
+    console.log(file.name)
+}
+
+const handleChangeCertificateLogo = (event) => {
+    const file = event.target.files[0];
+    certificate_logo.value = file;
+    console.log(file.name)
+}
 
 
 const handleAddSeminar = async () => {
@@ -24,11 +37,16 @@ const handleAddSeminar = async () => {
             topic: topic.value,
             date: date.value,
             speaker: speaker.value,
+            speaker_image: speaker_image.value,
             about_the_speaker: about_the_speaker.value,
-            logo: "https://via.placeholder.com/100x100.png/007766?text=logo+et",
+            certificate_logo: certificate_logo.value,
             issuer: issuer.value,
             description: description.value,
             about_this_seminar: about_this_seminar.value,
+        },{
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
         })
             .then((response) => {
                 if (response.data.success) {
@@ -74,9 +92,6 @@ const handleAddSeminar = async () => {
                 </div>
                 <div class="parent-container">
                     <div class="container1">
-                        <div class="img-container mt-2">
-                            <img src="../../../../../public/external/Logo527-5lue.png" alt="">
-                        </div>
                         <div class="mb-3">
                             <label for="topic" class="form-label">Topic</label>
                             <input type="text" v-model="topic" class="form-control" id="exampleInputPassword1">
@@ -97,12 +112,12 @@ const handleAddSeminar = async () => {
                     <div class="container2">
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Speaker Image</label>
-                            <input type="file" @change="handleLogoChange" class="form-control" id=""
+                            <input type="file" @change="handleChangeSpeakerImage" class="form-control" id=""
                                 aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Certificate Logo</label>
-                            <input type="file" @change="handleLogoChange" class="form-control" id=""
+                            <input type="file" @change="handleChangeCertificateLogo" class="form-control" id=""
                                 aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">
@@ -137,7 +152,7 @@ const handleAddSeminar = async () => {
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 100%;
-    height: 215vh;
+    height: 225vh;
     border-radius: 16px;
     padding-bottom: 0;
 }
@@ -178,7 +193,7 @@ const handleAddSeminar = async () => {
 }
 
 .about-speak textarea {
-    height: 100px;
+    height: 190px;
 }
 
 .container2 textarea {
@@ -221,7 +236,7 @@ const handleAddSeminar = async () => {
     border-radius: 8px;
     color: #303841;
     transition: all 0.5s ease-in-out;
-    margin-top: -130px;
+    margin-top: -50px;
 }
 
 .btn-txt {
