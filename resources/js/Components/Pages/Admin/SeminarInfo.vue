@@ -5,8 +5,7 @@ import { ref, onMounted, watch } from 'vue';
 import moment from 'moment';
 import store from '../../../State/index.js';
 
-const route = useRoute();
-const seminarID = route.params.id;
+const seminarID = useRoute().params.id;
 
 const topic = ref('');
 const about_this_seminar = ref('');
