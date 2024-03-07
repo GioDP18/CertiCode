@@ -16,7 +16,7 @@
                                             <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
                                                 class="logo-seminar-header" />
                                         </div>
-                                        <div class="text-seminar">{{ result.topic }}</div>
+                                        <div class="text-seminar">{{ truncateText(result.topic, 20) }}</div>
                                     </div>
                                     <router-link style="text-decoration: none;" :to="{ name: 'SeminarInfo', params: { id: result.id }}" class="footer-seminar">
                                         <div class="show-more">
@@ -45,6 +45,15 @@ const props = defineProps({
     required: true
   }
 });
+
+const truncateText = (text, limit) => {
+    if (text.length <= limit) {
+        return text;
+    } else {
+        return text.slice(0, limit) + '..'; 
+    }
+};
+
 
 
 </script>

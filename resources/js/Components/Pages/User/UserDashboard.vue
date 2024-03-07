@@ -100,6 +100,8 @@ const truncateText = (text, limit) => {
     }
 };
 
+
+
 </script>
 
 <template>
@@ -188,11 +190,11 @@ const truncateText = (text, limit) => {
                         </div>
                     </div>
                 </div>
-                <div v-for="certificate in certificateObjects" :key="certificate.id" class="content py-4 mt-4">
+                <div class="content py-4 mt-4">
                     <div class="container">
                         <div class="content-text">Acquired Certificates</div>
                         <div class="row row-cols-4">
-                            <div class="col py-3">
+                            <div v-for="cert in certificateObjects" :key="cert.id"  class="col py-3">
                                 <div class="cert-card">
                                     <img loading="lazy" src="../../../../../public/external/certificate.png"
                                         class="cert-img" />
@@ -201,7 +203,7 @@ const truncateText = (text, limit) => {
                                             <img style="height: 30px;" loading="lazy"
                                                 src="../../../../../public/logo/supsofttech.png" class="img" />
                                         </div>
-                                        <div class="org-name">{{ certificate.issuer }}</div>
+                                        <div class="org-name">{{ cert.issuer }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -222,7 +224,7 @@ const truncateText = (text, limit) => {
                                             <img loading="lazy" src="../../../../../public/logo/supsofttech.png"
                                                 class="logo-seminar-header" />
                                         </div>
-                                        <div class="text-seminar">{{ seminars.topic }}</div>
+                                        <div class="text-seminar">{{ truncateText(seminars.topic, 20) }}</div>
                                     </div>
                                     <router-link style="text-decoration: none;" :to="{ name: 'SeminarInfo', params: { id: seminars.id }}" class="footer-seminar">
                                         <div class="show-more">

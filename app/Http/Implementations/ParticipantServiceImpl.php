@@ -61,7 +61,6 @@ Class ParticipantServiceImpl implements ParticipantService
 
         $seminarsCount = Participant::with(['seminar'])
         ->where('user_id', $userID)
-        ->where('has_attended', 0)
         ->count();
         return response()->json([
             'seminars' => $seminars,
@@ -79,6 +78,7 @@ Class ParticipantServiceImpl implements ParticipantService
     {
         $certificates = Participant::with(['seminar', 'seminar.certificate'])
             ->where('user_id', $userID)
+            ->where('has_attended', 1)
             ->get();
         if($certificates->isEmpty()){
             return response()->json([
@@ -89,7 +89,7 @@ Class ParticipantServiceImpl implements ParticipantService
 
         $certificateCount = Participant::with(['seminar', 'seminar.certificate'])
             ->where('user_id', $userID)
-            ->where('has_attended', 0)
+            ->where('has_attended', 1)
             ->count();
 
         return response()->json([
@@ -126,6 +126,7 @@ Class ParticipantServiceImpl implements ParticipantService
      */
     public function register(Request $request)
     {
+
         $user = User::find($request->userID);
         $seminar = Seminar::find($request->seminarID);
         $seminar_link = $request->url;
