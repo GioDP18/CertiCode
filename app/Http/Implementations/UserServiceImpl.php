@@ -80,4 +80,14 @@ Class UserServiceImpl implements UserService
             'topic' => $topic,
         ], 200);
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $results = Seminar::where('topic', 'like', '%'.$query.'%')->get();
+        
+        return response()->json([
+            'results' => $results,
+        ], 200);
+    }
 }

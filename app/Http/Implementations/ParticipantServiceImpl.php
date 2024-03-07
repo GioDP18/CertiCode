@@ -59,8 +59,12 @@ Class ParticipantServiceImpl implements ParticipantService
             ]);
         }
 
+        $seminarsCount = Participant::with(['seminar'])
+        ->where('user_id', $userID)
+        ->count();
         return response()->json([
             'seminars' => $seminars,
+            'seminarsCount' => $seminarsCount
         ], 200);
     }
     
@@ -74,6 +78,7 @@ Class ParticipantServiceImpl implements ParticipantService
     {
         $certificates = Participant::with(['seminar', 'seminar.certificate'])
             ->where('user_id', $userID)
+            ->where('has_attended', 1)
             ->get();
         if($certificates->isEmpty()){
             return response()->json([
@@ -81,9 +86,36 @@ Class ParticipantServiceImpl implements ParticipantService
                 "message" => "You dont have any certificates yet",
             ]);
         }
+
+        $certificateCount = Participant::with(['seminar', 'seminar.certificate'])
+            ->where('user_id', $userID)
+            ->where('has_attended', 1)
+            ->count();
+
         return response()->json([
             'certificates' => $certificates,
+            'certificateCount' => $certificateCount
         ], 200);
+    }
+
+    /**
+     * Checking if the spicifec user already registered in a specified seminar
+     *
+     * @param Request $request
+     * @return Boolean
+     */
+    public function checkRegistration(Request $request)
+    {
+        $userID = $request->input('user_id');
+        $seminarID = $request->input('seminar_id');
+
+        $registrationExists = Participant::where('user_id', $userID)
+            ->where('seminar_id', $seminarID)
+            ->exists();
+
+        return response()->json([
+            'registered' => $registrationExists
+        ]);
     }
 
     /**
@@ -94,14 +126,15 @@ Class ParticipantServiceImpl implements ParticipantService
      */
     public function register(Request $request)
     {
-        $user = User::find($request->userID)->first();
-        $seminar = Seminar::find($request->seminarID)->first();
-        $seminar_link = 'http://127.0.0.1:8000/user/seminar';
-        $userExist = Participant::where('user_id', $user->id)
-            ->where('seminar_id', $seminar->id)
-            ->exist();
 
-        if ($userExist) {
+        $user = User::find($request->userID);
+        $seminar = Seminar::find($request->seminarID);
+        $seminar_link = $request->url;
+        $participantExists = Participant::where('user_id', $user->id)
+            ->where('seminar_id', $seminar->id)
+            ->exists();
+
+        if ($participantExists) {
             return response()->json([
                 "success" => false,
                 "message" => "You Have Already signed up in this Seminar.",
@@ -111,11 +144,17 @@ Class ParticipantServiceImpl implements ParticipantService
         Participant::create([
             'user_id' => $user->id,
             'seminar_id' => $seminar->id,
+            'firstname' => $request->firstname,
+            'middlename' => $request->middlename,
+            'lastname' => $request->lastname,
+            'gender' => $request->gender,
+            'email' => $request->email,
+            'school' => $request->school,
         ]);
 
         $data = [
-            'name' => $user->firstname,
-            'email' => $user->email,
+            'name' => $request->firstname,
+            'email' => $request->email,
         ];
 
         Mail::send(new SeminarRegistration($data, $seminar_link));

@@ -14,7 +14,7 @@ class WordToPDFController extends Controller
     public function store(Request $request)
     {
         // Load the Word document
-        $content = \PhpOffice\PhpWord\IOFactory::load(public_path('Certificates/Gio.docx'));
+        $content = \PhpOffice\PhpWord\IOFactory::load(public_path('Certificates/John Vincent.docx'));
 
         // Set the PDF renderer path and name
         $domPdfPath = base_path('vendor/dompdf/dompdf');

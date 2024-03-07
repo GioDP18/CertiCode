@@ -12,6 +12,12 @@ class Participant extends Model
     protected $fillable = [
         "user_id",
         "seminar_id",
+        "firstname",
+        "middlename",
+        "lastname",
+        "gender",
+        "email",
+        "school",
     ];
 
     public function user()

@@ -34,6 +34,12 @@ Route::group([
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'getDashboardData']);
 
+    // Fetch Data
+    Route::get('/get-all-users', [UserController::class,'getAllUsers']);
+    Route::get('/get-all-seminars', [SeminarController::class,'getAllSeminars']);
+    Route::get('/get-certificate/{id}', [ParticipantController::class,'getCertificate']);
+    Route::get('/get-seminars/{id}', [ParticipantController::class,'getParticipSeminars']);
+
     // Generate Certificate
     Route::post('/generate', [GenerateCertService::class,'generate']);
     Route::get('/get-all-certificate', [CertificateController::class,'getAllCertificate']);
@@ -46,6 +52,7 @@ Route::group([
     Route::post('/get-user-details', [UserController::class,'getUserDetails']);
     Route::post('/update-profile', [UserController::class,'updateProfile']);
     Route::get('/get-all-users', [UserController::class,'getAllUsers']);
+    Route::post('/search', [UserController::class,'search']);
 
     Route::post('/convert', [WordToPDFController::class,'store']);
 
@@ -54,6 +61,7 @@ Route::group([
     Route::post('/add-new-seminar', [SeminarController::class,'addNewSeminar']);
 
     // Participants
+    Route::post('/check-registration', [ParticipantController::class,'checkRegistration']);
     Route::post('/register-seminar', [ParticipantController::class,'register']);
 
 });

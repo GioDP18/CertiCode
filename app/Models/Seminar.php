@@ -13,7 +13,6 @@ class Seminar extends Model
     {
         return $this->hasOne(Certificate::class);
     }
-
     protected $fillable = [
         "topic",
         "speaker",

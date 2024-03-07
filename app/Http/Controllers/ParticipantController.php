@@ -20,6 +20,10 @@ class ParticipantController extends Controller
     public function getCertificate($userID){
         return $this->participantService->getCertificate($userID);
     }
+
+    public function checkRegistration(Request $request){
+        return $this->participantService->checkRegistration($request);
+    }
     
     public function getParticipSeminars($userID){
         return $this->participantService->getParticipSeminars($userID);

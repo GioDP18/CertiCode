@@ -31,4 +31,8 @@ class UserController extends Controller
     public function getSeminarTopic(Request $request){
         return $this->userService->getSeminarTopic($request);
     }
+
+    public function search(Request $request){
+        return $this->userService->search($request);
+    }
 }

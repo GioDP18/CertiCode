@@ -16,6 +16,7 @@ import UserView from "../Components/Views/UserView.vue";
 import UserDashboard from "../Components/Pages/User/UserDashboard.vue";
 import SeminarInfo from "../Components/Pages/User/SeminarInfo.vue";
 import SeminarPage from "../Components/Pages/SeminarPage.vue";
+import SearchSeminar from "../Components/Pages/User/Search.vue";
 
 const routes = [
     {
@@ -70,8 +71,15 @@ const routes = [
                 component: UserDashboard,
             },
             {
-                path: "seminarInfo",
+                path: "seminarInfo/:id",
+                name: "SeminarInfo",
                 component: SeminarInfo,
+                props: true
+            },
+            {
+                path: "search",
+                component: SearchSeminar,
+                props: true
             },
             {
                 path: "seminarPage",

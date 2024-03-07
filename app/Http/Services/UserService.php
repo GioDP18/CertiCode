@@ -14,4 +14,6 @@ interface UserService
     public function getSeminarsAttended(Request $request);
 
     public function getSeminarTopic(Request $request);
+
+    public function search(Request $request);
 }
