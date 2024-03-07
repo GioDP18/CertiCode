@@ -94,10 +94,10 @@ const formatDate = (dateString) => {
                     <h1>{{ topic }}</h1>
                     <div class="about-seminar">
                         <p>{{ about_this_seminar }}</p>
-                    </div>
-                    <div class="date-container">
-                        <i><font-awesome-icon :icon="['fas', 'calendar-day']" /></i>
-                        <h5>{{ formatDate(date) }}</h5>
+                        <div class="date-container">
+                            <i><font-awesome-icon :icon="['fas', 'calendar-day']" /></i>
+                            <h5>{{ formatDate(date) }}</h5>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -191,17 +191,17 @@ const formatDate = (dateString) => {
     position: absolute;
     left: 50%;
     transform: translate(-50%, 1%);
+}
+
+.about-seminar p {
     font-style: italic;
 }
 
-.date-container {
+.about-seminar .date-container {
+    width: 100%;
     display: flex;
-    position: absolute;
-    top: 105%;
-    left: 50%;
-    transform: translate(-50%, 200%);
-    gap: 5px;
-    font-size: 18px;
+    gap: 10px;
+    justify-content: center;
 }
 
 .date-container h5 {
@@ -343,10 +343,11 @@ const formatDate = (dateString) => {
     .seminar-topic {
         color: black;
         width: 100%;
-        padding-top: 250px;
+        padding-top: 100px;
         position: static;
         margin-left: 50%;
         text-align: start;
+        margin-bottom: 100%;
     }
 
     .seminar-topic h1 {
@@ -361,10 +362,7 @@ const formatDate = (dateString) => {
 
     .date-container {
         font-size: 15px;
-        margin-left: 50%;
-        position: static;
         width: 100%;
-        margin-top: 90px;
     }
 
     .white-container {
