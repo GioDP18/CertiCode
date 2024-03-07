@@ -11,6 +11,7 @@ import Participants from "../Components/Pages/Admin/Participants.vue";
 import Seminars from "../Components/Pages/Admin/SeminarPage.vue";
 import MyAccount from "../Components/Pages/Admin/MyAccount.vue";
 import CreateCertificate from "../Components/Pages/Admin/CreateCertificate.vue";
+import AdminSeminarInfo from "../Components/Pages/Admin/SeminarInfo.vue";
 // User View
 import UserView from "../Components/Views/UserView.vue";
 import UserDashboard from "../Components/Pages/User/UserDashboard.vue";
@@ -21,14 +22,17 @@ const routes = [
     {
         path: "/",
         component: LandingPage,
+        name: "",
     },
     {
         path: "/login",
         component: LoginView,
+        name: "login",
     },
     {
         path: "/register",
         component: RegisterView,
+        name: "register",
     },
     {
         path: "/admin",
@@ -37,27 +41,37 @@ const routes = [
             {
                 path: "sendCertificates",
                 component: SendCertificates,
+                name: "admin-sendCertificates",
             },
             {
                 path: "dashboard",
                 component: Dashboard,
+                name: "admin-dashboard",
             },
             {
                 path: "participants",
                 component: Participants,
+                name: "admin-participants",
             },
             {
                 path: "seminars",
                 component: Seminars,
-                name: "seminars",
+                name: "admin-seminars",
+            },
+            {
+                path: "seminarInfo/:id",
+                component: AdminSeminarInfo,
+                name: "admin-seminarInfo/:id",
             },
             {
                 path: "myAccount",
                 component: MyAccount,
+                name: "admin-myAccount",
             },
             {
                 path: "createSeminar",
                 component: CreateCertificate,
+                name: "admin-createSeminar",
             },
         ],
     },

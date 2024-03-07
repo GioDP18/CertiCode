@@ -98,14 +98,13 @@ const handleSendAllCerts = (seminar_id) => {
                             <tr>
                                 <th>Seminar Topic</th>
                                 <th>Speaker</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="seminar in allSeminars" :key="seminar.id">
                                 <td>{{ seminar.topic }}</td>
                                 <td>{{ seminar.speaker }}</td>
-                                <td>
+                                <!-- <td>
                                     <button class="card14" @click="handleSendAllCerts(seminar.id)">
                                         <span class="send-text">Send Certificates</span>
                                         <i class="img-8">
@@ -113,7 +112,7 @@ const handleSendAllCerts = (seminar_id) => {
                                                 :icon="['fas', 'fa-paper-plane']" />
                                         </i>
                                     </button>
-                                </td>
+                                </td> -->
                             </tr>
                         </tbody>
                     </table>

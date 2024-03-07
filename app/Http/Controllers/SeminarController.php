@@ -18,4 +18,8 @@ class SeminarController extends Controller
     public function addNewSeminar(Request $request){
         return $this->seminarService->addNewSeminar($request);
     }
+
+    public function seminarInfo($id){
+        return $this->seminarService->seminarInfo($id);
+    }
 }

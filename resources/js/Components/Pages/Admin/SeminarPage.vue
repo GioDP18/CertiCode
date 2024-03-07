@@ -1,6 +1,9 @@
 <script setup>
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const seminars = ref([]);
 
@@ -21,6 +24,10 @@ const getAllSeminars = async () => {
     }
 }
 
+const goToSeminarInfo = (id) => {
+    router.push({ name: "admin-seminarInfo/:id", params: {id: id}});
+}
+
 </script>
 
 <template>
@@ -31,7 +38,7 @@ const getAllSeminars = async () => {
                     <div class="content-text">Seminars</div>
                     <div class="container">
                         <div class="row row-cols-lg-4">
-                            <div class="col py-3" v-for="seminar in seminars" :key="seminar.id">
+                            <div class="col py-3" v-for="seminar in seminars" :key="seminar.id" @click="goToSeminarInfo(seminar.id)">
                                 <div class="seminar-card">
                                     <div class="seminar-topic">{{ seminar.topic }}</div>
                                     <div class="seminar-date">February 18, 2024 - 8:00 AM</div>
