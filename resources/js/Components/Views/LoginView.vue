@@ -20,20 +20,20 @@ const login = async () => {
             email: email.value,
             password: password.value
         })
-        .then((response) => {
-            console.log(response.data);
-            localStorage.setItem('user_id', response.data.user.id);
-            localStorage.setItem('token', response.data.access_token);
-            if(response.data.user.user_level == 1){
-                router.push('/admin/dashboard')
-            }
-            else if(response.data.user.user_level == 2){
-                router.push('/user/dashboard')
-            }
-        })  
-        .finally(() => {
-            store.commit('setLoading', false);
-        })
+            .then((response) => {
+                console.log(response.data);
+                localStorage.setItem('user_id', response.data.user.id);
+                localStorage.setItem('token', response.data.access_token);
+                if (response.data.user.user_level == 1) {
+                    router.push('/admin/dashboard')
+                }
+                else if (response.data.user.user_level == 2) {
+                    router.push('/user/dashboard')
+                }
+            })
+            .finally(() => {
+                store.commit('setLoading', false);
+            })
 
     }
     catch (error) {
@@ -63,7 +63,8 @@ const login = async () => {
                             <input v-if="!showPassword" type="password" required v-model="password">
                             <input v-else type="text" required v-model="password">
                             <span class="toggle-password" @click="togglePassword">
-                                <i><font-awesome-icon :icon="['fa-solid', showPassword ? 'fa-eye-slash' : 'fa-eye']" /></i>
+                                <i><font-awesome-icon
+                                        :icon="['fa-solid', showPassword ? 'fa-eye-slash' : 'fa-eye']" /></i>
                             </span>
                             <label>Password</label>
                         </div>
@@ -123,6 +124,10 @@ const login = async () => {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.logo-container img {
+    width: 35%;
 }
 
 .inputbox {

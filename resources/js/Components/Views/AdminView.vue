@@ -1,6 +1,6 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount} from 'vue';
-import { useRouter} from 'vue-router'
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { useRouter } from 'vue-router'
 import axios from 'axios';
 import store from '../../State/index.js';
 
@@ -57,28 +57,29 @@ onBeforeUnmount(() => {
 
 const handleLogout = async () => {
     store.commit('setLoading', true);
-    try{
+    try {
         const token = localStorage.getItem('token');
         const headers = { Authorization: `Bearer ${token}` };
 
-        await axios.post('http://127.0.0.1:8000/api/auth/logout', {}, {headers})
-        .then((response) => {
-            if(response.data.success){
-                localStorage.removeItem('token');
-                localStorage.removeItem('user');
-                router.push('/login');
-            }
-        })
-        .finally(() => {
-            store.commit('setLoading', false);
-        })
+        await axios.post('http://127.0.0.1:8000/api/auth/logout', {}, { headers })
+            .then((response) => {
+                if (response.data.success) {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    router.push('/login');
+                }
+            })
+            .finally(() => {
+                store.commit('setLoading', false);
+            })
     }
-    catch(error){
+    catch (error) {
         console.log(error);
     }
 }
 
 </script>
+
 <template>
     <div class="container1">
         <div v-if="$store.state.sendingCerts" class="loader-container">
@@ -103,11 +104,13 @@ const handleLogout = async () => {
         <div class="sidebar sticky-top" v-show="screenWidth > 991" :class="{ 'minimized': !showSidebar }">
             <RouterLink to="" class="sidebar-logo" style="text-decoration: none;">
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
-                <div v-if="showSidebar" class="logo-text">CertiCode</div>
+                <div v-if="showSidebar" class="logo-text">
+                    <div class="certicode"><span class="certi">Certi</span><span class="code">Code</span></div>
+                </div>
             </RouterLink>
             <div class="menu">
                 <div style="width:90%; margin: auto;">
-                    <RouterLink :to="{ name:'admin-sendCertificates' }" style="text-decoration: none;">
+                    <RouterLink to="sendCertificates" style="text-decoration: none;">
                         <div class="send-button" title="send certificate">
                             <div v-if="showSidebar" class="sidebar-text">Send Certificates</div>
                             <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
@@ -115,25 +118,25 @@ const handleLogout = async () => {
                     </RouterLink>
                 </div>
 
-                <RouterLink :to="{ name:'admin-dashboard' }" class="sidebar-menu" active-class="active" style="text-decoration: none;"
+                <RouterLink to="dashboard" class="sidebar-menu" active-class="active" style="text-decoration: none;"
                     title="home">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-home']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">Home</div>
                 </RouterLink>
-                <RouterLink :to="{ name:'admin-participants' }" class="sidebar-menu" style="text-decoration: none;" title="participants">
+                <RouterLink to="participants" class="sidebar-menu" style="text-decoration: none;" title="participants">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">Participants</div>
                 </RouterLink>
-                <RouterLink :to="{ name:'admin-myAccount' }" class="sidebar-menu" style="text-decoration: none;" title="my acount">
+                <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">My Account</div>
                 </RouterLink>
             </div>
             <div v-if="showSidebar" class="add-button">
-                <RouterLink :to="{ name:'admin-seminars' }" style="text-decoration: none; color: white;">
+                <RouterLink to="seminars" style="text-decoration: none; color: white;">
                     <div style="margin: auto;" class="sidebar-text text-center">Seminars</div>
                 </RouterLink>
-                <RouterLink :to="{ name:'admin-createSeminar' }" class="add">
+                <RouterLink to="createSeminar" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </RouterLink>
             </div>
@@ -146,32 +149,34 @@ const handleLogout = async () => {
         <div class="mobile-sidebar sticky-top" v-show="screenWidth < 991" :class="{ 'show': showMobileSidebar }">
             <RouterLink to="" class="sidebar-logo" style="text-decoration: none;">
                 <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
-                <div class="logo-text">CertiCode</div>
+                <div class="logo-text">
+                    <div class="certicode"><span class="certi">Certi</span><span class="code">Code</span></div>
+                </div>
             </RouterLink>
             <div class="send-button" title="send certificate">
                 <div class="sidebar-text">Send Certificates</div>
                 <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-paper-plane']" /></i>
             </div>
             <div class="menu">
-                <RouterLink :to="{ name:'admin-dashboard' }" class="sidebar-menu" active-class="active" style="text-decoration: none;"
+                <RouterLink to="dashboard" class="sidebar-menu" active-class="active" style="text-decoration: none;"
                     title="home">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-home']" /></i>
                     <div class="sidebar-text">Home</div>
                 </RouterLink>
-                <RouterLink :to="{ name:'admin-participants' }" class="sidebar-menu" style="text-decoration: none;" title="participants">
+                <RouterLink to="participants" class="sidebar-menu" style="text-decoration: none;" title="participants">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div class="sidebar-text">Participants</div>
                 </RouterLink>
-                <RouterLink :to="{ name:'admin-myAccount' }" class="sidebar-menu" style="text-decoration: none;" title="my acount">
+                <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
                     <div class="sidebar-text">My Account</div>
                 </RouterLink>
             </div>
             <div class="add-button">
-                <RouterLink :to="{ name:'admin-seminars' }" style="text-decoration: none; color: white;">
+                <RouterLink to="seminars" style="text-decoration: none; color: white;">
                     <div style="margin: auto;" class="sidebar-text">Seminars</div>
                 </RouterLink>
-                <RouterLink :to="{ name:'admin-createSeminar' }" class="add">
+                <RouterLink to="createSeminar" class="add">
                     <i><font-awesome-icon style="color: #000;" class="icon" :icon="['fas', 'fa-plus']" /></i>
                 </RouterLink>
             </div>
@@ -276,19 +281,20 @@ const handleLogout = async () => {
 }
 
 .sidebar-logo {
-    background-color: #fff;
+    background-color: #303841;
     display: flex;
     justify-content: center;
-    font-size: 25px;
     color: var(--Black, #191919);
-    font-weight: 600;
-    padding: 18px 48px;
+    padding: 18px 40px;
+    align-items: center;
+    gap: 15px;
+    margin-top: 5px;
+    margin-bottom: 30px;
 }
 
 .sidebar-logo img {
-    width: 45px;
-    margin-left: -10px;
-    margin-right: 5px;
+    width: 35px;
+    border-radius: 5px;
 }
 
 .header {
@@ -308,8 +314,9 @@ const handleLogout = async () => {
 }
 
 .menu {
-    margin-top: 50px;
+    margin-top: 10px;
     transition: margin-left 0.3s ease;
+    margin-bottom: 30px;
 }
 
 .logo-text {
@@ -318,21 +325,38 @@ const handleLogout = async () => {
     margin: auto 0;
 }
 
+.logo-text .certicode {
+    margin-top: 3px;
+}
+
+.logo-text .certi {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+.logo-text .code {
+    font-size: 25px;
+    color: #7AA5D2;
+    font-weight: 400;
+}
+
 .send-button {
     border-radius: 8px;
-    border: 1.5px solid #fff;
+    background-color: #ffffff27;
     align-self: center;
     display: flex;
-    margin-top: 40px;
-    margin-bottom: 0px;
     justify-content: center;
     align-items: center;
-    margin-top: 60px;
     gap: 20px;
     font-size: 16px;
     color: #fff;
-    padding: 8px 20px;
+    padding: 8px 20px 13px;
     cursor: pointer;
+}
+
+.send-button i {
+    margin-top: 5px;
 }
 
 .logout-button {
@@ -375,11 +399,10 @@ const handleLogout = async () => {
     border: 1.5px solid #fff;
     align-self: center;
     display: flex;
-    margin-top: 40px;
     margin-bottom: 0px;
     justify-content: center;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 40px;
     font-size: 16px;
     color: #fff;
     padding: 5px 45px;
