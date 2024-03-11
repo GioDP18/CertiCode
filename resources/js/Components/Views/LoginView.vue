@@ -69,6 +69,9 @@ const login = async () => {
                             <label>Password</label>
                         </div>
                         <button class="submit" type="submit"><span class="btn-txt">SIGN IN</span></button>
+                        <div class="forgot">
+                            <RouterLink to="/forgotPassword">Forgot Password?</RouterLink>
+                        </div>
                         <div class="separator">
                             <div class="line"></div>
                             <p>Sign in with</p>
@@ -266,6 +269,19 @@ const login = async () => {
 }
 
 .register p a:hover {
+    text-decoration: underline;
+}
+
+.forgot {
+    text-align: center;
+}
+
+.forgot a {
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.forgot a:hover {
     text-decoration: underline;
 }
 
