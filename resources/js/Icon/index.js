@@ -27,6 +27,8 @@ import {
     faArrowRight,
     faPhone,
     faVideo,
+    faBoxArchive,
+    faFile,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -53,7 +55,9 @@ library.add(
     faAnglesRight,
     faArrowRight,
     faPhone,
-    faVideo
+    faVideo,
+    faBoxArchive,
+    faFile
 );
 
 import { faFacebookF, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";

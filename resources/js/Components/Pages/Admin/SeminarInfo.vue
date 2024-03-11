@@ -143,6 +143,7 @@ const selectAllCheckbox = () => {
                                 <input type="checkbox" v-model="selectAll" @change="selectAllCheckbox" @click.stop>
                             </th>
                             <th>Name</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -151,6 +152,7 @@ const selectAllCheckbox = () => {
                                     :value="participant.id"></td>
                             <td><b>{{ participant.firstname }} {{ participant.middlename }} {{
                         participant.lastname }}</b></td>
+                            <td class="button-remove"><button>Remove</button></td>
                         </tr>
                     </tbody>
                 </table>
@@ -239,9 +241,7 @@ const selectAllCheckbox = () => {
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* Change from row to column */
     justify-content: flex-start;
-    /* Change from center to flex-start */
 }
 
 .speaker-container {
@@ -319,6 +319,25 @@ const selectAllCheckbox = () => {
     font-weight: 500;
     white-space: nowrap;
     width: 90%;
+}
+
+.table-card .button-remove {
+    display: flex;
+    align-items: center;
+    margin-left: -40px;
+}
+
+.table-card .button-remove button {
+    justify-content: space-between;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background-color: #fff;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border: none;
+    width: 50%;
+    justify-content: center;
 }
 
 .button-container {

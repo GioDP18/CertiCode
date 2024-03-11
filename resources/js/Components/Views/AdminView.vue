@@ -117,7 +117,6 @@ const handleLogout = async () => {
                         </div>
                     </RouterLink>
                 </div>
-
                 <RouterLink to="dashboard" class="sidebar-menu" active-class="active" style="text-decoration: none;"
                     title="home">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-home']" /></i>
@@ -126,6 +125,10 @@ const handleLogout = async () => {
                 <RouterLink to="participants" class="sidebar-menu" style="text-decoration: none;" title="participants">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div v-if="showSidebar" class="sidebar-text">Participants</div>
+                </RouterLink>
+                <RouterLink to="archive" class="sidebar-menu" style="text-decoration: none;" title="participants">
+                    <i><font-awesome-icon style="" class="icon" :icon="['fas', 'box-archive']" /></i>
+                    <div v-if="showSidebar" class="sidebar-text">Archive</div>
                 </RouterLink>
                 <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
@@ -166,6 +169,10 @@ const handleLogout = async () => {
                 <RouterLink to="participants" class="sidebar-menu" style="text-decoration: none;" title="participants">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-table-list']" /></i>
                     <div class="sidebar-text">Participants</div>
+                </RouterLink>
+                <RouterLink to="archive" class="sidebar-menu" style="text-decoration: none;" title="participants">
+                    <i><font-awesome-icon style="" class="icon" :icon="['fas', 'box-archive']" /></i>
+                    <div class="sidebar-text">Archive</div>
                 </RouterLink>
                 <RouterLink to="myAccount" class="sidebar-menu" style="text-decoration: none;" title="my acount">
                     <i><font-awesome-icon style="" class="icon" :icon="['fas', 'fa-user-circle']" /></i>
