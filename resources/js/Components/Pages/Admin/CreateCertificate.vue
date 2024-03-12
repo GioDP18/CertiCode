@@ -30,6 +30,17 @@ const selectOption = (option) => {
     isDropdownOpen.value = false;
 };
 
+const openFilePicker = () => {
+    const fileInput = $refs.fileInput;
+    fileInput.click();
+}
+
+const handleDrop = (event) => {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    handleImage(file);
+}
+
 const handleCertificateUpload = (event) => {
     const file = event.target.files[0];
     handleImage(file);
@@ -128,15 +139,15 @@ const handleAddSeminar = async () => {
                         <img :src="selectedImage" alt="">
                     </div>
                 </div>
-                <!-- <div class="file-input-container" v-if="selectedDropdown === 'Upload Certificate'">
+                <div class="file-input-container" v-if="selectedDropdown === 'Upload Certificate'">
                     <label for="certificateFile" class="drag-drop-area" @dragover.prevent @drop="handleDrop"
                         @click="openFilePicker">
                         <i><font-awesome-icon :icon="['fas', 'file']" /></i>
                         Drag & Drop or Click to Upload Certificate
-                        <input type="file" id="certificateFile" accept=".pdf" style="display: none;" ref="fileInput"
+                        <input type="file" id="certificateFile" style="display: none;" ref="fileInput"
                             @change="handleCertificateUpload">
                     </label>
-                </div> -->
+                </div>
                 <div class="parent-container">
                     <div class="container1">
                         <div class="mb-3">
@@ -157,11 +168,6 @@ const handleAddSeminar = async () => {
                         </div>
                     </div>
                     <div class="container2">
-                        <div class="mb-3" v-if="selectedDropdown === 'Upload Certificate'">
-                            <label for="certificateLogo" class="form-label">Upload Certificate</label>
-                            <input type="file" class="form-control" id="certificateFile" ref="fileInput"
-                                @change="handleCertificateUpload">
-                        </div>
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Speaker Image</label>
                             <input type="file" @change="handleChangeSpeakerImage" class="form-control" id=""
@@ -279,7 +285,7 @@ const handleAddSeminar = async () => {
 }
 
 .container2 textarea {
-    height: 11vh;
+    height: 17.5vh;
 }
 
 .form-container input,
@@ -350,6 +356,37 @@ const handleAddSeminar = async () => {
     height: 100%;
     border-radius: 16px;
     margin-bottom: 5%;
+}
+
+.file-input-container {
+    margin-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drag-drop-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #b6b6b6;
+    padding: 20px;
+    cursor: pointer;
+    width: 50%;
+    height: 130px;
+    border-radius: 10px;
+    background-color: #ebebeb;
+}
+
+.drag-drop-area i {
+    font-size: 25px;
+    color: #b6b6b6;
+}
+
+.drag-drop-area:hover {
+    background-color: #f0f0f0;
 }
 
 .preview-container h4 {
@@ -466,6 +503,11 @@ const handleAddSeminar = async () => {
     .img-certificate2 img {
         width: 95%;
         height: 34vh;
+    }
+
+    .drag-drop-area {
+        width: 90%;
+        margin-bottom: -10px;
     }
 
     .button {
