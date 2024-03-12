@@ -27,7 +27,7 @@ const openDropdown = () => {
 
 const selectOption = (option) => {
     selectedDropdown.value = option === 'default' ? 'Default Certificate' : option === 'upload' ? 'Upload Certificate' : '';
-    isDropdownOpen.value = false; // Close the dropdown menu
+    isDropdownOpen.value = false;
 };
 
 const openFilePicker = () => {
@@ -144,11 +144,11 @@ const handleAddSeminar = async () => {
                         @click="openFilePicker">
                         <i><font-awesome-icon :icon="['fas', 'file']" /></i>
                         Drag & Drop or Click to Upload Certificate
-                        <input type="file" id="certificateFile" accept=".pdf" style="display: none;" ref="fileInput"
+                        <input type="file" id="certificateFile" style="display: none;" ref="fileInput"
                             @change="handleCertificateUpload">
                     </label>
                 </div>
-                <div class="parent-container" v-if="selectedDropdown === 'Default Certificate'">
+                <div class="parent-container">
                     <div class="container1">
                         <div class="mb-3">
                             <label for="topic" class="form-label">Topic</label>
@@ -173,16 +173,24 @@ const handleAddSeminar = async () => {
                             <input type="file" @change="handleChangeSpeakerImage" class="form-control" id=""
                                 aria-describedby="emailHelp">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" v-if="selectedDropdown === 'Upload Certificate'">
+                            <label for="speaker" class="form-label">Meeting Link</label>
+                            <input type="text" v-model="meetingLink" class="form-control" id="">
+                        </div>
+                        <div class="mb-3" v-if="selectedDropdown === 'Upload Certificate'">
+                            <label for="speaker" class="form-label">Link Description</label>
+                            <textarea class="form-control" v-model="linkDescription" id=""></textarea>
+                        </div>
+                        <div class="mb-3" v-if="selectedDropdown === 'Default Certificate'">
                             <label for="certificateLogo" class="form-label">Certificate Logo</label>
                             <input type="file" @change="handleChangeCertificateLogo" class="form-control" id=""
                                 aria-describedby="emailHelp">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" v-if="selectedDropdown === 'Default Certificate'">
                             <label for="issuer" class="form-label">Issuer</label>
                             <input type="text" v-model="issuer" class="form-control" id="">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" v-if="selectedDropdown === 'Default Certificate'">
                             <label for="topic" class="form-label">Description</label>
                             <textarea type="text" v-model="description" class="form-control" id=""></textarea>
                         </div>
@@ -351,7 +359,7 @@ const handleAddSeminar = async () => {
 }
 
 .file-input-container {
-    margin-bottom: 100px;
+    margin-bottom: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -366,14 +374,14 @@ const handleAddSeminar = async () => {
     border: 2px dashed #b6b6b6;
     padding: 20px;
     cursor: pointer;
-    width: 70%;
-    height: 200px;
+    width: 50%;
+    height: 130px;
     border-radius: 10px;
     background-color: #ebebeb;
 }
 
 .drag-drop-area i {
-    font-size: 50px;
+    font-size: 25px;
     color: #b6b6b6;
 }
 
