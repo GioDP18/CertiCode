@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->foreignId('seminar_id')->constrained();
-            $table->string('logo');
-            $table->text('description');
-            $table->string('issuer');
+            $table->string('logo')->nullable();
+            $table->text('description')->nullable();
+            $table->string('issuer')->nullable();
+            $table->string('template')->nullable();
             $table->timestamps();
         });
     }

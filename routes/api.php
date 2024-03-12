@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GenerateCertController;
+use App\Http\Controllers\JitsiMeetController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WordToPDFController;
 use App\Http\Services\GenerateCertService;
@@ -59,3 +60,10 @@ Route::group([
     Route::get('/register-seminar', [ParticipantController::class,'register']);
 
 });
+
+Route::prefix('jitsi')->group(function () {
+    Route::post('/sessions/create', [JitsiMeetController::class, 'createSession']);
+    Route::post('/sessions/{sessionId}/join', [JitsiMeetController::class, 'joinSession']);
+    Route::delete('/sessions/{sessionId}', [JitsiMeetController::class, 'endSession']);
+});
+

@@ -24,6 +24,7 @@ class SeminarFactory extends Factory
             "about_the_speaker" => $this->faker->sentence(50),
             "about_this_seminar" => $this->faker->sentence(50),
             "date" => $this->faker->dateTime(),
+            "zoom_link" => $this->faker->sentence(10)
         ];
     }
 }
