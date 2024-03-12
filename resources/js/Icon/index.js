@@ -27,6 +27,8 @@ import {
     faArrowRight,
     faPhone,
     faVideo,
+    faBoxArchive,
+    faFile,
 } from "@fortawesome/free-solid-svg-icons";
 
 /* add icons to the library */
@@ -54,23 +56,14 @@ library.add(
     faArrowRight,
     faPhone,
     faVideo,
+    faBoxArchive,
+    faFile
 );
 
-import {
-    faFacebookF,
-    faLinkedinIn
-    
-} from "@fortawesome/free-brands-svg-icons";
+import { faFacebookF, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
 
-library.add (
-    faFacebookF,
-    faLinkedinIn
-)
+library.add(faFacebookF, faLinkedinIn);
 
-import {
-    faCopyright
-} from "@fortawesome/free-regular-svg-icons";
+import { faCopyright } from "@fortawesome/free-regular-svg-icons";
 
-library.add (
-    faCopyright
-)
+library.add(faCopyright);

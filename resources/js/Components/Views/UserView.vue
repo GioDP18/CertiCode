@@ -2,7 +2,8 @@
     <div>
         <nav class="header sticky-top">
             <RouterLink to="" style="text-decoration: none; display: flex;">
-                <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img" />
+                <img loading="lazy" src="../../../../public/external/C-Logo.png" class="img"
+                    style="border-radius: 5px;" />
                 <p class="logo-text">CertiCode</p>
             </RouterLink>
             <form class="search-input">
@@ -19,7 +20,8 @@
                 </div>
             </form>
             <div class="logout-button">
-                <i><font-awesome-icon style="color: #000; height: 18px;" class="icon" :icon="['fas', 'fa-power-off']" /></i>
+                <i><font-awesome-icon style="color: #000; height: 18px;" class="icon"
+                        :icon="['fas', 'fa-power-off']" /></i>
             </div>
         </nav>
         <router-view></router-view>
@@ -62,6 +64,7 @@
     color: var(--Black, #191919);
     font-weight: 600;
     margin-left: 5px;
+    margin-top: 2px;
 }
 
 @media (max-width: 991px) {

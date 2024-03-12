@@ -17,6 +17,42 @@ const certificate_logo = ref(null);
 const issuer = ref('');
 const description = ref('');
 const about_this_seminar = ref('');
+const selectedImage = ref('');
+const isDropdownOpen = ref(false);
+const selectedDropdown = ref('Default Certificate');
+
+const openDropdown = () => {
+    isDropdownOpen.value = !isDropdownOpen.value;
+};
+
+const selectOption = (option) => {
+    selectedDropdown.value = option === 'default' ? 'Default Certificate' : option === 'upload' ? 'Upload Certificate' : '';
+    isDropdownOpen.value = false; // Close the dropdown menu
+};
+
+const openFilePicker = () => {
+    const fileInput = $refs.fileInput;
+    fileInput.click();
+}
+
+const handleDrop = (event) => {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    handleImage(file);
+}
+
+const handleCertificateUpload = (event) => {
+    const file = event.target.files[0];
+    handleImage(file);
+}
+
+const handleImage = (file) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        selectedImage.value = e.target.result;
+    };
+    reader.readAsDataURL(file);
+}
 
 const handleChangeSpeakerImage = (event) => {
     const file = event.target.files[0];
@@ -43,7 +79,7 @@ const handleAddSeminar = async () => {
             issuer: issuer.value,
             description: description.value,
             about_this_seminar: about_this_seminar.value,
-        },{
+        }, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
@@ -82,15 +118,37 @@ const handleAddSeminar = async () => {
             </div>
             <form class="form-container" @submit.prevent="handleAddSeminar">
                 <h4>Create New Seminar</h4>
-                <div class="preview-container">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @click="openDropdown">
+                        {{ selectedDropdown }}
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                        :style="{ display: isDropdownOpen ? 'block' : 'none' }">
+                        <a class="dropdown-item" href="#" @click="selectOption('default')">Default Certificate</a>
+                        <a class="dropdown-item" href="#" @click="selectOption('upload')">Upload Certificate</a>
+                    </div>
+                </div>
+                <div class="preview-container" v-if="selectedDropdown === 'Default Certificate'">
                     <div class="img-certificate">
                         <img src="../../../../../public/external/certificate.png" alt="">
                     </div>
                 </div>
-                <div class="img-container">
-                    <img src="../../../../../public/external/Logo527-5lue.png" alt="">
+                <div class="preview-container2" v-if="selectedDropdown === 'Upload Certificate'">
+                    <div class="img-certificate2">
+                        <img :src="selectedImage" alt="">
+                    </div>
                 </div>
-                <div class="parent-container">
+                <div class="file-input-container" v-if="selectedDropdown === 'Upload Certificate'">
+                    <label for="certificateFile" class="drag-drop-area" @dragover.prevent @drop="handleDrop"
+                        @click="openFilePicker">
+                        <i><font-awesome-icon :icon="['fas', 'file']" /></i>
+                        Drag & Drop or Click to Upload Certificate
+                        <input type="file" id="certificateFile" accept=".pdf" style="display: none;" ref="fileInput"
+                            @change="handleCertificateUpload">
+                    </label>
+                </div>
+                <div class="parent-container" v-if="selectedDropdown === 'Default Certificate'">
                     <div class="container1">
                         <div class="mb-3">
                             <label for="topic" class="form-label">Topic</label>
@@ -144,7 +202,7 @@ const handleAddSeminar = async () => {
 
 <style scoped>
 .main-content {
-    height: 85vh;
+    height: 100%;
     width: 100%;
     bottom: 0;
 }
@@ -152,7 +210,7 @@ const handleAddSeminar = async () => {
 .main-container {
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 100%;
-    height: 225vh;
+    height: 100%;
     border-radius: 16px;
     padding-bottom: 0;
 }
@@ -169,12 +227,34 @@ const handleAddSeminar = async () => {
     padding-top: 35px;
     width: 100%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .form-container h4 {
     text-align: center;
     margin-top: -5px;
     margin-bottom: 40px;
+    font-size: 30px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.dropdown {
+    margin-bottom: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.dropdown button {
+    width: 30%;
+    letter-spacing: 5px;
+}
+
+.dropdown .dropdown-menu {
+    width: 30%;
 }
 
 .parent-container {
@@ -200,20 +280,6 @@ const handleAddSeminar = async () => {
     height: 11vh;
 }
 
-.img-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-    margin-top: -50px;
-}
-
-.img-container img {
-    width: 10%;
-    border: 3px solid #303841;
-    border-radius: 50%;
-}
-
 .form-container input,
 .form-container textarea {
     border: 1px solid #303841;
@@ -223,11 +289,12 @@ const handleAddSeminar = async () => {
     width: 100%;
     display: flex;
     justify-content: center;
+    padding-bottom: 50px;
 }
 
 .button {
     height: 40px;
-    width: 150px;
+    width: 330px;
     position: relative;
     background-color: transparent;
     cursor: pointer;
@@ -235,7 +302,7 @@ const handleAddSeminar = async () => {
     overflow: hidden;
     border-radius: 8px;
     color: #303841;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.1s ease-in-out;
     margin-top: -50px;
 }
 
@@ -276,6 +343,44 @@ const handleAddSeminar = async () => {
     margin-bottom: 25%;
 }
 
+.preview-container2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    margin-bottom: 5%;
+}
+
+.file-input-container {
+    margin-bottom: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drag-drop-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #b6b6b6;
+    padding: 20px;
+    cursor: pointer;
+    width: 70%;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #ebebeb;
+}
+
+.drag-drop-area i {
+    font-size: 50px;
+    color: #b6b6b6;
+}
+
+.drag-drop-area:hover {
+    background-color: #f0f0f0;
+}
+
 .preview-container h4 {
     margin-top: 37px;
 }
@@ -288,42 +393,65 @@ const handleAddSeminar = async () => {
 
 }
 
+.img-certificate2 {
+    width: 100%;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+
+}
+
+.img-certificate2 img {
+    width: 74%;
+    height: 78vh;
+    border: 3px solid #303841;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
 .img-certificate img {
     width: 74%;
-    height: 74vh;
+    height: 78vh;
+    border: 3px solid #303841;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
 @media screen and (max-width: 360px) {
 
     .main-content {
-        height: 180vh;
+        height: 100%;
     }
 
     .main-container {
         width: 100%;
-        height: 113%;
+        height: 100%;
+    }
+
+    .dropdown {
+        width: 100%;
+    }
+
+    .dropdown button {
+        width: 80%;
+        letter-spacing: 5px;
+    }
+
+    .dropdown .dropdown-menu {
+        width: 80%;
     }
 
     .form-container h4 {
         margin-top: -20px;
+        font-size: 25px;
     }
 
     .parent-container {
         flex-direction: column;
+        height: 100%;
+        margin-bottom: 80px;
     }
 
     .preview-container h4 {
         margin-top: 10px;
-    }
-
-    .img-container {
-        width: 100%;
-        margin: auto;
-        margin-top: -30px;
-    }
-
-    .img-container img {
-        width: 20%;
     }
 
     .container1 {
@@ -339,14 +467,10 @@ const handleAddSeminar = async () => {
         width: 100%;
     }
 
-    .submit-button {
-        margin-top: 110%;
-    }
-
     .preview-container {
         height: 10vh;
         margin-top: -5%;
-        margin-bottom: 60%;
+        margin-bottom: 50%;
     }
 
     .img-certificate {
@@ -356,7 +480,30 @@ const handleAddSeminar = async () => {
 
     .img-certificate img {
         width: 95%;
-        height: 32vh;
+        height: 34vh;
+    }
+
+    .preview-container2 {
+        width: 100%;
+    }
+
+    .img-certificate2 {
+        width: 100%;
+        height: 75%;
+    }
+
+    .img-certificate2 img {
+        width: 95%;
+        height: 34vh;
+    }
+
+    .drag-drop-area {
+        width: 90%;
+        margin-bottom: -10px;
+    }
+
+    .button {
+        width: 300px;
     }
 }
 </style>

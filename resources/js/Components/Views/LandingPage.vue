@@ -71,6 +71,10 @@ export default {
     padding-top: 50px;
 }
 
+.logo-container img {
+    width: 20%;
+}
+
 .landing-page-text {
     width: 100%;
     padding-left: 15%;

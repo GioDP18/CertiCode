@@ -8,6 +8,7 @@ import AdminView from "../Components/Views/AdminView.vue";
 import SendCertificates from "../Components/Pages/Admin/SendCertificates.vue";
 import Dashboard from "../Components/Pages/Admin/Dashboard.vue";
 import Participants from "../Components/Pages/Admin/Participants.vue";
+import Archive from "../Components/Pages/Admin/Archive.vue";
 import Seminars from "../Components/Pages/Admin/SeminarPage.vue";
 import MyAccount from "../Components/Pages/Admin/MyAccount.vue";
 import CreateCertificate from "../Components/Pages/Admin/CreateCertificate.vue";
@@ -52,6 +53,11 @@ const routes = [
                 path: "participants",
                 component: Participants,
                 name: "admin-participants",
+            },
+            {
+                path: "archive",
+                component: Archive,
+                name: "admin-archive",
             },
             {
                 path: "seminars",

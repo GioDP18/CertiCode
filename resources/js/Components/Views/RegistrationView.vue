@@ -1,4 +1,3 @@
-
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
@@ -186,6 +185,10 @@ const register = async () => {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.logo-container img {
+    width: 30%;
 }
 
 .input-container1,
