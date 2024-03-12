@@ -285,7 +285,7 @@ const handleAddSeminar = async () => {
 }
 
 .container2 textarea {
-    height: 17.5vh;
+    height: 11vh;
 }
 
 .form-container input,
