@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('about_this_seminar');
             $table->text('about_the_speaker');
             $table->dateTime('date');
+            $table->string('zoom_link');
             $table->timestamps();
         });
     }

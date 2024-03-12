@@ -1,13 +1,13 @@
 <script setup>
 import axios from 'axios';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { ref, onMounted, watch } from 'vue';
 import moment from 'moment';
 import store from '../../../State/index.js';
 import $ from 'jquery';
 
 const seminarID = useRoute().params.id;
-
+const router = useRouter();
 const topic = ref('');
 const about_this_seminar = ref('');
 const speaker = ref('');
@@ -91,6 +91,10 @@ const selectAllCheckbox = () => {
     }
 };
 
+const startSeminar = () => {
+    router.push({ name: "admin-liveSeminar" });
+}
+
 </script>
 
 <template>
@@ -123,7 +127,7 @@ const selectAllCheckbox = () => {
                         </div>
                     </div>
                     <div class="meeting-container">
-                        <button class="button-meeting">
+                        <button class="button-meeting" @click="startSeminar">
                             <i><font-awesome-icon :icon="['fas', 'video']" /></i>Start Meeting
                         </button>
                     </div>

@@ -42,6 +42,7 @@ Class SeminarServiceImpl implements SeminarService
             "about_the_speaker" => $request->about_the_speaker,
             "date" => $request->date,
             "speaker_image" => $speakerImgPath,
+            "zoom_link" => $request->zoom_link,
         ]);
 
         $certificate = Certificate::create([
@@ -49,6 +50,7 @@ Class SeminarServiceImpl implements SeminarService
             "logo" => $certificateLogoPath,
             "description" => $request->description,
             "issuer" => $request->issuer,
+            "template" => $request->template
         ]);
 
         if(!$seminar || !$certificate){
