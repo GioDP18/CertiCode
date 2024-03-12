@@ -27,7 +27,7 @@ const openDropdown = () => {
 
 const selectOption = (option) => {
     selectedDropdown.value = option === 'default' ? 'Default Certificate' : option === 'upload' ? 'Upload Certificate' : '';
-    isDropdownOpen.value = false; // Close the dropdown menu
+    isDropdownOpen.value = false;
 };
 
 const openFilePicker = () => {
@@ -139,7 +139,7 @@ const handleAddSeminar = async () => {
                         <img :src="selectedImage" alt="">
                     </div>
                 </div>
-                <div class="file-input-container" v-if="selectedDropdown === 'Upload Certificate'">
+                <!-- <div class="file-input-container" v-if="selectedDropdown === 'Upload Certificate'">
                     <label for="certificateFile" class="drag-drop-area" @dragover.prevent @drop="handleDrop"
                         @click="openFilePicker">
                         <i><font-awesome-icon :icon="['fas', 'file']" /></i>
@@ -147,8 +147,8 @@ const handleAddSeminar = async () => {
                         <input type="file" id="certificateFile" accept=".pdf" style="display: none;" ref="fileInput"
                             @change="handleCertificateUpload">
                     </label>
-                </div>
-                <div class="parent-container" v-if="selectedDropdown === 'Default Certificate'">
+                </div> -->
+                <div class="parent-container">
                     <div class="container1">
                         <div class="mb-3">
                             <label for="topic" class="form-label">Topic</label>
@@ -168,21 +168,34 @@ const handleAddSeminar = async () => {
                         </div>
                     </div>
                     <div class="container2">
+                        <div class="mb-3" v-if="selectedDropdown === 'Upload Certificate'">
+                            <label for="certificateLogo" class="form-label">Upload Certificate</label>
+                            <input type="file" class="form-control" id="certificateFile" ref="fileInput"
+                                @change="handleCertificateUpload">
+                        </div>
                         <div class="mb-3">
                             <label for="certificateLogo" class="form-label">Speaker Image</label>
                             <input type="file" @change="handleChangeSpeakerImage" class="form-control" id=""
                                 aria-describedby="emailHelp">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" v-if="selectedDropdown === 'Upload Certificate'">
+                            <label for="speaker" class="form-label">Meeting Link</label>
+                            <input type="text" v-model="meetingLink" class="form-control" id="">
+                        </div>
+                        <div class="mb-3" v-if="selectedDropdown === 'Upload Certificate'">
+                            <label for="speaker" class="form-label">Link Description</label>
+                            <textarea class="form-control" v-model="linkDescription" id=""></textarea>
+                        </div>
+                        <div class="mb-3" v-if="selectedDropdown === 'Default Certificate'">
                             <label for="certificateLogo" class="form-label">Certificate Logo</label>
                             <input type="file" @change="handleChangeCertificateLogo" class="form-control" id=""
                                 aria-describedby="emailHelp">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" v-if="selectedDropdown === 'Default Certificate'">
                             <label for="issuer" class="form-label">Issuer</label>
                             <input type="text" v-model="issuer" class="form-control" id="">
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3" v-if="selectedDropdown === 'Default Certificate'">
                             <label for="topic" class="form-label">Description</label>
                             <textarea type="text" v-model="description" class="form-control" id=""></textarea>
                         </div>
