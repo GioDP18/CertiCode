@@ -30,17 +30,6 @@ const selectOption = (option) => {
     isDropdownOpen.value = false;
 };
 
-const openFilePicker = () => {
-    const fileInput = $refs.fileInput;
-    fileInput.click();
-}
-
-const handleDrop = (event) => {
-    event.preventDefault();
-    const file = event.dataTransfer.files[0];
-    handleImage(file);
-}
-
 const handleCertificateUpload = (event) => {
     const file = event.target.files[0];
     handleImage(file);
@@ -363,37 +352,6 @@ const handleAddSeminar = async () => {
     margin-bottom: 5%;
 }
 
-.file-input-container {
-    margin-bottom: 100px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.drag-drop-area {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px dashed #b6b6b6;
-    padding: 20px;
-    cursor: pointer;
-    width: 70%;
-    height: 200px;
-    border-radius: 10px;
-    background-color: #ebebeb;
-}
-
-.drag-drop-area i {
-    font-size: 50px;
-    color: #b6b6b6;
-}
-
-.drag-drop-area:hover {
-    background-color: #f0f0f0;
-}
-
 .preview-container h4 {
     margin-top: 37px;
 }
@@ -508,11 +466,6 @@ const handleAddSeminar = async () => {
     .img-certificate2 img {
         width: 95%;
         height: 34vh;
-    }
-
-    .drag-drop-area {
-        width: 90%;
-        margin-bottom: -10px;
     }
 
     .button {
